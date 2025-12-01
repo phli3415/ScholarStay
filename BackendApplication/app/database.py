@@ -3,49 +3,38 @@ database configuration and initialization module
 use Tortoise ORM to connect to PostgreSQL database, support pgvector extension
 """
 
-from tortoise import Tortoise
-# from app.model import TORTOISE_ORM_MODELS
 import os
-import dotenv
-dotenv.load_dotenv()
-from fastapi import FastAPI
 from typing import Dict
+import dotenv
 
-app=FastAPI()   
+# Load environment variables from .env file
+dotenv.load_dotenv()
 
-# Tortoise-ORM 配置
+# Tortoise-ORM Configuration Dictionary
 TORTOISE_ORM: Dict = {
     "connections": {
-        # PostgreSQL
+        # PostgreSQL connection URL from environment variables
         "default": os.getenv("DATABASE_URL"),
-
     },
     "apps": {
         "models": {
+            # List of all your models
             "models": [
                 "app.model.user",
                 "app.model.houses",
                 "app.model.bookmark",
                 "app.model.chat_history",
-                "aerich.models"
-            ],  # models and Aerich
+                "aerich.models"  # Required for migrations
+            ],
             "default_connection": "default",
         },
     },
-    # connection pool     
-    "use_tz": False,  # whether to use timezone
-    "timezone": "UTC",  # default timezone
+    # Optional settings
+    "use_tz": False,
+    "timezone": "UTC",
     "db_pool": {
-        "max_size": 10,  # maximum connection pool size
-        "min_size": 1,  # minimum connection pool size
-        "idle_timeout": 30  # idle connection timeout (seconds)
+        "max_size": 10,
+        "min_size": 1,
+        "idle_timeout": 30
     }
 }
-
-from tortoise.contrib.fastapi import register_tortoise
-
-register_tortoise(app, 
-                  config=TORTOISE_ORM, 
-                  generate_schemas=True, #generate schemas in development environment
-                  add_exception_handlers=True)#add exception handlers
-

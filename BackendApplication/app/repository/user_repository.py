@@ -9,7 +9,7 @@ from ..model.user import User
 
 class UserRepository:
     """Repository for User model operations"""
-    
+
     @staticmethod
     async def get_by_id(user_id: int) -> Optional[User]:
         """
@@ -22,7 +22,7 @@ class UserRepository:
             User object or None if not found
         """
         return await User.get_or_none(id=user_id)
-    
+
     @staticmethod
     async def get_by_gmail(gmail: str) -> Optional[User]:
         """
@@ -35,7 +35,20 @@ class UserRepository:
             User object or None if not found
         """
         return await User.filter(gmail=gmail).first()
-    
+
+    @staticmethod
+    async def get_by_firebase_uid(firebase_uid: str) -> Optional[User]:
+        """
+        Get user by Firebase UID
+        
+        Args:
+            firebase_uid: Firebase Unique ID of the user
+            
+        Returns:
+            User object or None if not found
+        """
+        return await User.get_or_none(firebase_uid=firebase_uid)
+
     @staticmethod
     async def get_by_username(username: str) -> Optional[User]:
         """
@@ -48,7 +61,7 @@ class UserRepository:
             User object or None if not found
         """
         return await User.filter(username=username).first()
-    
+
     @staticmethod
     async def get_all(limit: int = 100, offset: int = 0) -> List[User]:
         """
@@ -62,25 +75,25 @@ class UserRepository:
             List of User objects
         """
         return await User.all().limit(limit).offset(offset)
-    
+
     @staticmethod
-    async def create(gmail: str, username: str, password: str) -> User:
+    async def create(firebase_uid: str, gmail: str, username: str) -> User:
         """
         Create a new user
         
         Args:
+            firebase_uid: Firebase Unique ID of the user
             gmail: gmail address of the user (must be unique)
             username: username of the user
-            password: password of the user
             
         Returns:
             Created User object
             
         Raises:
-            IntegrityError: if gmail already exists
+            IntegrityError: if gmail or firebase_uid already exists
         """
-        return await User.create(gmail=gmail, username=username, password=password)
-    
+        return await User.create(firebase_uid=firebase_uid, gmail=gmail, username=username)
+
     @staticmethod
     async def update(user: User, **kwargs) -> User:
         """
@@ -88,17 +101,21 @@ class UserRepository:
         
         Args:
             user: User object to update
-            **kwargs: fields to update (e.g., username="new_username", password="new_password")
+            **kwargs: fields to update (e.g., username="new_username")
             
         Returns:
             Updated User object
         """
+        # prevent updating primary key and unique identifiers
+        kwargs.pop('id', None)
+        kwargs.pop('firebase_uid', None)
+        
         for key, value in kwargs.items():
             if hasattr(user, key):
                 setattr(user, key, value)
         await user.save()
         return user
-    
+
     @staticmethod
     async def update_by_id(user_id: int, **kwargs) -> Optional[User]:
         """
@@ -115,7 +132,7 @@ class UserRepository:
         if not user:
             return None
         return await UserRepository.update(user, **kwargs)
-    
+
     @staticmethod
     async def delete(user_id: int) -> bool:
         """
@@ -132,7 +149,7 @@ class UserRepository:
             await user.delete()
             return True
         return False
-    
+
     @staticmethod
     async def delete_by_gmail(gmail: str) -> bool:
         """
@@ -149,7 +166,7 @@ class UserRepository:
             await user.delete()
             return True
         return False
-    
+
     @staticmethod
     async def count() -> int:
         """
@@ -159,4 +176,3 @@ class UserRepository:
             Total number of users
         """
         return await User.all().count()
-
