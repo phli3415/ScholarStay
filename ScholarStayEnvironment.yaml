@@ -48,6 +48,9 @@ dependencies:
     - tortoise-orm==0.20.0
     - aerich==0.7.1
     - psycopg2-binary==2.9.9
+
+    # === Firebase认证 (新增) ===
+    - firebase-admin==6.5.0
     
     # === RAG核心组件 ===
     - langchain-text-splitters==0.3.5

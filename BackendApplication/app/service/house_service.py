@@ -1,17 +1,22 @@
 """
-House Repository
-Handles all database operations related to Houses model
+House Service
+Business logic for house/listing operations
 """
 
 from typing import Optional, List
 from ..model.houses import Houses
+from ..repository.house_repository import HouseRepository
+from ..repository.user_repository import UserRepository
 
 
-class HouseRepository:
-    """Repository for Houses model operations"""
+class HouseService:
+    """Service for house business logic"""
     
-    @staticmethod
-    async def get_by_id(house_id: int) -> Optional[Houses]:
+    def __init__(self):
+        self.repository = HouseRepository()
+        self.user_repository = UserRepository()
+    
+    async def get_house_by_id(self, house_id: int) -> Optional[Houses]:
         """
         Get house by ID
         
@@ -21,10 +26,9 @@ class HouseRepository:
         Returns:
             Houses object or None if not found
         """
-        return await Houses.get_or_none(id=house_id)
+        return await self.repository.get_by_id(house_id)
     
-    @staticmethod
-    async def get_all(limit: int = 100, offset: int = 0) -> List[Houses]:
+    async def get_all_houses(self, limit: int = 20, offset: int = 0) -> List[Houses]:
         """
         Get all houses with pagination
         
@@ -35,10 +39,9 @@ class HouseRepository:
         Returns:
             List of Houses objects
         """
-        return await Houses.all().limit(limit).offset(offset)
+        return await self.repository.get_all(limit=limit, offset=offset)
     
-    @staticmethod
-    async def get_by_owner(owner_id: int, limit: int = 100, offset: int = 0) -> List[Houses]:
+    async def get_houses_by_owner(self, owner_id: int, limit: int = 20, offset: int = 0) -> List[Houses]:
         """
         Get all houses owned by a user
         
@@ -50,10 +53,9 @@ class HouseRepository:
         Returns:
             List of Houses objects
         """
-        return await Houses.filter(owner_id=owner_id).limit(limit).offset(offset)
+        return await self.repository.get_by_owner(owner_id, limit=limit, offset=offset)
     
-    @staticmethod
-    async def get_available(limit: int = 100, offset: int = 0) -> List[Houses]:
+    async def get_available_houses(self, limit: int = 20, offset: int = 0) -> List[Houses]:
         """
         Get all available houses (not rented)
         
@@ -64,10 +66,10 @@ class HouseRepository:
         Returns:
             List of available Houses objects
         """
-        return await Houses.filter(is_rented=False).limit(limit).offset(offset)
+        return await self.repository.get_available(limit=limit, offset=offset)
     
-    @staticmethod
-    async def create(
+    async def create_house(
+        self,
         owner_id: int,
         province: str,
         city: str,
@@ -102,8 +104,16 @@ class HouseRepository:
             
         Returns:
             Created Houses object
+            
+        Raises:
+            ValueError: if owner does not exist
         """
-        return await Houses.create(
+        # Verify owner exists
+        owner = await self.user_repository.get_by_id(owner_id)
+        if not owner:
+            raise ValueError(f"User with ID {owner_id} does not exist")
+        
+        return await self.repository.create(
             owner_id=owner_id,
             province=province,
             city=city,
@@ -119,60 +129,33 @@ class HouseRepository:
             embedding_vector=embedding_vector,
         )
     
-    @staticmethod
-    async def update(house: Houses, **kwargs) -> Houses:
+    async def update_house(self, house_id: int, **kwargs) -> Optional[Houses]:
         """
-        Update house fields
-        
-        Args:
-            house: Houses object to update
-            **kwargs: fields to update
-            
-        Returns:
-            Updated Houses object
-        """
-        for key, value in kwargs.items():
-            if hasattr(house, key):
-                setattr(house, key, value)
-        await house.save()
-        return house
-    
-    @staticmethod
-    async def update_by_id(house_id: int, **kwargs) -> Optional[Houses]:
-        """
-        Update house by ID
+        Update house information
         
         Args:
             house_id: ID of the house to update
             **kwargs: fields to update
             
         Returns:
-            Updated Houses object or None if not found
+            Updated Houses object or None if house not found
         """
-        house = await HouseRepository.get_by_id(house_id)
-        if not house:
-            return None
-        return await HouseRepository.update(house, **kwargs)
+        return await self.repository.update_by_id(house_id, **kwargs)
     
-    @staticmethod
-    async def delete(house_id: int) -> bool:
+    async def delete_house(self, house_id: int) -> bool:
         """
-        Delete house by ID
+        Delete house listing
         
         Args:
             house_id: ID of the house to delete
             
         Returns:
-            True if deleted, False if house not found
+            True if deleted successfully, False if house not found
         """
-        house = await Houses.get_or_none(id=house_id)
-        if house:
-            await house.delete()
-            return True
-        return False
+        return await self.repository.delete(house_id)
     
-    @staticmethod
-    async def search(
+    async def search_houses(
+        self,
         province: Optional[str] = None,
         city: Optional[str] = None,
         max_rent: Optional[float] = None,
@@ -204,41 +187,30 @@ class HouseRepository:
         Returns:
             List of houses matching the filters
         """
-        query = Houses.all()
-        
-        if province:
-            query = query.filter(province=province)
-        if city:
-            query = query.filter(city=city)
-        if max_rent:
-            query = query.filter(monthly_rent__lte=max_rent)
-        if min_rent:
-            query = query.filter(monthly_rent__gte=min_rent)
-        if has_kitchen is not None:
-            query = query.filter(has_kitchen=has_kitchen)
-        if has_washer is not None:
-            query = query.filter(has_washer=has_washer)
-        if has_parking is not None:
-            query = query.filter(has_parking=has_parking)
-        if is_rented is not None:
-            query = query.filter(is_rented=is_rented)
-        if max_distance:
-            query = query.filter(distance_to_university__lte=max_distance)
-        
-        return await query.limit(limit).offset(offset).all()
+        return await self.repository.search(
+            province=province,
+            city=city,
+            max_rent=max_rent,
+            min_rent=min_rent,
+            has_kitchen=has_kitchen,
+            has_washer=has_washer,
+            has_parking=has_parking,
+            is_rented=is_rented,
+            max_distance=max_distance,
+            limit=limit,
+            offset=offset,
+        )
     
-    @staticmethod
-    async def count() -> int:
+    async def get_house_count(self) -> int:
         """
         Get total count of houses
         
         Returns:
             Total number of houses
         """
-        return await Houses.all().count()
+        return await self.repository.count()
     
-    @staticmethod
-    async def count_by_owner(owner_id: int) -> int:
+    async def get_house_count_by_owner(self, owner_id: int) -> int:
         """
         Get count of houses owned by a user
         
@@ -248,10 +220,10 @@ class HouseRepository:
         Returns:
             Number of houses owned by the user
         """
-        return await Houses.filter(owner_id=owner_id).count()
+        return await self.repository.count_by_owner(owner_id)
     
-    @staticmethod
     async def filter_houses(
+        self,
         # String filters
         province: Optional[str] = None,
         city: Optional[str] = None,
@@ -272,7 +244,7 @@ class HouseRepository:
         has_parking: Optional[bool] = None,
         is_rented: Optional[bool] = None,
         # Pagination
-        limit: int = 100,
+        limit: int = 20,
         offset: int = 0,
     ) -> List[Houses]:
         """
@@ -301,45 +273,22 @@ class HouseRepository:
         Returns:
             List of Houses objects matching the filters
         """
-        query = Houses.all()
-        
-        # String filters
-        if province is not None:
-            query = query.filter(province=province)
-        if city is not None:
-            query = query.filter(city=city)
-        if street is not None:
-            query = query.filter(street=street)
-        
-        # Integer range filters
-        if min_id is not None:
-            query = query.filter(id__gte=min_id)
-        if max_id is not None:
-            query = query.filter(id__lte=max_id)
-        if min_owner_id is not None:
-            query = query.filter(owner_id__gte=min_owner_id)
-        if max_owner_id is not None:
-            query = query.filter(owner_id__lte=max_owner_id)
-        
-        # Float range filters
-        if min_monthly_rent is not None:
-            query = query.filter(monthly_rent__gte=min_monthly_rent)
-        if max_monthly_rent is not None:
-            query = query.filter(monthly_rent__lte=max_monthly_rent)
-        if min_distance_to_university is not None:
-            query = query.filter(distance_to_university__gte=min_distance_to_university)
-        if max_distance_to_university is not None:
-            query = query.filter(distance_to_university__lte=max_distance_to_university)
-        
-        # Boolean filters
-        if has_kitchen is not None:
-            query = query.filter(has_kitchen=has_kitchen)
-        if has_washer is not None:
-            query = query.filter(has_washer=has_washer)
-        if has_parking is not None:
-            query = query.filter(has_parking=has_parking)
-        if is_rented is not None:
-            query = query.filter(is_rented=is_rented)
-        
-        return await query.limit(limit).offset(offset).all()
-
+        return await self.repository.filter_houses(
+            province=province,
+            city=city,
+            street=street,
+            min_id=min_id,
+            max_id=max_id,
+            min_owner_id=min_owner_id,
+            max_owner_id=max_owner_id,
+            min_monthly_rent=min_monthly_rent,
+            max_monthly_rent=max_monthly_rent,
+            min_distance_to_university=min_distance_to_university,
+            max_distance_to_university=max_distance_to_university,
+            has_kitchen=has_kitchen,
+            has_washer=has_washer,
+            has_parking=has_parking,
+            is_rented=is_rented,
+            limit=limit,
+            offset=offset,
+        )
