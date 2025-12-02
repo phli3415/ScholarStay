@@ -14,28 +14,27 @@ from ..repository.user_repository import UserRepository
 from ..model.user import User
 
 # Path to your Firebase service account key
-FIREBASE_CREDENTIALS_PATH = "BackendApplication/firebase-service-account.json"
+FIREBASE_CREDENTIALS_PATH = "firebaseAuth.json"
 
-# Initialize Firebase Admin SDK
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+_firebase_app_initialized = False
+
 def initialize_firebase():
     """
     Initializes the Firebase Admin SDK.
-    This function should be called once when the application starts.
     """
-    try:
-        # Check if the app is already initialized to prevent errors on hot-reload
-        if not firebase_admin._apps:
+    global _firebase_app_initialized
+    if not _firebase_app_initialized:
+        try:
             cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
             firebase_admin.initialize_app(cred)
+            _firebase_app_initialized = True
             print("Firebase Admin SDK initialized successfully.")
-        else:
-            print("Firebase Admin SDK already initialized.")
-    except Exception as e:
-        print(f"Error initializing Firebase Admin SDK: {e}")
-        raise e
-
-# OAuth2 scheme for extracting the bearer token
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+        except Exception as e:
+            print(f"Error initializing Firebase Admin SDK: {e}")
+            # Depending on the use case, you might want to raise an exception
+            # raise e
 
 async def verify_firebase_token(token: str = Depends(oauth2_scheme)) -> Dict:
     """
@@ -54,24 +53,17 @@ async def verify_firebase_token(token: str = Depends(oauth2_scheme)) -> Dict:
 
 async def get_current_user(decoded_token: Dict = Depends(verify_firebase_token)) -> User:
     """
-    FastAPI dependency to retrieve the user from the database based on a verified token.
+    FastAPI dependency that uses `verify_firebase_token` to get a decoded token,
+    and then retrieves the corresponding user from the local database.
     """
-    user = await UserRepository.get_by_firebase_uid(decoded_token["uid"])
-    if user is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found. Please register first.")
+    firebase_uid = decoded_token.get("uid")
+    user = await UserRepository.get_by_firebase_uid(firebase_uid)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with UID {firebase_uid} not found in local database."
+        )
     return user
-
-async def get_current_user_or_none(token: str = Depends(oauth2_scheme)) -> Optional[User]:
-    """
-    FastAPI dependency for optional authentication.
-    """
-    if not token:
-        return None
-    try:
-        decoded_token = await verify_firebase_token(token)
-        return await get_current_user(decoded_token)
-    except HTTPException:
-        return None
 
 async def create_or_update_user(decoded_token: dict) -> User:
     """
