@@ -3,9 +3,10 @@ House Controller
 Handles HTTP requests/responses for house/listing operations
 """
 
-from fastapi import APIRouter, HTTPException, status, Query
+from fastapi import APIRouter, HTTPException, status, Query, File, UploadFile
 from pydantic import BaseModel
 from typing import Optional, List
+import base64
 from ..service.house_service import HouseService
 from ..model.houses import Houses
 
@@ -61,6 +62,7 @@ class HouseResponse(BaseModel):
     is_rented: bool
     description: Optional[str]
     embedding_vector: Optional[str]
+    image_data: Optional[str]  # Base64 encoded image
     created_at: str
     updated_at: str
     
@@ -70,6 +72,10 @@ class HouseResponse(BaseModel):
 
 def house_to_response(house: Houses) -> HouseResponse:
     """Convert Houses model to HouseResponse"""
+    image_data_b64 = None
+    if house.image_data:
+        image_data_b64 = base64.b64encode(house.image_data).decode('utf-8')
+    
     return HouseResponse(
         id=house.id,
         owner_id=house.owner_id,
@@ -85,6 +91,7 @@ def house_to_response(house: Houses) -> HouseResponse:
         is_rented=house.is_rented,
         description=house.description,
         embedding_vector=house.embedding_vector,
+        image_data=image_data_b64,
         created_at=house.created_at.isoformat(),
         updated_at=house.updated_at.isoformat()
     )
@@ -92,9 +99,10 @@ def house_to_response(house: Houses) -> HouseResponse:
 
 # Endpoints
 @router.post("/", response_model=HouseResponse, status_code=status.HTTP_201_CREATED)
-async def create_house(house_data: HouseCreateRequest):
+async def create_house(house_data: HouseCreateRequest, image: Optional[UploadFile] = File(None)):
     """Create a new house listing"""
     try:
+        image_bytes = await image.read() if image else None
         house = await service.create_house(
             owner_id=house_data.owner_id,
             province=house_data.province,
@@ -109,6 +117,7 @@ async def create_house(house_data: HouseCreateRequest):
             is_rented=house_data.is_rented,
             description=house_data.description,
             embedding_vector=house_data.embedding_vector,
+            image_data=image_bytes
         )
         return house_to_response(house)
     except ValueError as e:
@@ -193,9 +202,12 @@ async def search_houses(
 
 
 @router.put("/{house_id}", response_model=HouseResponse)
-async def update_house(house_id: int, house_data: HouseUpdateRequest):
+async def update_house(house_id: int, house_data: HouseUpdateRequest, image: Optional[UploadFile] = File(None)):
     """Update house information"""
     update_dict = house_data.dict(exclude_unset=True)
+    if image:
+        update_dict['image_data'] = await image.read()
+        
     if not update_dict:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
