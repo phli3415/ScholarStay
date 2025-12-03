@@ -28,6 +28,7 @@ class HouseCreateRequest(BaseModel):
     has_parking: bool = False
     is_rented: bool = False
     description: Optional[str] = None
+    landlord_phone_number: Optional[str] = None
     embedding_vector: Optional[str] = None
 
 
@@ -43,6 +44,7 @@ class HouseUpdateRequest(BaseModel):
     has_parking: Optional[bool] = None
     is_rented: Optional[bool] = None
     description: Optional[str] = None
+    landlord_phone_number: Optional[str] = None
     embedding_vector: Optional[str] = None
 
 
@@ -61,6 +63,7 @@ class HouseResponse(BaseModel):
     has_parking: bool
     is_rented: bool
     description: Optional[str]
+    landlord_phone_number: Optional[str]
     embedding_vector: Optional[str]
     image_data: Optional[str]  # Base64 encoded image
     created_at: str
@@ -90,6 +93,7 @@ def house_to_response(house: Houses) -> HouseResponse:
         has_parking=house.has_parking,
         is_rented=house.is_rented,
         description=house.description,
+        landlord_phone_number=house.landlord_phone_number,
         embedding_vector=house.embedding_vector,
         image_data=image_data_b64,
         created_at=house.created_at.isoformat(),
@@ -116,6 +120,7 @@ async def create_house(house_data: HouseCreateRequest, image: Optional[UploadFil
             has_parking=house_data.has_parking,
             is_rented=house_data.is_rented,
             description=house_data.description,
+            landlord_phone_number=house_data.landlord_phone_number,
             embedding_vector=house_data.embedding_vector,
             image_data=image_bytes
         )

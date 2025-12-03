@@ -84,6 +84,7 @@ class HouseService:
         description: Optional[str] = None,
         embedding_vector: Optional[str] = None,
         image_data: Optional[bytes] = None,
+        landlord_phone_number: Optional[str] = None,
     ) -> Houses:
         """
         Create a new house listing
@@ -103,6 +104,7 @@ class HouseService:
             description: description text of the house
             embedding_vector: vector representation for RAG
             image_data: image data of the house
+            landlord_phone_number: landlord's phone number
             
         Returns:
             Created Houses object
@@ -130,6 +132,7 @@ class HouseService:
             description=description,
             embedding_vector=embedding_vector,
             image_data=image_data,
+            landlord_phone_number=landlord_phone_number,
         )
     
     async def update_house(self, house_id: int, **kwargs) -> Optional[Houses]:

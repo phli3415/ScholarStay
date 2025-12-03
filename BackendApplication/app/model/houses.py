@@ -36,6 +36,7 @@ class Houses(Model):
     
     # image data
     image_data = fields.BinaryField(null=True, description="house image data")
+    landlord_phone_number = fields.CharField(max_length=20, description="landlord's phone number", null=True)
     
     # RAG vector field - using pgvector to store the vector representation of the house description
     # note: actually, you need to install pgvector extension and create the vector column through SQL
