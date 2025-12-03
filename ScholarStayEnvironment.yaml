@@ -45,7 +45,7 @@ dependencies:
   
   - pip:
     # === 数据库ORM (核心新增) ===
-    - tortoise-orm==0.20.0
+    - tortoise-orm==0.25.1
     - aerich==0.7.1
     - psycopg2-binary==2.9.9
 
