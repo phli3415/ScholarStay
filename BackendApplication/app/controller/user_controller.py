@@ -9,7 +9,7 @@ from typing import Optional
 from ..service.user_service import UserService
 from ..model.user import User
 
-router = APIRouter(prefix="/users", tags=["users"])
+router = APIRouter(tags=["users"])
 service = UserService()
 
 

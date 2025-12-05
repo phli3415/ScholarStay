@@ -3,14 +3,15 @@ House Controller
 Handles HTTP requests/responses for house/listing operations
 """
 
-from fastapi import APIRouter, HTTPException, status, Query, File, UploadFile
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, status, Query, File, UploadFile, Form
+from pydantic import BaseModel, ValidationError
 from typing import Optional, List
 import base64
+import json
 from ..service.house_service import HouseService
 from ..model.houses import Houses
 
-router = APIRouter(prefix="/houses", tags=["houses"])
+router = APIRouter(prefix="/houses", tags=["Houses"])
 service = HouseService()
 
 
@@ -68,7 +69,7 @@ class HouseResponse(BaseModel):
     image_data: Optional[str]  # Base64 encoded image
     created_at: str
     updated_at: str
-    
+
     class Config:
         from_attributes = True
 
@@ -78,7 +79,7 @@ def house_to_response(house: Houses) -> HouseResponse:
     image_data_b64 = None
     if house.image_data:
         image_data_b64 = base64.b64encode(house.image_data).decode('utf-8')
-    
+
     return HouseResponse(
         id=house.id,
         owner_id=house.owner_id,
@@ -103,9 +104,12 @@ def house_to_response(house: Houses) -> HouseResponse:
 
 # Endpoints
 @router.post("/", response_model=HouseResponse, status_code=status.HTTP_201_CREATED)
-async def create_house(house_data: HouseCreateRequest, image: Optional[UploadFile] = File(None)):
+async def create_house(house_data_str: str = Form(...), image: Optional[UploadFile] = File(None)):
     """Create a new house listing"""
     try:
+        house_data_dict = json.loads(house_data_str)
+        house_data = HouseCreateRequest(**house_data_dict)
+
         image_bytes = await image.read() if image else None
         house = await service.create_house(
             owner_id=house_data.owner_id,
@@ -125,7 +129,12 @@ async def create_house(house_data: HouseCreateRequest, image: Optional[UploadFil
             image_data=image_bytes
         )
         return house_to_response(house)
-    except ValueError as e:
+    except ValidationError as e:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=e.errors()
+        )
+    except (ValueError, json.JSONDecodeError) as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e)
@@ -207,25 +216,39 @@ async def search_houses(
 
 
 @router.put("/{house_id}", response_model=HouseResponse)
-async def update_house(house_id: int, house_data: HouseUpdateRequest, image: Optional[UploadFile] = File(None)):
+async def update_house(house_id: int, house_data_str: str = Form(...), image: Optional[UploadFile] = File(None)):
     """Update house information"""
-    update_dict = house_data.dict(exclude_unset=True)
-    if image:
-        update_dict['image_data'] = await image.read()
-        
-    if not update_dict:
+    try:
+        update_data_dict = json.loads(house_data_str)
+        house_data = HouseUpdateRequest(**update_data_dict)
+
+        update_dict = house_data.dict(exclude_unset=True)
+        if image:
+            update_dict['image_data'] = await image.read()
+
+        if not update_dict and not image:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="No fields to update"
+            )
+
+        house = await service.update_house(house_id, **update_dict)
+        if not house:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"House with ID {house_id} not found"
+            )
+        return house_to_response(house)
+    except ValidationError as e:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=e.errors()
+        )
+    except (ValueError, json.JSONDecodeError) as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="No fields to update"
+            detail=str(e)
         )
-    
-    house = await service.update_house(house_id, **update_dict)
-    if not house:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"House with ID {house_id} not found"
-        )
-    return house_to_response(house)
 
 
 @router.delete("/{house_id}", status_code=status.HTTP_200_OK)
@@ -268,10 +291,6 @@ async def filter_houses(
     """
     Filter houses with range filters for int/float fields, exact filters for boolean fields,
     and exact filters for string fields (province, city, street).
-    All filter parameters are optional (can be null). 
-    For int/float fields, you can specify min and/or max values.
-    For boolean fields, you can specify True, False, or None (no filter).
-    For string fields (province, city, street), you can specify an exact string value.
     """
     houses = await service.filter_houses(
         province=province,
