@@ -56,7 +56,7 @@ app.include_router(
 )
 
 app.include_router(
-    house_controller.router,
+    user_controller.router,
     prefix="/api/v1/user",
     tags=["Users"]
 )
