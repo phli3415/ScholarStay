@@ -6,7 +6,7 @@ Handles all Firebase related authentication and user management
 import firebase_admin
 from firebase_admin import credentials, auth
 from fastapi import Depends, HTTPException
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette import status
 from typing import Optional, Dict
 
@@ -16,7 +16,8 @@ from ..model.user import User
 # Path to your Firebase service account key
 FIREBASE_CREDENTIALS_PATH = "firebaseAuth.json"
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+# Use HTTPBearer for simple token-based authentication in Swagger UI
+auth_scheme = HTTPBearer()
 
 _firebase_app_initialized = False
 
@@ -36,13 +37,18 @@ def initialize_firebase():
             # Depending on the use case, you might want to raise an exception
             # raise e
 
-async def verify_firebase_token(token: str = Depends(oauth2_scheme)) -> Dict:
+async def verify_firebase_token(token: HTTPAuthorizationCredentials = Depends(auth_scheme)) -> Dict:
     """
     FastAPI dependency to verify a Firebase ID token and return the decoded claims.
     This does NOT check if the user exists in the local database.
     """
+    if token.scheme != "Bearer":
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication scheme. Use Bearer token."
+        )
     try:
-        decoded_token = auth.verify_id_token(token)
+        decoded_token = auth.verify_id_token(token.credentials)
         if not decoded_token or "uid" not in decoded_token:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token claims")
         return decoded_token

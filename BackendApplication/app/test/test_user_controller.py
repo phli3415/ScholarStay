@@ -48,7 +48,7 @@ async def test_register_user(mock_user_service):
     )
 
     response = client.post(
-        "/api/v1/users/register",
+        "/api/v1/user/register",
         json={"gmail": "test@example.com", "username": "testuser", "password": "password"}
     )
 
@@ -74,7 +74,7 @@ async def test_login_user(mock_user_service):
     )
 
     response = client.post(
-        "/api/v1/users/login",
+        "/api/v1/user/login",
         json={"gmail": "test@example.com", "password": "password"}
     )
 
@@ -96,7 +96,7 @@ async def test_get_user(mock_user_service):
         created_at=datetime.now()
     )
 
-    response = client.get("/api/v1/users/1")
+    response = client.get("/api/v1/user/1")
 
     assert response.status_code == 200, response.text
     assert response.json()["id"] == 1
@@ -114,7 +114,7 @@ async def test_update_user(mock_user_service):
     )
 
     response = client.put(
-        "/api/v1/users/1",
+        "/api/v1/user/1",
         json={"username": "newusername"}
     )
 
@@ -129,7 +129,7 @@ async def test_change_password(mock_user_service):
     mock_user_service.change_password.return_value = True
 
     response = client.post(
-        "/api/v1/users/1/change-password",
+        "/api/v1/user/1/change-password",
         json={"old_password": "oldpassword", "new_password": "newpassword"}
     )
 
@@ -147,7 +147,7 @@ async def test_delete_user(mock_user_service):
     """Test delete user endpoint."""
     mock_user_service.delete_user.return_value = True
 
-    response = client.delete("/api/v1/users/1")
+    response = client.delete("/api/v1/user/1")
 
     assert response.status_code == 200, response.text
     assert response.json()["message"] == "User deleted successfully"
