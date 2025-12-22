@@ -313,3 +313,47 @@ async def filter_houses(
         offset=offset,
     )
     return [house_to_response(house) for house in houses]
+
+@router.get("/filter/count", response_model=int)
+async def count_filtered_houses(
+    # String filters
+    province: Optional[str] = Query(default=None),
+    city: Optional[str] = Query(default=None),
+    street: Optional[str] = Query(default=None),
+    # Integer range filters
+    min_id: Optional[int] = Query(default=None, ge=0),
+    max_id: Optional[int] = Query(default=None, ge=0),
+    min_owner_id: Optional[int] = Query(default=None, ge=0),
+    max_owner_id: Optional[int] = Query(default=None, ge=0),
+    # Float range filters
+    min_monthly_rent: Optional[float] = Query(default=None, ge=0),
+    max_monthly_rent: Optional[float] = Query(default=None, ge=0),
+    min_distance_to_university: Optional[float] = Query(default=None, ge=0),
+    max_distance_to_university: Optional[float] = Query(default=None, ge=0),
+    # Boolean filters
+    has_kitchen: Optional[bool] = Query(default=None),
+    has_washer: Optional[bool] = Query(default=None),
+    has_parking: Optional[bool] = Query(default=None),
+    is_rented: Optional[bool] = Query(default=None),
+):
+    """
+    Count houses with range filters for int/float fields, exact filters for boolean fields,
+    and exact filters for string fields (province, city, street).
+    """
+    return await service.count_filtered_houses(
+        province=province,
+        city=city,
+        street=street,
+        min_id=min_id,
+        max_id=max_id,
+        min_owner_id=min_owner_id,
+        max_owner_id=max_owner_id,
+        min_monthly_rent=min_monthly_rent,
+        max_monthly_rent=max_monthly_rent,
+        min_distance_to_university=min_distance_to_university,
+        max_distance_to_university=max_distance_to_university,
+        has_kitchen=has_kitchen,
+        has_washer=has_washer,
+        has_parking=has_parking,
+        is_rented=is_rented,
+    )

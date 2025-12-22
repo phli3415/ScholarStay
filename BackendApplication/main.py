@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 
 # Import core and database modules
@@ -17,6 +18,23 @@ app = FastAPI(
     description="API for ScholarStay application",
     version="1.0.0"
 )
+
+# --- CORS Middleware ---
+# Define the list of allowed origins (your frontend URL)
+origins = [
+    "http://localhost:5173",  # React/Vite dev server
+    "http://127.0.0.1:5173",
+]
+
+# Add CORS middleware to the application
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows specific origins
+    allow_credentials=True, # Allows cookies to be included in requests
+    allow_methods=["*"],    # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],    # Allows all headers
+)
+
 
 @app.on_event("startup")
 async def startup_event():
