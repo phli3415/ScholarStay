@@ -9,7 +9,7 @@ from ..service.user_service import UserService
 from ..model.user import User
 from ..core.firebase_auth import get_current_user, verify_firebase_token  # Correct import
 
-router = APIRouter(prefix="/api/v1/user", tags=["Users"])
+router = APIRouter(tags=["Users"])
 service = UserService()
 
 

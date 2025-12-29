@@ -257,182 +257,182 @@ class HouseRepository:
         return await Houses.filter(owner_id=owner_id).count()
     
     @staticmethod
-async def filter_houses(
-    # String filters
-    province: Optional[str] = None,
-    city: Optional[str] = None,
-    street: Optional[str] = None,
-    # Integer range filters
-    min_id: Optional[int] = None,
-    max_id: Optional[int] = None,
-    min_owner_id: Optional[int] = None,
-    max_owner_id: Optional[int] = None,
-    # Float range filters
-    min_monthly_rent: Optional[float] = None,
-    max_monthly_rent: Optional[float] = None,
-    min_distance_to_university: Optional[float] = None,
-    max_distance_to_university: Optional[float] = None,
-    # Boolean filters
-    has_kitchen: Optional[bool] = None,
-    has_washer: Optional[bool] = None,
-    has_parking: Optional[bool] = None,
-    is_rented: Optional[bool] = None,
-    # Pagination
-    limit: int = 100,
-    offset: int = 0,
-) -> List[Houses]:
-    """
-    Filter houses with range filters for int/float fields, exact filters for boolean fields,
-    and exact filters for string fields (province, city, street)
-    
-    Args:
-        province: filter by exact province name
-        city: filter by exact city name
-        street: filter by exact street name
-        min_id: minimum house ID
-        max_id: maximum house ID
-        min_owner_id: minimum owner ID
-        max_owner_id: maximum owner ID
-        min_monthly_rent: minimum monthly rent
-        max_monthly_rent: maximum monthly rent
-        min_distance_to_university: minimum distance to university
-        max_distance_to_university: maximum distance to university
-        has_kitchen: filter by has_kitchen (True/False/None)
-        has_washer: filter by has_washer (True/False/None)
-        has_parking: filter by has_parking (True/False/None)
-        is_rented: filter by is_rented (True/False/None)
-        limit: maximum number of houses to return
-        offset: offset for pagination
-        
-    Returns:
-        List of Houses objects matching the filters
-    """
-    query = Houses.all()
-    
-    # String filters
-    if province is not None:
-        query = query.filter(province=province)
-    if city is not None:
-        query = query.filter(city=city)
-    if street is not None:
-        query = query.filter(street=street)
-    
-    # Integer range filters
-    if min_id is not None:
-        query = query.filter(id__gte=min_id)
-    if max_id is not None:
-        query = query.filter(id__lte=max_id)
-    if min_owner_id is not None:
-        query = query.filter(owner_id__gte=min_owner_id)
-    if max_owner_id is not None:
-        query = query.filter(owner_id__lte=max_owner_id)
-    
-    # Float range filters
-    if min_monthly_rent is not None:
-        query = query.filter(monthly_rent__gte=min_monthly_rent)
-    if max_monthly_rent is not None:
-        query = query.filter(monthly_rent__lte=max_monthly_rent)
-    if min_distance_to_university is not None:
-        query = query.filter(distance_to_university__gte=min_distance_to_university)
-    if max_distance_to_university is not None:
-        query = query.filter(distance_to_university__lte=max_distance_to_university)
-    
-    # Boolean filters
-    if has_kitchen is not None:
-        query = query.filter(has_kitchen=has_kitchen)
-    if has_washer is not None:
-        query = query.filter(has_washer=has_washer)
-    if has_parking is not None:
-        query = query.filter(has_parking=has_parking)
-    if is_rented is not None:
-        query = query.filter(is_rented=is_rented)
-    
-    return await query.limit(limit).offset(offset).all()
+    async def filter_houses(
+        # String filters
+        province: Optional[str] = None,
+        city: Optional[str] = None,
+        street: Optional[str] = None,
+        # Integer range filters
+        min_id: Optional[int] = None,
+        max_id: Optional[int] = None,
+        min_owner_id: Optional[int] = None,
+        max_owner_id: Optional[int] = None,
+        # Float range filters
+        min_monthly_rent: Optional[float] = None,
+        max_monthly_rent: Optional[float] = None,
+        min_distance_to_university: Optional[float] = None,
+        max_distance_to_university: Optional[float] = None,
+        # Boolean filters
+        has_kitchen: Optional[bool] = None,
+        has_washer: Optional[bool] = None,
+        has_parking: Optional[bool] = None,
+        is_rented: Optional[bool] = None,
+        # Pagination
+        limit: int = 100,
+        offset: int = 0,
+    ) -> List[Houses]:
+        """
+        Filter houses with range filters for int/float fields, exact filters for boolean fields,
+        and exact filters for string fields (province, city, street)
 
-@staticmethod
-async def count_filtered_houses(
-    # String filters
-    province: Optional[str] = None,
-    city: Optional[str] = None,
-    street: Optional[str] = None,
-    # Integer range filters
-    min_id: Optional[int] = None,
-    max_id: Optional[int] = None,
-    min_owner_id: Optional[int] = None,
-    max_owner_id: Optional[int] = None,
-    # Float range filters
-    min_monthly_rent: Optional[float] = None,
-    max_monthly_rent: Optional[float] = None,
-    min_distance_to_university: Optional[float] = None,
-    max_distance_to_university: Optional[float] = None,
-    # Boolean filters
-    has_kitchen: Optional[bool] = None,
-    has_washer: Optional[bool] = None,
-    has_parking: Optional[bool] = None,
-    is_rented: Optional[bool] = None,
-) -> int:
-    """
-    Count houses with range filters for int/float fields, exact filters for boolean fields,
-    and exact filters for string fields (province, city, street)
-    
-    Args:
-        province: filter by exact province name
-        city: filter by exact city name
-        street: filter by exact street name
-        min_id: minimum house ID
-        max_id: maximum house ID
-        min_owner_id: minimum owner ID
-        max_owner_id: maximum owner ID
-        min_monthly_rent: minimum monthly rent
-        max_monthly_rent: maximum monthly rent
-        min_distance_to_university: minimum distance to university
-        max_distance_to_university: maximum distance to university
-        has_kitchen: filter by has_kitchen (True/False/None)
-        has_washer: filter by has_washer (True/False/None)
-        has_parking: filter by has_parking (True/False/None)
-        is_rented: filter by is_rented (True/False/None)
-        
-    Returns:
-        Number of Houses objects matching the filters
-    """
-    query = Houses.all()
-    
-    # String filters
-    if province is not None:
-        query = query.filter(province=province)
-    if city is not None:
-        query = query.filter(city=city)
-    if street is not None:
-        query = query.filter(street=street)
-    
-    # Integer range filters
-    if min_id is not None:
-        query = query.filter(id__gte=min_id)
-    if max_id is not None:
-        query = query.filter(id__lte=max_id)
-    if min_owner_id is not None:
-        query = query.filter(owner_id__gte=min_owner_id)
-    if max_owner_id is not None:
-        query = query.filter(owner_id__lte=max_owner_id)
-    
-    # Float range filters
-    if min_monthly_rent is not None:
-        query = query.filter(monthly_rent__gte=min_monthly_rent)
-    if max_monthly_rent is not None:
-        query = query.filter(monthly_rent__lte=max_monthly_rent)
-    if min_distance_to_university is not None:
-        query = query.filter(distance_to_university__gte=min_distance_to_university)
-    if max_distance_to_university is not None:
-        query = query.filter(distance_to_university__lte=max_distance_to_university)
-    
-    # Boolean filters
-    if has_kitchen is not None:
-        query = query.filter(has_kitchen=has_kitchen)
-    if has_washer is not None:
-        query = query.filter(has_washer=has_washer)
-    if has_parking is not None:
-        query = query.filter(has_parking=has_parking)
-    if is_rented is not None:
-        query = query.filter(is_rented=is_rented)
-    
-    return await query.count()
+        Args:
+            province: filter by exact province name
+            city: filter by exact city name
+            street: filter by exact street name
+            min_id: minimum house ID
+            max_id: maximum house ID
+            min_owner_id: minimum owner ID
+            max_owner_id: maximum owner ID
+            min_monthly_rent: minimum monthly rent
+            max_monthly_rent: maximum monthly rent
+            min_distance_to_university: minimum distance to university
+            max_distance_to_university: maximum distance to university
+            has_kitchen: filter by has_kitchen (True/False/None)
+            has_washer: filter by has_washer (True/False/None)
+            has_parking: filter by has_parking (True/False/None)
+            is_rented: filter by is_rented (True/False/None)
+            limit: maximum number of houses to return
+            offset: offset for pagination
+
+        Returns:
+            List of Houses objects matching the filters
+        """
+        query = Houses.all()
+
+        # String filters
+        if province is not None:
+            query = query.filter(province=province)
+        if city is not None:
+            query = query.filter(city=city)
+        if street is not None:
+            query = query.filter(street=street)
+
+        # Integer range filters
+        if min_id is not None:
+            query = query.filter(id__gte=min_id)
+        if max_id is not None:
+            query = query.filter(id__lte=max_id)
+        if min_owner_id is not None:
+            query = query.filter(owner_id__gte=min_owner_id)
+        if max_owner_id is not None:
+            query = query.filter(owner_id__lte=max_owner_id)
+
+        # Float range filters
+        if min_monthly_rent is not None:
+            query = query.filter(monthly_rent__gte=min_monthly_rent)
+        if max_monthly_rent is not None:
+            query = query.filter(monthly_rent__lte=max_monthly_rent)
+        if min_distance_to_university is not None:
+            query = query.filter(distance_to_university__gte=min_distance_to_university)
+        if max_distance_to_university is not None:
+            query = query.filter(distance_to_university__lte=max_distance_to_university)
+
+        # Boolean filters
+        if has_kitchen is not None:
+            query = query.filter(has_kitchen=has_kitchen)
+        if has_washer is not None:
+            query = query.filter(has_washer=has_washer)
+        if has_parking is not None:
+            query = query.filter(has_parking=has_parking)
+        if is_rented is not None:
+            query = query.filter(is_rented=is_rented)
+
+        return await query.limit(limit).offset(offset).all()
+
+    @staticmethod
+    async def count_filtered_houses(
+        # String filters
+        province: Optional[str] = None,
+        city: Optional[str] = None,
+        street: Optional[str] = None,
+        # Integer range filters
+        min_id: Optional[int] = None,
+        max_id: Optional[int] = None,
+        min_owner_id: Optional[int] = None,
+        max_owner_id: Optional[int] = None,
+        # Float range filters
+        min_monthly_rent: Optional[float] = None,
+        max_monthly_rent: Optional[float] = None,
+        min_distance_to_university: Optional[float] = None,
+        max_distance_to_university: Optional[float] = None,
+        # Boolean filters
+        has_kitchen: Optional[bool] = None,
+        has_washer: Optional[bool] = None,
+        has_parking: Optional[bool] = None,
+        is_rented: Optional[bool] = None,
+    ) -> int:
+        """
+        Count houses with range filters for int/float fields, exact filters for boolean fields,
+        and exact filters for string fields (province, city, street)
+
+        Args:
+            province: filter by exact province name
+            city: filter by exact city name
+            street: filter by exact street name
+            min_id: minimum house ID
+            max_id: maximum house ID
+            min_owner_id: minimum owner ID
+            max_owner_id: maximum owner ID
+            min_monthly_rent: minimum monthly rent
+            max_monthly_rent: maximum monthly rent
+            min_distance_to_university: minimum distance to university
+            max_distance_to_university: maximum distance to university
+            has_kitchen: filter by has_kitchen (True/False/None)
+            has_washer: filter by has_washer (True/False/None)
+            has_parking: filter by has_parking (True/False/None)
+            is_rented: filter by is_rented (True/False/None)
+
+        Returns:
+            Number of Houses objects matching the filters
+        """
+        query = Houses.all()
+
+        # String filters
+        if province is not None:
+            query = query.filter(province=province)
+        if city is not None:
+            query = query.filter(city=city)
+        if street is not None:
+            query = query.filter(street=street)
+
+        # Integer range filters
+        if min_id is not None:
+            query = query.filter(id__gte=min_id)
+        if max_id is not None:
+            query = query.filter(id__lte=max_id)
+        if min_owner_id is not None:
+            query = query.filter(owner_id__gte=min_owner_id)
+        if max_owner_id is not None:
+            query = query.filter(owner_id__lte=max_owner_id)
+
+        # Float range filters
+        if min_monthly_rent is not None:
+            query = query.filter(monthly_rent__gte=min_monthly_rent)
+        if max_monthly_rent is not None:
+            query = query.filter(monthly_rent__lte=max_monthly_rent)
+        if min_distance_to_university is not None:
+            query = query.filter(distance_to_university__gte=min_distance_to_university)
+        if max_distance_to_university is not None:
+            query = query.filter(distance_to_university__lte=max_distance_to_university)
+
+        # Boolean filters
+        if has_kitchen is not None:
+            query = query.filter(has_kitchen=has_kitchen)
+        if has_washer is not None:
+            query = query.filter(has_washer=has_washer)
+        if has_parking is not None:
+            query = query.filter(has_parking=has_parking)
+        if is_rented is not None:
+            query = query.filter(is_rented=is_rented)
+
+        return await query.count()
