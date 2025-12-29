@@ -17,6 +17,7 @@ class UserService:
     async def register_user(self, firebase_uid: str, gmail: str, username: str) -> User:
         """
         Registers a new user profile in the database.
+        Relies on the repository to handle potential race conditions during creation.
 
         Args:
             firebase_uid: The unique ID from Firebase.
@@ -27,18 +28,16 @@ class UserService:
             The created User object.
 
         Raises:
-            ValueError: If a user with the given firebase_uid, gmail, or username already exists.
+            ValueError: If a user with the given firebase_uid or gmail already exists.
         """
-        if await self.repository.get_by_firebase_uid(firebase_uid):
-            raise ValueError(f"User with Firebase UID {firebase_uid} already exists.")
+        user = await self.repository.create(firebase_uid=firebase_uid, gmail=gmail, username=username)
 
-        if await self.repository.get_by_gmail(gmail):
-            raise ValueError(f"User with gmail {gmail} already exists.")
+        if user is None:
+            # This indicates an IntegrityError was caught in the repository,
+            # meaning a user with the same unique key (firebase_uid or gmail) already exists.
+            raise ValueError("User with this Firebase UID or Gmail already exists.")
 
-        if await self.repository.get_by_username(username):
-            raise ValueError(f"Username '{username}' is already taken.")
-
-        return await self.repository.create(firebase_uid=firebase_uid, gmail=gmail, username=username)
+        return user
 
     async def get_user_by_firebase_uid(self, firebase_uid: str) -> Optional[User]:
         """

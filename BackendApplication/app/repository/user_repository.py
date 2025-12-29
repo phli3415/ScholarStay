@@ -4,6 +4,7 @@ Handles all database operations related to User model
 """
 
 from typing import Optional, List
+from tortoise.exceptions import IntegrityError
 from ..model.user import User
 
 
@@ -77,22 +78,24 @@ class UserRepository:
         return await User.all().limit(limit).offset(offset)
 
     @staticmethod
-    async def create(firebase_uid: str, gmail: str, username: str) -> User:
+    async def create(firebase_uid: str, gmail: str, username: str) -> Optional[User]:
         """
-        Create a new user
-        
+        Create a new user.
+
         Args:
-            firebase_uid: Firebase Unique ID of the user
-            gmail: gmail address of the user (must be unique)
-            username: username of the user
-            
+            firebase_uid: Firebase Unique ID of the user.
+            gmail: Gmail address of the user (must be unique).
+            username: Username of the user.
+
         Returns:
-            Created User object
-            
-        Raises:
-            IntegrityError: if gmail or firebase_uid already exists
+            The created User object, or None if a user with the same
+            `firebase_uid` or `gmail` already exists.
         """
-        return await User.create(firebase_uid=firebase_uid, gmail=gmail, username=username)
+        try:
+            return await User.create(firebase_uid=firebase_uid, gmail=gmail, username=username)
+        except IntegrityError as e:
+            print(f"Error creating user due to duplicate entry: {e}")
+            return None
 
     @staticmethod
     async def update(user: User, **kwargs) -> User:
