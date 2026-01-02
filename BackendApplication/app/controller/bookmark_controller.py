@@ -3,6 +3,7 @@ Bookmark Controller
 Handles all secure HTTP requests/responses for bookmark operations.
 Endpoints are redesigned to be user-centric and secure.
 """
+import base64
 
 from fastapi import APIRouter, HTTPException, status, Depends
 from pydantic import BaseModel
@@ -39,6 +40,8 @@ class BookmarkWithHouseResponse(BaseModel):
     house_id: int
     created_at: str
     house: dict  # Contains house details
+    class Config:
+        orm_mode = True
 
     class Config:
         from_attributes = True
@@ -68,6 +71,9 @@ def bookmark_with_house_to_response(bookmark: Bookmark) -> BookmarkWithHouseResp
             "province": house.province,
             "city": house.city,
             "monthly_rent": float(house.monthly_rent),
+            # "image_data":house.image_data.decode('utf-8'),
+            "image_data": base64.b64encode(house.image_data).decode('utf-8'),
+
             # Add other desired house fields here
         }
     )

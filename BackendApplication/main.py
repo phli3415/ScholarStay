@@ -83,7 +83,7 @@ app.include_router(
 app.include_router(
     bookmark_controller.router,
     prefix="/api/v1/bookmarks",
-    tags=["Users"]
+    tags=["bookmarks"]
 )
 
 # --- Root Endpoint ---

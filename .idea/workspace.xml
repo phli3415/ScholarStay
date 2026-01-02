@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Recreated .idea files to prevent Pycharm from crushing.">
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="added bookmark router api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendApplication/app/controller/bookmark_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/controller/bookmark_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendApplication/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/main.py" afterDir="false" />
@@ -73,7 +73,7 @@
       <workItem from="1766799678503" duration="13457000" />
       <workItem from="1766974318684" duration="6999000" />
       <workItem from="1767147613368" duration="325000" />
-      <workItem from="1767235668615" duration="8257000" />
+      <workItem from="1767235668615" duration="19806000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -83,7 +83,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766976738855</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added bookmark router api">
+      <option name="closed" value="true" />
+      <created>1767340996228</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1767340996228</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Recreated .idea files to prevent Pycharm from crushing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Recreated .idea files to prevent Pycharm from crushing." />
+    <MESSAGE value="added bookmark router api" />
+    <option name="LAST_COMMIT_MESSAGE" value="added bookmark router api" />
   </component>
 </project>
