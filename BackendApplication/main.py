@@ -10,6 +10,7 @@ from app.database import TORTOISE_ORM
 from app.api.v1 import user_router
 from app.controller import house_controller
 from app.controller import user_controller
+from app.controller import bookmark_controller
 
 # Create FastAPI app instance
 app = FastAPI(
@@ -78,6 +79,13 @@ app.include_router(
     prefix="/api/v1/user",
     tags=["Users"]
 )
+
+app.include_router(
+    bookmark_controller.router,
+    prefix="/api/v1/bookmarks",
+    tags=["Users"]
+)
+
 # --- Root Endpoint ---
 @app.get("/", tags=["Default"])
 async def read_root():

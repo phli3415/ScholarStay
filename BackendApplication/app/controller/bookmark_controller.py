@@ -13,7 +13,7 @@ from ..model.user import User
 from ..model.bookmark import Bookmark
 from ..core.firebase_auth import get_current_user
 
-router = APIRouter(prefix="/bookmarks", tags=["Bookmarks"])
+router = APIRouter(tags=["Bookmarks"])
 service = BookmarkService()
 
 

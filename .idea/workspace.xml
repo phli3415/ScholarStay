@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ScholarStay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScholarStay.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/.idea/BackendApplication.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/controller/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/controller/user_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/repository/house_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/repository/house_repository.py" afterDir="false" />
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Recreated .idea files to prevent Pycharm from crushing.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/controller/bookmark_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/controller/bookmark_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +71,19 @@
       <updated>1766735090724</updated>
       <workItem from="1766735092050" duration="1014000" />
       <workItem from="1766799678503" duration="13457000" />
-      <workItem from="1766974318684" duration="773000" />
+      <workItem from="1766974318684" duration="6999000" />
+      <workItem from="1767147613368" duration="325000" />
+      <workItem from="1767235668615" duration="8257000" />
     </task>
+    <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
+      <option name="closed" value="true" />
+      <created>1766976738855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1766976738855</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,5 +99,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Recreated .idea files to prevent Pycharm from crushing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Recreated .idea files to prevent Pycharm from crushing." />
   </component>
 </project>
