@@ -1,211 +1,146 @@
 """
 User Controller
-Handles HTTP requests/responses for user operations
+Handles HTTP requests/responses for user operations, integrated with Firebase Auth.
 """
-
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+from typing import Optional, Dict
 from ..service.user_service import UserService
 from ..model.user import User
+from ..core.firebase_auth import get_current_user, verify_firebase_token  # Correct import
 
-router = APIRouter(prefix="/users", tags=["users"])
+router = APIRouter(tags=["Users"])
 service = UserService()
 
 
-# Request Models
+# --- Request Models ---
+
 class UserCreateRequest(BaseModel):
-    gmail: EmailStr
+    """Request model for creating a user record after Firebase authentication."""
     username: str
-    password: str
-
-
-class UserLoginRequest(BaseModel):
-    gmail: EmailStr
-    password: str
-
 
 class UserUpdateRequest(BaseModel):
+    """Request model for updating a user's profile."""
     username: Optional[str] = None
-    password: Optional[str] = None
 
 
-class PasswordChangeRequest(BaseModel):
-    old_password: str
-    new_password: str
+# --- Response Models ---
 
-
-# Response Models
 class UserResponse(BaseModel):
+    """Response model for user information."""
     id: int
-    gmail: str
+    firebase_uid: str
+    gmail: EmailStr
     username: str
-    created_at: str
-    
+
     class Config:
         from_attributes = True
 
 
-# Endpoints
-@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
-async def register_user(user_data: UserCreateRequest):
-    """Register a new user"""
+# --- Endpoints ---
+
+@router.post(
+    "/register",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Register a new user in the database",
+    description="This endpoint is called AFTER the user has been created in Firebase. It creates a corresponding user record in the local database."
+)
+async def register_user(
+    user_data: UserCreateRequest,
+    token_claims: Dict = Depends(verify_firebase_token)  # Use verify_firebase_token
+):
+    """
+    Creates a user record in the database.
+    The user must be authenticated with Firebase first.
+    The Firebase ID Token must be passed in the 'Authorization' header.
+    """
+    firebase_uid = token_claims["uid"]
+    gmail = token_claims["email"]
+
     try:
         user = await service.register_user(
-            gmail=user_data.gmail,
-            username=user_data.username,
-            password=user_data.password
+            firebase_uid=firebase_uid,
+            gmail=gmail,
+            username=user_data.username
         )
-        return UserResponse(
-            id=user.id,
-            gmail=user.gmail,
-            username=user.username,
-            created_at=user.created_at.isoformat()
-        )
+        return UserResponse.from_orm(user)
     except ValueError as e:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
+            status_code=status.HTTP_409_CONFLICT,
             detail=str(e)
         )
 
 
-@router.post("/login", response_model=UserResponse)
-async def login_user(login_data: UserLoginRequest):
-    """Authenticate user and return user information"""
-    user = await service.authenticate_user(
-        gmail=login_data.gmail,
-        password=login_data.password
-    )
-    if not user:
+@router.get(
+    "/me",
+    response_model=UserResponse,
+    summary="Get current user's profile"
+)
+async def get_me(current_user: User = Depends(get_current_user)):
+    """
+    Retrieves the profile of the currently authenticated user from the database.
+    """
+    # The dependency `get_current_user` already fetches the user object.
+    return UserResponse.from_orm(current_user)
+
+
+@router.put(
+    "/me",
+    response_model=UserResponse,
+    summary="Update current user's profile"
+)
+async def update_me(
+    user_data: UserUpdateRequest,
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Updates the username of the currently authenticated user.
+    """
+    update_dict = user_data.dict(exclude_unset=True)
+
+    if not update_dict:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid gmail or password"
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No fields to update."
         )
-    return UserResponse(
-        id=user.id,
-        gmail=user.gmail,
-        username=user.username,
-        created_at=user.created_at.isoformat()
-    )
 
-
-@router.get("/{user_id}", response_model=UserResponse)
-async def get_user(user_id: int):
-    """Get user by ID"""
-    user = await service.get_user_by_id(user_id)
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with ID {user_id} not found"
-        )
-    return UserResponse(
-        id=user.id,
-        gmail=user.gmail,
-        username=user.username,
-        created_at=user.created_at.isoformat()
-    )
-
-
-@router.get("/gmail/{gmail}", response_model=UserResponse)
-async def get_user_by_gmail(gmail: str):
-    """Get user by gmail address"""
-    user = await service.get_user_by_gmail(gmail)
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with gmail {gmail} not found"
-        )
-    return UserResponse(
-        id=user.id,
-        gmail=user.gmail,
-        username=user.username,
-        created_at=user.created_at.isoformat()
-    )
-
-
-@router.get("/username/{username}", response_model=UserResponse)
-async def get_user_by_username(username: str):
-    """Get user by username"""
-    user = await service.get_user_by_username(username)
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with username {username} not found"
-        )
-    return UserResponse(
-        id=user.id,
-        gmail=user.gmail,
-        username=user.username,
-        created_at=user.created_at.isoformat()
-    )
-
-
-@router.put("/{user_id}", response_model=UserResponse)
-async def update_user(user_id: int, user_data: UserUpdateRequest):
-    """Update user profile"""
     try:
-        update_dict = user_data.dict(exclude_unset=True)
-        if not update_dict:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="No fields to update"
-            )
-        
-        user = await service.update_user_profile(user_id, **update_dict)
-        if not user:
+        # We pass the firebase_uid from the user object provided by the dependency
+        updated_user = await service.update_user_profile(
+            firebase_uid=current_user.firebase_uid,
+            **update_dict
+        )
+        if not updated_user:
+            # This case should ideally not be reached if get_current_user succeeds
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"User with ID {user_id} not found"
+                detail="User not found."
             )
-        return UserResponse(
-            id=user.id,
-            gmail=user.gmail,
-            username=user.username,
-            created_at=user.created_at.isoformat()
-        )
+        return UserResponse.from_orm(updated_user)
     except ValueError as e:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
+            status_code=status.HTTP_409_CONFLICT,
             detail=str(e)
         )
 
 
-@router.post("/{user_id}/change-password", status_code=status.HTTP_200_OK)
-async def change_password(user_id: int, password_data: PasswordChangeRequest):
-    """Change user password"""
-    success = await service.change_password(
-        user_id=user_id,
-        old_password=password_data.old_password,
-        new_password=password_data.new_password
-    )
+@router.delete(
+    "/me",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="Delete current user's account"
+)
+async def delete_me(current_user: User = Depends(get_current_user)):
+    """
+    Deletes the user's record from the local database.
+    Note: This does NOT delete the user from Firebase Authentication.
+    """
+    success = await service.delete_user(current_user.firebase_uid)
     if not success:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Old password is incorrect or user not found"
-        )
-    return {"message": "Password changed successfully"}
-
-
-@router.delete("/{user_id}", status_code=status.HTTP_200_OK)
-async def delete_user(user_id: int):
-    """Delete a user"""
-    success = await service.delete_user(user_id)
-    if not success:
+        # This case should ideally not be reached if get_current_user succeeds
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with ID {user_id} not found"
+            detail="User not found."
         )
-    return {"message": "User deleted successfully"}
-
-
-@router.delete("/gmail/{gmail}", status_code=status.HTTP_200_OK)
-async def delete_user_by_gmail(gmail: str):
-    """Delete a user by gmail address"""
-    success = await service.delete_user_by_gmail(gmail)
-    if not success:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with gmail {gmail} not found"
-        )
-    return {"message": "User deleted successfully"}
-
+    # No content to return on successful deletion
+    return None

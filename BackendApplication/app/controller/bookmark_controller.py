@@ -1,21 +1,26 @@
 """
 Bookmark Controller
-Handles HTTP requests/responses for bookmark operations
+Handles all secure HTTP requests/responses for bookmark operations.
+Endpoints are redesigned to be user-centric and secure.
 """
+import base64
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from pydantic import BaseModel
 from typing import List
-from ..service.bookmark_service import BookmarkService
-from ..model.bookmark import Bookmark
 
-router = APIRouter(prefix="/bookmarks", tags=["bookmarks"])
+from ..service.bookmark_service import BookmarkService
+from ..model.user import User
+from ..model.bookmark import Bookmark
+from ..core.firebase_auth import get_current_user
+
+router = APIRouter(tags=["Bookmarks"])
 service = BookmarkService()
 
 
 # Request Models
 class BookmarkCreateRequest(BaseModel):
-    user_id: int
+    # user_id is removed for security. It's derived from the authenticated user.
     house_id: int
 
 
@@ -25,24 +30,24 @@ class BookmarkResponse(BaseModel):
     user_id: int
     house_id: int
     created_at: str
-    
+
     class Config:
         from_attributes = True
-
 
 class BookmarkWithHouseResponse(BaseModel):
     id: int
     user_id: int
     house_id: int
     created_at: str
-    house: dict  # Will contain house details
-    
+    house: dict  # Contains house details
+    class Config:
+        orm_mode = True
+
     class Config:
         from_attributes = True
 
 
 def bookmark_to_response(bookmark: Bookmark) -> BookmarkResponse:
-    """Convert Bookmark model to BookmarkResponse"""
     return BookmarkResponse(
         id=bookmark.id,
         user_id=bookmark.user_id,
@@ -50,10 +55,12 @@ def bookmark_to_response(bookmark: Bookmark) -> BookmarkResponse:
         created_at=bookmark.created_at.isoformat()
     )
 
-
 def bookmark_with_house_to_response(bookmark: Bookmark) -> BookmarkWithHouseResponse:
-    """Convert Bookmark model with house to BookmarkWithHouseResponse"""
     house = bookmark.house
+    # Basic check in case house relation is not loaded
+    if not house:
+        return BookmarkWithHouseResponse(id=bookmark.id, user_id=bookmark.user_id, house_id=bookmark.house_id, created_at=bookmark.created_at.isoformat(), house={})
+
     return BookmarkWithHouseResponse(
         id=bookmark.id,
         user_id=bookmark.user_id,
@@ -63,75 +70,71 @@ def bookmark_with_house_to_response(bookmark: Bookmark) -> BookmarkWithHouseResp
             "id": house.id,
             "province": house.province,
             "city": house.city,
-            "street": house.street,
-            "house_number": house.house_number,
             "monthly_rent": float(house.monthly_rent),
-            "distance_to_university": float(house.distance_to_university),
-            "has_kitchen": house.has_kitchen,
-            "has_washer": house.has_washer,
-            "has_parking": house.has_parking,
-            "is_rented": house.is_rented,
-            "description": house.description,
+            # "image_data":house.image_data.decode('utf-8'),
+            "image_data": base64.b64encode(house.image_data).decode('utf-8'),
+
+            # Add other desired house fields here
         }
     )
 
 
 # Endpoints
 @router.post("/", response_model=BookmarkResponse, status_code=status.HTTP_201_CREATED)
-async def add_bookmark(bookmark_data: BookmarkCreateRequest):
-    """Add a house to user's bookmarks"""
+async def add_bookmark(
+    bookmark_data: BookmarkCreateRequest,
+    current_user: User = Depends(get_current_user)
+):
+    """Add a house to the current user's bookmarks."""
     try:
+        # user_id is now securely taken from the authenticated user
         bookmark = await service.add_bookmark(
-            user_id=bookmark_data.user_id,
+            user_id=current_user.id,
             house_id=bookmark_data.house_id
         )
-        if not bookmark:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="User or house not found"
-            )
         return bookmark_to_response(bookmark)
     except ValueError as e:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
+        # This typically means bookmark already exists or house/user not found
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(e))
 
 
-@router.get("/user/{user_id}", response_model=List[BookmarkWithHouseResponse])
-async def get_user_bookmarks(user_id: int):
-    """Get all bookmarks of a user"""
-    bookmarks = await service.get_user_bookmarks(user_id)
-    return [bookmark_with_house_to_response(bookmark) for bookmark in bookmarks]
+@router.get("/me/", response_model=List[BookmarkWithHouseResponse])
+async def get_my_bookmarks(current_user: User = Depends(get_current_user)):
+    """Get all bookmarks for the currently authenticated user."""
+    bookmarks = await service.get_user_bookmarks(current_user.id)
+    return [bookmark_with_house_to_response(b) for b in bookmarks]
 
 
-@router.get("/check/{user_id}/{house_id}", status_code=status.HTTP_200_OK)
-async def check_bookmark(user_id: int, house_id: int):
-    """Check if a house is bookmarked by a user"""
-    is_bookmarked = await service.is_bookmarked(user_id, house_id)
+@router.get("/check/{house_id}/", response_model=dict)
+async def check_is_bookmarked(
+    house_id: int,
+    current_user: User = Depends(get_current_user)
+):
+    """Check if a house is bookmarked by the current user."""
+    is_bookmarked = await service.is_bookmarked(current_user.id, house_id)
     return {"is_bookmarked": is_bookmarked}
 
 
-@router.delete("/{user_id}/{house_id}", status_code=status.HTTP_200_OK)
-async def remove_bookmark(user_id: int, house_id: int):
-    """Remove a bookmark"""
-    success = await service.remove_bookmark(user_id, house_id)
+@router.delete("/by-house/{house_id}/", status_code=status.HTTP_204_NO_CONTENT)
+async def remove_bookmark_by_house(
+    house_id: int,
+    current_user: User = Depends(get_current_user)
+):
+    """Remove a bookmark for the current user based on house_id."""
+    success = await service.remove_bookmark(current_user.id, house_id)
     if not success:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Bookmark not found"
-        )
-    return {"message": "Bookmark removed successfully"}
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Bookmark for this house not found.")
+    # No content returned on successful deletion
 
 
-@router.delete("/id/{bookmark_id}", status_code=status.HTTP_200_OK)
-async def delete_bookmark(bookmark_id: int):
-    """Delete bookmark by ID"""
-    success = await service.delete_bookmark(bookmark_id)
+@router.delete("/by-id/{bookmark_id}/", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_bookmark_by_id(
+    bookmark_id: int,
+    current_user: User = Depends(get_current_user)
+):
+    """Delete a bookmark by its ID, ensuring it belongs to the current user."""
+    # Authorization logic is now in the service layer
+    success = await service.delete_bookmark_for_user(bookmark_id, current_user.id)
     if not success:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Bookmark with ID {bookmark_id} not found"
-        )
-    return {"message": "Bookmark deleted successfully"}
-
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Bookmark with ID {bookmark_id} not found or you do not have permission to delete it.")
+    # No content returned on successful deletion

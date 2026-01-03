@@ -84,6 +84,7 @@ class HouseService:
         description: Optional[str] = None,
         embedding_vector: Optional[str] = None,
         image_data: Optional[bytes] = None,
+        landlord_phone_number: Optional[str] = None,
     ) -> Houses:
         """
         Create a new house listing
@@ -103,6 +104,7 @@ class HouseService:
             description: description text of the house
             embedding_vector: vector representation for RAG
             image_data: image data of the house
+            landlord_phone_number: landlord's phone number
             
         Returns:
             Created Houses object
@@ -130,6 +132,7 @@ class HouseService:
             description=description,
             embedding_vector=embedding_vector,
             image_data=image_data,
+            landlord_phone_number=landlord_phone_number,
         )
     
     async def update_house(self, house_id: int, **kwargs) -> Optional[Houses]:
@@ -294,4 +297,68 @@ class HouseService:
             is_rented=is_rented,
             limit=limit,
             offset=offset,
+        )
+
+    async def count_filtered_houses(
+        self,
+        # String filters
+        province: Optional[str] = None,
+        city: Optional[str] = None,
+        street: Optional[str] = None,
+        # Integer range filters
+        min_id: Optional[int] = None,
+        max_id: Optional[int] = None,
+        min_owner_id: Optional[int] = None,
+        max_owner_id: Optional[int] = None,
+        # Float range filters
+        min_monthly_rent: Optional[float] = None,
+        max_monthly_rent: Optional[float] = None,
+        min_distance_to_university: Optional[float] = None,
+        max_distance_to_university: Optional[float] = None,
+        # Boolean filters
+        has_kitchen: Optional[bool] = None,
+        has_washer: Optional[bool] = None,
+        has_parking: Optional[bool] = None,
+        is_rented: Optional[bool] = None,
+    ) -> int:
+        """
+        Count houses with range filters for int/float fields, exact filters for boolean fields,
+        and exact filters for string fields (province, city, street)
+        
+        Args:
+            province: filter by exact province name
+            city: filter by exact city name
+            street: filter by exact street name
+            min_id: minimum house ID
+            max_id: maximum house ID
+            min_owner_id: minimum owner ID
+            max_owner_id: maximum owner ID
+            min_monthly_rent: minimum monthly rent
+            max_monthly_rent: maximum monthly rent
+            min_distance_to_university: minimum distance to university
+            max_distance_to_university: maximum distance to university
+            has_kitchen: filter by has_kitchen (True/False/None)
+            has_washer: filter by has_washer (True/False/None)
+            has_parking: filter by has_parking (True/False/None)
+            is_rented: filter by is_rented (True/False/None)
+            
+        Returns:
+            Number of Houses objects matching the filters
+        """
+        return await self.repository.count_filtered_houses(
+            province=province,
+            city=city,
+            street=street,
+            min_id=min_id,
+            max_id=max_id,
+            min_owner_id=min_owner_id,
+            max_owner_id=max_owner_id,
+            min_monthly_rent=min_monthly_rent,
+            max_monthly_rent=max_monthly_rent,
+            min_distance_to_university=min_distance_to_university,
+            max_distance_to_university=max_distance_to_university,
+            has_kitchen=has_kitchen,
+            has_washer=has_washer,
+            has_parking=has_parking,
+            is_rented=is_rented,
         )
