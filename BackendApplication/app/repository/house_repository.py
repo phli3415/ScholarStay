@@ -38,6 +38,20 @@ class HouseRepository:
         return await Houses.all().limit(limit).offset(offset)
     
     @staticmethod
+    async def get_houses_with_null_embedding(limit: int = 100, offset: int = 0) -> List[Houses]:
+        """
+        Get all houses where the embedding_vector is NULL.
+
+        Args:
+            limit: maximum number of houses to return
+            offset: offset for pagination
+
+        Returns:
+            List of Houses objects with null embedding_vector.
+        """
+        return await Houses.filter(embedding_vector__isnull=True).limit(limit).offset(offset)
+
+    @staticmethod
     async def get_by_owner(owner_id: int, limit: int = 100, offset: int = 0) -> List[Houses]:
         """
         Get all houses owned by a user

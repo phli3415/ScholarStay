@@ -27,7 +27,6 @@ class HouseCreateRequest(BaseModel):
     has_parking: bool = False
     is_rented: bool = False
     description: Optional[str] = None
-    embedding_vector: Optional[str] = None
 
 
 class HouseUpdateRequest(BaseModel):
@@ -108,7 +107,6 @@ async def create_house(house_data: HouseCreateRequest):
             has_parking=house_data.has_parking,
             is_rented=house_data.is_rented,
             description=house_data.description,
-            embedding_vector=house_data.embedding_vector,
         )
         return house_to_response(house)
     except ValueError as e:

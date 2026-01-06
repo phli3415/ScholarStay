@@ -7,7 +7,6 @@ import os
 from dotenv import load_dotenv
 from typing import List
 from langchain_openai import OpenAIEmbeddings
-from sqlalchemy.orm import Session
 from app.model.houses import Houses
 from tortoise.expressions import RawSQL
 
