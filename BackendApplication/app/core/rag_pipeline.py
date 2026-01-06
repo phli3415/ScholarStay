@@ -6,7 +6,7 @@
 import os
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
-from app.model.houses import Houses
+from ..model.houses import Houses
 
 def generate_listing_document(listing: Houses) -> str:
     """
