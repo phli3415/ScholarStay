@@ -238,6 +238,51 @@ class HouseService:
         print(f"Embedding regeneration complete. Summary: {summary}")
         return summary
 
+    async def fill_missing_embeddings(self) -> Dict[str, int]:
+        """
+        Finds all houses with a null embedding_vector and regenerates it.
+        This is intended as an internal debugging and data-fixing tool.
+
+        Returns:
+            A dictionary with a summary of the operation (processed, succeeded, failed).
+        """
+        # In a real-world scenario with millions of records, you'd implement pagination here.
+        # For this project, we'll fetch a large batch.
+        houses_to_fix = await self.repository.get_houses_with_null_embedding(limit=10000)
+        
+        if not houses_to_fix:
+            print("No houses with missing embeddings found. All good!")
+            return {"processed": 0, "succeeded": 0, "failed": 0}
+
+        total_to_process = len(houses_to_fix)
+        print(f"Found {total_to_process} houses with missing embeddings. Starting regeneration process...")
+
+        success_count = 0
+        failure_count = 0
+
+        for house in houses_to_fix:
+            try:
+                # We can reuse the single-house regeneration logic
+                updated_house = await self.regenerate_house_embedding(house.id)
+                if updated_house and updated_house.embedding_vector:
+                    success_count += 1
+                    print(f"Successfully regenerated embedding for house ID {house.id}")
+                else:
+                    # This case might be hit if regenerate_house_embedding itself fails internally
+                    failure_count += 1
+                    print(f"Failed to regenerate embedding for house ID {house.id}")
+            except Exception as e:
+                failure_count += 1
+                print(f"An error occurred while processing house ID {house.id}: {e}")
+
+        summary = {
+            "processed": total_to_process,
+            "succeeded": success_count,
+            "failed": failure_count,
+        }
+        print(f"Missing embedding regeneration complete. Summary: {summary}")
+        return summary
+
     async def search_houses(
         self,
         province: Optional[str] = None,
