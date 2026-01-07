@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 from typing import List
 from langchain_openai import OpenAIEmbeddings
 from ..model.houses import Houses
-from app.model.houses import Houses
 from tortoise.expressions import RawSQL
+import dotenv
 
 
 # --- Model Loading (at module level for one-time execution) ---
@@ -48,8 +48,8 @@ def generate_listing_document(listing: Houses) -> str:
     """
     # Start with the core details like location, price, and distance.
     document_parts = [
-        f"A property located at , in the city of {listing.city}, {listing.province}, on {listing.street} street, apt{listing.house_number}.",
-        f"The monthly rent is ${listing.monthly_rent:.2f}, and it is located {listing.distance_to_university} km from the university."
+        f"A property located in the city of {listing.city}, {listing.province}, on {listing.street} street, apt.{listing.house_number}.",
+        f"The monthly rent is ${listing.monthly_rent:.2f}, and it is located {listing.distance_to_university} kilometer from the university."
     ]
 
     # Process boolean fields for amenities into natural language.
@@ -77,9 +77,9 @@ def generate_listing_document(listing: Houses) -> str:
         document_parts.append("The listing does not specify common amenities like a kitchen, washer, or parking.")
 
     if listing.is_rented:
-        document_parts.append("This house is already rented")
+        document_parts.append("This house is already rented.")
     else:
-        document_parts.append("This house has not be rented")
+        document_parts.append("This house has not be rented.")
 
     # Append the original, user-provided description for more detail.
     if listing.description:

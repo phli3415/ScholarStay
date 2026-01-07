@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Enhanced bookmark controller to support picture transformation through bookmark.">
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="modified wrong import statement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendApplication/app/core/rag_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/core/rag_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/service/house_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/service/house_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -75,7 +77,8 @@
       <workItem from="1767235668615" duration="23325000" />
       <workItem from="1767408482753" duration="2355000" />
       <workItem from="1767581739727" duration="5429000" />
-      <workItem from="1767674976313" duration="3383000" />
+      <workItem from="1767674976313" duration="14294000" />
+      <workItem from="1767764633528" duration="3541000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -101,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767365961657</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modified wrong import statement">
+      <option name="closed" value="true" />
+      <created>1767703909246</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1767703909246</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +133,7 @@
     <MESSAGE value="Recreated .idea files to prevent Pycharm from crushing." />
     <MESSAGE value="added bookmark router api" />
     <MESSAGE value="Enhanced bookmark controller to support picture transformation through bookmark." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhanced bookmark controller to support picture transformation through bookmark." />
+    <MESSAGE value="modified wrong import statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified wrong import statement" />
   </component>
 </project>

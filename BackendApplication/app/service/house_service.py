@@ -129,6 +129,7 @@ class HouseService:
 
         # Generate the document and then the embedding vector
         document = generate_listing_document(temp_house)
+        print(document)
         embedding_vector = create_embedding(document)
 
         return await self.repository.create(
