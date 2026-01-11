@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="modified rag template and" />
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="modified rag template">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/agent/agent_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/agent/agent_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/agent/prompts.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/agent/prompts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/core/rag_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/core/rag_pipeline.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +80,8 @@
       <workItem from="1767408482753" duration="2355000" />
       <workItem from="1767581739727" duration="5429000" />
       <workItem from="1767674976313" duration="14294000" />
-      <workItem from="1767764633528" duration="4187000" />
+      <workItem from="1767764633528" duration="8595000" />
+      <workItem from="1768033947632" duration="3632000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -116,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767780706758</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modified rag template">
+      <option name="closed" value="true" />
+      <created>1767782507801</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1767782507801</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +154,7 @@
     <MESSAGE value="Enhanced bookmark controller to support picture transformation through bookmark." />
     <MESSAGE value="modified wrong import statement" />
     <MESSAGE value="modified rag template and" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified rag template and" />
+    <MESSAGE value="modified rag template" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified rag template" />
   </component>
 </project>

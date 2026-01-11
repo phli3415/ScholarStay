@@ -134,8 +134,8 @@ async def find_similar_listings(query: str, top_k: int = 5) -> List[str]:
         # 2. Find the most similar House objects from the database using Tortoise ORM.
         # We use RawSQL to access the pgvector `<->` (L2 distance) operator.
         similar_listings_objects = await Houses.all() \
-            .annotate(distance=RawSQL("embedding_vector <-> %s", [str(query_vector)])) \
-            .filter(distance__lt=0.5) \
+            .annotate(distance=RawSQL("embedding_vector <=> %s", [str(query_vector)])) \
+            .filter(distance__lt=1) \
             .order_by("distance") \
             .limit(top_k)
 
