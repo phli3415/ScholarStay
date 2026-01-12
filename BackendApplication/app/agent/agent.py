@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_openai_tools_agent
-from langchain.memory import ConversationBufferMemory
+from .persistent_memory import PersistentChatMemory
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from .prompts import SYSTEM_PROMPT, HUMAN_PROMPT_TEMPLATE
 from .agent_tools import (
@@ -51,16 +51,22 @@ agent_executor = AgentExecutor(
     handle_parsing_errors=True
 )
 
-async def run_agent(query: str) -> str:
+async def run_agent(query: str, session_id: str, user_id: int) -> str:
     """
-    Runs the agent with the given user query.
+    Runs the agent with the given user query, session, and user.
 
     Args:
         query: The user's input query.
+        session_id: Unique session identifier.
+        user_id: User ID for persistence.
 
     Returns:
         The agent's response as a string.
     """
+    global memory
+    # Update memory with session/user
+    memory = PersistentChatMemory(session_id=session_id, user_id=user_id, memory_key="chat_history", return_messages=True)
+
     try:
         response = await agent_executor.ainvoke({"input": query})
         return response["output"]

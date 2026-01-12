@@ -30,7 +30,7 @@ class ChatHistory(Model):
     )
     
     # message content(stored as JSON format)
-    # 格式: [{"role": "user/assistant", "content": "...", "timestamp": "..."}, ...]
+    # format: [{"role": "user/agent", "content": "...", "timestamp": "..."}, ...]
     messages = fields.JSONField(
         default=list,
         description="list of chat messages(JSON format)"
