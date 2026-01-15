@@ -6,8 +6,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
+import asyncio
 from ..dependencies import get_current_user  # Assuming Firebase auth dependency
 from ...agent.agent import run_agent
+from ...agent.persistent_memory import PersistentChatMemory
 
 router = APIRouter()
 
@@ -20,14 +22,12 @@ async def chat_with_agent(request: ChatRequest, current_user: dict = Depends(get
     """
     Endpoint for chatting with the AI agent.
     Returns a streaming response for real-time updates.
-    Messages are persisted to database automatically by run_agent.
     Requires authentication.
     """
     try:
-        uid = current_user["uid"]
+        uid = current_user["uid"] 
 
         async def generate_response():
-            # Stream response from agent (persistence handled in run_agent)
             async for chunk in run_agent(request.query, request.session_id, uid):
                 yield chunk
 

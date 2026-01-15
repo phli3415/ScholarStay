@@ -20,9 +20,14 @@ class PersistentChatMemory(ConversationBufferMemory):
         self.session_id = session_id
         self.user_uid = user_uid
 
-    async def save_context(self, inputs: Dict[str, Any], outputs: Dict[str, Any]) -> None:
+    async def save_context(self, messages_list: List[Dict[str, Any]], user_input: str = "") -> None:
         """
         Save the context of the current conversation to the database.
+        
+        Args:
+            messages_list: List of message dicts with structure:
+                          [{"role": "user/assistant/tool", "content": "...", "tool_calls": [...], "timestamp": "..."}, ...]
+            user_input: Optional user input for title generation on first message
         """
         try:
             # Get or create chat record
@@ -34,37 +39,20 @@ class PersistentChatMemory(ConversationBufferMemory):
             )
 
             # Generate title if new session and no title
-            if created and not chat_record.title:
-                title = await self._generate_title(inputs.get("input", ""))
+            if created and not chat_record.title and user_input:
+                title = await self._generate_title(user_input)
                 chat_record.title = title
 
-            # Format messages
-            user_msg = {
-                "role": "user",
-                "content": inputs.get("input", ""),
-                "timestamp": datetime.now().isoformat()
-            }
-            ai_msg = {
-                "role": "assistant",
-                "content": outputs.get("output", ""),
-                "timestamp": datetime.now().isoformat()
-            }
-
-            # Append to messages
-            messages = chat_record.messages or []
-            messages.extend([user_msg, ai_msg])
-            chat_record.messages = messages
+            # Append messages to existing history
+            existing_messages = chat_record.messages or []
+            existing_messages.extend(messages_list)
+            chat_record.messages = existing_messages
 
             # Save to database
             await chat_record.save()
- 
-            # Also update in-memory buffer
-            super().save_context(inputs, outputs)
 
         except Exception as e:
             print(f"Error saving context: {e}")
-            # Fallback to in-memory only
-            super().save_context(inputs, outputs)
             
 
     async def load_memory_variables(self, inputs: Dict[str, Any]) -> Dict[str, str]:

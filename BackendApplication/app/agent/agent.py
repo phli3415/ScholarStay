@@ -79,74 +79,75 @@ async def run_agent(query: str, session_id: str, user_uid: int) -> AsyncGenerato
         "timestamp": datetime.now().isoformat(),
         "tool_calls": []
     }
+
+    # current_tool_msg = {
+    #     "role": "tool",
+    #     "tool_call_id": "",
+    #     "content": "",
+    #     "timestamp": datetime.now().isoformat(),
+    #     "tool_calls": []
+    # }
     
     current_tool_call_id = None
+try:
+        messages_history = [] 
+        current_tool_call_id = None
 
-    try:
         async for event in agent_executor.astream_events({"input": query}, version="v2"):
-            if event["event"] == "on_chat_model_stream":
-                chunk = event["data"]["chunk"]
-                if chunk.content:
-                    current_assistant_msg["content"] += chunk.content
-                    yield chunk.content
-                    
-                # Capture tool calls from chunk
-                if hasattr(chunk, 'tool_calls') and chunk.tool_calls:
-                    for tool_call in chunk.tool_calls:
-                        current_assistant_msg["tool_calls"].append({
-                            "id": tool_call.get("id", ""),
-                            "function": tool_call.get("function", ""),
-                            "args": str(tool_call.get("args", ""))
-                        })
-                        
-            elif event["event"] == "on_tool_start":
-                # Record tool call
-                tool_name = event.get("name", "")
-                current_tool_call_id = event.get("data", {}).get("id", "")
+            kind = event["event"]
+
+            if kind == "on_chat_model_stream":
+                content = event["data"]["chunk"].content
+                if content:
+                    current_assistant_msg["content"] += content
+                    yield content
+
+            elif kind == "on_tool_start":
+                t_id = event.get("run_id") 
+                t_name = event.get("name")
+                t_input = event["data"].get("input")
+
+                current_assistant_msg["tool_calls"].append({
+                    "id": t_id,
+                    "function": t_name,
+                    "args": str(t_input)
+                })
+                current_tool_call_id = t_id
                 
-                tool_msg = f"\n[Using tool: {tool_name}]\n"
-                current_assistant_msg["content"] += tool_msg
+                tool_msg = f"\n[Using tool: {t_name}]\n"
                 yield tool_msg
+
+            elif kind == "on_tool_end":
+                t_output = event["data"].get("output")
                 
-            elif event["event"] == "on_tool_end":
-                # Record tool result
-                tool_result = event.get("data", {}).get("output", "")
+                if current_assistant_msg["tool_calls"] or current_assistant_msg["content"]:
+                    messages_history.append(current_assistant_msg.copy())
                 
-                if current_tool_call_id:
-                    # Add assistant message with tool calls
-                    if current_assistant_msg["content"]:
-                        messages_history.append(current_assistant_msg.copy())
-                    
-                    # Add tool result message
-                    tool_result_msg = {
-                        "role": "tool",
-                        "tool_call_id": current_tool_call_id,
-                        "content": str(tool_result),
-                        "timestamp": datetime.now().isoformat()
-                    }
-                    messages_history.append(tool_result_msg)
-                    
-                    # Reset for next message
-                    current_assistant_msg = {
-                        "role": "assistant",
-                        "content": "",
-                        "timestamp": datetime.now().isoformat(),
-                        "tool_calls": []
-                    }
-                    current_tool_call_id = None
+                messages_history.append({
+                    "role": "tool",
+                    "tool_call_id": current_tool_call_id,
+                    "content": str(t_output),
+                    "timestamp": datetime.now().isoformat()
+                })
+                
+                current_assistant_msg = {
+                    "role": "assistant",
+                    "content": "",
+                    "timestamp": datetime.now().isoformat(),
+                    "tool_calls": []
+                }
+                current_tool_call_id = None
 
         yield "\n"
-        
-        # Add final assistant message
+
         if current_assistant_msg["content"] or current_assistant_msg["tool_calls"]:
             messages_history.append(current_assistant_msg)
-        
-        # Save all messages with tool information
+
         await memory.save_context(
-            inputs={"input": query},
-            outputs={"output": ""},
-            messages=messages_history
+            messages_list=messages_history,
+            user_input=query
         )
+
 
     except Exception as e:
         error_msg = f"Error running agent: {str(e)}"
@@ -157,9 +158,8 @@ async def run_agent(query: str, session_id: str, user_uid: int) -> AsyncGenerato
         # Save error state
         try:
             await memory.save_context(
-                inputs={"input": query},
-                outputs={"output": error_msg},
-                messages=messages_history
+                messages_list=messages_history,
+                user_input=query
             )
         except Exception as save_err:
             print(f"Failed to save context after error: {save_err}")
