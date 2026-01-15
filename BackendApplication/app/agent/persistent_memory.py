@@ -15,16 +15,24 @@ class PersistentChatMemory(ConversationBufferMemory):
     Inherits from ConversationBufferMemory for compatibility.
     """
 
-    def __init__(self, session_id: str, user_id: int, **kwargs):
+    def __init__(self, session_id: str, user_uid: int, **kwargs):
         super().__init__(**kwargs)
         self.session_id = session_id
-        self.user_id = user_id
+        self.user_uid = user_uid
 
     async def save_context(self, inputs: Dict[str, Any], outputs: Dict[str, Any]) -> None:
         """
         Save the context of the current conversation to the database.
         """
         try:
+            # Get or create chat record
+            user = await User.get(firebase_uid=self.user_uid)
+            chat_record, created = await ChatHistory.get_or_create(
+                session_id=self.session_id,
+                user=user,
+                defaults={"title": "Agent Chat Session"}
+            )
+
             # Generate title if new session and no title
             if created and not chat_record.title:
                 title = await self._generate_title(inputs.get("input", ""))
@@ -37,7 +45,7 @@ class PersistentChatMemory(ConversationBufferMemory):
                 "timestamp": datetime.now().isoformat()
             }
             ai_msg = {
-                "role": "agent",
+                "role": "assistant",
                 "content": outputs.get("output", ""),
                 "timestamp": datetime.now().isoformat()
             }
@@ -49,7 +57,7 @@ class PersistentChatMemory(ConversationBufferMemory):
 
             # Save to database
             await chat_record.save()
-
+ 
             # Also update in-memory buffer
             super().save_context(inputs, outputs)
 
@@ -57,13 +65,14 @@ class PersistentChatMemory(ConversationBufferMemory):
             print(f"Error saving context: {e}")
             # Fallback to in-memory only
             super().save_context(inputs, outputs)
+            
 
     async def load_memory_variables(self, inputs: Dict[str, Any]) -> Dict[str, str]:
         """
         Load memory variables from the database.
         """
         try:
-            user = await User.get(id=self.user_id)
+            user = await User.get(firebase_uid=self.user_uid)
             chat_record = await ChatHistory.get_or_none(session_id=self.session_id, user=user)
 
             if chat_record and chat_record.messages:
@@ -84,3 +93,16 @@ class PersistentChatMemory(ConversationBufferMemory):
             print(f"Error loading memory: {e}")
             # Return empty or fallback
             return super().load_memory_variables(inputs)
+
+    async def _generate_title(self, user_input: str) -> str:
+        """
+        Generate a title for the chat session based on user input.
+        """
+        try:
+            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+            prompt = f"Generate a short, descriptive title for a chat session about rental properties based on this user query: '{user_input}'. Keep it under 10 words."
+            title = await llm.ainvoke(prompt)
+            return title.content.strip()
+        except Exception as e:
+            print(f"Error generating title: {e}")
+            return "Agent Chat Session"
