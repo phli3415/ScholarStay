@@ -18,17 +18,17 @@ class ChatRequest(BaseModel):
     session_id: str
 
 @router.post("/chat")
-async def chat_with_agent(request: ChatRequest, current_user: dict = Depends(get_current_user)):
+async def chat_with_agent(request: ChatRequest, current_user: User = Depends(get_current_user)):
     """
     Endpoint for chatting with the AI agent.
     Returns a streaming response for real-time updates.
     Requires authentication.
     """
     try:
-        uid = current_user["uid"] 
+        uid = current_user.uid 
 
         async def generate_response():
-            async for chunk in run_agent(request.query, request.session_id, uid):
+            async for chunk in run_agent(request.query, request.session_id, id):
                 yield chunk
 
         return StreamingResponse(generate_response(), media_type="text/plain")

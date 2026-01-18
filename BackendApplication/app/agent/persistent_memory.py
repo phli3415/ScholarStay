@@ -15,10 +15,10 @@ class PersistentChatMemory(ConversationBufferMemory):
     Inherits from ConversationBufferMemory for compatibility.
     """
 
-    def __init__(self, session_id: str, user_uid: int, **kwargs):
+    def __init__(self, session_id: str, user_id: int, **kwargs):
         super().__init__(**kwargs)
         self.session_id = session_id
-        self.user_uid = user_uid
+        self.user_id = user_id
 
     async def save_context(self, messages_list: List[Dict[str, Any]], user_input: str = "") -> None:
         """
@@ -31,7 +31,7 @@ class PersistentChatMemory(ConversationBufferMemory):
         """
         try:
             # Get or create chat record
-            user = await User.get(firebase_uid=self.user_uid)
+            user = await User.get(id=self.user_id)
             chat_record, created = await ChatHistory.get_or_create(
                 session_id=self.session_id,
                 user=user,
@@ -60,7 +60,7 @@ class PersistentChatMemory(ConversationBufferMemory):
         Load memory variables from the database.
         """
         try:
-            user = await User.get(firebase_uid=self.user_uid)
+            user = await User.get(id=self.user_id)
             chat_record = await ChatHistory.get_or_none(session_id=self.session_id, user=user)
 
             if chat_record and chat_record.messages:

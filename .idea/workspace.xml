@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="modified rag template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/agent/persistent_memory.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/agent/persistent_memory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/api/v1/agent_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/api/v1/agent_router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +80,7 @@
       <workItem from="1768033947632" duration="3632000" />
       <workItem from="1768202695723" duration="1789000" />
       <workItem from="1768273491636" duration="1761000" />
+      <workItem from="1768464274074" duration="1491000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
