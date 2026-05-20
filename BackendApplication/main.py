@@ -8,6 +8,7 @@ from app.database import TORTOISE_ORM
 
 # Import API routers
 from app.api.v1 import user_router
+from app.api.v1 import agent_router
 from app.controller import house_controller
 from app.controller import user_controller
 from app.controller import bookmark_controller
@@ -66,6 +67,12 @@ app.include_router(
     user_router.router,
     prefix="/api/v1/auth",
     tags=["Auth"]
+)
+
+app.include_router(
+    agent_router.router,
+    prefix="/api/v1",
+    tags=["Agent"]
 )
 
 app.include_router(

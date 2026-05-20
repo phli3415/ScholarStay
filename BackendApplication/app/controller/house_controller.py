@@ -75,6 +75,7 @@ class HouseResponse(BaseModel):
     class Config:
         from_attributes = True
 
+
 def house_to_response(house: Houses) -> HouseResponse:
     """Convert Houses model to HouseResponse"""
     image_data_b64 = None
@@ -274,21 +275,26 @@ async def search_houses(
 
 @router.get("/filter/list", response_model=List[HouseResponse])
 async def filter_houses(
+    # String filters
     province: Optional[str] = Query(default=None),
     city: Optional[str] = Query(default=None),
     street: Optional[str] = Query(default=None),
+    # Integer range filters
     min_id: Optional[int] = Query(default=None, ge=0),
     max_id: Optional[int] = Query(default=None, ge=0),
     min_owner_id: Optional[int] = Query(default=None, ge=0),
     max_owner_id: Optional[int] = Query(default=None, ge=0),
+    # Float range filters
     min_monthly_rent: Optional[float] = Query(default=None, ge=0),
     max_monthly_rent: Optional[float] = Query(default=None, ge=0),
     min_distance_to_university: Optional[float] = Query(default=None, ge=0),
     max_distance_to_university: Optional[float] = Query(default=None, ge=0),
+    # Boolean filters
     has_kitchen: Optional[bool] = Query(default=None),
     has_washer: Optional[bool] = Query(default=None),
     has_parking: Optional[bool] = Query(default=None),
     is_rented: Optional[bool] = Query(default=None),
+    # Pagination
     limit: int = Query(default=20, ge=1, le=100),
     offset: int = Query(default=0, ge=0)
 ):

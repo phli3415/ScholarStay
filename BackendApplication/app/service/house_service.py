@@ -3,10 +3,11 @@ House Service
 Business logic for house/listing operations
 """
 
-from typing import Optional, List
+from typing import Optional, List, Dict
 from ..model.houses import Houses
 from ..repository.house_repository import HouseRepository
 from ..repository.user_repository import UserRepository
+from ..core.rag_pipeline import generate_listing_document, create_embedding
 
 
 class HouseService:
@@ -87,7 +88,7 @@ class HouseService:
         landlord_phone_number: Optional[str] = None,
     ) -> Houses:
         """
-        Create a new house listing
+        Create a new house listing, automatically generating the embedding vector.
         
         Args:
             owner_id: ID of the user creating the listing
@@ -117,6 +118,20 @@ class HouseService:
         if not owner:
             raise ValueError(f"User with ID {owner_id} does not exist")
         
+        # Create a temporary House object to generate the document
+        temp_house = Houses(
+            owner_id=owner_id, province=province, city=city, street=street,
+            house_number=house_number, monthly_rent=monthly_rent,
+            distance_to_university=distance_to_university, has_kitchen=has_kitchen,
+            has_washer=has_washer, has_parking=has_parking, is_rented=is_rented,
+            description=description
+        )
+
+        # Generate the document and then the embedding vector
+        document = generate_listing_document(temp_house)
+        print(document)
+        embedding_vector = create_embedding(document)
+
         return await self.repository.create(
             owner_id=owner_id,
             province=province,
@@ -159,7 +174,124 @@ class HouseService:
             True if deleted successfully, False if house not found
         """
         return await self.repository.delete(house_id)
-    
+
+    async def regenerate_house_embedding(self, house_id: int) -> Optional[Houses]:
+        """
+        Regenerate the embedding vector for a specific house.
+
+        Args:
+            house_id: The ID of the house to update.
+
+        Returns:
+            The updated Houses object or None if the house was not found.
+
+        Raises:
+            ValueError: if the house does not exist.
+        """
+        # 1. Fetch the existing house object.
+        house = await self.repository.get_by_id(house_id)
+        if not house:
+            raise ValueError(f"House with ID {house_id} not found")
+
+        # 2. Generate a new document and embedding from its data.
+        document = generate_listing_document(house)
+        new_embedding_vector = create_embedding(document)
+
+        # 3. Update the house with the new vector.
+        if not new_embedding_vector:
+            # Handle case where embedding fails
+            print(f"Failed to generate embedding for house ID {house_id}. Vector not updated.")
+            return house # Return the original object without update
+
+        updated_house = await self.repository.update_by_id(
+            house_id, embedding_vector=new_embedding_vector
+        )
+
+        return updated_house
+
+    async def regenerate_all_embeddings(self) -> Dict[str, int]:
+        """
+        Regenerate the embedding vector for ALL houses in the database.
+        This is a potentially long-running and resource-intensive operation.
+
+        Returns:
+            A dictionary with a summary of the operation (succeeded and failed counts).
+        """
+        # A more robust implementation would use pagination to handle very large datasets.
+        # For now, we fetch a large number of records, assuming it covers all listings.
+        all_houses = await self.repository.get_all(limit=100000, offset=0)
+
+        success_count = 0
+        failure_count = 0
+
+        print(f"Starting embedding regeneration for {len(all_houses)} houses...")
+
+        for house in all_houses:
+            try:
+                document = generate_listing_document(house)
+                new_embedding_vector = create_embedding(document)
+
+                if new_embedding_vector:
+                    await self.repository.update_by_id(
+                        house.id, embedding_vector=new_embedding_vector
+                    )
+                    success_count += 1
+                else:
+                    print(f"Failed to generate embedding for house ID {house.id}. Skipping update.")
+                    failure_count += 1
+            except Exception as e:
+                print(f"An error occurred while processing house ID {house.id}: {e}")
+                failure_count += 1
+
+        summary = {"succeeded": success_count, "failed": failure_count}
+        print(f"Embedding regeneration complete. Summary: {summary}")
+        return summary
+
+    async def fill_missing_embeddings(self) -> Dict[str, int]:
+        """
+        Finds all houses with a null embedding_vector and regenerates it.
+        This is intended as an internal debugging and data-fixing tool.
+
+        Returns:
+            A dictionary with a summary of the operation (processed, succeeded, failed).
+        """
+        # In a real-world scenario with millions of records, you'd implement pagination here.
+        # For this project, we'll fetch a large batch.
+        houses_to_fix = await self.repository.get_houses_with_null_embedding(limit=10000)
+
+        if not houses_to_fix:
+            print("No houses with missing embeddings found. All good!")
+            return {"processed": 0, "succeeded": 0, "failed": 0}
+
+        total_to_process = len(houses_to_fix)
+        print(f"Found {total_to_process} houses with missing embeddings. Starting regeneration process...")
+
+        success_count = 0
+        failure_count = 0
+
+        for house in houses_to_fix:
+            try:
+                # We can reuse the single-house regeneration logic
+                updated_house = await self.regenerate_house_embedding(house.id)
+                if updated_house and updated_house.embedding_vector:
+                    success_count += 1
+                    print(f"Successfully regenerated embedding for house ID {house.id}")
+                else:
+                    # This case might be hit if regenerate_house_embedding itself fails internally
+                    failure_count += 1
+                    print(f"Failed to regenerate embedding for house ID {house.id}")
+            except Exception as e:
+                failure_count += 1
+                print(f"An error occurred while processing house ID {house.id}: {e}")
+
+        summary = {
+            "processed": total_to_process,
+            "succeeded": success_count,
+            "failed": failure_count,
+        }
+        print(f"Missing embedding regeneration complete. Summary: {summary}")
+        return summary
+
     async def search_houses(
         self,
         province: Optional[str] = None,
@@ -324,7 +456,7 @@ class HouseService:
         """
         Count houses with range filters for int/float fields, exact filters for boolean fields,
         and exact filters for string fields (province, city, street)
-        
+
         Args:
             province: filter by exact province name
             city: filter by exact city name
@@ -341,7 +473,7 @@ class HouseService:
             has_washer: filter by has_washer (True/False/None)
             has_parking: filter by has_parking (True/False/None)
             is_rented: filter by is_rented (True/False/None)
-            
+
         Returns:
             Number of Houses objects matching the filters
         """

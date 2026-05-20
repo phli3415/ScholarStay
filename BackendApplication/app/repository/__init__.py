@@ -6,10 +6,11 @@ Data Access Layer - handles all database CRUD operations
 from .user_repository import UserRepository
 from .house_repository import HouseRepository
 from .bookmark_repository import BookmarkRepository
+from .chat_history_repository import ChatHistoryRepository
 
 __all__ = [
     "UserRepository",
     "HouseRepository",
     "BookmarkRepository",
+    "ChatHistoryRepository",
 ]
-
