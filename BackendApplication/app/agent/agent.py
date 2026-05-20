@@ -34,7 +34,7 @@ tools = [
     compare_listings_by_address
 ]
 
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+# memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", SYSTEM_PROMPT),
@@ -45,15 +45,15 @@ prompt = ChatPromptTemplate.from_messages([
 
 agent = create_openai_tools_agent(llm, tools, prompt)
 
-agent_executor = AgentExecutor(
-    agent=agent,
-    tools=tools,
-    memory=memory,
-    verbose=True,
-    handle_parsing_errors=True
-)
+# agent_executor = AgentExecutor(
+#     agent=agent,
+#     tools=tools,
+#     memory=memory,
+#     verbose=True,
+#     handle_parsing_errors=True
+# )
 
-async def run_agent(query: str, session_id: str, user_uid: int) -> AsyncGenerator[str, None]:
+async def run_agent(query: str, session_id: str, user_id: int) -> AsyncGenerator[str, None]:
     """
     Runs the agent with streaming output using astream_events.
     Yields chunks of the response in real-time.
@@ -61,7 +61,15 @@ async def run_agent(query: str, session_id: str, user_uid: int) -> AsyncGenerato
     """
     global memory
     # Create memory instance for this session
-    memory = PersistentChatMemory(session_id=session_id, user_id=user_uid, memory_key="chat_history", return_messages=True)
+    memory = PersistentChatMemory(session_id=session_id, user_id=user_id, memory_key="chat_history", return_messages=True)
+
+    agent_executor = AgentExecutor(
+        agent=agent,
+        tools=tools,
+        memory=memory,
+        verbose=True,
+        handle_parsing_errors=True
+    )
 
     # Collect detailed message history with tool calls
     messages_history = [
@@ -89,7 +97,7 @@ async def run_agent(query: str, session_id: str, user_uid: int) -> AsyncGenerato
     # }
     
     current_tool_call_id = None
-try:
+    try:
         messages_history = [] 
         current_tool_call_id = None
 
