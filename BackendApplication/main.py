@@ -6,12 +6,28 @@ from tortoise import Tortoise
 from app.core.firebase_auth import initialize_firebase
 from app.database import TORTOISE_ORM
 
+#Import system packages
+import logging
+from concurrent_log_handler import ConcurrentRotatingFileHandler
+import sys
+import time
+import uuid
+
 # Import API routers
 from app.api.v1 import user_router
 from app.api.v1 import agent_router
 from app.controller import house_controller
 from app.controller import user_controller
 from app.controller import bookmark_controller
+
+#Set up basic logging config, level = DEBUG / INFO
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+#logger.setLevel(logging.INFO)
+
+logger.handlers = [] #Clear default handlers
+
+
 
 # Create FastAPI app instance
 app = FastAPI(
@@ -21,7 +37,7 @@ app = FastAPI(
 )
 
 # --- CORS Middleware ---
-# Define the list of allowed origins (your frontend URL)
+# Define the list of allowed origins (frontend URL)
 origins = [
     "http://localhost:5173",  # React/Vite dev server
     "http://127.0.0.1:5173",
@@ -60,6 +76,8 @@ async def shutdown_event():
     print("Shutting down application...")
     await Tortoise.close_connections()
     print("Database connections closed.")
+
+
 
 # --- API Routers ---
 # Include the user router with a prefix and tags for organization

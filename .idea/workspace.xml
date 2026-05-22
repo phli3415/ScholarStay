@@ -5,16 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="modified rag template">
+      <change afterPath="$PROJECT_DIR$/BackendApplication/app/output/app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_keyWordExtraction.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_memorySummarizer.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendApplication/app/utils/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="BackendAPiTest" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -44,7 +67,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;BackendAPiTest&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;SqlOptimize&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/cics/summer project/ScholarStay/ScholarStay&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -85,7 +108,8 @@
       <workItem from="1770149770319" duration="595000" />
       <workItem from="1770697405630" duration="1096000" />
       <workItem from="1770699159217" duration="41000" />
-      <workItem from="1779257611528" duration="861000" />
+      <workItem from="1779257611528" duration="12634000" />
+      <workItem from="1779411066983" duration="2631000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -135,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767782507801</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modified rag template">
+      <option name="closed" value="true" />
+      <created>1779258503832</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1779258503832</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
