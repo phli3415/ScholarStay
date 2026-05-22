@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="added agent template for key word extractor and memorySummarizer">
-      <change afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_chitChat.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_clarification.txt" afterDir="false" />
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Added prompt template for all 6 agents in the system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_keyWordExtraction.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_keyWordExtraction.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_memorySummarizer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_memorySummarizer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/utils/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/utils/config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +104,7 @@
       <workItem from="1770697405630" duration="1096000" />
       <workItem from="1770699159217" duration="41000" />
       <workItem from="1779257611528" duration="12634000" />
-      <workItem from="1779411066983" duration="8988000" />
+      <workItem from="1779411066983" duration="9963000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -173,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779420822256</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added prompt template for all 6 agents in the system">
+      <option name="closed" value="true" />
+      <created>1779436200793</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1779436200793</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +203,7 @@
     <MESSAGE value="modified rag template and" />
     <MESSAGE value="modified rag template" />
     <MESSAGE value="added agent template for key word extractor and memorySummarizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="added agent template for key word extractor and memorySummarizer" />
+    <MESSAGE value="Added prompt template for all 6 agents in the system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added prompt template for all 6 agents in the system" />
   </component>
 </project>
