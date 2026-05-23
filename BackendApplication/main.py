@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 
+from BackendApplication.app.utils.config import Config
 # Import core and database modules
 from app.core.firebase_auth import initialize_firebase
 from app.database import TORTOISE_ORM
@@ -12,6 +13,7 @@ from concurrent_log_handler import ConcurrentRotatingFileHandler
 import sys
 import time
 import uuid
+import re
 
 # Import API routers
 from app.api.v1 import user_router
@@ -19,6 +21,12 @@ from app.api.v1 import agent_router
 from app.controller import house_controller
 from app.controller import user_controller
 from app.controller import bookmark_controller
+from app.utils.config import Config
+from app.utils.llms import initialize_llm, initialize_embedding
+
+
+from contextlib import asynccontextmanager
+
 
 #Set up basic logging config, level = DEBUG / INFO
 logger = logging.getLogger(__name__)
@@ -26,7 +34,18 @@ logger.setLevel(logging.DEBUG)
 #logger.setLevel(logging.INFO)
 
 logger.handlers = [] #Clear default handlers
+handler = ConcurrentRotatingFileHandler(
+    Config.LOG_FILE,
+    maxBytes = Config.MAX_BYTES,
+    backupCount = Config.BACKUP_COUNT,
+)
 
+#Set handler level to DEBUG
+handler.setLevel(logging.DEBUG)
+handler.setFormatter(logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+))
+logger.addHandler(handler)
 
 
 # Create FastAPI app instance
@@ -52,32 +71,81 @@ app.add_middleware(
     allow_headers=["*"],    # Allows all headers
 )
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    '''
+    An asynchronous context manager that manages the FastAPI application lifecycle, responsible for initialization and cleanup during startup and shutdown.
 
-@app.on_event("startup")
-async def startup_event():
-    """
-    Application startup event.
-    - Initializes Firebase Admin SDK
-    - Initializes Tortoise ORM and creates database schemas
-    """
-    print("Starting up application...")
+    Args:
+        app (FastAPI): FastAPI application instance
+
+    Yields:
+        None: Finish initialization before yield, clean up after yield.
+
+    Raises:
+        ConnectionPoolError: Connection pool initialization failed.
+        Exception: Other unexpected errors.
+
+    '''
+
+    global graph, tool_config
+    logger.info("Starting up application")
     initialize_firebase()
 
     await Tortoise.init(config=TORTOISE_ORM)
-    await Tortoise.generate_schemas()
-    print("Database connection established.")
+    # await Tortoise.generate_schemas()
+    db_url = TORTOISE_ORM["connections"]["default"]
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    """
-    Application shutdown event.
-    - Closes database connections gracefully
-    """
-    print("Shutting down application...")
-    await Tortoise.close_connections()
-    print("Database connections closed.")
+    try:
+        llm_chat = initialize_llm(Config.LLM_TYPE)
+        llm_embedding = initialize_embedding(Config.LLM_TYPE)
 
 
+
+        tools = get_tools(llm_embedding)
+
+        # Create tool config
+        tool_config = ToolConfig(tools)
+
+        # Define database connection parameters: auto-commit, no prepared threshold, 5-second timeout
+        connection_kwargs = {"autocommit": True, "prepare_threshold": 0, "connect_timeout": 5}
+        # 创建数据库连接池：最大20个连接，最小2个活跃连接，超时120秒
+        db_connection_pool = ConnectionPool(
+            conninfo=Config.DB_URI,
+            max_size=20,
+            min_size=2,
+            kwargs=connection_kwargs,
+            timeout=120
+        )
+
+
+
+
+# @app.on_event("startup")
+# async def startup_event():
+#     """
+#     Application startup event.
+#     - Initializes Firebase Admin SDK
+#     - Initializes Tortoise ORM and creates database schemas
+#     """
+#     print("Starting up application...")
+#     initialize_firebase()
+#
+#     await Tortoise.init(config=TORTOISE_ORM)
+#     await Tortoise.generate_schemas()
+#     print("Database connection established.")
+#
+# @app.on_event("shutdown")
+# async def shutdown_event():
+#     """
+#     Application shutdown event.
+#     - Closes database connections gracefully
+#     """
+#     print("Shutting down application...")
+#     await Tortoise.close_connections()
+#     print("Database connections closed.")
+#
+#
 
 # --- API Routers ---
 # Include the user router with a prefix and tags for organization
