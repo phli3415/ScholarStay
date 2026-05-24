@@ -1,8 +1,3 @@
-# This file will contain the data pipeline for RAG.
-# It will include functions to:
-# 1. Generate a descriptive text document from a house listing object.
-# 2. Create a vector embedding from that text document.
-
 import os
 from dotenv import load_dotenv
 from typing import List
@@ -10,26 +5,30 @@ from langchain_openai import OpenAIEmbeddings
 from ..model.houses import Houses
 from tortoise.expressions import RawSQL
 import dotenv
+import logging
+from ..utils.llms import  initialize_embedding
+
+# Create logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+
 
 
 # --- Model Loading (at module level for one-time execution) ---
-# We load the model once when the application starts.
-# This is much more efficient than loading it on every request.
 dotenv.load_dotenv()
 
 try:
-    # The LangChain OpenAI client automatically finds the API key from the
-    # OPENAI_API_KEY environment variable. We get the model name from env vars
-    # for flexibility, with a sensible default.
-    embedding_model_name = os.getenv("TEXT_EMBEDDING_MODEL", "text-embedding-3-small")
+    # Loading embedding model.  
+    embedding_model_name = os.getenv("TEXT_ENBEDDING_MODEL", "text-embedding-3-small")
 
     embed_model = OpenAIEmbeddings(
         model=embedding_model_name
     )
-    print(f"Successfully loaded embedding model: {embedding_model_name}")
+    logger.info(f"Successfully loaded embedding model: {embedding_model_name}")
 
 except Exception as e:
-    print(f"Error loading OpenAI embedding model: {e}")
+    logger.error(f"Error loading embedding model: {e}")
     embed_model = None
 
 
