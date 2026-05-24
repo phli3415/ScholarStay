@@ -18,21 +18,4 @@ Analyze the User Question and Chat History to extract search filters matching ou
 [Latest User Question]
 {question}
 
-### OUTPUT JSON SCHEMA:
-Return a valid JSON object matching this structure exactly. No markdown formatting.
-{
-    "intent_type": "house_recommendation" | "chitchat" | "out_of_service",
-    "filters": {
-        "province": string | null,
-        "city": string | null,
-        "max_monthly_rent": number | null,
-        "has_kitchen": boolean | null,
-        "has_washer": boolean | null,
-        "has_parking": boolean | null,
-        "max_distance_to_university": number | null
-    },
-    "missing_fields_to_clarify": ["max_monthly_rent" | "max_distance_to_university" | "general_preference"]
-}
-
-
 

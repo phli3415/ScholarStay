@@ -107,7 +107,7 @@ def create_embedding(text: str) -> list[float]:
         logger.error(f"Error creating embedding: {e}, returning empty list")
         return []
 
-async def find_similar_listings(query: str, ids: list[int],   top_k: int = 3) -> List[str]:
+async def find_similar_listings(query: str, ids: list[int],   top_k: int = 3) -> List[int]:
     """
     Finds house listings from pgvector with semantic embeddings.
 
@@ -133,15 +133,14 @@ async def find_similar_listings(query: str, ids: list[int],   top_k: int = 3) ->
             .annotate(distance=RawSQL("embedding_vector <=> %s", [str(query_vector)])) \
             .filter(distance__lt=1) \
             .order_by("distance") \
-            .limit(top_k)
+            .limit(top_k) \
+            .values_list("id", flat=True)
 
         if not similar_listings_objects:
             return []
 
-        # 3. Convert the House objects into descriptive document strings.
-        listing_documents = [generate_listing_document(listing) for listing in similar_listings_objects]
 
-        return listing_documents
+        return similar_listings_objects
 
     except Exception as e:
         logger.error(f"Error during similarity search: {e}, returning empty list")

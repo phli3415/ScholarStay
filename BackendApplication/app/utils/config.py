@@ -19,6 +19,8 @@ class Config:
 
     LLM_TYPE = "openai"
 
+    EMBEDDING_HOUSES_RETURN = 3
+
 
     HOST = "0.0.0.0"
     PORT = 8080

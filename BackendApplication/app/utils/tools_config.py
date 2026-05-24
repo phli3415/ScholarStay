@@ -1,10 +1,14 @@
 from typing import List
 import numpy as np
-from langchain_chroma import Chroma
+# from langchain_chroma import Chroma
 from langchain.tools.retriever import create_retriever_tool
 from langchain_core.tools import tool
-from .config import Config
+from ..core.rag_pipeline import find_similar_listings
+from ..repository.house_repository import HouseRepository
+import copy
 
+from .config import Config
+from .Schema import HouseFilters
 
 def get_tools(llm_embedding):
     """
@@ -17,64 +21,86 @@ def get_tools(llm_embedding):
         list: 工具列表
         """
 
-    # 创建 Chroma 向量存储实例
-    vectorstore = Chroma(
-        persist_directory=Config.CHROMADB_DIRECTORY,
-        collection_name=Config.CHROMADB_COLLECTION_NAME,
-        embedding_function=llm_embedding,
-    )
-    # 将向量存储转换为检索器
-    retriever = vectorstore.as_retriever()
-    # 创建检索工具
-    retriever_tool = create_retriever_tool(
-        retriever,
-        name="retrieve",
-        description="这是健康档案查询工具，搜索并返回有关用户的健康档案信息。"
-    )
+    # # 创建 Chroma 向量存储实例
+    # vectorstore = Chroma(
+    #     persist_directory=Config.CHROMADB_DIRECTORY,
+    #     collection_name=Config.CHROMADB_COLLECTION_NAME,
+    #     embedding_function=llm_embedding,
+    # )
+    # # 将向量存储转换为检索器
+    # retriever = vectorstore.as_retriever()
+    # # 创建检索工具
+    # retriever_tool = create_retriever_tool(
+    #     retriever,
+    #     name="retrieve",
+    #     description="这是健康档案查询工具，搜索并返回有关用户的健康档案信息。"
+    # )
+    house_repository = HouseRepository()
 
-    # 自定义 multiply 工具
-    @tool
-    def multiply(a: float, b: float) -> float:
-        """这是计算两个数的乘积的工具，返回最终的计算结果"""
-        return a * b
 
-    # 新增的文本相似度匹配工具
     @tool
-    def find_most_similar(user_input: str, house_ids: List[int]) -> str:
+    async def find_most_similar_house(user_input: str, house_ids: List[int]) -> List[int]:
         """
-        在给定的候选字符串列表中，找出与目标字符串在语义上最相似的一个。
+        Among the provided houses, return the id of top three houses that matches user_input the best.
 
         Args:
-            target: 目标文本段落
-            candidates: 待比较的字符串数组/列表
+            user_input: User's requirement
+            house_ids: The ids of candidate houses
 
         Returns:
-            str: 候选列表中最相似的字符串
+            List[int]: The ids of the top three houses that matches user_input
         """
-        if not house_ids:
-            return "候选列表为空"
+        return await find_similar_listings(user_input, house_ids, top_k=Config.EMBEDDING_HOUSES_RETURN)
 
-        # 1. 将目标文本和候选文本全部转换为 Embedding 向量
-        target_embedding = np.array(llm_embedding.embed_query(target))
-        candidates_embeddings = np.array(llm_embedding.embed_documents(candidates))
+    @tool
+    async def filter_houses (house_requirement: HouseFilters) -> List[int]:
+        """
+        return a list of ids of houses that matches the requirement.
 
-        # 2. 计算余弦相似度
-        # 计算每个候选向量的模长
-        target_norm = np.linalg.norm(target_embedding)
-        candidates_norms = np.linalg.norm(candidates_embeddings, axis=1)
+        Args:
+            house_requirement: The requirement of houses
 
-        # 避免除以 0 的情况
-        if target_norm == 0 or np.any(candidates_norms == 0):
-            return candidates[0]
+        Returns:
+            List[int]: The ids of houses that matches the requirement
+        """
+        return await house_repository.filter_houses_ids(
+            province=house_requirement.province,
+            city=house_requirement.city,
+            street=house_requirement.street,
+            max_monthly_rent = house_requirement.max_monthly_rent,
+            has_kitchen = house_requirement.has_kitchen,
+            has_washer = house_requirement.has_washer,
+            has_parking = house_requirement.has_parking,
+            max_distance_to_university = house_requirement.max_distance_to_university,
+            is_rented= True
+        )
 
-        # 点积除以模长的乘积，得到余弦相似度列表
-        dot_products = np.dot(candidates_embeddings, target_embedding)
-        similarities = dot_products / (candidates_norms * target_norm)
+    @tool
+    async def loosen_requirement(house_requirement: HouseFilters, counters: int) -> HouseFilters:
+        """
+            return a loosen house requirement if there are no house sources in database meet the current requirement.
 
-        # 3. 找出相似度最大的索引
-        most_similar_index = np.argmax(similarities)
+            Args:
+                house_requirement: The original requirement of houses
+                counters: The current counter, representing the number of time loosen_requirement has been triggered.
 
-        return candidates[most_similar_index]
+            Returns:
+                HouseFilters: The new requirement with loosen requirements applied.
+        """
+        new_requirement = copy.deepcopy(house_requirement)
+        if counters == 0:
+            if house_requirement.max_monthly_rent:
+                new_requirement.max_monthly_rent = int(house_requirement.max_monthly_rent * 1.15)
+
+        elif counters == 1:
+            if house_requirement.max_distance_to_university:
+                new_requirement.max_distance_to_university = int(house_requirement.max_distance_to_university + 2)
+
+        else:
+            new_requirement.has_kitchen = new_requirement.has_washer = new_requirement.has_parking = None
+
+        return new_requirement
+
 
     # 返回工具列表（包含新工具）
-    return [retriever_tool, multiply, find_most_similar]
+    return [find_most_similar_house, filter_houses, loosen_requirement]
