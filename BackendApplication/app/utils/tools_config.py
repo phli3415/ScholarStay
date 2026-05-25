@@ -12,13 +12,13 @@ from .Schema import HouseFilters
 
 def get_tools(llm_embedding):
     """
-    创建并返回工具列表
+    Create and return a tool lsit.
 
     Args:
-        llm_embedding: 嵌入模型实例，用于初始化向量存储
+        N/A
 
     Returns:
-        list: 工具列表
+        list: tool lsit
         """
 
     # # 创建 Chroma 向量存储实例
@@ -72,7 +72,7 @@ def get_tools(llm_embedding):
             has_washer = house_requirement.has_washer,
             has_parking = house_requirement.has_parking,
             max_distance_to_university = house_requirement.max_distance_to_university,
-            is_rented= True
+            is_rented= False
         )
 
     @tool
