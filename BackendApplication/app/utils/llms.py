@@ -103,7 +103,7 @@ def initialize_embedding(llm_type: str = DEFAULT_LLM_MODEL)-> OpenAIEmbeddings:
         raise LLMInitializationError(f"LLM initialization failed: {str(ex)}")
 
 
-def get_models(llm_type: str = DEFAULT_LLM_MODEL) -> ChatOpenAI:
+def get_chat_models(llm_type: str = DEFAULT_LLM_MODEL) -> ChatOpenAI:
     """
     return a llm instance, provide default value and error handling
 
@@ -111,12 +111,31 @@ def get_models(llm_type: str = DEFAULT_LLM_MODEL) -> ChatOpenAI:
         llm_type (str): LLM types
 
     Returns:
-        ChatOpenAI: LLM Instance
+        OpenAIEmbeddings: LLM Instance
     """
     try:
         return initialize_llm(llm_type)
     except LLMInitializationError as e:
-        logger.warning(f"retry with default settings: {str(e)}")
+        logger.warning(f"LLM initialization failed. Retry with default settings: {str(e)}")
         if llm_type != DEFAULT_LLM_MODEL:
             return initialize_llm(DEFAULT_LLM_MODEL)
+        raise
+
+
+def get_embedding_models(embedding_type: str = DEFAULT_LLM_MODEL) -> OpenAIEmbeddings:
+    """
+    return an embeddings instance, provide default value and error handling
+
+    Args:
+        embedding_type (str): Embedding Model types
+
+    Returns:
+        OpenAIEmbeddings: Embedding Model Instance
+    """
+    try:
+        return initialize_embedding(embedding_type)
+    except LLMInitializationError as e:
+        logger.warning(f"Embedding initialization failed. Retry with default settings: {str(e)}")
+        if embedding_type != DEFAULT_LLM_MODEL:
+            return initialize_embedding(DEFAULT_LLM_MODEL)
         raise
