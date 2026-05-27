@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Deprecated agent_tools. Change hard coded is_rented to false in filter_houses.">
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Defined MessageState for communication between nodes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendApplication/app/llm/agenticWorkflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/llm/agenticWorkflow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/utils/llms.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/utils/llms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/utils/Schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/utils/Schema.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,8 @@
       <workItem from="1779411066983" duration="11227000" />
       <workItem from="1779438484284" duration="2538000" />
       <workItem from="1779503573365" duration="29089000" />
-      <workItem from="1779672022780" duration="5487000" />
+      <workItem from="1779672022780" duration="12670000" />
+      <workItem from="1779855039220" duration="3858000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -230,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779673538311</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Defined MessageState for communication between nodes">
+      <option name="closed" value="true" />
+      <created>1779678111466</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779678111466</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +269,7 @@
     <MESSAGE value="modified rag_pipeline" />
     <MESSAGE value="added tools config, created output schema for keyword extraction agent." />
     <MESSAGE value="Deprecated agent_tools. Change hard coded is_rented to false in filter_houses." />
-    <option name="LAST_COMMIT_MESSAGE" value="Deprecated agent_tools. Change hard coded is_rented to false in filter_houses." />
+    <MESSAGE value="Defined MessageState for communication between nodes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Defined MessageState for communication between nodes" />
   </component>
 </project>
