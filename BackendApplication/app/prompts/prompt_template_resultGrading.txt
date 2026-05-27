@@ -11,8 +11,8 @@ Return a valid JSON object matching this structure exactly. No markdown headers,
     "relevance_score": ("yes" | "no")[] // The array length must exactly match the number of houses provided below.
 }
 
-User Question:
-{question}
+User Contexts:
+{messages}
 
 Retrieved Houses:
-{house}
+{houses}

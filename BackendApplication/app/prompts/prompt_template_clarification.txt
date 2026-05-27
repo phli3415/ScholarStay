@@ -12,4 +12,7 @@ System cannot perform an accurate database search because some critical filters 
 
 ### INPUT DATA:
 [Missing Fields to Clarify]: {missing_fields_to_clarify}
+
 [Latest User Question]: {question}
+
+[User Context]: {messages}

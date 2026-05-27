@@ -97,6 +97,8 @@ class MessageState (TypedDict):
     rewrite_counter: Annotated[int, "The number of times loosen_requirement has been triggered"]
     # Define relevance_score: List[str]], whether each houses meet user's requirement.
     relevance_score: Annotated[list[Literal["yes", "No"]], "Whether each houses meet user's requirement"]
+    # Define recommendation: List[str]], the reason why each house are recommended.
+    recommendation: Annotated[list[str], "why each house are recommended"]
 
 
 # Define the tool configuration management class to manage tools and their routing configurations
@@ -411,7 +413,7 @@ def test_connection(db_connection_pool: ConnectionPool) -> bool:
     return True
 
 
-# Define the triage Agent Node function
+# Define the key_word_extraction_agent Node function
 def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
     """Agent function that determines whether to clarifications are needed, attract keywords or chitchat based on the user's question.
 
@@ -443,23 +445,339 @@ def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, st
         # Filter messages using custom in-thread storage logic
         messages = filter_messages(state["messages"])
 
+        target_tool_name = 'filter_houses'
+
         # Bind the tools to the LLM
-        llm_chat_with_tool = llm_chat.bind_tools(tool_config.get_tools())
+        single_tool = next((tool for tool in tool_config.get_tools() if tool.name == target_tool_name), None)
+
+        # tool not found: raise error
+        if not single_tool:
+            raise ValueError(f"target tool: '{target_tool_name}' not found.")
+        llm_chat_with_tool = llm_chat.bind_tools(single_tool)
 
         # Create the agent processing chain
-        agent_chain = create_chain(llm_chat_with_tool, Config.PROMPT_TEMPLATE_TXT_KEYWORD)
+        agent_chain = create_chain(llm_chat_with_tool, Config.PROMPT_TEMPLATE_TXT_KEYWORD, HouseFilters)
 
         # Invoke the agent chain to process the messages
         response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
         # logger.info(f"Agent response: {response}")
 
         # Return the updated conversation state
-        return {"messages": [response]}
+        return {"filtered value": [response]}
 
     # Catch any exceptions
     except Exception as e:
         # Log the error details
-        logger.error(f"Error in agent processing: {e}")
+        logger.error(f"Error in key_word_extraction_agent processing: {e}")
+
+        # Return an error message state
+        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+
+
+# Define the clarification_generation_agent Node function
+def clarification_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+    """Agent function generate a clarification message when needed.
+
+    Args:
+        state: The current conversation state.
+        config: Runtime configuration.
+        store: Data store instance.
+        llm_chat: The Chat model instance.
+        tool_config: Tool configuration parameters.
+
+    Returns:
+        dict: The updated conversation state.
+    """
+    # Log that the agent has started processing the query
+    logger.info("clarification generation agent processing user query")
+
+    # Define the storage namespace using the user ID
+    namespace = ("memories", config["configurable"]["user_id"])
+
+    # Try to execute the following block of code
+    try:
+        # Get the last message, which represents the user's question
+        question = state["messages"][-1]
+        logger.info(f"agent question:{question}")
+
+        # Retrieve relevant information using custom cross-thread persistent memory storage
+        user_info = store_memory(question, config, store)
+
+        # Filter messages using custom in-thread storage logic
+        messages = filter_messages(state["messages"])
+
+        # Create the agent processing chain
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CLARIFICATION)
+
+        # Invoke the agent chain to process the messages
+        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        # logger.info(f"clarification generation agent response: {response}")
+
+        # Return the updated conversation state
+        return {"message": [response]}
+
+    # Catch any exceptions
+    except Exception as e:
+        # Log the error details
+        logger.error(f"Error in clarification_generation_agent processing: {e}")
+
+        # Return an error message state
+        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+# Define the clarification_generation_agent Node function
+def clarification_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+    """Agent function generate a clarification message when needed.
+
+    Args:
+        state: The current conversation state.
+        config: Runtime configuration.
+        store: Data store instance.
+        llm_chat: The Chat model instance.
+        tool_config: Tool configuration parameters.
+
+    Returns:
+        dict: The updated conversation state.
+    """
+    # Log that the agent has started processing the query
+    logger.info("clarification generation agent processing user query")
+
+    # Define the storage namespace using the user ID
+    namespace = ("memories", config["configurable"]["user_id"])
+
+    # Try to execute the following block of code
+    try:
+        # Get the last message, which represents the user's question
+        question = state["messages"][-1]
+        logger.info(f"agent question:{question}")
+
+        # Retrieve relevant information using custom cross-thread persistent memory storage
+        user_info = store_memory(question, config, store)
+
+        # Filter messages using custom in-thread storage logic
+        messages = filter_messages(state["messages"])
+
+        # Create the agent processing chain
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CLARIFICATION)
+
+        # Invoke the agent chain to process the messages
+        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        # logger.info(f"clarification generation agent response: {response}")
+
+        # Return the updated conversation state
+        return {"message": [response]}
+
+    # Catch any exceptions
+    except Exception as e:
+        # Log the error details
+        logger.error(f"Error in clarification_generation_agent processing: {e}")
+
+        # Return an error message state
+        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+
+# Define the chitchat_agent Node function
+def chitchat_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+    """Agent function generate a chitchat message when needed.
+
+    Args:
+        state: The current conversation state.
+        config: Runtime configuration.
+        store: Data store instance.
+        llm_chat: The Chat model instance.
+        tool_config: Tool configuration parameters.
+
+    Returns:
+        dict: The updated conversation state.
+    """
+    # Log that the agent has started processing the query
+    logger.info("chitchat generation agent processing user query")
+
+    # Define the storage namespace using the user ID
+    namespace = ("memories", config["configurable"]["user_id"])
+
+    # Try to execute the following block of code
+    try:
+        # Get the last message, which represents the user's question
+        question = state["messages"][-1]
+        logger.info(f"agent question:{question}")
+
+        # Retrieve relevant information using custom cross-thread persistent memory storage
+        user_info = store_memory(question, config, store)
+
+        # Filter messages using custom in-thread storage logic
+        messages = filter_messages(state["messages"])
+
+        # Create the agent processing chain
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CHITCHAT)
+
+        # Invoke the agent chain to process the messages
+        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        # logger.info(f"clarification generation agent response: {response}")
+
+        # Return the updated conversation state
+        return {"message": [response]}
+
+    # Catch any exceptions
+    except Exception as e:
+        # Log the error details
+        logger.error(f"Error in chitchat_agent processing: {e}")
+
+        # Return an error message state
+        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+
+# Define the Grading Node function
+def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+    """Agent function that compare the similarity of house sources and user input.
+
+    Args:
+        state: The current conversation state.
+        config: Runtime configuration.
+        store: Data store instance.
+        llm_chat: The Chat model instance.
+        tool_config: Tool configuration parameters.
+
+    Returns:
+        dict: The updated conversation state.
+    """
+    # Log that the agent has started processing the query
+    logger.info("result grading generation agent processing user query")
+
+    # Define the storage namespace using the user ID
+    namespace = ("memories", config["configurable"]["user_id"])
+
+    # Try to execute the following block of code
+    try:
+        # Get the last message, which represents the user's question
+        question = state["messages"][-1]
+        logger.info(f"agent question:{question}")
+
+        # Retrieve relevant information using custom cross-thread persistent memory storage
+        user_info = store_memory(question, config, store)
+
+        # Filter messages using custom in-thread storage logic
+        messages = filter_messages(state["messages"])
+
+        # Create the agent processing chain
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_GRADE, HouseRelevanceScore)
+
+        # Invoke the agent chain to process the messages
+
+        # TODO: extract houses from vector DB
+        # response = agent_chain.invoke({"messages": messages, "houses": , "userInfo": user_info})
+        # logger.info(f"clarification generation agent response: {response}")
+
+        # Return the updated conversation state
+        return {"relevance_score": [response]}
+
+    # Catch any exceptions
+    except Exception as e:
+        # Log the error details
+        logger.error(f"Error in result_grading_agent processing: {e}")
+
+        # Return an error message state
+        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+
+# Define the recommendation_generation_agent Node function
+def recommendation_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+    """Agent function generate a chitchat message when needed.
+
+    Args:
+        state: The current conversation state.
+        config: Runtime configuration.
+        store: Data store instance.
+        llm_chat: The Chat model instance.
+        tool_config: Tool configuration parameters.
+
+    Returns:
+        dict: The updated conversation state.
+    """
+    # Log that the agent has started processing the query
+    logger.info("chitchat generation agent processing user query")
+
+    # Define the storage namespace using the user ID
+    namespace = ("memories", config["configurable"]["user_id"])
+
+    # Try to execute the following block of code
+    try:
+        # Get the last message, which represents the user's question
+        question = state["messages"][-1]
+        logger.info(f"agent question:{question}")
+
+        # Retrieve relevant information using custom cross-thread persistent memory storage
+        user_info = store_memory(question, config, store)
+
+        # Filter messages using custom in-thread storage logic
+        messages = filter_messages(state["messages"])
+
+        # Create the agent processing chain
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CHITCHAT, RecomendationText)
+
+        # Invoke the agent chain to process the messages
+        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        # logger.info(f"clarification generation agent response: {response}")
+
+        # Return the updated conversation state
+        return {"recommendation": [response]}
+
+    # Catch any exceptions
+    except Exception as e:
+        # Log the error details
+        logger.error(f"Error in recommendation_generation_agent processing: {e}")
+
+        # Return an error message state
+        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+# Define the memory_summarization_agent Node function
+def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+    """Agent function generate a chitchat message when needed.
+
+    Args:
+        state: The current conversation state.
+        config: Runtime configuration.
+        store: Data store instance.
+        llm_chat: The Chat model instance.
+        tool_config: Tool configuration parameters.
+
+    Returns:
+        dict: The updated conversation state.
+    """
+    # Log that the agent has started processing the query
+    logger.info("chitchat generation agent processing user query")
+
+    # Define the storage namespace using the user ID
+    namespace = ("memories", config["configurable"]["user_id"])
+
+    # Try to execute the following block of code
+    try:
+        # Get the last message, which represents the user's question
+        question = state["messages"][-1]
+        logger.info(f"agent question:{question}")
+
+        # Retrieve relevant information using custom cross-thread persistent memory storage
+        user_info = store_memory(question, config, store)
+
+        # Filter messages using custom in-thread storage logic
+        messages = filter_messages(state["messages"])
+
+
+        # Create the agent processing chain
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CHITCHAT)
+
+        # Invoke the agent chain to process the messages
+        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        # logger.info(f"clarification generation agent response: {response}")
+
+        state["messages"] = state["messages"][-3:]
+        # Return the updated conversation state
+        return {"message": [response]}
+
+    # Catch any exceptions
+    except Exception as e:
+        # Log the error details
+        logger.error(f"Error in memory_summarization_agent processing: {e}")
 
         # Return an error message state
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}

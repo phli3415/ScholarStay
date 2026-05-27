@@ -8,3 +8,5 @@ The user's latest message is NOT related to a direct house search (it is generic
 
 ### INPUT DATA:
 [Latest User Message]: {question}
+
+[Contexts]: {messages}
