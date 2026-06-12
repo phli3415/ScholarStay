@@ -19,11 +19,11 @@ from typing_extensions import TypedDict
 # Import LangChain's prompt template classes
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
 # Import LangChain's base message class
-from langchain_core.messages import BaseMessage
+from langchain_core.messages import BaseMessage, AIMessage, RemoveMessage
 # Import the message utility function to append messages
 from langgraph.graph.message import add_messages
 # Import pre-built tool conditions and tool nodes
-from langgraph.prebuilt import tools_condition, ToolNode
+from langgraph.prebuilt import ToolNode
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from langchain_core.messages import ToolMessage
 # Import definitions for the state graph and START/END nodes
@@ -414,7 +414,7 @@ def test_connection(db_connection_pool: ConnectionPool) -> bool:
 
 
 # Define the key_word_extraction_agent Node function
-def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
     """Agent function that determines whether to clarifications are needed, attract keywords or chitchat based on the user's question.
 
     Args:
@@ -433,50 +433,34 @@ def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, st
     # Define the storage namespace using the user ID
     namespace = ("memories", config["configurable"]["user_id"])
 
-    # Try to execute the following block of code
     try:
-        # Get the last message, which represents the user's question
         question = state["messages"][-1]
         logger.info(f"agent question:{question}")
 
-        # Retrieve relevant information using custom cross-thread persistent memory storage
         user_info = store_memory(question, config, store)
-
-        # Filter messages using custom in-thread storage logic
         messages = filter_messages(state["messages"])
 
-        target_tool_name = 'filter_houses'
+        # Structured output extraction — no tool binding needed here
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_KEYWORD, KeyWordsExtractionResult)
 
-        # Bind the tools to the LLM
-        single_tool = next((tool for tool in tool_config.get_tools() if tool.name == target_tool_name), None)
+        response: KeyWordsExtractionResult = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        logger.info(f"key_word_extraction_agent response: {response}")
 
-        # tool not found: raise error
-        if not single_tool:
-            raise ValueError(f"target tool: '{target_tool_name}' not found.")
-        llm_chat_with_tool = llm_chat.bind_tools(single_tool)
+        return {
+            "intent_type": response.intent_type,
+            "original_requirement": response.filters,
+            "current_requirement": response.filters,
+            "missing_fields_to_clarify": response.missing_fields_to_clarify,
+        }
 
-        # Create the agent processing chain
-        agent_chain = create_chain(llm_chat_with_tool, Config.PROMPT_TEMPLATE_TXT_KEYWORD, HouseFilters)
-
-        # Invoke the agent chain to process the messages
-        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
-        # logger.info(f"Agent response: {response}")
-
-        # Return the updated conversation state
-        return {"cyrrent_requirement": [response]}
-
-    # Catch any exceptions
     except Exception as e:
-        # Log the error details
         logger.error(f"Error in key_word_extraction_agent processing: {e}")
-
-        # Return an error message state
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 
 
 # Define the clarification_generation_agent Node function
-def clarification_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+def clarification_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
     """Agent function generate a clarification message when needed.
 
     Args:
@@ -527,7 +511,7 @@ def clarification_generation_agent(state: MessageState, config: RunnableConfig, 
 
 
 # Define the chitchat_agent Node function
-def chitchat_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+def chitchat_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
     """Agent function generate a chitchat message when needed.
 
     Args:
@@ -577,61 +561,60 @@ def chitchat_agent(state: MessageState, config: RunnableConfig, *, store: BaseSt
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 
+# Define the OutOfService Node function
+def out_of_service_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
+    """Intercepts requests outside UMass Amherst service area and returns a boundary notice."""
+    logger.info("out_of_service_agent: request outside service area")
+    msg = AIMessage(content=(
+        "Sorry, Scholar Stay currently only serves housing near UMass Amherst. "
+        "I'm unable to help with listings in other areas. "
+        "If you're looking for housing near UMass Amherst, I'd be happy to assist!"
+    ))
+    return {"messages": [msg]}
+
+
 # Define the Grading Node function
-def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
-    """Agent function that compare the similarity of house sources and user input.
+def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
+    """Grades each candidate house from top_matched_ids against the user's original requirements."""
+    logger.info("result_grading_agent processing")
 
-    Args:
-        state: The current conversation state.
-        config: Runtime configuration.
-        store: Data store instance.
-        llm_chat: The Chat model instance.
-        tool_config: Tool configuration parameters.
+    rewrite_counter = state.get("rewrite_counter", 0)
+    top_ids = state.get("top_matched_ids", [])
 
-    Returns:
-        dict: The updated conversation state.
-    """
-    # Log that the agent has started processing the query
-    logger.info("result grading generation agent processing user query")
+    # Force pass when max retries reached — break infinite loop
+    if rewrite_counter >= 3:
+        logger.info("rewrite_counter >= 3, forcing all scores to 'yes'")
+        return {"relevance_score": ["yes"] * len(top_ids)}
 
-    # Define the storage namespace using the user ID
-    namespace = ("memories", config["configurable"]["user_id"])
+    if not top_ids:
+        logger.warning("No top_matched_ids available for grading")
+        return {"relevance_score": []}
 
-    # Try to execute the following block of code
     try:
-        # Get the last message, which represents the user's question
         question = state["messages"][-1]
-        logger.info(f"agent question:{question}")
-
-        # Retrieve relevant information using custom cross-thread persistent memory storage
         user_info = store_memory(question, config, store)
-
-        # Filter messages using custom in-thread storage logic
         messages = filter_messages(state["messages"])
 
-        # Create the agent processing chain
         agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_GRADE, HouseRelevanceScore)
 
-        # Invoke the agent chain to process the messages
+        # TODO: fetch full house details from DB for each id in top_ids before grading
+        # houses = fetch_house_details(top_ids)
+        # scores = [
+        #     agent_chain.invoke({"question": question, "house": h, "messages": messages, "userInfo": user_info}).binary_score
+        #     for h in houses
+        # ]
+        # return {"relevance_score": scores}
 
-        # TODO: extract houses from vector DB
-        # response = agent_chain.invoke({"messages": messages, "houses": , "userInfo": user_info})
-        # logger.info(f"clarification generation agent response: {response}")
+        # Placeholder: treat all as "yes" until house fetching is wired up
+        return {"relevance_score": ["yes"] * len(top_ids)}
 
-        # Return the updated conversation state
-        return {"relevance_score": [response]}
-
-    # Catch any exceptions
     except Exception as e:
-        # Log the error details
-        logger.error(f"Error in result_grading_agent processing: {e}")
-
-        # Return an error message state
+        logger.error(f"Error in result_grading_agent: {e}")
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 
 # Define the recommendation_generation_agent Node function
-def recommendation_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+def recommendation_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
     """Agent function generate a chitchat message when needed.
 
     Args:
@@ -681,7 +664,7 @@ def recommendation_generation_agent(state: MessageState, config: RunnableConfig,
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 # Define the memory_summarization_agent Node function
-def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
+def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
     """Agent function generate a chitchat message when needed.
 
     Args:
@@ -700,36 +683,22 @@ def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, s
     # Define the storage namespace using the user ID
     namespace = ("memories", config["configurable"]["user_id"])
 
-    # Try to execute the following block of code
     try:
-        # Get the last message, which represents the user's question
         question = state["messages"][-1]
         logger.info(f"agent question:{question}")
 
-        # Retrieve relevant information using custom cross-thread persistent memory storage
         user_info = store_memory(question, config, store)
-
-        # Filter messages using custom in-thread storage logic
         messages = filter_messages(state["messages"])
 
-
-        # Create the agent processing chain
         agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_SUMMARY)
-
-        # Invoke the agent chain to process the messages
         response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
-        # logger.info(f"clarification generation agent response: {response}")
 
-        state["messages"] = state["messages"][-3:]
-        # Return the updated conversation state
-        return {"message": [response]}
+        # Delete all but the last 3 messages, then prepend the summary
+        messages_to_delete = [RemoveMessage(id=m.id) for m in state["messages"][:-3]]
+        return {"messages": messages_to_delete + [AIMessage(content=response.content)]}
 
-    # Catch any exceptions
     except Exception as e:
-        # Log the error details
         logger.error(f"Error in memory_summarization_agent processing: {e}")
-
-        # Return an error message state
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 
@@ -737,119 +706,83 @@ def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, s
 
 
 
-# Define Edge: determine the next route based on the grading result in the state
-def route_after_grade(state: MessageState) -> Literal["generate", "rewrite"]:
-    """
-    Determine the next route based on the grading result in the state,
-    including enhanced state validation and fault tolerance handling.
+# ---------------------------------------------------------------------------
+# Tool nodes — direct invocation, no LLM, each receives only its own tool
+# ---------------------------------------------------------------------------
 
-    Args:
-        state: The current conversation state, expected to contain 'messages' and 'relevance_score' fields.
-
-    Returns:
-        Literal["generate", "rewrite"]: The target node for the next step.
-    """
-    # Check if the state is a valid dictionary; if invalid, log an error and default to rewrite
-    if not isinstance(state, dict):
-        logger.error("State is not a valid dictionary, defaulting to rewrite")
-        return "rewrite"
-
-    # Check if the state contains the messages field; if missing, log an error and default to rewrite
-    if "messages" not in state or not isinstance(state["messages"], (list, tuple)):
-        logger.error("State missing valid messages field, defaulting to rewrite")
-        return "rewrite"
-
-    # Check if the messages list is empty; if empty, log a warning and default to rewrite
-    if not state["messages"]:
-        logger.warning("Messages list is empty, defaulting to rewrite")
-        return "rewrite"
-
-    # Retrieve the relevance_score from the state, defaulting to None if it doesn't exist
-    relevance_score = state.get("relevance_score")
-    # Retrieve the rewrite_count from the state, defaulting to 0
-    rewrite_count = state.get("rewrite_count", 0)
-    logger.info(f"Routing based on relevance_score: {relevance_score}, rewrite_count: {rewrite_count}")
-
-    # If the rewrite count exceeds 3 times, force routing to generate
-    if rewrite_count >= 3:
-        logger.info("Max rewrite limit reached, proceeding to generate")
-        return "generate"
-
+async def sql_query_tool_node(state: MessageState, *, filter_houses_tool) -> dict:
+    """Executes SQL hard-filter using current_requirement, writes sql_house_ids."""
+    filters = state.get("current_requirement")
+    if not filters:
+        logger.warning("No current_requirement for SQL query")
+        return {"sql_house_ids": []}
     try:
-        # Check if the relevance_score is a valid string; if not, treat it as an invalid score
-        if not isinstance(relevance_score, str):
-            logger.warning(f"Invalid relevance_score type: {type(relevance_score)}, defaulting to rewrite")
-            return "rewrite"
-
-        # If the grading result is "yes", indicating the document is relevant, route to the generate node
-        if relevance_score.lower() == "yes":
-            logger.info("Documents are relevant, proceeding to generate")
-            return "generate"
-
-        # If the grading result is "no" or any other value (including an empty string), route to the rewrite node
-        logger.info("Documents are not relevant or scoring failed, proceeding to rewrite")
-        return "rewrite"
-
-    except AttributeError:
-        # Catch exceptions where relevance_score does not support the lower() method (e.g., None), default to rewrite
-        logger.error("relevance_score is not a string or is None, defaulting to rewrite")
-        return "rewrite"
+        house_ids = await filter_houses_tool.ainvoke({"house_requirement": filters})
+        logger.info(f"SQL query returned {len(house_ids)} IDs")
+        return {"sql_house_ids": house_ids}
     except Exception as e:
-        # Catch any other unexpected exceptions, log detailed error info, and default to rewrite
-        logger.error(f"Unexpected error in route_after_grade: {e}, defaulting to rewrite")
-        return "rewrite"
+        logger.error(f"Error in sql_query_tool_node: {e}")
+        return {"sql_house_ids": []}
 
 
-# Define Edge: dynamically determine the next route based on the tool execution results
-def route_after_tools(state: MessageState, tool_config: ToolConfig) -> Literal["clarification", "key_word"]:
-    """
-    Dynamically determine the next route based on the tool execution results,
-    using a configuration dictionary to support multiple tools and error handling.
-
-    Args:
-        state: The current conversation state, containing message history and potential tool results.
-        tool_config: Configuration parameters for tools.
-
-    Returns:
-        Literal["generate", "grade_documents"]: The target node for the next step.
-    """
-    # Check if the state contains a valid message list; if empty or invalid, log an error and default to generate
-    if not state.get("messages") or not isinstance(state["messages"], list):
-        logger.error("Messages state is empty or invalid, defaulting to generate")
-        return "generate"
-
+async def rag_tool_node(state: MessageState, *, find_similar_tool) -> dict:
+    """Semantic search within sql_house_ids, writes top_matched_ids (top 3)."""
+    sql_ids = state.get("sql_house_ids", [])
+    if not sql_ids:
+        logger.warning("No sql_house_ids for RAG search")
+        return {"top_matched_ids": []}
+    user_input = state.get("user_input", "")
     try:
-        # Retrieve the last message in the state to determine the source of the tool execution
-        last_message = state["messages"][-1]
-
-        # Check if the message has a valid 'name' attribute; if not, route to generate
-        if not hasattr(last_message, "name") or last_message.name is None:
-            logger.info("Last message has no name attribute, routing to generate")
-            return "generate"
-
-        # Check if the message originates from a registered tool
-        tool_name = last_message.name
-        if tool_name not in tool_config.get_tool_names():
-            logger.info(f"Unknown tool {tool_name}, routing to generate")
-            return "generate"
-
-        # Determine routing based on the configuration dictionary; default to generate if no configuration exists
-        target = tool_config.get_tool_routing_config().get(tool_name, "generate")
-        logger.info(f"Tool {tool_name} routed to {target} based on config")
-        return target
-
-    except IndexError:
-        # Catch exceptions where the message list is empty or an indexing error occurs; log and default to generate
-        logger.error("No messages available in state, defaulting to generate")
-        return "generate"
-    except AttributeError:
-        # Catch exceptions related to invalid message object attribute access; log and default to generate
-        logger.error("Invalid message object, defaulting to generate")
-        return "generate"
+        # TODO: pgvector RAG search not yet wired up — using sql_ids[:3] as placeholder
+        top_ids = await find_similar_tool.ainvoke({"user_input": user_input, "house_ids": sql_ids})
+        logger.info(f"RAG search returned top IDs: {top_ids}")
+        return {"top_matched_ids": top_ids}
     except Exception as e:
-        # Catch any other unexpected exceptions, log detailed error info, and default to generate
-        logger.error(f"Unexpected error in route_after_tools: {e}, defaulting to generate")
-        return "generate"
+        logger.error(f"Error in rag_tool_node: {e}")
+        return {"top_matched_ids": sql_ids[:3]}
+
+
+async def relax_requirements_tool_node(state: MessageState, *, loosen_tool) -> dict:
+    """Relaxes current_requirement by one step and increments rewrite_counter."""
+    current_req = state.get("current_requirement")
+    rewrite_counter = state.get("rewrite_counter", 0)
+    if not current_req:
+        logger.warning("No current_requirement for relax")
+        return {"rewrite_counter": rewrite_counter + 1}
+    try:
+        new_req = await loosen_tool.ainvoke({"house_requirement": current_req, "counters": rewrite_counter})
+        logger.info(f"Relaxed requirements (counter={rewrite_counter}): {new_req}")
+        return {"current_requirement": new_req, "rewrite_counter": rewrite_counter + 1}
+    except Exception as e:
+        logger.error(f"Error in relax_requirements_tool_node: {e}")
+        return {"rewrite_counter": rewrite_counter + 1}
+
+
+# ---------------------------------------------------------------------------
+# Conditional edge functions
+# ---------------------------------------------------------------------------
+
+def route_after_extractor(state: MessageState) -> Literal["go_chitchat", "go_out_of_service", "go_clarify", "go_sql"]:
+    """Routes after ExtractorNode based on intent_type and missing fields."""
+    intent = state.get("intent_type")
+    if intent == "chitchat":
+        return "go_chitchat"
+    if intent == "out_of_service":
+        return "go_out_of_service"
+    if state.get("missing_fields_to_clarify"):
+        return "go_clarify"
+    return "go_sql"
+
+
+def route_after_grader(state: MessageState) -> Literal["go_generator", "go_relax"]:
+    """Routes after GraderNode: proceed to generation or relax and retry."""
+    scores = state.get("relevance_score", [])
+    rewrite_counter = state.get("rewrite_counter", 0)
+    if rewrite_counter >= 3 or "no" not in [s.lower() for s in scores]:
+        logger.info(f"Grader routing to generator (counter={rewrite_counter}, scores={scores})")
+        return "go_generator"
+    logger.info(f"Grader routing to relax (counter={rewrite_counter}, scores={scores})")
+    return "go_relax"
 
 
 # Create and configure the state graph
@@ -913,53 +846,75 @@ def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, to
         raise ConnectionPoolError(f"Failed to initialize storage: {str(e)}")
 
 
-    # Create the state graph instance, using MessagesState as the state schema
+    # Extract individual tools by name — each node only receives its own tool
+    tools = tool_config.get_tools()
+    filter_houses_tool = next((t for t in tools if t.name == "filter_houses"), None)
+    find_similar_tool  = next((t for t in tools if t.name == "find_most_similar_house"), None)
+    loosen_tool        = next((t for t in tools if t.name == "loosen_requirement"), None)
+
+    if not all([filter_houses_tool, find_similar_tool, loosen_tool]):
+        raise ValueError("One or more required tools are missing from tool_config")
+
+    # Async wrappers so each tool node closes over its single tool
+    async def _sql_node(state: MessageState) -> dict:
+        return await sql_query_tool_node(state, filter_houses_tool=filter_houses_tool)
+
+    async def _rag_node(state: MessageState) -> dict:
+        return await rag_tool_node(state, find_similar_tool=find_similar_tool)
+
+    async def _relax_node(state: MessageState) -> dict:
+        return await relax_requirements_tool_node(state, loosen_tool=loosen_tool)
+
+    # Build the state graph
     workflow = StateGraph(MessageState)
 
-    # Add the clarification agent node
-    workflow.add_node("clarification", lambda state, config: clarification_generation_agent(state, config, store=store, llm_chat=llm_chat,
-                                                           tool_config=tool_config))
-    # Add the key_word node
-    workflow.add_node("key_word", lambda state, config: key_word_extraction_agent(state, config, store=store, llm_chat=llm_chat,
-                                                           tool_config=tool_config))
-    # Add the chitchat node
-    workflow.add_node("chitchat",
-                      lambda state, config: chitchat_agent(state, config, store=store, llm_chat=llm_chat,
-                                                                      tool_config=tool_config))
-    # Add the result_grading node
-    workflow.add_node("result_grading",
-                      lambda state, config: result_grading_agent(state, config, store=store, llm_chat=llm_chat,
-                                                                      tool_config=tool_config))
+    # LLM agent nodes — no tool binding, each gets only store + llm_chat
+    workflow.add_node("ExtractorNode",    lambda state, config: key_word_extraction_agent(state, config, store=store, llm_chat=llm_chat))
+    workflow.add_node("ClarifyNode",      lambda state, config: clarification_generation_agent(state, config, store=store, llm_chat=llm_chat))
+    workflow.add_node("ChitchatNode",     lambda state, config: chitchat_agent(state, config, store=store, llm_chat=llm_chat))
+    workflow.add_node("OutOfServiceNode", lambda state, config: out_of_service_agent(state, config, store=store, llm_chat=llm_chat))
+    workflow.add_node("GraderNode",       lambda state, config: result_grading_agent(state, config, store=store, llm_chat=llm_chat))
+    workflow.add_node("GeneratorNode",    lambda state, config: recommendation_generation_agent(state, config, store=store, llm_chat=llm_chat))
 
-    # Add the recommendation_generation node
-    workflow.add_node("recommendation_generation",
-                      lambda state, config: recommendation_generation_agent(state, config, store=store, llm_chat=llm_chat,
-                                                                      tool_config=tool_config))
+    # Tool nodes — direct invocation, each closed over its single tool
+    workflow.add_node("SQLToolNode",   _sql_node)
+    workflow.add_node("RAGToolNode",   _rag_node)
+    workflow.add_node("RelaxToolNode", _relax_node)
 
-    # # Add the key_word node
-    # workflow.add_node("key_word",
-    #                   lambda state, config: key_word_extraction_agent(state, config, store=store, llm_chat=llm_chat,
-    #                                                                   tool_config=tool_config))
+    # Entry point
+    workflow.add_edge(START, "ExtractorNode")
 
+    # ExtractorNode → intent / missing-field routing
+    workflow.add_conditional_edges(
+        "ExtractorNode",
+        route_after_extractor,
+        {
+            "go_chitchat":       "ChitchatNode",
+            "go_out_of_service": "OutOfServiceNode",
+            "go_clarify":        "ClarifyNode",
+            "go_sql":            "SQLToolNode",
+        },
+    )
 
+    # Main recommendation pipeline
+    workflow.add_edge("SQLToolNode",   "RAGToolNode")
+    workflow.add_edge("RAGToolNode",   "GraderNode")
 
-    # Add an edge from the entry point to the key_word agent
-    workflow.add_edge(START, end_key="key_word")
+    # GraderNode → generate or relax-and-retry loop
+    workflow.add_conditional_edges(
+        "GraderNode",
+        route_after_grader,
+        {
+            "go_generator": "GeneratorNode",
+            "go_relax":     "RelaxToolNode",
+        },
+    )
+    workflow.add_edge("RelaxToolNode", "SQLToolNode")   # retry loop
 
-    # Add conditional edges for the agent, routing to the next step based on tool calls
-    workflow.add_conditional_edges(source="key_word", path=tools_condition, path_map={"tools": "call_tools", END: END})
-    # Add conditional edges for tool execution, dynamically routing based on tool results
-    workflow.add_conditional_edges(source="clarification", path=lambda state: route_after_tools(state, tool_config),
-                                   path_map={"generate": "generate", "grade_documents": "grade_documents"})
+    # Terminal edges
+    workflow.add_edge("ChitchatNode",     END)
+    workflow.add_edge("OutOfServiceNode", END)
+    workflow.add_edge("ClarifyNode",      END)
+    workflow.add_edge("GeneratorNode",    END)
 
-    # Add conditional edges for grading, routing based on the document evaluation results in the state
-    workflow.add_conditional_edges(source="result_grading", path=route_after_grade,
-                                   path_map={"generate": "generate", "rewrite": "rewrite"})
-
-    # Add an edge from chitchat to the exit point
-    workflow.add_edge(start_key="chitchat", end_key=END)
-    # Add an edge from rewrite back to the agent
-    workflow.add_edge(start_key="recommendation_generation", end_key=END)
-
-    # Compile the state graph, binding the checkpointer and storage
     return workflow.compile(checkpointer=checkpointer, store=store)
