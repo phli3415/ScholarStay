@@ -92,7 +92,7 @@ class MessageState (TypedDict):
     # Define sql_house_ids: List[int]. The id of houses that meet the current_requirement.
     sql_house_ids: Annotated[list[int], "SQL House IDs"]
     # Define top_matched_ids : List[int]. The id of top three houses that best fit user's input.
-    sql_house_ids: Annotated[list[int], "House IDs that best fit user's input"]
+    top_matched_ids: Annotated[list[int], "House IDs that best fit user's input"]
     # Define rewrite_counter: int, The number of times loosen_requirement has been triggered
     rewrite_counter: Annotated[int, "The number of times loosen_requirement has been triggered"]
     # Define relevance_score: List[str]], whether each houses meet user's requirement.
@@ -463,7 +463,7 @@ def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, st
         # logger.info(f"Agent response: {response}")
 
         # Return the updated conversation state
-        return {"filtered value": [response]}
+        return {"cyrrent_requirement": [response]}
 
     # Catch any exceptions
     except Exception as e:
@@ -474,56 +474,6 @@ def key_word_extraction_agent(state: MessageState, config: RunnableConfig, *, st
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 
-
-# Define the clarification_generation_agent Node function
-def clarification_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
-    """Agent function generate a clarification message when needed.
-
-    Args:
-        state: The current conversation state.
-        config: Runtime configuration.
-        store: Data store instance.
-        llm_chat: The Chat model instance.
-        tool_config: Tool configuration parameters.
-
-    Returns:
-        dict: The updated conversation state.
-    """
-    # Log that the agent has started processing the query
-    logger.info("clarification generation agent processing user query")
-
-    # Define the storage namespace using the user ID
-    namespace = ("memories", config["configurable"]["user_id"])
-
-    # Try to execute the following block of code
-    try:
-        # Get the last message, which represents the user's question
-        question = state["messages"][-1]
-        logger.info(f"agent question:{question}")
-
-        # Retrieve relevant information using custom cross-thread persistent memory storage
-        user_info = store_memory(question, config, store)
-
-        # Filter messages using custom in-thread storage logic
-        messages = filter_messages(state["messages"])
-
-        # Create the agent processing chain
-        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CLARIFICATION)
-
-        # Invoke the agent chain to process the messages
-        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
-        # logger.info(f"clarification generation agent response: {response}")
-
-        # Return the updated conversation state
-        return {"message": [response]}
-
-    # Catch any exceptions
-    except Exception as e:
-        # Log the error details
-        logger.error(f"Error in clarification_generation_agent processing: {e}")
-
-        # Return an error message state
-        return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
 
 # Define the clarification_generation_agent Node function
 def clarification_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat, tool_config: ToolConfig) -> dict:
@@ -713,7 +663,7 @@ def recommendation_generation_agent(state: MessageState, config: RunnableConfig,
         messages = filter_messages(state["messages"])
 
         # Create the agent processing chain
-        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CHITCHAT, RecomendationText)
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_RECOMMENDATION, RecomendationText)
 
         # Invoke the agent chain to process the messages
         response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
@@ -764,7 +714,7 @@ def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, s
 
 
         # Create the agent processing chain
-        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CHITCHAT)
+        agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_SUMMARY)
 
         # Invoke the agent chain to process the messages
         response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
@@ -781,3 +731,235 @@ def memory_summarization_agent(state: MessageState, config: RunnableConfig, *, s
 
         # Return an error message state
         return {"messages": [{"role": "system", "content": "An error occurred while processing the request"}]}
+
+
+
+
+
+
+# Define Edge: determine the next route based on the grading result in the state
+def route_after_grade(state: MessageState) -> Literal["generate", "rewrite"]:
+    """
+    Determine the next route based on the grading result in the state,
+    including enhanced state validation and fault tolerance handling.
+
+    Args:
+        state: The current conversation state, expected to contain 'messages' and 'relevance_score' fields.
+
+    Returns:
+        Literal["generate", "rewrite"]: The target node for the next step.
+    """
+    # Check if the state is a valid dictionary; if invalid, log an error and default to rewrite
+    if not isinstance(state, dict):
+        logger.error("State is not a valid dictionary, defaulting to rewrite")
+        return "rewrite"
+
+    # Check if the state contains the messages field; if missing, log an error and default to rewrite
+    if "messages" not in state or not isinstance(state["messages"], (list, tuple)):
+        logger.error("State missing valid messages field, defaulting to rewrite")
+        return "rewrite"
+
+    # Check if the messages list is empty; if empty, log a warning and default to rewrite
+    if not state["messages"]:
+        logger.warning("Messages list is empty, defaulting to rewrite")
+        return "rewrite"
+
+    # Retrieve the relevance_score from the state, defaulting to None if it doesn't exist
+    relevance_score = state.get("relevance_score")
+    # Retrieve the rewrite_count from the state, defaulting to 0
+    rewrite_count = state.get("rewrite_count", 0)
+    logger.info(f"Routing based on relevance_score: {relevance_score}, rewrite_count: {rewrite_count}")
+
+    # If the rewrite count exceeds 3 times, force routing to generate
+    if rewrite_count >= 3:
+        logger.info("Max rewrite limit reached, proceeding to generate")
+        return "generate"
+
+    try:
+        # Check if the relevance_score is a valid string; if not, treat it as an invalid score
+        if not isinstance(relevance_score, str):
+            logger.warning(f"Invalid relevance_score type: {type(relevance_score)}, defaulting to rewrite")
+            return "rewrite"
+
+        # If the grading result is "yes", indicating the document is relevant, route to the generate node
+        if relevance_score.lower() == "yes":
+            logger.info("Documents are relevant, proceeding to generate")
+            return "generate"
+
+        # If the grading result is "no" or any other value (including an empty string), route to the rewrite node
+        logger.info("Documents are not relevant or scoring failed, proceeding to rewrite")
+        return "rewrite"
+
+    except AttributeError:
+        # Catch exceptions where relevance_score does not support the lower() method (e.g., None), default to rewrite
+        logger.error("relevance_score is not a string or is None, defaulting to rewrite")
+        return "rewrite"
+    except Exception as e:
+        # Catch any other unexpected exceptions, log detailed error info, and default to rewrite
+        logger.error(f"Unexpected error in route_after_grade: {e}, defaulting to rewrite")
+        return "rewrite"
+
+
+# Define Edge: dynamically determine the next route based on the tool execution results
+def route_after_tools(state: MessageState, tool_config: ToolConfig) -> Literal["clarification", "key_word"]:
+    """
+    Dynamically determine the next route based on the tool execution results,
+    using a configuration dictionary to support multiple tools and error handling.
+
+    Args:
+        state: The current conversation state, containing message history and potential tool results.
+        tool_config: Configuration parameters for tools.
+
+    Returns:
+        Literal["generate", "grade_documents"]: The target node for the next step.
+    """
+    # Check if the state contains a valid message list; if empty or invalid, log an error and default to generate
+    if not state.get("messages") or not isinstance(state["messages"], list):
+        logger.error("Messages state is empty or invalid, defaulting to generate")
+        return "generate"
+
+    try:
+        # Retrieve the last message in the state to determine the source of the tool execution
+        last_message = state["messages"][-1]
+
+        # Check if the message has a valid 'name' attribute; if not, route to generate
+        if not hasattr(last_message, "name") or last_message.name is None:
+            logger.info("Last message has no name attribute, routing to generate")
+            return "generate"
+
+        # Check if the message originates from a registered tool
+        tool_name = last_message.name
+        if tool_name not in tool_config.get_tool_names():
+            logger.info(f"Unknown tool {tool_name}, routing to generate")
+            return "generate"
+
+        # Determine routing based on the configuration dictionary; default to generate if no configuration exists
+        target = tool_config.get_tool_routing_config().get(tool_name, "generate")
+        logger.info(f"Tool {tool_name} routed to {target} based on config")
+        return target
+
+    except IndexError:
+        # Catch exceptions where the message list is empty or an indexing error occurs; log and default to generate
+        logger.error("No messages available in state, defaulting to generate")
+        return "generate"
+    except AttributeError:
+        # Catch exceptions related to invalid message object attribute access; log and default to generate
+        logger.error("Invalid message object, defaulting to generate")
+        return "generate"
+    except Exception as e:
+        # Catch any other unexpected exceptions, log detailed error info, and default to generate
+        logger.error(f"Unexpected error in route_after_tools: {e}, defaulting to generate")
+        return "generate"
+
+
+# Create and configure the state graph
+def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, tool_config: ToolConfig) -> StateGraph:
+    """Create and configure the state graph.
+
+    Args:
+        db_connection_pool: The database connection pool.
+        llm_chat: The Chat model.
+        llm_embedding: The Embedding model.
+        tool_config: Configuration parameters for tools.
+
+    Returns:
+        StateGraph: The compiled state graph.
+
+    Raises:
+        ConnectionPoolError: If the connection pool is not properly initialized or in an abnormal state.
+    """
+    # Check if the connection pool is None or closed
+    if db_connection_pool is None or db_connection_pool.closed:
+        logger.error("Connection db_connection_pool is None or closed")
+        raise ConnectionPoolError("Database connection pool is not initialized or has been closed")
+
+    try:
+        # Get the current active connections and maximum connections
+        active_connections = db_connection_pool.get_stats().get("connections_in_use", 0)
+        max_connections = db_connection_pool.max_size
+        if active_connections >= max_connections:
+            logger.error(
+                f"Connection db_connection_pool exhausted: {active_connections}/{max_connections} connections in use")
+            raise ConnectionPoolError("Connection pool is exhausted, no available connections")
+
+        if not test_connection(db_connection_pool):
+            raise ConnectionPoolError("Connection pool test failed")
+
+        logger.info("Connection db_connection_pool status: OK, test connection successful")
+    except OperationalError as e:
+        logger.error(f"Database operational error during connection test: {e}")
+        raise ConnectionPoolError(f"Connection pool test failed, it may have been closed or timed out: {str(e)}")
+    except Exception as e:
+        logger.error(f"Failed to verify connection db_connection_pool status: {e}")
+        raise ConnectionPoolError(f"Unable to verify connection pool status: {str(e)}")
+
+    # In-thread persistent storage
+    try:
+        # Create a Postgres checkpointer instance
+        checkpointer = PostgresSaver(db_connection_pool)
+        # Initialize the checkpointer
+        checkpointer.setup()
+    except Exception as e:
+        logger.error(f"Failed to setup PostgresSaver: {e}")
+        raise ConnectionPoolError(f"Failed to initialize checkpointer: {str(e)}")
+
+    # Cross-thread persistent storage
+    try:
+        # Create a Postgres store instance, specifying embedding dimensions and function
+        store = PostgresStore(db_connection_pool, index={"dims": 1536, "embed": llm_embedding})
+        store.setup()
+    except Exception as e:
+        logger.error(f"Failed to setup PostgresStore: {e}")
+        raise ConnectionPoolError(f"Failed to initialize storage: {str(e)}")
+
+
+    # Create the state graph instance, using MessagesState as the state schema
+    workflow = StateGraph(MessageState)
+
+    # Add the clarification agent node
+    workflow.add_node("clarification", lambda state, config: clarification_generation_agent(state, config, store=store, llm_chat=llm_chat,
+                                                           tool_config=tool_config))
+    # Add the key_word node
+    workflow.add_node("key_word", lambda state, config: key_word_extraction_agent(state, config, store=store, llm_chat=llm_chat,
+                                                           tool_config=tool_config))
+    # Add the chitchat node
+    workflow.add_node("chitchat",
+                      lambda state, config: chitchat_agent(state, config, store=store, llm_chat=llm_chat,
+                                                                      tool_config=tool_config))
+    # Add the result_grading node
+    workflow.add_node("result_grading",
+                      lambda state, config: result_grading_agent(state, config, store=store, llm_chat=llm_chat,
+                                                                      tool_config=tool_config))
+
+    # Add the recommendation_generation node
+    workflow.add_node("recommendation_generation",
+                      lambda state, config: recommendation_generation_agent(state, config, store=store, llm_chat=llm_chat,
+                                                                      tool_config=tool_config))
+
+    # # Add the key_word node
+    # workflow.add_node("key_word",
+    #                   lambda state, config: key_word_extraction_agent(state, config, store=store, llm_chat=llm_chat,
+    #                                                                   tool_config=tool_config))
+
+
+
+    # Add an edge from the entry point to the key_word agent
+    workflow.add_edge(START, end_key="key_word")
+
+    # Add conditional edges for the agent, routing to the next step based on tool calls
+    workflow.add_conditional_edges(source="key_word", path=tools_condition, path_map={"tools": "call_tools", END: END})
+    # Add conditional edges for tool execution, dynamically routing based on tool results
+    workflow.add_conditional_edges(source="clarification", path=lambda state: route_after_tools(state, tool_config),
+                                   path_map={"generate": "generate", "grade_documents": "grade_documents"})
+
+    # Add conditional edges for grading, routing based on the document evaluation results in the state
+    workflow.add_conditional_edges(source="result_grading", path=route_after_grade,
+                                   path_map={"generate": "generate", "rewrite": "rewrite"})
+
+    # Add an edge from chitchat to the exit point
+    workflow.add_edge(start_key="chitchat", end_key=END)
+    # Add an edge from rewrite back to the agent
+    workflow.add_edge(start_key="recommendation_generation", end_key=END)
+
+    # Compile the state graph, binding the checkpointer and storage
+    return workflow.compile(checkpointer=checkpointer, store=store)

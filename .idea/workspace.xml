@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Added key_word_extraction_agent">
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Added result_grading and 4 other agents">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendApplication/app/llm/agenticWorkflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/llm/agenticWorkflow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_chitChat.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_chitChat.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_clarification.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_clarification.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_resultGrading.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/prompts/prompt_template_resultGrading.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,8 @@
       <workItem from="1779438484284" duration="2538000" />
       <workItem from="1779503573365" duration="29089000" />
       <workItem from="1779672022780" duration="12670000" />
-      <workItem from="1779855039220" duration="11771000" />
+      <workItem from="1779855039220" duration="14079000" />
+      <workItem from="1780124179777" duration="5077000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -249,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779865393574</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added result_grading and 4 other agents">
+      <option name="closed" value="true" />
+      <created>1779876615317</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779876615317</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +287,7 @@
     <MESSAGE value="Deprecated agent_tools. Change hard coded is_rented to false in filter_houses." />
     <MESSAGE value="Defined MessageState for communication between nodes" />
     <MESSAGE value="Added key_word_extraction_agent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added key_word_extraction_agent" />
+    <MESSAGE value="Added result_grading and 4 other agents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added result_grading and 4 other agents" />
   </component>
 </project>
