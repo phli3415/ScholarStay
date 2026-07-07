@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 dotenv.load_dotenv()
 embed_model = None
 try:
-    embed_model = initialize_embedding(os.getenv("EMBEDDING_MODEL", "text-embedding-3-small"))
+    embed_model = initialize_embedding()
 except Exception as e:
     logger.warning(f"Could not initialize embedding model: {str(e)}")
 
@@ -91,10 +91,9 @@ def create_embedding(text: str) -> list[float]:
     """
     global embed_model
     if embed_model is None:
-        model_name = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
-        logger.warning(f"Embedding model is missing. Attempting to re-initialize with {model_name}...")
+        logger.warning("Embedding model is missing. Attempting to re-initialize...")
         try:
-            embed_model = initialize_embedding(model_name)
+            embed_model = initialize_embedding()
         except LLMInitializationError as e:
             logger.error(f"Failed to re-initialize embedding model: {e}, returning empty list")
             embed_model = None
@@ -128,9 +127,14 @@ async def find_similar_listings(query: str, ids: list[int],   top_k: int = 3) ->
         return []
 
     try:
+        # RawSQL takes a plain SQL string (no parameter binding), so the vector is
+        # embedded as a literal. Values are coerced through float() first, so this
+        # cannot be used to inject arbitrary SQL.
+        vector_literal = "[" + ",".join(str(float(v)) for v in query_vector) + "]"
+
         # Find the most similar House objects from the database.
         similar_listings_objects = await Houses.filter(id__in=ids) \
-            .annotate(distance=RawSQL("embedding_vector <=> %s", [str(query_vector)])) \
+            .annotate(distance=RawSQL(f"embedding_vector <=> '{vector_literal}'::vector")) \
             .filter(distance__lt=1) \
             .order_by("distance") \
             .limit(top_k) \
