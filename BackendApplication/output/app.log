@@ -1,0 +1,186 @@
+2026-07-08 04:44:08,743 - main - INFO - Starting up application
+2026-07-08 04:44:09,135 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 04:44:09,136 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 04:44:09,136 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 04:44:09,137 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'filter_houses', 'loosen_requirement', 'find_most_similar_house'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 04:50:13,190 - app.llm.agenticWorkflow - ERROR - Failed to verify connection db_connection_pool status: RetryError[<Future at 0x2a2af8b3310 state=finished raised PoolTimeout>]
+2026-07-08 04:50:13,196 - main - ERROR - Failed to initialize agentic workflow graph: Unable to verify connection pool status: RetryError[<Future at 0x2a2af8b3310 state=finished raised PoolTimeout>]
+2026-07-08 04:55:37,739 - main - INFO - Starting up application
+2026-07-08 04:55:38,242 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 04:55:38,244 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 04:55:38,246 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 04:55:38,247 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'loosen_requirement', 'find_most_similar_house', 'filter_houses'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 05:00:20,950 - __main__ - INFO - Starting up application
+2026-07-08 05:00:21,195 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 05:00:21,196 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 05:00:21,197 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 05:00:21,197 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'filter_houses', 'find_most_similar_house', 'loosen_requirement'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 05:00:24,663 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-08 05:00:28,491 - __main__ - INFO - Agentic workflow graph initialized
+2026-07-08 05:02:20,701 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 05:02:20,718 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 05:02:20,720 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 05:02:20,720 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'find_most_similar_house', 'loosen_requirement', 'filter_houses'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 05:02:23,394 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-08 05:02:40,309 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:02:40,316 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, how's it going?" additional_kwargs={} response_metadata={} id='69ab295d-6347-457d-a705-dce6d9f11666'
+2026-07-08 05:02:43,083 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:02:43,085 - app.llm.agenticWorkflow - ERROR - Template file prompts/prompt_template_keyWordExtraction.txt not found
+2026-07-08 05:02:43,086 - app.llm.agenticWorkflow - ERROR - Error in key_word_extraction_agent processing: [Errno 2] No such file or directory: 'prompts\\prompt_template_keyWordExtraction.txt'
+2026-07-08 05:02:43,090 - app.llm.agenticWorkflow - WARNING - No current_requirement for SQL query
+2026-07-08 05:02:43,092 - app.llm.agenticWorkflow - WARNING - No sql_house_ids for RAG search
+2026-07-08 05:02:43,094 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:02:43,095 - app.llm.agenticWorkflow - WARNING - No top_matched_ids available for grading
+2026-07-08 05:02:43,097 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:02:43,100 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:02:49,192 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:02:49,195 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for an apartment near Boston University." additional_kwargs={} response_metadata={} id='c8ef39cf-af62-4fc2-838e-faa0fe6551f7'
+2026-07-08 05:02:51,427 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:02:51,428 - app.llm.agenticWorkflow - ERROR - Template file prompts/prompt_template_keyWordExtraction.txt not found
+2026-07-08 05:02:51,429 - app.llm.agenticWorkflow - ERROR - Error in key_word_extraction_agent processing: [Errno 2] No such file or directory: 'prompts\\prompt_template_keyWordExtraction.txt'
+2026-07-08 05:02:51,433 - app.llm.agenticWorkflow - WARNING - No current_requirement for SQL query
+2026-07-08 05:02:51,435 - app.llm.agenticWorkflow - WARNING - No sql_house_ids for RAG search
+2026-07-08 05:02:51,438 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:02:51,439 - app.llm.agenticWorkflow - WARNING - No top_matched_ids available for grading
+2026-07-08 05:02:51,440 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:02:51,446 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:02:57,088 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:02:57,088 - app.llm.agenticWorkflow - INFO - agent question:content="I'm a UMass Amherst student looking for a place under $1000/month, within 1km of campus, with a kitchen. No specific preference otherwise." additional_kwargs={} response_metadata={} id='98c0e79b-14b3-42ec-b273-0114b1bea906'
+2026-07-08 05:02:58,839 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:02:58,841 - app.llm.agenticWorkflow - ERROR - Template file prompts/prompt_template_keyWordExtraction.txt not found
+2026-07-08 05:02:58,841 - app.llm.agenticWorkflow - ERROR - Error in key_word_extraction_agent processing: [Errno 2] No such file or directory: 'prompts\\prompt_template_keyWordExtraction.txt'
+2026-07-08 05:02:58,845 - app.llm.agenticWorkflow - WARNING - No current_requirement for SQL query
+2026-07-08 05:02:58,848 - app.llm.agenticWorkflow - WARNING - No sql_house_ids for RAG search
+2026-07-08 05:02:58,851 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:02:58,851 - app.llm.agenticWorkflow - WARNING - No top_matched_ids available for grading
+2026-07-08 05:02:58,851 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:02:58,859 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:43:47,305 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 05:43:47,326 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 05:43:47,327 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 05:43:47,329 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'find_most_similar_house', 'filter_houses', 'loosen_requirement'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 05:43:50,989 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-08 05:44:07,320 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:44:07,326 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, how's it going?" additional_kwargs={} response_metadata={} id='c046aa82-6c68-41d4-8c3c-50382c5776b0'
+2026-07-08 05:44:10,262 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:44:10,265 - app.llm.agenticWorkflow - ERROR - Template file prompts/prompt_template_keyWordExtraction.txt not found
+2026-07-08 05:44:10,266 - app.llm.agenticWorkflow - ERROR - Error in key_word_extraction_agent processing: [Errno 2] No such file or directory: 'prompts\\prompt_template_keyWordExtraction.txt'
+2026-07-08 05:44:10,272 - app.llm.agenticWorkflow - WARNING - No current_requirement for SQL query
+2026-07-08 05:44:10,275 - app.llm.agenticWorkflow - WARNING - No sql_house_ids for RAG search
+2026-07-08 05:44:10,278 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:44:10,280 - app.llm.agenticWorkflow - WARNING - No top_matched_ids available for grading
+2026-07-08 05:44:10,282 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:44:10,285 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:44:16,301 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:44:16,306 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for an apartment near Boston University." additional_kwargs={} response_metadata={} id='ead608bc-3c6d-4f4b-a206-9a16cd4071af'
+2026-07-08 05:44:18,289 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:44:18,290 - app.llm.agenticWorkflow - ERROR - Template file prompts/prompt_template_keyWordExtraction.txt not found
+2026-07-08 05:44:18,292 - app.llm.agenticWorkflow - ERROR - Error in key_word_extraction_agent processing: [Errno 2] No such file or directory: 'prompts\\prompt_template_keyWordExtraction.txt'
+2026-07-08 05:44:18,298 - app.llm.agenticWorkflow - WARNING - No current_requirement for SQL query
+2026-07-08 05:44:18,301 - app.llm.agenticWorkflow - WARNING - No sql_house_ids for RAG search
+2026-07-08 05:44:18,306 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:44:18,307 - app.llm.agenticWorkflow - WARNING - No top_matched_ids available for grading
+2026-07-08 05:44:18,309 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:44:18,316 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:44:24,139 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:44:24,146 - app.llm.agenticWorkflow - INFO - agent question:content="I'm a UMass Amherst student looking for a place under $1000/month, within 1km of campus, with a kitchen. No specific preference otherwise." additional_kwargs={} response_metadata={} id='b0981427-8e5e-43d7-bc45-15f208d045f4'
+2026-07-08 05:44:26,009 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:44:26,011 - app.llm.agenticWorkflow - ERROR - Template file prompts/prompt_template_keyWordExtraction.txt not found
+2026-07-08 05:44:26,013 - app.llm.agenticWorkflow - ERROR - Error in key_word_extraction_agent processing: [Errno 2] No such file or directory: 'prompts\\prompt_template_keyWordExtraction.txt'
+2026-07-08 05:44:26,017 - app.llm.agenticWorkflow - WARNING - No current_requirement for SQL query
+2026-07-08 05:44:26,020 - app.llm.agenticWorkflow - WARNING - No sql_house_ids for RAG search
+2026-07-08 05:44:26,024 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:44:26,026 - app.llm.agenticWorkflow - WARNING - No top_matched_ids available for grading
+2026-07-08 05:44:26,027 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:44:26,034 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:47:44,443 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 05:47:44,476 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 05:47:44,478 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 05:47:44,480 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'loosen_requirement', 'filter_houses', 'find_most_similar_house'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 05:47:47,793 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-08 05:48:03,010 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:48:03,019 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, how's it going?" additional_kwargs={} response_metadata={} id='9220a75b-4d40-43a4-b020-90d7954b3507'
+2026-07-08 05:48:05,657 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:48:12,167 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='chitchat' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-08 05:48:12,175 - app.llm.agenticWorkflow - INFO - chitchat generation agent processing user query
+2026-07-08 05:48:12,187 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, how's it going?" additional_kwargs={} response_metadata={} id='9220a75b-4d40-43a4-b020-90d7954b3507'
+2026-07-08 05:48:13,789 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_chitChat.txt
+2026-07-08 05:48:17,265 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:48:17,270 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for an apartment near Boston University." additional_kwargs={} response_metadata={} id='cacee2bb-ca8a-439d-9669-aec28c23a841'
+2026-07-08 05:48:19,378 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:48:21,747 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='out_of_service' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-08 05:48:21,752 - app.llm.agenticWorkflow - INFO - out_of_service_agent: request outside service area
+2026-07-08 05:48:24,749 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:48:24,757 - app.llm.agenticWorkflow - INFO - agent question:content="I'm a UMass Amherst student looking for a place under $1000/month, within 1km of campus, with a kitchen. No specific preference otherwise." additional_kwargs={} response_metadata={} id='275f4777-5a7f-4dc9-9e2d-fc1b06e6547d'
+2026-07-08 05:48:26,266 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:48:28,481 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=1000.0, has_kitchen=True, has_washer=None, has_parking=None, max_distance_to_university=1.0) missing_fields_to_clarify=[]
+2026-07-08 05:48:29,646 - app.llm.agenticWorkflow - INFO - SQL query returned 1 IDs
+2026-07-08 05:48:31,475 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [11]
+2026-07-08 05:48:31,479 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:48:32,575 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_resultGrading.txt
+2026-07-08 05:48:32,583 - app.llm.agenticWorkflow - ERROR - Error in result_grading_agent: 'Input to ChatPromptTemplate is missing variables {\'\\n    "relevance_score"\'}.  Expected: [\'\\n    "relevance_score"\', \'houses\', \'messages\'] Received: [\'messages\', \'houses\']\nNote: if you intended {\n    "relevance_score"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n    "relevance_score"}}\'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT '
+2026-07-08 05:48:32,586 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=[])
+2026-07-08 05:48:32,589 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:48:33,359 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-08 05:48:33,367 - app.llm.agenticWorkflow - ERROR - Error in recommendation_generation_agent processing: 'Input to ChatPromptTemplate is missing variables {\'\\n    "reasons"\'}.  Expected: [\'\\n    "reasons"\', \'house\', \'loosen\', \'question\'] Received: [\'loosen\', \'question\', \'house\']\nNote: if you intended {\n    "reasons"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n    "reasons"}}\'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT '
+2026-07-08 05:53:44,723 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-08 05:53:44,750 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-08 05:53:44,752 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-08 05:53:44,753 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'filter_houses', 'find_most_similar_house', 'loosen_requirement'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-08 05:53:48,455 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-08 05:54:03,948 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:54:03,956 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, how's it going?" additional_kwargs={} response_metadata={} id='ad83b6a1-93af-49a8-a55d-ce1303a80b33'
+2026-07-08 05:54:06,474 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:54:09,806 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='chitchat' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-08 05:54:09,813 - app.llm.agenticWorkflow - INFO - chitchat generation agent processing user query
+2026-07-08 05:54:09,817 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, how's it going?" additional_kwargs={} response_metadata={} id='ad83b6a1-93af-49a8-a55d-ce1303a80b33'
+2026-07-08 05:54:11,257 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_chitChat.txt
+2026-07-08 05:54:14,613 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:54:14,620 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for an apartment near Boston University." additional_kwargs={} response_metadata={} id='c8fd687c-eee5-4f3d-9c8c-fb92397dd9dd'
+2026-07-08 05:54:16,244 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:54:18,564 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='out_of_service' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-08 05:54:18,574 - app.llm.agenticWorkflow - INFO - out_of_service_agent: request outside service area
+2026-07-08 05:54:21,300 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:54:21,309 - app.llm.agenticWorkflow - INFO - agent question:content="I'm a UMass Amherst student looking for a place under $1000/month, within 1km of campus, with a kitchen. No specific preference otherwise." additional_kwargs={} response_metadata={} id='196beca3-303f-4716-9f45-c42b489a53c7'
+2026-07-08 05:54:24,311 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:54:26,633 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=1000.0, has_kitchen=True, has_washer=None, has_parking=None, max_distance_to_university=1.0) missing_fields_to_clarify=[]
+2026-07-08 05:54:27,599 - app.llm.agenticWorkflow - INFO - SQL query returned 1 IDs
+2026-07-08 05:54:29,462 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [13]
+2026-07-08 05:54:29,466 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:54:30,578 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_resultGrading.txt
+2026-07-08 05:54:31,587 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes']
+2026-07-08 05:54:31,589 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['yes'])
+2026-07-08 05:54:31,593 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:54:32,483 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-08 05:54:35,246 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-08 05:54:35,248 - app.llm.agenticWorkflow - INFO - agent question:content='I need a place to live near UMass.' additional_kwargs={} response_metadata={} id='2f964b2f-2a81-4795-9389-5f50156a22c3'
+2026-07-08 05:54:36,933 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-08 05:54:39,025 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province='MA', city='Amherst', street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-08 05:54:39,914 - app.llm.agenticWorkflow - INFO - SQL query returned 2 IDs
+2026-07-08 05:54:42,010 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [13, 14]
+2026-07-08 05:54:42,013 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:54:47,300 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-08 05:54:48,562 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'no']
+2026-07-08 05:54:48,565 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=0, scores=['yes', 'no'])
+2026-07-08 05:54:48,570 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=0): province='MA' city='Amherst' street=None max_monthly_rent=None has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-07-08 05:54:49,628 - app.llm.agenticWorkflow - INFO - SQL query returned 2 IDs
+2026-07-08 05:54:51,622 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [13, 14]
+2026-07-08 05:54:51,626 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:54:52,691 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-08 05:54:53,636 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'no']
+2026-07-08 05:54:53,639 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=1, scores=['yes', 'no'])
+2026-07-08 05:54:53,649 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=1): province='MA' city='Amherst' street=None max_monthly_rent=None has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-07-08 05:54:54,248 - app.llm.agenticWorkflow - INFO - SQL query returned 2 IDs
+2026-07-08 05:54:55,971 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [13, 14]
+2026-07-08 05:54:55,975 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:54:57,003 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-08 05:54:57,996 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'no']
+2026-07-08 05:54:57,999 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=2, scores=['yes', 'no'])
+2026-07-08 05:54:58,007 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=2): province='MA' city='Amherst' street=None max_monthly_rent=None has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-07-08 05:54:58,600 - app.llm.agenticWorkflow - INFO - SQL query returned 2 IDs
+2026-07-08 05:55:00,101 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [13, 14]
+2026-07-08 05:55:00,104 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-08 05:55:00,106 - app.llm.agenticWorkflow - INFO - rewrite_counter >= 3, forcing all scores to 'yes'
+2026-07-08 05:55:00,109 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=3, scores=['yes', 'yes'])
+2026-07-08 05:55:00,113 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-08 05:55:00,947 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt

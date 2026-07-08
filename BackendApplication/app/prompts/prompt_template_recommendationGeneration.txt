@@ -9,9 +9,9 @@ Generate a compelling, ultra-short recommendation rationale (less than 70 words)
 
 ### OUTPUT FORMAT:
 Return a valid JSON object matching this structure exactly. Do not include markdown blocks or text wrappers.
-{
+{{
     "reasons": ["string"]
-}
+}}
 
 ### INPUT DATA:
 [loosen]:{loosen}

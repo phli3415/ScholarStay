@@ -1,8 +1,16 @@
+import asyncio
+import sys
+
+# psycopg's async mode can't run under Windows' default ProactorEventLoop
+# (used for LangGraph's AsyncPostgresSaver/AsyncPostgresStore connection pool).
+# Must be set before uvicorn creates the event loop.
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 
-from BackendApplication.app.utils.config import Config
 # Import core and database modules
 from app.core.firebase_auth import initialize_firebase
 from app.database import TORTOISE_ORM
@@ -23,6 +31,9 @@ from app.controller import user_controller
 from app.controller import bookmark_controller
 from app.utils.config import Config
 from app.utils.llms import initialize_llm, initialize_embedding
+from app.utils.tools_config import get_tools
+from app.llm.agenticWorkflow import ToolConfig, create_graph, ConnectionPoolError
+from psycopg_pool import AsyncConnectionPool
 
 
 from contextlib import asynccontextmanager
@@ -48,29 +59,6 @@ handler.setFormatter(logging.Formatter(
 logger.addHandler(handler)
 
 
-# Create FastAPI app instance
-app = FastAPI(
-    title="ScholarStay API",
-    description="API for ScholarStay application",
-    version="1.0.0"
-)
-
-# --- CORS Middleware ---
-# Define the list of allowed origins (frontend URL)
-origins = [
-    "http://localhost:5173",  # React/Vite dev server
-    "http://127.0.0.1:5173",
-]
-
-# Add CORS middleware to the application
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,  # Allows specific origins
-    allow_credentials=True, # Allows cookies to be included in requests
-    allow_methods=["*"],    # Allows all methods (GET, POST, etc.)
-    allow_headers=["*"],    # Allows all headers
-)
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     '''
@@ -88,7 +76,6 @@ async def lifespan(app: FastAPI):
 
     '''
 
-    global graph, tool_config
     logger.info("Starting up application")
     initialize_firebase()
 
@@ -96,29 +83,86 @@ async def lifespan(app: FastAPI):
     # await Tortoise.generate_schemas()
     db_url = TORTOISE_ORM["connections"]["default"]
 
+    # Stored on app.state (not module globals) so routers can read them via
+    # `request.app.state.graph` without a circular import on main.py.
+    app.state.graph = None
+    app.state.tool_config = None
+    db_connection_pool = None
+
     try:
         llm_chat = initialize_llm(Config.LLM_TYPE)
         llm_embedding = initialize_embedding(Config.LLM_TYPE)
-
-
 
         tools = get_tools(llm_embedding)
 
         # Create tool config
         tool_config = ToolConfig(tools)
+        app.state.tool_config = tool_config
 
-        # Define database connection parameters: auto-commit, no prepared threshold, 5-second timeout
-        connection_kwargs = {"autocommit": True, "prepare_threshold": 0, "connect_timeout": 5}
-        # 创建数据库连接池：最大20个连接，最小2个活跃连接，超时120秒
-        db_connection_pool = ConnectionPool(
-            conninfo=Config.DB_URI,
+        # psycopg (used by LangGraph's checkpointer/store) speaks libpq, not asyncpg —
+        # strip the asyncpg-style "?ssl=true" query param Tortoise needs and pass the
+        # libpq-equivalent "sslmode" through connection_kwargs instead.
+        psycopg_conninfo = db_url.split("?")[0]
+        connection_kwargs = {
+            "autocommit": True,
+            "prepare_threshold": 0,
+            "connect_timeout": 5,
+            "sslmode": "require",
+        }
+        # open=False: open the pool explicitly below so we can await it
+        # (AsyncConnectionPool can't fully open itself inside a sync __init__).
+        db_connection_pool = AsyncConnectionPool(
+            conninfo=psycopg_conninfo,
             max_size=20,
             min_size=2,
             kwargs=connection_kwargs,
-            timeout=120
+            timeout=120,
+            open=False,
         )
+        await db_connection_pool.open()
+
+        app.state.graph = await create_graph(db_connection_pool, llm_chat, llm_embedding, tool_config)
+        logger.info("Agentic workflow graph initialized")
+    except Exception as e:
+        # Don't take down the whole app if the new workflow can't initialize —
+        # the rest of the API (old /chat, houses, users, etc.) should still work.
+        logger.error(f"Failed to initialize agentic workflow graph: {e}")
+        app.state.graph = None
+        if db_connection_pool is not None:
+            await db_connection_pool.close()
+        db_connection_pool = None
+
+    yield
+
+    logger.info("Shutting down application")
+    if db_connection_pool is not None:
+        await db_connection_pool.close()
+    await Tortoise.close_connections()
 
 
+# Create FastAPI app instance
+app = FastAPI(
+    title="ScholarStay API",
+    description="API for ScholarStay application",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# --- CORS Middleware ---
+# Define the list of allowed origins (frontend URL)
+origins = [
+    "http://localhost:5173",  # React/Vite dev server
+    "http://127.0.0.1:5173",
+]
+
+# Add CORS middleware to the application
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows specific origins
+    allow_credentials=True, # Allows cookies to be included in requests
+    allow_methods=["*"],    # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],    # Allows all headers
+)
 
 
 # @app.on_event("startup")
@@ -186,3 +230,11 @@ async def read_root():
     Root endpoint to check if the API is running.
     """
     return {"message": "Welcome to the ScholarStay API!"}
+
+
+if __name__ == "__main__":
+    # Run directly with `python main.py` (not `python -m uvicorn main:app`) so the
+    # WindowsSelectorEventLoopPolicy set above is already active before uvicorn
+    # creates its event loop — psycopg's async pool needs it on Windows.
+    import uvicorn
+    uvicorn.run(app, host=Config.HOST, port=Config.PORT)

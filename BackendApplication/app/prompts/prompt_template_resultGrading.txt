@@ -7,9 +7,9 @@ Evaluate whether each provided house alternative matches the user's requirements
 
 ### OUTPUT FORMAT:
 Return a valid JSON object matching this structure exactly. No markdown headers, no text wrappers.
-{
+{{
     "relevance_score": ("yes" | "no")[] // The array length must exactly match the number of houses provided below.
-}
+}}
 
 User Contexts:
 {messages}

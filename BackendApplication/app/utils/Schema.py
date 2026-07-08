@@ -28,8 +28,10 @@ class KeyWordsExtractionResult(BaseModel):
 
 # Document relevance score
 class HouseRelevanceScore(BaseModel):
-    # Define the binary_score field representing the relevance score, with values "yes" or "no"
-    binary_score: str = Field(description="Relevance score 'yes' or 'no'")
+    # One "yes"/"no" score per house, in the same order the houses were provided
+    relevance_score: List[Literal["yes", "no"]] = Field(
+        description="Relevance score 'yes' or 'no' for each house, in the order provided"
+    )
 
 class RecomendationText(BaseModel):
     recommendations: list[str] = Field(description="Recommendation text")

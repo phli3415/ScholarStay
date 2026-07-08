@@ -2,6 +2,8 @@
 import logging
 from concurrent_log_handler import ConcurrentRotatingFileHandler
 
+# Import the asyncio module to run house lookups concurrently
+import asyncio
 # Import the OS interface module to handle file paths and environment variables
 import os
 # Import the system module to handle system-related operations, such as exiting the program
@@ -32,15 +34,16 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.store.base import BaseStore
 # Import the runnable configuration class
 from langchain_core.runnables import RunnableConfig
-# Import the Postgres store class
-from langgraph.store.postgres import PostgresStore
+# Import the async Postgres store class (graph nodes are async, so the sync
+# PostgresStore/PostgresSaver would raise NotImplementedError under ainvoke)
+from langgraph.store.postgres.aio import AsyncPostgresStore
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-# Import psycopg2's OperationalError class to capture database connection errors
-from psycopg2 import OperationalError
-# Import the Postgres checkpointer class
-from langgraph.checkpoint.postgres import PostgresSaver
-# Import the PostgreSQL connection pool class
-from psycopg_pool import ConnectionPool
+# Import psycopg's OperationalError class to capture database connection errors
+from psycopg import OperationalError
+# Import the async Postgres checkpointer class
+from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+# Import the async PostgreSQL connection pool class
+from psycopg_pool import AsyncConnectionPool
 # Import Pydantic's base model and field definition tools
 from pydantic import BaseModel, Field
 # Import the custom get_llm function to retrieve the LLM model
@@ -50,6 +53,9 @@ from ..utils.tools_config import get_tools
 # Import the unified Config class
 from ..utils.config import Config
 from ..utils.Schema import KeyWordsExtractionResult, HouseFilters, HouseRelevanceScore, RecomendationText
+# Import the house repository and document builder for fetching/describing candidate houses
+from ..repository.house_repository import HouseRepository
+from ..core.rag_pipeline import generate_listing_document
 
 
 
@@ -402,12 +408,12 @@ def create_chain(llm_chat, template_file: str, structured_output=None):
 # Database retry mechanism: retries up to 3 times with exponential backoff waiting 2-10 seconds.
 # This retries only when an OperationalError occurs during database operations.
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10), retry=retry_if_exception_type(OperationalError))
-def test_connection(db_connection_pool: ConnectionPool) -> bool:
+async def test_connection(db_connection_pool: AsyncConnectionPool) -> bool:
     """Tests whether the connection pool is available."""
-    with db_connection_pool.getconn() as conn:
-        with conn.cursor() as cursor:
-            cursor.execute("SELECT 1")
-            result = cursor.fetchone()
+    async with db_connection_pool.connection() as conn:
+        async with conn.cursor() as cursor:
+            await cursor.execute("SELECT 1")
+            result = await cursor.fetchone()
             if result != (1,):
                 raise ConnectionPoolError("Connection pool test query failed; returned an abnormal result.")
     return True
@@ -495,11 +501,16 @@ def clarification_generation_agent(state: MessageState, config: RunnableConfig, 
         agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_CLARIFICATION)
 
         # Invoke the agent chain to process the messages
-        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
+        response = agent_chain.invoke({
+            "question": question,
+            "messages": messages,
+            "userInfo": user_info,
+            "missing_fields_to_clarify": state.get("missing_fields_to_clarify", []),
+        })
         # logger.info(f"clarification generation agent response: {response}")
 
         # Return the updated conversation state
-        return {"message": [response]}
+        return {"messages": [response]}
 
     # Catch any exceptions
     except Exception as e:
@@ -550,7 +561,7 @@ def chitchat_agent(state: MessageState, config: RunnableConfig, *, store: BaseSt
         # logger.info(f"clarification generation agent response: {response}")
 
         # Return the updated conversation state
-        return {"message": [response]}
+        return {"messages": [response]}
 
     # Catch any exceptions
     except Exception as e:
@@ -574,7 +585,7 @@ def out_of_service_agent(state: MessageState, config: RunnableConfig, *, store: 
 
 
 # Define the Grading Node function
-def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
+async def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
     """Grades each candidate house from top_matched_ids against the user's original requirements."""
     logger.info("result_grading_agent processing")
 
@@ -591,22 +602,24 @@ def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: 
         return {"relevance_score": []}
 
     try:
-        question = state["messages"][-1]
-        user_info = store_memory(question, config, store)
         messages = filter_messages(state["messages"])
 
+        houses = await asyncio.gather(*(HouseRepository.get_by_id(house_id) for house_id in top_ids))
+        houses = [h for h in houses if h is not None]
+        if not houses:
+            logger.warning("None of the top_matched_ids resolved to a house record")
+            return {"relevance_score": ["no"] * len(top_ids)}
+
+        houses_text = "\n".join(
+            f"House {i + 1} (id={house.id}): {generate_listing_document(house)}"
+            for i, house in enumerate(houses)
+        )
+
         agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_GRADE, HouseRelevanceScore)
+        response: HouseRelevanceScore = agent_chain.invoke({"messages": messages, "houses": houses_text})
+        logger.info(f"result_grading_agent scores: {response.relevance_score}")
 
-        # TODO: fetch full house details from DB for each id in top_ids before grading
-        # houses = fetch_house_details(top_ids)
-        # scores = [
-        #     agent_chain.invoke({"question": question, "house": h, "messages": messages, "userInfo": user_info}).binary_score
-        #     for h in houses
-        # ]
-        # return {"relevance_score": scores}
-
-        # Placeholder: treat all as "yes" until house fetching is wired up
-        return {"relevance_score": ["yes"] * len(top_ids)}
+        return {"relevance_score": response.relevance_score}
 
     except Exception as e:
         logger.error(f"Error in result_grading_agent: {e}")
@@ -614,46 +627,63 @@ def result_grading_agent(state: MessageState, config: RunnableConfig, *, store: 
 
 
 # Define the recommendation_generation_agent Node function
-def recommendation_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
-    """Agent function generate a chitchat message when needed.
+async def recommendation_generation_agent(state: MessageState, config: RunnableConfig, *, store: BaseStore, llm_chat) -> dict:
+    """Generates a short recommendation rationale for each house that passed grading.
 
     Args:
         state: The current conversation state.
         config: Runtime configuration.
         store: Data store instance.
         llm_chat: The Chat model instance.
-        tool_config: Tool configuration parameters.
 
     Returns:
         dict: The updated conversation state.
     """
-    # Log that the agent has started processing the query
-    logger.info("chitchat generation agent processing user query")
+    logger.info("recommendation_generation_agent processing user query")
 
-    # Define the storage namespace using the user ID
-    namespace = ("memories", config["configurable"]["user_id"])
-
-    # Try to execute the following block of code
     try:
         # Get the last message, which represents the user's question
         question = state["messages"][-1]
-        logger.info(f"agent question:{question}")
 
-        # Retrieve relevant information using custom cross-thread persistent memory storage
-        user_info = store_memory(question, config, store)
+        top_ids = state.get("top_matched_ids", [])
+        scores = state.get("relevance_score", [])
+        # Only recommend houses that were actually graded "yes" (falls back to all
+        # top matches if grading was skipped for some reason).
+        if scores and len(scores) == len(top_ids):
+            relevant_ids = [hid for hid, score in zip(top_ids, scores) if score.lower() == "yes"]
+        else:
+            relevant_ids = top_ids
 
-        # Filter messages using custom in-thread storage logic
-        messages = filter_messages(state["messages"])
+        houses = await asyncio.gather(*(HouseRepository.get_by_id(hid) for hid in relevant_ids))
+        houses = [h for h in houses if h is not None]
 
-        # Create the agent processing chain
+        if not houses:
+            reply_text = "Sorry, I couldn't find a house that fits your needs."
+            return {"recommendation": [], "messages": [AIMessage(content=reply_text)]}
+
+        # `loosen` tells the prompt whether we relaxed the user's original requirements
+        # to find these matches, so it can acknowledge that in the rationale.
+        loosen = state.get("rewrite_counter", 0) > 0
+
+        # The prompt template grades one house at a time (`{loosen}`/`{question}`/`{house}`).
         agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_RECOMMENDATION, RecomendationText)
 
-        # Invoke the agent chain to process the messages
-        response = agent_chain.invoke({"question": question, "messages": messages, "userInfo": user_info})
-        # logger.info(f"clarification generation agent response: {response}")
+        reasons: list[str] = []
+        for house in houses:
+            response: RecomendationText = agent_chain.invoke({
+                "loosen": loosen,
+                "question": question,
+                "house": generate_listing_document(house),
+            })
+            reasons.extend(response.recommendations)
 
-        # Return the updated conversation state
-        return {"recommendation": [response]}
+        # Structured reasons are kept in `recommendation`, and a chat-visible AIMessage
+        # is also appended so the user actually sees a reply.
+        reply_text = "\n\n".join(reasons)
+        return {
+            "recommendation": reasons,
+            "messages": [AIMessage(content=reply_text)],
+        }
 
     # Catch any exceptions
     except Exception as e:
@@ -786,7 +816,7 @@ def route_after_grader(state: MessageState) -> Literal["go_generator", "go_relax
 
 
 # Create and configure the state graph
-def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, tool_config: ToolConfig) -> StateGraph:
+async def create_graph(db_connection_pool: AsyncConnectionPool, llm_chat, llm_embedding, tool_config: ToolConfig) -> StateGraph:
     """Create and configure the state graph.
 
     Args:
@@ -815,7 +845,7 @@ def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, to
                 f"Connection db_connection_pool exhausted: {active_connections}/{max_connections} connections in use")
             raise ConnectionPoolError("Connection pool is exhausted, no available connections")
 
-        if not test_connection(db_connection_pool):
+        if not await test_connection(db_connection_pool):
             raise ConnectionPoolError("Connection pool test failed")
 
         logger.info("Connection db_connection_pool status: OK, test connection successful")
@@ -828,21 +858,21 @@ def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, to
 
     # In-thread persistent storage
     try:
-        # Create a Postgres checkpointer instance
-        checkpointer = PostgresSaver(db_connection_pool)
+        # Create an async Postgres checkpointer instance
+        checkpointer = AsyncPostgresSaver(db_connection_pool)
         # Initialize the checkpointer
-        checkpointer.setup()
+        await checkpointer.setup()
     except Exception as e:
-        logger.error(f"Failed to setup PostgresSaver: {e}")
+        logger.error(f"Failed to setup AsyncPostgresSaver: {e}")
         raise ConnectionPoolError(f"Failed to initialize checkpointer: {str(e)}")
 
     # Cross-thread persistent storage
     try:
-        # Create a Postgres store instance, specifying embedding dimensions and function
-        store = PostgresStore(db_connection_pool, index={"dims": 1536, "embed": llm_embedding})
-        store.setup()
+        # Create an async Postgres store instance, specifying embedding dimensions and function
+        store = AsyncPostgresStore(db_connection_pool, index={"dims": 1536, "embed": llm_embedding})
+        await store.setup()
     except Exception as e:
-        logger.error(f"Failed to setup PostgresStore: {e}")
+        logger.error(f"Failed to setup AsyncPostgresStore: {e}")
         raise ConnectionPoolError(f"Failed to initialize storage: {str(e)}")
 
 
@@ -865,6 +895,12 @@ def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, to
     async def _relax_node(state: MessageState) -> dict:
         return await relax_requirements_tool_node(state, loosen_tool=loosen_tool)
 
+    async def _grader_node(state: MessageState, config: RunnableConfig) -> dict:
+        return await result_grading_agent(state, config, store=store, llm_chat=llm_chat)
+
+    async def _generator_node(state: MessageState, config: RunnableConfig) -> dict:
+        return await recommendation_generation_agent(state, config, store=store, llm_chat=llm_chat)
+
     # Build the state graph
     workflow = StateGraph(MessageState)
 
@@ -873,8 +909,8 @@ def create_graph(db_connection_pool: ConnectionPool, llm_chat, llm_embedding, to
     workflow.add_node("ClarifyNode",      lambda state, config: clarification_generation_agent(state, config, store=store, llm_chat=llm_chat))
     workflow.add_node("ChitchatNode",     lambda state, config: chitchat_agent(state, config, store=store, llm_chat=llm_chat))
     workflow.add_node("OutOfServiceNode", lambda state, config: out_of_service_agent(state, config, store=store, llm_chat=llm_chat))
-    workflow.add_node("GraderNode",       lambda state, config: result_grading_agent(state, config, store=store, llm_chat=llm_chat))
-    workflow.add_node("GeneratorNode",    lambda state, config: recommendation_generation_agent(state, config, store=store, llm_chat=llm_chat))
+    workflow.add_node("GraderNode",       _grader_node)
+    workflow.add_node("GeneratorNode",    _generator_node)
 
     # Tool nodes — direct invocation, each closed over its single tool
     workflow.add_node("SQLToolNode",   _sql_node)
