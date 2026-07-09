@@ -1,8 +1,3 @@
-# This file will contain the data pipeline for RAG.
-# It will include functions to:
-# 1. Generate a descriptive text document from a house listing object.
-# 2. Create a vector embedding from that text document.
-
 import os
 from dotenv import load_dotenv
 from typing import List
@@ -10,27 +5,23 @@ from langchain_openai import OpenAIEmbeddings
 from ..model.houses import Houses
 from tortoise.expressions import RawSQL
 import dotenv
+import logging
+from ..utils.llms import initialize_embedding, LLMInitializationError
+
+# Create logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
-# --- Model Loading (at module level for one-time execution) ---
-# We load the model once when the application starts.
-# This is much more efficient than loading it on every request.
+
+
+# --- Model Loading ---
 dotenv.load_dotenv()
-
+embed_model = None
 try:
-    # The LangChain OpenAI client automatically finds the API key from the
-    # OPENAI_API_KEY environment variable. We get the model name from env vars
-    # for flexibility, with a sensible default.
-    embedding_model_name = os.getenv("TEXT_EMBEDDING_MODEL", "text-embedding-3-small")
-
-    embed_model = OpenAIEmbeddings(
-        model=embedding_model_name
-    )
-    print(f"Successfully loaded embedding model: {embedding_model_name}")
-
+    embed_model = initialize_embedding()
 except Exception as e:
-    print(f"Error loading OpenAI embedding model: {e}")
-    embed_model = None
+    logger.warning(f"Could not initialize embedding model: {str(e)}")
 
 
 def generate_listing_document(listing: Houses) -> str:
@@ -46,13 +37,11 @@ def generate_listing_document(listing: Houses) -> str:
     Returns:
         A descriptive string about the listing.
     """
-    # Start with the core details like location, price, and distance.
     document_parts = [
         f"A property located in the city of {listing.city}, {listing.province}, on {listing.street} street, apt.{listing.house_number}.",
         f"The monthly rent is ${listing.monthly_rent:.2f}, and it is located {listing.distance_to_university} kilometer from the university."
     ]
 
-    # Process boolean fields for amenities into natural language.
     amenities = []
     not_include = []
     if listing.has_kitchen:
@@ -85,7 +74,8 @@ def generate_listing_document(listing: Houses) -> str:
     if listing.description:
         document_parts.append(f"Additional details from the provider: {listing.description}")
 
-    # Combine all the information into a single, coherent paragraph.
+    logger.info(f"Document embedding created for House with id {listing.id}")
+
     return " ".join(document_parts)
 
 
@@ -99,54 +89,63 @@ def create_embedding(text: str) -> list[float]:
     Returns:
         A list of floats representing the vector embedding, or an empty list if an error occurs.
     """
-    if not embed_model:
-        print("Embedding model is not available. Returning empty list.")
-        return []
+    global embed_model
+    if embed_model is None:
+        logger.warning("Embedding model is missing. Attempting to re-initialize...")
+        try:
+            embed_model = initialize_embedding()
+        except LLMInitializationError as e:
+            logger.error(f"Failed to re-initialize embedding model: {e}, returning empty list")
+            embed_model = None
+            return []
     
     try:
-        # Use the pre-loaded model to create the embedding for the query text
         embedding_vector = embed_model.embed_query(text)
         return embedding_vector
     except Exception as e:
-        print(f"Error creating embedding: {e}")
+        logger.error(f"Error creating embedding: {e}, returning empty list")
         return []
 
-async def find_similar_listings(query: str, top_k: int = 5) -> List[str]:
+async def find_similar_listings(query: str, ids: list[int],   top_k: int = 3) -> List[int]:
     """
-    Finds house listings using Tortoise ORM and pgvector, converts them to
-    descriptive documents, and returns them.
+    Finds house listings from pgvector with semantic embeddings.
 
     Args:
         query: The user's natural language query.
+        ids: The list of arrays of house ids.
         top_k: The number of similar listings to return.
 
     Returns:
         A list of descriptive strings about the most relevant listings.
     """
-    # 1. Create a vector for the user's query.
+
+    # Create a vector for the user's query.
     query_vector = create_embedding(query)
 
     if not query_vector:
-        print("Could not create query vector. Returning no listings.")
+        logger.error("Could not create query vector. Returning no listings.")
         return []
 
     try:
-        # 2. Find the most similar House objects from the database using Tortoise ORM.
-        # We use RawSQL to access the pgvector `<->` (L2 distance) operator.
-        similar_listings_objects = await Houses.all() \
-            .annotate(distance=RawSQL("embedding_vector <=> %s", [str(query_vector)])) \
+        # RawSQL takes a plain SQL string (no parameter binding), so the vector is
+        # embedded as a literal. Values are coerced through float() first, so this
+        # cannot be used to inject arbitrary SQL.
+        vector_literal = "[" + ",".join(str(float(v)) for v in query_vector) + "]"
+
+        # Find the most similar House objects from the database.
+        similar_listings_objects = await Houses.filter(id__in=ids) \
+            .annotate(distance=RawSQL(f"embedding_vector <=> '{vector_literal}'::vector")) \
             .filter(distance__lt=1) \
             .order_by("distance") \
-            .limit(top_k)
+            .limit(top_k) \
+            .values_list("id", flat=True)
 
         if not similar_listings_objects:
             return []
 
-        # 3. Convert the House objects into descriptive document strings.
-        listing_documents = [generate_listing_document(listing) for listing in similar_listings_objects]
 
-        return listing_documents
+        return similar_listings_objects
 
     except Exception as e:
-        print(f"Error during similarity search: {e}")
+        logger.error(f"Error during similarity search: {e}, returning empty list")
         return []

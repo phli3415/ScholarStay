@@ -33,8 +33,8 @@ TORTOISE_ORM: Dict = {
     "use_tz": False,
     "timezone": "UTC",
     "db_pool": {
-        "max_size": 10,
-        "min_size": 1,
+        "max_size": 40,
+        "min_size": 4,
         "idle_timeout": 30
     }
 }

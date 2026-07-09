@@ -1,11 +1,24 @@
 # Agent Controller
 # Handles HTTP endpoints for agent and chat operations
 
-from typing import AsyncGenerator
+import logging
+from typing import AsyncGenerator, Optional
 from fastapi import HTTPException, status
+from langchain_core.messages import HumanMessage
 from ..model.user import User
 from ..service.chat_history_service import ChatHistoryService
-from ..agent.agent import run_agent
+
+logger = logging.getLogger(__name__)
+
+# The legacy AgentExecutor agent depends on agent_tools.py, which was deprecated
+# (its tool functions are all commented out) without agent.py being updated to
+# match. Import it defensively so a broken legacy module doesn't take down the
+# whole app — /chat just returns 503 instead.
+try:
+    from ..agent.agent import run_agent
+except Exception as e:
+    logger.error(f"Legacy AgentExecutor agent unavailable: {e}")
+    run_agent = None
 
 
 class AgentController:
@@ -112,14 +125,62 @@ class AgentController:
         Yields:
             Stream of response chunks
         """
+        if run_agent is None:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Legacy agent is unavailable"
+            )
+
         try:
             # Stream agent response
             async for chunk in run_agent(query, session_id, user.id):
                 yield chunk
-                
+
         except Exception as e:
             error_msg = f"Chat error: {str(e)}"
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail=error_msg
+            )
+
+    async def chat_with_workflow(self, query: str, session_id: str, user: User, graph: Optional[object]) -> dict:
+        """
+        Chat with the new LangGraph-based agentic workflow (non-streaming).
+
+        Runs alongside `chat_with_agent` (the original AgentExecutor) so the new
+        workflow can be validated independently before it replaces `/chat`.
+
+        Args:
+            query: User's query message
+            session_id: Chat session identifier, used as the LangGraph thread_id
+            user: Current user
+            graph: The compiled workflow graph (app.state.graph), or None if it
+                failed to initialize at startup
+
+        Returns:
+            dict with the assistant's reply text and a few workflow fields
+        """
+        if graph is None:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="Agentic workflow is not available"
+            )
+
+        try:
+            config = {"configurable": {"thread_id": session_id, "user_id": str(user.id)}}
+            result = await graph.ainvoke(
+                {"user_input": query, "messages": [HumanMessage(content=query)]},
+                config=config,
+            )
+            messages = result.get("messages", [])
+            reply = messages[-1].content if messages else ""
+            return {
+                "reply": reply,
+                "intent_type": result.get("intent_type"),
+                "recommendation": result.get("recommendation", []),
+            }
+        except Exception as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Workflow error: {str(e)}"
             )

@@ -5,6 +5,8 @@ import json
 from typing import Dict, Any, List
 from datetime import datetime
 from langchain_openai import ChatOpenAI
+from langchain.memory import ConversationBufferMemory
+from langchain_core.messages import HumanMessage, AIMessage
 from ..model.chat_history import ChatHistory
 from ..model.user import User
 

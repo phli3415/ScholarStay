@@ -1,0 +1,10 @@
+Read the provided chat messages and return a highly condensed summary in 1 or 2 factual English sentences.
+
+### RULES:
+- Retain only core facts, numbers, and user preferences (e.g., specific budgets, locations, or decisions).
+- Completely remove all chitchat, greetings, and generic assistant explanations.
+
+### INPUT MESSAGES:
+{messages}
+
+### CONCISE SUMMARY (1-2 sentences):

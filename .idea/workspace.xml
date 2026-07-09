@@ -4,17 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="modified rag template">
+    <list default="true" id="b34ad125-2f49-4a4f-8afc-472600d938ac" name="Changes" comment="Added result_grading and 4 other agents">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendApplication/app/agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendApplication/app/llm/agenticWorkflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackendApplication/app/llm/agenticWorkflow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="BackendAPiTest" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -44,7 +62,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;BackendAPiTest&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;SqlOptimize&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/cics/summer project/ScholarStay/ScholarStay&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -85,7 +103,13 @@
       <workItem from="1770149770319" duration="595000" />
       <workItem from="1770697405630" duration="1096000" />
       <workItem from="1770699159217" duration="41000" />
-      <workItem from="1779257611528" duration="861000" />
+      <workItem from="1779257611528" duration="12634000" />
+      <workItem from="1779411066983" duration="11227000" />
+      <workItem from="1779438484284" duration="2538000" />
+      <workItem from="1779503573365" duration="29089000" />
+      <workItem from="1779672022780" duration="12670000" />
+      <workItem from="1779855039220" duration="14079000" />
+      <workItem from="1780124179777" duration="5077000" />
     </task>
     <task id="LOCAL-00001" summary="Recreated .idea files to prevent Pycharm from crushing.">
       <option name="closed" value="true" />
@@ -135,7 +159,103 @@
       <option name="project" value="LOCAL" />
       <updated>1767782507801</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modified rag template">
+      <option name="closed" value="true" />
+      <created>1779258503832</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1779258503832</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added agent template for key word extractor and memorySummarizer">
+      <option name="closed" value="true" />
+      <created>1779420822256</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1779420822256</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added prompt template for all 6 agents in the system">
+      <option name="closed" value="true" />
+      <created>1779436200793</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1779436200793</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added tool_config">
+      <option name="closed" value="true" />
+      <created>1779543080715</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1779543080715</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added tool_config">
+      <option name="closed" value="true" />
+      <created>1779584648592</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1779584648592</updated>
+    </task>
+    <task id="LOCAL-00012" summary="modified rag_pipeline">
+      <option name="closed" value="true" />
+      <created>1779592028049</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1779592028049</updated>
+    </task>
+    <task id="LOCAL-00013" summary="modified rag_pipeline">
+      <option name="closed" value="true" />
+      <created>1779592064698</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1779592064698</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added tools config, created output schema for keyword extraction agent.">
+      <option name="closed" value="true" />
+      <created>1779613562748</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779613562748</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Deprecated agent_tools. Change hard coded is_rented to false in filter_houses.">
+      <option name="closed" value="true" />
+      <created>1779673538311</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1779673538311</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Defined MessageState for communication between nodes">
+      <option name="closed" value="true" />
+      <created>1779678111466</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779678111466</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added key_word_extraction_agent">
+      <option name="closed" value="true" />
+      <created>1779865393574</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1779865393574</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added result_grading and 4 other agents">
+      <option name="closed" value="true" />
+      <created>1779876615317</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779876615317</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +279,15 @@
     <MESSAGE value="modified wrong import statement" />
     <MESSAGE value="modified rag template and" />
     <MESSAGE value="modified rag template" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified rag template" />
+    <MESSAGE value="added agent template for key word extractor and memorySummarizer" />
+    <MESSAGE value="Added prompt template for all 6 agents in the system" />
+    <MESSAGE value="Added tool_config" />
+    <MESSAGE value="modified rag_pipeline" />
+    <MESSAGE value="added tools config, created output schema for keyword extraction agent." />
+    <MESSAGE value="Deprecated agent_tools. Change hard coded is_rented to false in filter_houses." />
+    <MESSAGE value="Defined MessageState for communication between nodes" />
+    <MESSAGE value="Added key_word_extraction_agent" />
+    <MESSAGE value="Added result_grading and 4 other agents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added result_grading and 4 other agents" />
   </component>
 </project>

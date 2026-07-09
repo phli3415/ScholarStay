@@ -2,11 +2,11 @@
 # Uses three-layer architecture: Controller -> Service -> Repository
 # Handles chat interactions, session management, and agent operations
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from typing import List
-from ..dependencies import get_current_user
+from typing import List, Optional
+from ...core.firebase_auth import get_current_user
 from ...model.user import User
 from ...controller.agent_controller import AgentController
 
@@ -17,6 +17,12 @@ controller = AgentController()
 class ChatRequest(BaseModel):
     query: str
     session_id: str
+
+
+class ChatV2Response(BaseModel):
+    reply: str
+    intent_type: Optional[str] = None
+    recommendation: List[str] = []
 
 
 class ChatSessionResponse(BaseModel):
@@ -60,6 +66,35 @@ async def chat_with_agent(
             yield chunk
 
     return StreamingResponse(generate_response(), media_type="text/plain")
+
+
+@router.post("/chat/v2", response_model=ChatV2Response)
+async def chat_with_agent_v2(
+    request: ChatRequest,
+    http_request: Request,
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Chat with the new LangGraph-based agentic workflow (non-streaming, experimental).
+
+    Runs alongside `/chat` (the original AgentExecutor) so the new workflow can be
+    validated on its own before it replaces `/chat`.
+
+    Args:
+        request: ChatRequest with query and session_id
+        http_request: Used to reach the compiled workflow graph on app.state
+        current_user: Authenticated user from Firebase
+
+    Returns:
+        ChatV2Response with the assistant's reply and a few workflow fields
+    """
+    graph = getattr(http_request.app.state, "graph", None)
+    return await controller.chat_with_workflow(
+        request.query,
+        request.session_id,
+        current_user,
+        graph,
+    )
 
 
 @router.get("/chat/sessions", response_model=SessionsListResponse)
