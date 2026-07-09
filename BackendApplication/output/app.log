@@ -184,3 +184,10 @@
 2026-07-08 05:55:00,109 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=3, scores=['yes', 'yes'])
 2026-07-08 05:55:00,113 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
 2026-07-08 05:55:00,947 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-09 04:00:49,461 - __main__ - INFO - Starting up application
+2026-07-09 04:00:50,025 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-09 04:00:50,028 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-09 04:00:50,029 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-09 04:00:50,032 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'loosen_requirement', 'filter_houses', 'find_most_similar_house'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-09 04:00:53,782 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-09 04:00:57,859 - __main__ - INFO - Agentic workflow graph initialized
