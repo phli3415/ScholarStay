@@ -8,10 +8,27 @@ from pydantic import BaseModel
 from typing import List, Optional
 from ...core.firebase_auth import get_current_user
 from ...model.user import User
+from ...repository.user_repository import UserRepository
 from ...controller.agent_controller import AgentController
 
 router = APIRouter()
 controller = AgentController()
+
+# Project isn't going to be deployed, so /chat/v2 skips Firebase auth entirely for
+# easy local testing: it always runs as this fixed dev user instead of a real login.
+DEV_USER_FIREBASE_UID = "dev-test-user"
+
+
+async def get_dev_user() -> User:
+    """Get-or-create a fixed local test user, no Firebase token required."""
+    user = await UserRepository.get_by_firebase_uid(DEV_USER_FIREBASE_UID)
+    if user is None:
+        user = await UserRepository.create(
+            firebase_uid=DEV_USER_FIREBASE_UID,
+            gmail="dev-test-user@example.com",
+            username="dev-test-user",
+        )
+    return user
 
 
 class ChatRequest(BaseModel):
@@ -72,7 +89,7 @@ async def chat_with_agent(
 async def chat_with_agent_v2(
     request: ChatRequest,
     http_request: Request,
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_dev_user)
 ):
     """
     Chat with the new LangGraph-based agentic workflow (non-streaming, experimental).
@@ -80,10 +97,12 @@ async def chat_with_agent_v2(
     Runs alongside `/chat` (the original AgentExecutor) so the new workflow can be
     validated on its own before it replaces `/chat`.
 
+    No Firebase auth required — always runs as a fixed local dev user.
+
     Args:
         request: ChatRequest with query and session_id
         http_request: Used to reach the compiled workflow graph on app.state
-        current_user: Authenticated user from Firebase
+        current_user: Fixed local dev user (see get_dev_user)
 
     Returns:
         ChatV2Response with the assistant's reply and a few workflow fields

@@ -111,12 +111,17 @@ async def lifespan(app: FastAPI):
         }
         # open=False: open the pool explicitly below so we can await it
         # (AsyncConnectionPool can't fully open itself inside a sync __init__).
+        # check=check_connection: Neon (free tier) suspends/drops idle connections,
+        # so verify a connection is actually alive before handing it out instead of
+        # surfacing a dead-connection error to the caller.
         db_connection_pool = AsyncConnectionPool(
             conninfo=psycopg_conninfo,
             max_size=20,
             min_size=2,
             kwargs=connection_kwargs,
             timeout=120,
+            max_idle=120,
+            check=AsyncConnectionPool.check_connection,
             open=False,
         )
         await db_connection_pool.open()
