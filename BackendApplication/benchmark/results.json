@@ -1,0 +1,1417 @@
+[
+  {
+    "id": "t1_01",
+    "tier": 1,
+    "text": "Do you have anything under $700 a month?",
+    "intended_constraints": {
+      "max_monthly_rent": 700
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 700.0
+    },
+    "ground_truth_count": 7,
+    "sql_house_ids": [
+      25,
+      26,
+      35,
+      45,
+      52,
+      54,
+      56,
+      57,
+      65,
+      66,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      66,
+      26,
+      65
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_02",
+    "tier": 1,
+    "text": "I need something within half a kilometer of campus.",
+    "intended_constraints": {
+      "max_distance_to_university": 0.5
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_distance_to_university": 0.4
+    },
+    "ground_truth_count": 11,
+    "sql_house_ids": [
+      27,
+      28,
+      30,
+      37,
+      43,
+      60,
+      61,
+      64
+    ],
+    "sql_recall": 0.7272727272727273,
+    "top_matched_ids": [
+      61,
+      37,
+      30
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_03",
+    "tier": 1,
+    "text": "Looking for a place with a kitchen, that's basically my only requirement.",
+    "intended_constraints": {
+      "has_kitchen": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_kitchen": true
+    },
+    "ground_truth_count": 26,
+    "sql_house_ids": [
+      25,
+      30,
+      32,
+      33,
+      37,
+      38,
+      39,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      49,
+      51,
+      52,
+      53,
+      54,
+      56,
+      57,
+      58,
+      59,
+      62,
+      67,
+      68,
+      69
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      42,
+      41,
+      46
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_04",
+    "tier": 1,
+    "text": "Is there anything with an in-unit washer?",
+    "intended_constraints": {
+      "has_washer": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_washer": true
+    },
+    "ground_truth_count": 21,
+    "sql_house_ids": [
+      25,
+      26,
+      28,
+      31,
+      33,
+      35,
+      36,
+      39,
+      40,
+      41,
+      42,
+      44,
+      51,
+      52,
+      53,
+      54,
+      58,
+      60,
+      62,
+      66,
+      67
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      28,
+      31,
+      40
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_05",
+    "tier": 1,
+    "text": "I really just need parking, everything else is flexible.",
+    "intended_constraints": {
+      "has_parking": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_parking": true
+    },
+    "ground_truth_count": 25,
+    "sql_house_ids": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      32,
+      35,
+      38,
+      39,
+      41,
+      44,
+      45,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      56,
+      58,
+      59,
+      61,
+      65,
+      66,
+      69
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      61,
+      29,
+      26
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_06",
+    "tier": 1,
+    "text": "My budget caps out at $1000 a month.",
+    "intended_constraints": {
+      "max_monthly_rent": 1000
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1000.0
+    },
+    "ground_truth_count": 18,
+    "sql_house_ids": [
+      25,
+      26,
+      31,
+      35,
+      39,
+      40,
+      41,
+      45,
+      47,
+      51,
+      52,
+      54,
+      56,
+      57,
+      62,
+      65,
+      66,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      41,
+      39,
+      62
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_07",
+    "tier": 1,
+    "text": "I want to be within a mile of UMass, roughly 1.6km.",
+    "intended_constraints": {
+      "max_distance_to_university": 1.6
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_distance_to_university": 1.6
+    },
+    "ground_truth_count": 17,
+    "sql_house_ids": [
+      27,
+      28,
+      30,
+      31,
+      37,
+      43,
+      44,
+      46,
+      47,
+      48,
+      50,
+      52,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      52,
+      46,
+      47
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_08",
+    "tier": 1,
+    "text": "Anything under $2000 works for me.",
+    "intended_constraints": {
+      "max_monthly_rent": 2000
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 2000.0
+    },
+    "ground_truth_count": 38,
+    "sql_house_ids": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      59,
+      60,
+      62,
+      63,
+      64,
+      65,
+      66,
+      68,
+      69
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      64,
+      46,
+      42
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t1_09",
+    "tier": 1,
+    "text": "I'd like a place close enough to walk, say under a kilometer.",
+    "intended_constraints": {
+      "max_distance_to_university": 1.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_distance_to_university": 0.08
+    },
+    "ground_truth_count": 15,
+    "sql_house_ids": [],
+    "sql_recall": 0.0,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_01",
+    "tier": 2,
+    "text": "I want something under $1000 with a kitchen.",
+    "intended_constraints": {
+      "max_monthly_rent": 1000,
+      "has_kitchen": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1000.0,
+      "has_kitchen": true
+    },
+    "ground_truth_count": 11,
+    "sql_house_ids": [
+      25,
+      26,
+      28,
+      31,
+      35,
+      38,
+      39,
+      40,
+      41,
+      45,
+      47,
+      51,
+      52,
+      54,
+      56,
+      57,
+      62,
+      63,
+      65,
+      66,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      41,
+      39,
+      62
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_02",
+    "tier": 2,
+    "text": "Need parking and it has to be under $1500 a month.",
+    "intended_constraints": {
+      "has_parking": true,
+      "max_monthly_rent": 1500
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1500.0,
+      "has_parking": true
+    },
+    "ground_truth_count": 20,
+    "sql_house_ids": [
+      25,
+      26,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      54,
+      56,
+      57,
+      59,
+      60,
+      62,
+      63,
+      65,
+      66,
+      68,
+      69
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      29,
+      50,
+      69
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_03",
+    "tier": 2,
+    "text": "Looking for a place with a washer, within 2km of campus.",
+    "intended_constraints": {
+      "has_washer": true,
+      "max_distance_to_university": 2.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_washer": true,
+      "max_distance_to_university": 2.0
+    },
+    "ground_truth_count": 9,
+    "sql_house_ids": [
+      28,
+      31,
+      33,
+      44,
+      52,
+      53,
+      60,
+      62,
+      67
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      28,
+      67,
+      31
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_04",
+    "tier": 2,
+    "text": "Budget is $1200, and I'd like to be within 1km of school.",
+    "intended_constraints": {
+      "max_monthly_rent": 1200,
+      "max_distance_to_university": 1.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1200.0,
+      "max_distance_to_university": 1.0
+    },
+    "ground_truth_count": 7,
+    "sql_house_ids": [
+      28,
+      30,
+      31,
+      33,
+      37,
+      38,
+      40,
+      41,
+      46,
+      47,
+      52,
+      53,
+      56,
+      62,
+      63,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      46,
+      38,
+      30
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_05",
+    "tier": 2,
+    "text": "I want a kitchen and I don't want to be more than 3km away.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "max_distance_to_university": 3.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_kitchen": true,
+      "max_distance_to_university": 3.0
+    },
+    "ground_truth_count": 17,
+    "sql_house_ids": [
+      30,
+      32,
+      33,
+      37,
+      38,
+      41,
+      43,
+      44,
+      46,
+      52,
+      53,
+      56,
+      58,
+      59,
+      62,
+      67,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      67,
+      56,
+      46
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_06",
+    "tier": 2,
+    "text": "Something with parking under $900, if that exists.",
+    "intended_constraints": {
+      "has_parking": true,
+      "max_monthly_rent": 900
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 900.0,
+      "has_parking": true
+    },
+    "ground_truth_count": 9,
+    "sql_house_ids": [
+      25,
+      26,
+      31,
+      35,
+      39,
+      40,
+      41,
+      45,
+      47,
+      51,
+      52,
+      54,
+      56,
+      57,
+      62,
+      65,
+      66,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      26,
+      62,
+      41
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_07",
+    "tier": 2,
+    "text": "I need a washer and it should be under $1800.",
+    "intended_constraints": {
+      "has_washer": true,
+      "max_monthly_rent": 1800
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1800.0,
+      "has_washer": true
+    },
+    "ground_truth_count": 17,
+    "sql_house_ids": [
+      25,
+      26,
+      28,
+      31,
+      33,
+      35,
+      36,
+      39,
+      40,
+      41,
+      51,
+      52,
+      53,
+      54,
+      60,
+      62,
+      66
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      31,
+      28,
+      26
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_08",
+    "tier": 2,
+    "text": "Close to campus, like within 0.5km, and it needs a kitchen.",
+    "intended_constraints": {
+      "max_distance_to_university": 0.5,
+      "has_kitchen": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_kitchen": true,
+      "max_distance_to_university": 0.04
+    },
+    "ground_truth_count": 5,
+    "sql_house_ids": [],
+    "sql_recall": 0.0,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t2_09",
+    "tier": 2,
+    "text": "Under $800 and has parking would be ideal.",
+    "intended_constraints": {
+      "max_monthly_rent": 800,
+      "has_parking": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 800.0,
+      "has_parking": true
+    },
+    "ground_truth_count": 9,
+    "sql_house_ids": [
+      25,
+      26,
+      35,
+      40,
+      45,
+      47,
+      52,
+      54,
+      56,
+      57,
+      62,
+      65,
+      66,
+      68
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      35,
+      26,
+      62
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_01",
+    "tier": 3,
+    "text": "I need a kitchen, a washer, and it has to be under $1300.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "max_monthly_rent": 1300
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1300.0,
+      "has_kitchen": true,
+      "has_washer": true
+    },
+    "ground_truth_count": 9,
+    "sql_house_ids": [
+      25,
+      33,
+      39,
+      41,
+      51,
+      52,
+      53,
+      54,
+      62
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      53,
+      41,
+      39
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_02",
+    "tier": 3,
+    "text": "Budget $1500, within 2km, and I need parking.",
+    "intended_constraints": {
+      "max_monthly_rent": 1500,
+      "max_distance_to_university": 2.0,
+      "has_parking": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1500.0,
+      "has_parking": true,
+      "max_distance_to_university": 2.0
+    },
+    "ground_truth_count": 6,
+    "sql_house_ids": [
+      26,
+      28,
+      30,
+      31,
+      32,
+      33,
+      37,
+      38,
+      40,
+      41,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      56,
+      59,
+      60,
+      62,
+      63,
+      68,
+      69
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      38,
+      56,
+      32
+    ],
+    "hit_at_k": true,
+    "hit_rank": 3,
+    "rewrite_counter": 3,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_03",
+    "tier": 3,
+    "text": "Looking for something with a kitchen and washer, within 3km of campus.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "max_distance_to_university": 3.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_kitchen": true,
+      "has_washer": true,
+      "max_distance_to_university": 3.0
+    },
+    "ground_truth_count": 8,
+    "sql_house_ids": [
+      33,
+      41,
+      44,
+      52,
+      53,
+      58,
+      62,
+      67
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      41,
+      67,
+      53
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_04",
+    "tier": 3,
+    "text": "Under $1000, needs parking, and within 2.5km.",
+    "intended_constraints": {
+      "max_monthly_rent": 1000,
+      "has_parking": true,
+      "max_distance_to_university": 2.5
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1000.0,
+      "has_parking": true,
+      "max_distance_to_university": 2.5
+    },
+    "ground_truth_count": 3,
+    "sql_house_ids": [
+      41,
+      52,
+      56
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      41,
+      56,
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_05",
+    "tier": 3,
+    "text": "I want a kitchen, under $2000, and close, say within 1km.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "max_monthly_rent": 2000,
+      "max_distance_to_university": 1.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 2000.0,
+      "has_kitchen": true,
+      "max_distance_to_university": 1.0
+    },
+    "ground_truth_count": 5,
+    "sql_house_ids": [
+      30,
+      37,
+      46,
+      52,
+      62
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      46,
+      30,
+      62
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_06",
+    "tier": 3,
+    "text": "Washer and parking both required, and budget's around $1600.",
+    "intended_constraints": {
+      "has_washer": true,
+      "has_parking": true,
+      "max_monthly_rent": 1600
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1600.0,
+      "has_washer": true,
+      "has_parking": true
+    },
+    "ground_truth_count": 11,
+    "sql_house_ids": [
+      25,
+      26,
+      28,
+      35,
+      39,
+      41,
+      51,
+      52,
+      53,
+      54,
+      66
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      35,
+      41,
+      53
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 1,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_07",
+    "tier": 3,
+    "text": "Kitchen and parking needed, has to be under a kilometer from campus.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_parking": true,
+      "max_distance_to_university": 1.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "has_kitchen": true,
+      "has_parking": true,
+      "max_distance_to_university": 1.0
+    },
+    "ground_truth_count": 1,
+    "sql_house_ids": [
+      52
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_08",
+    "tier": 3,
+    "text": "Under $900, with a kitchen, and needs to have a washer too.",
+    "intended_constraints": {
+      "max_monthly_rent": 900,
+      "has_kitchen": true,
+      "has_washer": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 900.0,
+      "has_kitchen": true,
+      "has_washer": true
+    },
+    "ground_truth_count": 4,
+    "sql_house_ids": [
+      25,
+      52,
+      54,
+      62
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      62,
+      25,
+      54
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t3_09",
+    "tier": 3,
+    "text": "Looking for parking, a washer, and something under $2200.",
+    "intended_constraints": {
+      "has_parking": true,
+      "has_washer": true,
+      "max_monthly_rent": 2200
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 2200.0,
+      "has_washer": true,
+      "has_parking": true
+    },
+    "ground_truth_count": 11,
+    "sql_house_ids": [
+      25,
+      26,
+      28,
+      35,
+      39,
+      41,
+      51,
+      52,
+      53,
+      54,
+      66
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      26,
+      35,
+      41
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_01",
+    "tier": 4,
+    "text": "I need a kitchen, washer, and parking, under $1000, within 2km.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_monthly_rent": 1000,
+      "max_distance_to_university": 2.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1000.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 2.0
+    },
+    "ground_truth_count": 1,
+    "sql_house_ids": [
+      52
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_02",
+    "tier": 4,
+    "text": "Budget $1500, within 1km, needs a kitchen and washer.",
+    "intended_constraints": {
+      "max_monthly_rent": 1500,
+      "max_distance_to_university": 1.0,
+      "has_kitchen": true,
+      "has_washer": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1500.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "max_distance_to_university": 1.0
+    },
+    "ground_truth_count": 2,
+    "sql_house_ids": [
+      52,
+      62
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      62,
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_03",
+    "tier": 4,
+    "text": "Kitchen, washer, parking all required, and it must be under $800.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_monthly_rent": 800
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 800.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true
+    },
+    "ground_truth_count": 3,
+    "sql_house_ids": [
+      25,
+      52,
+      54
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      54,
+      25,
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_04",
+    "tier": 4,
+    "text": "Within 0.5km of campus, under $1000, with a kitchen and a washer.",
+    "intended_constraints": {
+      "max_distance_to_university": 0.5,
+      "max_monthly_rent": 1000,
+      "has_kitchen": true,
+      "has_washer": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1000.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "max_distance_to_university": 0.04
+    },
+    "ground_truth_count": 2,
+    "sql_house_ids": [],
+    "sql_recall": 0.0,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_05",
+    "tier": 4,
+    "text": "I need everything: kitchen, washer, parking, under $1200, and within 2km.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_monthly_rent": 1200,
+      "max_distance_to_university": 2.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1200.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 0.16
+    },
+    "ground_truth_count": 1,
+    "sql_house_ids": [],
+    "sql_recall": 0.0,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_06",
+    "tier": 4,
+    "text": "Under $600, has a kitchen, a washer, and parking, and within 2km of campus.",
+    "intended_constraints": {
+      "max_monthly_rent": 600,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 2.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 600.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 2.0
+    },
+    "ground_truth_count": 0,
+    "sql_house_ids": [],
+    "sql_recall": null,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_07",
+    "tier": 4,
+    "text": "Kitchen, washer, parking, budget $2000, within 3km.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_monthly_rent": 2000,
+      "max_distance_to_university": 3.0
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 2000.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 3.0
+    },
+    "ground_truth_count": 3,
+    "sql_house_ids": [
+      41,
+      52,
+      53
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      41,
+      53,
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_08",
+    "tier": 4,
+    "text": "I want a kitchen, washer, and parking, under $1000, and within 0.3km — basically on campus.",
+    "intended_constraints": {
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_monthly_rent": 1000,
+      "max_distance_to_university": 0.3
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 1000.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 0.024
+    },
+    "ground_truth_count": 0,
+    "sql_house_ids": [],
+    "sql_recall": null,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  },
+  {
+    "id": "t4_09",
+    "tier": 4,
+    "text": "Need parking, a washer, and a kitchen, under $700, within 0.4km of campus.",
+    "intended_constraints": {
+      "has_parking": true,
+      "has_washer": true,
+      "max_monthly_rent": 700,
+      "max_distance_to_university": 0.4,
+      "has_kitchen": true
+    },
+    "extracted_requirement": {
+      "province": "MA",
+      "city": "Amherst",
+      "max_monthly_rent": 700.0,
+      "has_kitchen": true,
+      "has_washer": true,
+      "has_parking": true,
+      "max_distance_to_university": 0.4
+    },
+    "ground_truth_count": 0,
+    "sql_house_ids": [],
+    "sql_recall": null,
+    "top_matched_ids": [],
+    "hit_at_k": false,
+    "hit_rank": null,
+    "rewrite_counter": 0,
+    "intent_type": "house_recommendation"
+  }
+]
