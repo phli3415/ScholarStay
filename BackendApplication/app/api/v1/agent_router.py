@@ -40,6 +40,7 @@ class ChatV2Response(BaseModel):
     reply: str
     intent_type: Optional[str] = None
     recommendation: List[str] = []
+    house_ids: List[int] = []
 
 
 class ChatSessionResponse(BaseModel):

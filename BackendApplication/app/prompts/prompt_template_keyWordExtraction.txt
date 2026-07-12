@@ -13,6 +13,16 @@ Analyze the User Question and Chat History to extract search filters matching ou
 - max_monthly_rent is in US dollars.
 - Boolean fields (`has_kitchen`, `has_washer`, `has_parking`) MUST be null unless explicitly requested true.
 
+### EXAMPLES (illustrating the distance rule above):
+User: "Close to campus, like within 0.5km, and it needs a kitchen."
+-> max_distance_to_university = 0.5 (already km, use as-is — do NOT multiply by 1.6)
+
+User: "I'd like something within half a mile of UMass."
+-> max_distance_to_university = 0.8 (miles * 1.6: 0.5 * 1.6 = 0.8)
+
+User: "Somewhere about a 10 minute walk from school would be great."
+-> max_distance_to_university = 0.8 (walking minutes * 0.08: 10 * 0.08 = 0.8)
+
 ### INPUT DATA:
 [Chat History]
 {messages}

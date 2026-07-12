@@ -14,22 +14,18 @@
     "ground_truth_count": 7,
     "sql_house_ids": [
       25,
-      26,
-      35,
       45,
       52,
       54,
       56,
-      57,
       65,
-      66,
-      68
+      66
     ],
     "sql_recall": 1.0,
     "top_matched_ids": [
       66,
-      26,
-      65
+      65,
+      25
     ],
     "hit_at_k": true,
     "hit_rank": 1,
@@ -46,7 +42,7 @@
     "extracted_requirement": {
       "province": "MA",
       "city": "Amherst",
-      "max_distance_to_university": 0.4
+      "max_distance_to_university": 0.5
     },
     "ground_truth_count": 11,
     "sql_house_ids": [
@@ -55,15 +51,18 @@
       30,
       37,
       43,
+      48,
+      52,
       60,
       61,
+      62,
       64
     ],
-    "sql_recall": 0.7272727272727273,
+    "sql_recall": 1.0,
     "top_matched_ids": [
-      61,
-      37,
-      30
+      62,
+      48,
+      52
     ],
     "hit_at_k": true,
     "hit_rank": 1,
@@ -338,12 +337,10 @@
       39,
       40,
       41,
-      42,
       45,
       46,
       47,
       48,
-      49,
       50,
       51,
       52,
@@ -366,7 +363,7 @@
     "top_matched_ids": [
       64,
       46,
-      42
+      41
     ],
     "hit_at_k": true,
     "hit_rank": 1,
@@ -383,14 +380,34 @@
     "extracted_requirement": {
       "province": "MA",
       "city": "Amherst",
-      "max_distance_to_university": 0.08
+      "max_distance_to_university": 1.0
     },
     "ground_truth_count": 15,
-    "sql_house_ids": [],
-    "sql_recall": 0.0,
-    "top_matched_ids": [],
-    "hit_at_k": false,
-    "hit_rank": null,
+    "sql_house_ids": [
+      27,
+      28,
+      30,
+      31,
+      37,
+      43,
+      46,
+      47,
+      48,
+      52,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      46,
+      62,
+      47
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
     "rewrite_counter": 0,
     "intent_type": "house_recommendation"
   },
@@ -411,25 +428,15 @@
     "ground_truth_count": 11,
     "sql_house_ids": [
       25,
-      26,
-      28,
-      31,
-      35,
-      38,
       39,
-      40,
       41,
       45,
-      47,
       51,
       52,
       54,
       56,
       57,
       62,
-      63,
-      65,
-      66,
       68
     ],
     "sql_recall": 1.0,
@@ -463,36 +470,21 @@
       26,
       28,
       29,
-      30,
-      31,
       32,
-      33,
-      34,
       35,
-      36,
-      37,
       38,
       39,
-      40,
       41,
       45,
-      46,
-      47,
-      48,
       50,
       51,
       52,
       53,
       54,
       56,
-      57,
       59,
-      60,
-      62,
-      63,
       65,
       66,
-      68,
       69
     ],
     "sql_recall": 1.0,
@@ -560,27 +552,18 @@
     "ground_truth_count": 7,
     "sql_house_ids": [
       28,
-      30,
       31,
-      33,
-      37,
-      38,
-      40,
-      41,
       46,
       47,
       52,
-      53,
-      56,
       62,
-      63,
-      68
+      63
     ],
     "sql_recall": 1.0,
     "top_matched_ids": [
       46,
-      38,
-      30
+      62,
+      63
     ],
     "hit_at_k": true,
     "hit_rank": 1,
@@ -650,28 +633,19 @@
     "sql_house_ids": [
       25,
       26,
-      31,
       35,
-      39,
-      40,
-      41,
       45,
-      47,
-      51,
       52,
       54,
       56,
-      57,
-      62,
       65,
-      66,
-      68
+      66
     ],
     "sql_recall": 1.0,
     "top_matched_ids": [
       26,
-      62,
-      41
+      65,
+      35
     ],
     "hit_at_k": true,
     "hit_rank": 1,
@@ -735,14 +709,24 @@
       "province": "MA",
       "city": "Amherst",
       "has_kitchen": true,
-      "max_distance_to_university": 0.04
+      "max_distance_to_university": 0.5
     },
     "ground_truth_count": 5,
-    "sql_house_ids": [],
-    "sql_recall": 0.0,
-    "top_matched_ids": [],
-    "hit_at_k": false,
-    "hit_rank": null,
+    "sql_house_ids": [
+      30,
+      37,
+      43,
+      52,
+      62
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      62,
+      37,
+      30
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
     "rewrite_counter": 0,
     "intent_type": "house_recommendation"
   },
@@ -765,23 +749,18 @@
       25,
       26,
       35,
-      40,
       45,
-      47,
       52,
       54,
       56,
-      57,
-      62,
       65,
-      66,
-      68
+      66
     ],
     "sql_recall": 1.0,
     "top_matched_ids": [
       35,
       26,
-      62
+      65
     ],
     "hit_at_k": true,
     "hit_rank": 1,
@@ -845,40 +824,21 @@
     },
     "ground_truth_count": 6,
     "sql_house_ids": [
-      26,
       28,
-      30,
-      31,
       32,
-      33,
-      37,
-      38,
-      40,
-      41,
-      45,
-      46,
-      47,
-      48,
       50,
-      51,
       52,
       53,
-      56,
-      59,
-      60,
-      62,
-      63,
-      68,
-      69
+      59
     ],
     "sql_recall": 1.0,
     "top_matched_ids": [
-      38,
-      56,
-      32
+      32,
+      50,
+      59
     ],
     "hit_at_k": true,
-    "hit_rank": 3,
+    "hit_rank": 1,
     "rewrite_counter": 3,
     "intent_type": "house_recommendation"
   },
@@ -1250,14 +1210,20 @@
       "max_monthly_rent": 1000.0,
       "has_kitchen": true,
       "has_washer": true,
-      "max_distance_to_university": 0.04
+      "max_distance_to_university": 0.5
     },
     "ground_truth_count": 2,
-    "sql_house_ids": [],
-    "sql_recall": 0.0,
-    "top_matched_ids": [],
-    "hit_at_k": false,
-    "hit_rank": null,
+    "sql_house_ids": [
+      52,
+      62
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      62,
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
     "rewrite_counter": 0,
     "intent_type": "house_recommendation"
   },
@@ -1279,14 +1245,18 @@
       "has_kitchen": true,
       "has_washer": true,
       "has_parking": true,
-      "max_distance_to_university": 0.16
+      "max_distance_to_university": 2.0
     },
     "ground_truth_count": 1,
-    "sql_house_ids": [],
-    "sql_recall": 0.0,
-    "top_matched_ids": [],
-    "hit_at_k": false,
-    "hit_rank": null,
+    "sql_house_ids": [
+      52
+    ],
+    "sql_recall": 1.0,
+    "top_matched_ids": [
+      52
+    ],
+    "hit_at_k": true,
+    "hit_rank": 1,
     "rewrite_counter": 0,
     "intent_type": "house_recommendation"
   },
@@ -1311,12 +1281,20 @@
       "max_distance_to_university": 2.0
     },
     "ground_truth_count": 0,
-    "sql_house_ids": [],
+    "sql_house_ids": [
+      45,
+      52,
+      56
+    ],
     "sql_recall": null,
-    "top_matched_ids": [],
+    "top_matched_ids": [
+      45,
+      56,
+      52
+    ],
     "hit_at_k": false,
     "hit_rank": null,
-    "rewrite_counter": 0,
+    "rewrite_counter": 3,
     "intent_type": "house_recommendation"
   },
   {
@@ -1374,15 +1352,26 @@
       "has_kitchen": true,
       "has_washer": true,
       "has_parking": true,
-      "max_distance_to_university": 0.024
+      "max_distance_to_university": 0.3
     },
     "ground_truth_count": 0,
-    "sql_house_ids": [],
+    "sql_house_ids": [
+      28,
+      31,
+      47,
+      52,
+      62,
+      63
+    ],
     "sql_recall": null,
-    "top_matched_ids": [],
+    "top_matched_ids": [
+      62,
+      31,
+      28
+    ],
     "hit_at_k": false,
     "hit_rank": null,
-    "rewrite_counter": 0,
+    "rewrite_counter": 3,
     "intent_type": "house_recommendation"
   },
   {
@@ -1406,12 +1395,16 @@
       "max_distance_to_university": 0.4
     },
     "ground_truth_count": 0,
-    "sql_house_ids": [],
+    "sql_house_ids": [
+      52
+    ],
     "sql_recall": null,
-    "top_matched_ids": [],
+    "top_matched_ids": [
+      52
+    ],
     "hit_at_k": false,
     "hit_rank": null,
-    "rewrite_counter": 0,
+    "rewrite_counter": 3,
     "intent_type": "house_recommendation"
   }
 ]

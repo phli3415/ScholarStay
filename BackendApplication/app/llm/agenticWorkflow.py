@@ -805,14 +805,22 @@ def route_after_extractor(state: MessageState) -> Literal["go_chitchat", "go_out
 
 
 def route_after_grader(state: MessageState) -> Literal["go_generator", "go_relax"]:
-    """Routes after GraderNode: proceed to generation or relax and retry."""
-    scores = state.get("relevance_score", [])
+    """Routes after GraderNode: proceed to generation or relax and retry.
+
+    Relax when there's no "yes" among the scores (including the empty-list
+    case, e.g. when SQL/RAG found nothing to grade at all) and we haven't
+    hit the retry cap yet. Otherwise generate with whatever "yes" results
+    exist.
+    """
+    scores = [s.lower() for s in state.get("relevance_score", [])]
     rewrite_counter = state.get("rewrite_counter", 0)
-    if rewrite_counter >= 3 or "no" not in [s.lower() for s in scores]:
-        logger.info(f"Grader routing to generator (counter={rewrite_counter}, scores={scores})")
-        return "go_generator"
-    logger.info(f"Grader routing to relax (counter={rewrite_counter}, scores={scores})")
-    return "go_relax"
+
+    if rewrite_counter < 3 and "yes" not in scores:
+        logger.info(f"Grader routing to relax (counter={rewrite_counter}, scores={scores})")
+        return "go_relax"
+
+    logger.info(f"Grader routing to generator (counter={rewrite_counter}, scores={scores})")
+    return "go_generator"
 
 
 # Create and configure the state graph
