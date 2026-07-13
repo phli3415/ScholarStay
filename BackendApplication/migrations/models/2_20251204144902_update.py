@@ -1,8 +1,8 @@
 from tortoise import BaseDBAsyncClient
 
 
-async def upgrade(db: BaseDBAsyncClient) -> str:
-    return """
+async def upgrade(db: BaseDBAsyncClient) -> None:
+    await db.execute_script("""
         ALTER TABLE "users" ALTER COLUMN "firebase_uid" TYPE VARCHAR(255) USING "firebase_uid"::VARCHAR(255);
         ALTER TABLE "users" ALTER COLUMN "username" TYPE VARCHAR(100) USING "username"::VARCHAR(100);
         ALTER TABLE "users" ALTER COLUMN "gmail" TYPE VARCHAR(255) USING "gmail"::VARCHAR(255);
@@ -16,11 +16,12 @@ async def upgrade(db: BaseDBAsyncClient) -> str:
         ALTER TABLE "bookmarks" ALTER COLUMN "user_id" TYPE INT USING "user_id"::INT;
         ALTER TABLE "chat_histories" ALTER COLUMN "title" TYPE VARCHAR(200) USING "title"::VARCHAR(200);
         ALTER TABLE "chat_histories" ALTER COLUMN "user_id" TYPE INT USING "user_id"::INT;
-        ALTER TABLE "chat_histories" ALTER COLUMN "session_id" TYPE VARCHAR(100) USING "session_id"::VARCHAR(100);"""
+        ALTER TABLE "chat_histories" ALTER COLUMN "session_id" TYPE VARCHAR(100) USING "session_id"::VARCHAR(100);
+    """)
 
 
-async def downgrade(db: BaseDBAsyncClient) -> str:
-    return """
+async def downgrade(db: BaseDBAsyncClient) -> None:
+    await db.execute_script("""
         ALTER TABLE "users" ALTER COLUMN "firebase_uid" TYPE VARCHAR(255) USING "firebase_uid"::VARCHAR(255);
         ALTER TABLE "users" ALTER COLUMN "username" TYPE VARCHAR(100) USING "username"::VARCHAR(100);
         ALTER TABLE "users" ALTER COLUMN "gmail" TYPE VARCHAR(255) USING "gmail"::VARCHAR(255);
@@ -34,4 +35,5 @@ async def downgrade(db: BaseDBAsyncClient) -> str:
         ALTER TABLE "bookmarks" ALTER COLUMN "user_id" TYPE INT USING "user_id"::INT;
         ALTER TABLE "chat_histories" ALTER COLUMN "title" TYPE VARCHAR(200) USING "title"::VARCHAR(200);
         ALTER TABLE "chat_histories" ALTER COLUMN "user_id" TYPE INT USING "user_id"::INT;
-        ALTER TABLE "chat_histories" ALTER COLUMN "session_id" TYPE VARCHAR(100) USING "session_id"::VARCHAR(100);"""
+        ALTER TABLE "chat_histories" ALTER COLUMN "session_id" TYPE VARCHAR(100) USING "session_id"::VARCHAR(100);
+    """)

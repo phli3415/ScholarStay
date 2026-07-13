@@ -11,26 +11,27 @@ class Houses(Model):
     id = fields.IntField(pk=True)
     
     # address information
-    province = fields.CharField(max_length=100, description="province")
-    city = fields.CharField(max_length=100, description="city")
-    street = fields.CharField(max_length=200, description="street")
-    house_number = fields.CharField(max_length=50, description="house number")
-    
+    province = fields.CharField(max_length=100, null=True, description="province")
+    city = fields.CharField(max_length=100, null=True, description="city")
+    street = fields.CharField(max_length=200, null=True, description="street")
+    house_number = fields.CharField(max_length=50, null=True, description="house number")
+
     # price information
     monthly_rent = fields.DecimalField(max_digits=10, decimal_places=2, description="monthly rent")
-    
+
     # facility information(boolean values)
     has_kitchen = fields.BooleanField(default=False, description="has kitchen")
     has_washer = fields.BooleanField(default=False, description="has washer")
     has_parking = fields.BooleanField(default=False, description="has parking")
-    
+
     # status information
     is_rented = fields.BooleanField(default=False, description="is rented")
-    
+
     # distance information
     distance_to_university = fields.DecimalField(
-        max_digits=8, 
-        decimal_places=2, 
+        max_digits=8,
+        decimal_places=2,
+        null=True,
         description="distance to university"
     )
     
@@ -43,6 +44,10 @@ class Houses(Model):
     # here we use TextField to store the vector, you can add the vector column through migration later
     embedding_vector = fields.TextField(null=True, description="vector representation of the house description(JSON format or base64 encoded)")
     description = fields.TextField(null=True, description="house description text, used to generate the vector")
+
+    # import provenance: list of field names that were filled by LLM during CSV import
+    # e.g. ["has_kitchen", "has_washer", "street"] — null means all fields came from raw CSV data
+    llm_filled_fields = fields.JSONField(null=True, description="fields extracted by LLM during import; null = no LLM used")
     
     # association relationship: the house is created by the user
     owner = fields.ForeignKeyField(
