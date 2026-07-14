@@ -6,8 +6,18 @@ Usage (from BackendApplication/):
 
 import sys
 import asyncio
+import logging
 from decimal import Decimal, InvalidOperation
 from typing import Optional
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("import_csv.log", encoding="utf-8"),
+    ],
+)
 
 from .constants import CSV_IMPORT_BOT_UID, MIN_NULL_THRESHOLD, SOURCE_ID_BASE
 from .parsers import _clean, _haversine, _parse_address, _parse_amenities
@@ -40,7 +50,12 @@ async def process_row(row: dict) -> Optional[tuple[dict, list[str]]]:
 
     # 3. Parse amenities and address from raw CSV
     has_kitchen, has_washer, has_parking = _parse_amenities(amenities_raw)
-    house_number, street = _parse_address(address_raw) if address_raw else (None, None)
+    house_number, street, detected_state = (
+        _parse_address(address_raw, province) if address_raw else (None, None, None)
+    )
+    # Fill province from address if CSV column was null
+    if province is None and detected_state:
+        province = detected_state
 
     # 4. Distance via haversine
     try:
@@ -55,7 +70,7 @@ async def process_row(row: dict) -> Optional[tuple[dict, list[str]]]:
     if not has_kitchen and not has_washer and not has_parking:
         need_fields += ["has_kitchen", "has_washer", "has_parking"]
     if address_raw is None:
-        need_fields += ["street", "house_number"]
+        need_fields.append("raw_address")
     if city is None:
         need_fields.append("city")
     if province is None:
@@ -74,9 +89,10 @@ async def process_row(row: dict) -> Optional[tuple[dict, list[str]]]:
                 if val:
                     llm_filled.append(field)
 
-        if "street" in need_fields:
-            house_number = extracted.house_number
-            street       = extracted.street
+        if "raw_address" in need_fields and extracted.raw_address:
+            house_number, street, addr_state = _parse_address(extracted.raw_address, province)
+            if province is None and addr_state:
+                province = addr_state
             if house_number: llm_filled.append("house_number")
             if street:       llm_filled.append("street")
 
