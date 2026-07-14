@@ -28,7 +28,7 @@ def _haversine(lat: float, lon: float) -> float:
 _HOUSE_NUMBER_RE = re.compile(
     r"""^
     (?:
-        (?:unit|apt|apartment|suite|ste|#)\s*[\w-]+  # Unit 4B / Apt 2 / #7
+        (?:unit|apt|apartment|suite|ste|\#)\s*[\w-]+  # Unit 4B / Apt 2 / \#7
         |
         \d+[\w-]*                                     # 123 / 123A / 123-125
     )
