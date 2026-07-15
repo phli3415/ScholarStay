@@ -51,6 +51,29 @@ _SECONDARY_ADDRESS_RE = re.compile(
 # Build a sorted list of full state names (longest first to avoid partial matches)
 _STATE_NAMES_SORTED = sorted(_STATE_NAMES_TO_ABBREV.keys(), key=len, reverse=True)
 
+_ZIP_RE = re.compile(r'\b\d{5}(?:-\d{4})?\b')
+
+
+def _dedupe_address_parts(s: str) -> str:
+    """
+    Split on commas, remove pure-ZIP segments and duplicate segments,
+    then rejoin. Preserves first occurrence of each unique segment.
+    """
+    parts = [p.strip() for p in s.split(',')]
+    seen: set[str] = set()
+    result = []
+    for part in parts:
+        if not part:
+            continue
+        if _ZIP_RE.fullmatch(part):   # drop pure ZIP segments
+            continue
+        key = part.lower()
+        if key in seen:               # drop duplicates
+            continue
+        seen.add(key)
+        result.append(part)
+    return ' '.join(result)
+
 
 def _strip_state_suffix(s: str, known_state: Optional[str]) -> tuple[str, Optional[str]]:
     """
@@ -58,8 +81,8 @@ def _strip_state_suffix(s: str, known_state: Optional[str]) -> tuple[str, Option
     Returns (stripped_string, detected_abbreviation).
     Priority: "Washington DC" compound → known_state → 2-letter abbrev → full name.
     """
-    # Special compound: "Washington DC"
-    m = re.search(r',?\s+Washington\s+DC\s*$', s, re.IGNORECASE)
+    # Special compound: "Washington DC" or "Washington, DC"
+    m = re.search(r',?\s+Washington,?\s+DC\s*$', s, re.IGNORECASE)
     if m:
         return s[:m.start()].strip(), "DC"
 
@@ -97,15 +120,20 @@ def _parse_address(
 
     s = raw.strip()
 
-    # Step 1: strip trailing state
+    # Step 1: deduplicate comma segments, strip all ZIPs, then strip state
+    s = _dedupe_address_parts(s)          # dedupe + join with space (no commas)
+    s = _ZIP_RE.sub('', s)               # strip any remaining ZIPs
+    s = re.sub(r'\s+', ' ', s).strip()  # collapse extra whitespace
+    if not s:
+        return None, None, None
     s, detected_state = _strip_state_suffix(s, known_state)
     if not s:
         return None, None, detected_state
 
     # Step 2: handle building-name prefix (e.g. "Somerset West 18205 NW Bronson Rd")
-    # If string starts with letters (no digit/keyword), find the first number mid-string
+    # Require number to be followed by a letter so ZIP codes at end are not matched
     if not re.match(r'^[\d#]', s) and not _KEYWORD_NUM_RE.match(s):
-        mid = re.search(r'\b(\d+)', s)
+        mid = re.search(r'\b(\d+)\s+[A-Za-z]', s)
         if mid:
             s = s[mid.start():]
 
@@ -142,6 +170,11 @@ def _parse_address(
         m = _SECONDARY_ADDRESS_RE.search(street)
         if m:
             street = street[:m.start()].strip()
+
+    if house_number:
+        house_number = house_number.strip(",").strip()
+    if street:
+        street = street.strip(",").strip()
 
     return house_number or None, street or None, detected_state
 
