@@ -1,0 +1,4587 @@
+{
+  "metadata": {
+    "source_csv": "TestingDataSet\\apartments_for_rent_classified_10K.csv",
+    "row_limit_requested": 50,
+    "rows_read": 50,
+    "skipped_non_monthly": 1,
+    "labeled": 49,
+    "label_errors": 0,
+    "model": "gpt-4o-mini",
+    "generated_at": "20260716T073440Z",
+    "review_fraction": 0.18,
+    "review_seed": 42,
+    "review_sample_count": 9,
+    "review_total_count": 48
+  },
+  "review_records": [
+    {
+      "csv_id": 1,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "2nd St NE",
+          "source": "body",
+          "quote": "2nd St NE",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 790.0,
+          "source": "column",
+          "quote": "790",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 2,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "IN",
+          "source": "column",
+          "quote": "IN",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Evansville",
+          "source": "column",
+          "quote": "Evansville",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Schutte Rd",
+          "source": "column",
+          "quote": "814 Schutte Rd",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "814",
+          "source": "column",
+          "quote": "814 Schutte Rd",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 425.0,
+          "source": "column",
+          "quote": "425",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 3,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "VA",
+          "source": "column",
+          "quote": "VA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Arlington",
+          "source": "column",
+          "quote": "Arlington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "N Scott St",
+          "source": "body",
+          "quote": "N Scott St, 14th St N, Arlington, VA 22209",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1390.0,
+          "source": "column",
+          "quote": "1390",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 4,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Seattle",
+          "source": "column",
+          "quote": "Seattle",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "12th Avenue",
+          "source": "column",
+          "quote": "12th Avenue",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "1717",
+          "source": "column",
+          "quote": "1717",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 925.0,
+          "source": "column",
+          "quote": "925",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 5,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "VA",
+          "source": "column",
+          "quote": "VA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Arlington",
+          "source": "column",
+          "quote": "Arlington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Washington Blvd",
+          "source": "body",
+          "quote": "Studio apartment Washington Blvd, N Cleveland St, Arlington",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 880.0,
+          "source": "column",
+          "quote": "880",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 6,
+      "review_reasons": [
+        "negation_case"
+      ],
+      "fields": {
+        "province": {
+          "value": "NY",
+          "source": "column",
+          "quote": "NY",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Manhattan",
+          "source": "column",
+          "quote": "Manhattan",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "West 50th St",
+          "source": "column",
+          "quote": "50th St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "350",
+          "source": "column",
+          "quote": "350",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 2475.0,
+          "source": "column",
+          "quote": "2475",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": true,
+          "source": "body",
+          "quote": "carousel kitchen with new appliances",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "body",
+          "quote": "washer and dryers are permitted within the residences",
+          "confidence": "medium",
+          "is_negation_case": true
+        },
+        "has_parking": {
+          "value": true,
+          "source": "body",
+          "quote": "on-site garage",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 7,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "CA",
+          "source": "column",
+          "quote": "CA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Venice",
+          "source": "column",
+          "quote": "Venice",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Penmar Avenue",
+          "source": "column",
+          "quote": "2432 Penmar Avenue",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "2432",
+          "source": "column",
+          "quote": "2432 Penmar Avenue",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1800.0,
+          "source": "column",
+          "quote": "1800",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 8,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Oak St NW",
+          "source": "body",
+          "quote": "Studio apartment Oak St NW, 16th St NW, Washington, DC 20010",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 840.0,
+          "source": "column",
+          "quote": "840",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 9,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "CA",
+          "source": "column",
+          "quote": "CA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "San Francisco",
+          "source": "column",
+          "quote": "San Francisco",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Hyde",
+          "source": "column",
+          "quote": "Hyde",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "333",
+          "source": "column",
+          "quote": "333",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1495.0,
+          "source": "column",
+          "quote": "1495",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 10,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "A St SE",
+          "source": "body",
+          "quote": "Studio apartment A St SE, 19th St SE, Washington",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 890.0,
+          "source": "column",
+          "quote": "890",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 11,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "15th St SE",
+          "source": "body",
+          "quote": "15th St SE, Independence Ave SE, Washington DC",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "15",
+          "source": "body",
+          "quote": "15th St SE, Independence Ave SE, Washington DC",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 990.0,
+          "source": "column",
+          "quote": "990",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 12,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Arkansas Ave NW",
+          "source": "body",
+          "quote": "Studio apartment Arkansas Ave NW, Varnum St NW, Washington",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 840.0,
+          "source": "column",
+          "quote": "840",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 13,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "AZ",
+          "source": "column",
+          "quote": "AZ",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Tucson",
+          "source": "column",
+          "quote": "Tucson",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "N 6th Ave",
+          "source": "column",
+          "quote": "2326 N 6th Ave",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "2326",
+          "source": "column",
+          "quote": "2326 N 6th Ave",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1795.0,
+          "source": "column",
+          "quote": "1795",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 14,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Salem Ln NW",
+          "source": "body",
+          "quote": "Studio apartment Salem Ln NW, 45th St NW, Washington",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1090.0,
+          "source": "column",
+          "quote": "1090",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 15,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "CA",
+          "source": "column",
+          "quote": "CA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "San Francisco",
+          "source": "column",
+          "quote": "San Francisco",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Taylor St",
+          "source": "column",
+          "quote": "57 Taylor St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "57",
+          "source": "column",
+          "quote": "57 Taylor St",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1695.0,
+          "source": "column",
+          "quote": "1695",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": true,
+          "source": "body",
+          "quote": "Range / Oven",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 17,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "NC",
+          "source": "column",
+          "quote": "NC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "New Bern",
+          "source": "column",
+          "quote": "New Bern",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Moonlight Lake Drive",
+          "source": "column",
+          "quote": "180 Moonlight Lake Drive",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "180",
+          "source": "column",
+          "quote": "180 Moonlight Lake Drive",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1560.0,
+          "source": "column",
+          "quote": "1560",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": true,
+          "source": "body",
+          "quote": "1 microwave, one mini fridge",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 18,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "TX",
+          "source": "column",
+          "quote": "TX",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Spring",
+          "source": "column",
+          "quote": "Spring",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Spring Ridge Dr",
+          "source": "body",
+          "quote": "Spring Ridge Dr",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1000.0,
+          "source": "column",
+          "quote": "1000",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 19,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "CA",
+          "source": "column",
+          "quote": "CA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Vallejo",
+          "source": "column",
+          "quote": "Vallejo",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "545 Georgia St",
+          "source": "column",
+          "quote": "545 Georgia St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "545",
+          "source": "column",
+          "quote": "545",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 950.0,
+          "source": "column",
+          "quote": "950",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 20,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "GA",
+          "source": "column",
+          "quote": "GA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Marietta",
+          "source": "column",
+          "quote": "Marietta",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Falcon Wood Dr",
+          "source": "body",
+          "quote": "Falcon Wood Dr",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 625.0,
+          "source": "column",
+          "quote": "625",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 21,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "NC",
+          "source": "column",
+          "quote": "NC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Charlotte",
+          "source": "column",
+          "quote": "Charlotte",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Branthurst Dr",
+          "source": "body",
+          "quote": "Branthurst Dr",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 600.0,
+          "source": "column",
+          "quote": "600",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 22,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "FL",
+          "source": "column",
+          "quote": "FL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Tallahassee",
+          "source": "column",
+          "quote": "Tallahassee",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Chapel Dr",
+          "source": "column",
+          "quote": "Chapel Dr",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "501",
+          "source": "column",
+          "quote": "501",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 544.0,
+          "source": "column",
+          "quote": "544",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": true,
+          "source": "column",
+          "quote": "Parking",
+          "confidence": "high",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 23,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "low"
+        },
+        "city": {
+          "value": "Fleming Island",
+          "source": "body",
+          "quote": "Fleming Island",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Leeward Ct",
+          "source": "body",
+          "quote": "Leeward Ct",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 525.0,
+          "source": "column",
+          "quote": "525",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 24,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "AZ",
+          "source": "column",
+          "quote": "AZ",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Phoenix",
+          "source": "column",
+          "quote": "Phoenix",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Union Hills",
+          "source": "body",
+          "quote": "Union Hills",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 450.0,
+          "source": "column",
+          "quote": "450",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 25,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "FL",
+          "source": "column",
+          "quote": "FL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Riverview",
+          "source": "column",
+          "quote": "Riverview",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Herons Path Pl",
+          "source": "body",
+          "quote": "Herons Path Pl",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 750.0,
+          "source": "column",
+          "quote": "750",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 26,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "AL",
+          "source": "column",
+          "quote": "AL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Lafayette",
+          "source": "column",
+          "quote": "Lafayette",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "S. Pond Court",
+          "source": "body",
+          "quote": "This unit is located at S. Pond Court",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 2000.0,
+          "source": "column",
+          "quote": "2000",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 27,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "CA",
+          "source": "column",
+          "quote": "CA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "San Francisco",
+          "source": "column",
+          "quote": "San Francisco",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Arballo Dr",
+          "source": "body",
+          "quote": "Arballo Dr 12d",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "12d",
+          "source": "body",
+          "quote": "Arballo Dr 12d",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1400.0,
+          "source": "column",
+          "quote": "1400",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 28,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "MD",
+          "source": "column",
+          "quote": "MD",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Glen Burnie",
+          "source": "column",
+          "quote": "Glen Burnie",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Elias Way",
+          "source": "body",
+          "quote": "Elias Way",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1095.0,
+          "source": "column",
+          "quote": "1095",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 29,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "CO",
+          "source": "column",
+          "quote": "CO",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Littleton",
+          "source": "column",
+          "quote": "Littleton",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "W. Ken Caryl Place",
+          "source": "body",
+          "quote": "W. Ken Caryl Place #d",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 915.0,
+          "source": "column",
+          "quote": "915",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 30,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "MD",
+          "source": "column",
+          "quote": "MD",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Waldorf",
+          "source": "column",
+          "quote": "Waldorf",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Skipjack Ct",
+          "source": "body",
+          "quote": "Skipjack Ct",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 900.0,
+          "source": "column",
+          "quote": "900",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 31,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "FL",
+          "source": "column",
+          "quote": "FL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Riverview",
+          "source": "column",
+          "quote": "Riverview",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Windmill Cove Dr",
+          "source": "body",
+          "quote": "One BR Windmill Cove Dr",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 865.0,
+          "source": "column",
+          "quote": "865",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 32,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "low"
+        },
+        "city": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "low"
+        },
+        "street": {
+          "value": "Mullica Way",
+          "source": "body",
+          "quote": "This unit is located at Mullica Way, Devonshire, 8215, AL",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 750.0,
+          "source": "column",
+          "quote": "PRICE: 750",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 33,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "CO",
+          "source": "column",
+          "quote": "CO",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Aurora",
+          "source": "column",
+          "quote": "Aurora",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "East Bates Circle",
+          "source": "body",
+          "quote": "East Bates Circle",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 725.0,
+          "source": "column",
+          "quote": "725",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 34,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "VA",
+          "source": "column",
+          "quote": "VA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Manassas",
+          "source": "column",
+          "quote": "Manassas",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Ginger Ct",
+          "source": "body",
+          "quote": "Ginger Ct",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 650.0,
+          "source": "column",
+          "quote": "650",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 35,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "GA",
+          "source": "column",
+          "quote": "GA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Decatur",
+          "source": "column",
+          "quote": "Decatur",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Line St",
+          "source": "body",
+          "quote": "Line St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 650.0,
+          "source": "column",
+          "quote": "650",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 36,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "FL",
+          "source": "column",
+          "quote": "FL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Tampa",
+          "source": "column",
+          "quote": "Tampa",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "W Fern St",
+          "source": "body",
+          "quote": "W Fern St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 645.0,
+          "source": "column",
+          "quote": "645",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 37,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "NM",
+          "source": "column",
+          "quote": "NM",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Albuquerque",
+          "source": "column",
+          "quote": "Albuquerque",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Freeway Place Northeast",
+          "source": "body",
+          "quote": "Freeway Place Northeast",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 595.0,
+          "source": "column",
+          "quote": "595",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 38,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "low"
+        },
+        "city": {
+          "value": "Falls Church",
+          "source": "body",
+          "quote": "Falls Church",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "New Providence Dr",
+          "source": "body",
+          "quote": "New Providence Dr",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "90",
+          "source": "body",
+          "quote": "Apartment 90",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 750.0,
+          "source": "column",
+          "quote": "750",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 39,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Seattle",
+          "source": "column",
+          "quote": "Seattle",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Roosevelt Way NE",
+          "source": "column",
+          "quote": "Roosevelt Way NE",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "6921",
+          "source": "column",
+          "quote": "6921",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1195.0,
+          "source": "column",
+          "quote": "1195",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 40,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Seattle",
+          "source": "column",
+          "quote": "Seattle",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "714 N 95th St",
+          "source": "column",
+          "quote": "714 N 95th St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "714",
+          "source": "column",
+          "quote": "714 N 95th St",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1150.0,
+          "source": "column",
+          "quote": "1150",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 42,
+      "review_reasons": [
+        "low_confidence",
+        "random_sample"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Seattle",
+          "source": "column",
+          "quote": "Seattle",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "2037 Yale Avenue E",
+          "source": "column",
+          "quote": "2037 Yale Avenue E",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "2037",
+          "source": "column",
+          "quote": "2037 Yale Avenue E",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1250.0,
+          "source": "column",
+          "quote": "1250",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 43,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "NC",
+          "source": "column",
+          "quote": "NC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Gastonia",
+          "source": "column",
+          "quote": "Gastonia",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "South Chester Street",
+          "source": "body",
+          "quote": "South Chester Street",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 800.0,
+          "source": "column",
+          "quote": "800",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 44,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "FL",
+          "source": "column",
+          "quote": "FL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Wimauma",
+          "source": "column",
+          "quote": "Wimauma",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Flowing Oar Road",
+          "source": "body",
+          "quote": "Flowing Oar Road",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": null,
+          "source": "none",
+          "quote": null,
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 685.0,
+          "source": "column",
+          "quote": "685",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 45,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "TN",
+          "source": "column",
+          "quote": "TN",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Memphis",
+          "source": "column",
+          "quote": "Memphis",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "S Pauline Place",
+          "source": "column",
+          "quote": "23 S Pauline Place",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "23",
+          "source": "column",
+          "quote": "23 S Pauline Place",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 525.0,
+          "source": "column",
+          "quote": "525",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 46,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Seattle",
+          "source": "column",
+          "quote": "Seattle",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "North 109th St",
+          "source": "column",
+          "quote": "1008 North 109th St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "1008",
+          "source": "column",
+          "quote": "1008 North 109th St",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1095.0,
+          "source": "column",
+          "quote": "1095",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 47,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "CA",
+          "source": "column",
+          "quote": "CA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "San Francisco",
+          "source": "column",
+          "quote": "San Francisco",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "Geary St",
+          "source": "column",
+          "quote": "925 Geary St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "925",
+          "source": "column",
+          "quote": "925 Geary St",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1695.0,
+          "source": "column",
+          "quote": "1695",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": true,
+          "source": "body",
+          "quote": "Apartment features include:-- On-Site Laundry- Refrigerator- In-Unit Laundry- Dishwasher- On Bus Line",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": true,
+          "source": "body",
+          "quote": "In-Unit Laundry",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 48,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "DC",
+          "source": "column",
+          "quote": "DC",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Washington",
+          "source": "column",
+          "quote": "Washington",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "13th St NW",
+          "source": "none",
+          "quote": null,
+          "confidence": "low"
+        },
+        "house_number": {
+          "value": "13",
+          "source": "none",
+          "quote": null,
+          "confidence": "low"
+        },
+        "monthly_rent": {
+          "value": 990.0,
+          "source": "column",
+          "quote": "990",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 49,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Bellingham",
+          "source": "column",
+          "quote": "Bellingham",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "202 E Holly St",
+          "source": "column",
+          "quote": "202 E Holly St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "202",
+          "source": "column",
+          "quote": "202 E Holly St",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 775.0,
+          "source": "column",
+          "quote": "775",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "csv_id": 50,
+      "review_reasons": [
+        "low_confidence"
+      ],
+      "fields": {
+        "province": {
+          "value": "WA",
+          "source": "column",
+          "quote": "WA",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Seattle",
+          "source": "column",
+          "quote": "Seattle",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "NE 66th St",
+          "source": "column",
+          "quote": "838 NE 66th St",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "838",
+          "source": "column",
+          "quote": "838 NE 66th St",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 1299.0,
+          "source": "column",
+          "quote": "1299",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "has_parking": {
+          "value": false,
+          "source": "none",
+          "quote": null,
+          "confidence": "low",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null,
+      "human_verdict": {
+        "province": {
+          "correct": null,
+          "notes": ""
+        },
+        "city": {
+          "correct": null,
+          "notes": ""
+        },
+        "street": {
+          "correct": null,
+          "notes": ""
+        },
+        "house_number": {
+          "correct": null,
+          "notes": ""
+        },
+        "monthly_rent": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_kitchen": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_washer": {
+          "correct": null,
+          "notes": ""
+        },
+        "has_parking": {
+          "correct": null,
+          "notes": ""
+        }
+      }
+    }
+  ]
+}
