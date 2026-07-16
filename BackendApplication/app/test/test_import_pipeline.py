@@ -129,6 +129,17 @@ class TestParseAddress:
         assert "Washington" not in st
         assert "DC" not in st
 
+    def test_duplicate_city_state_segments(self):
+        # LLM output sometimes repeats "Washington, DC" segments; dedupe
+        # must collapse them so the compound state-suffix regex still
+        # matches at the end of the string. (ZIP is no longer expected in
+        # LLM output — the extraction prompt excludes it — so no ZIP here.)
+        hn, st, state = _parse_address(
+            "second St NE, Uhland Terrace NE, Washington, DC, Washington, DC"
+        )
+        assert state == "DC"
+        assert st == "second St NE Uhland Terrace NE"
+
     def test_known_state_passed(self):
         _, _, state = _parse_address("100 Main St", known_state="NY")
         # no state suffix in address, known_state not stripped → None

@@ -15,7 +15,7 @@ class LLMExtractedFields(BaseModel):
     has_kitchen:  bool          = Field(False, description="listing mentions a kitchen or cooking facilities")
     has_washer:   bool          = Field(False, description="listing mentions washer, dryer, or laundry")
     has_parking:  bool          = Field(False, description="listing mentions parking, garage, or driveway")
-    raw_address:  Optional[str] = Field(None,  description="full address string as it appears in the text, e.g. '123 Main St'")
+    raw_address:  Optional[str] = Field(None,  description="street number and street name only, e.g. '123 Main St'. Do NOT include city, state, or ZIP/postal code.")
     city:         Optional[str] = Field(None,  description="city name")
     province:     Optional[str] = Field(None,  description="US state abbreviation or full name")
 
@@ -39,7 +39,10 @@ async def llm_extract(body: str, need_fields: list[str]) -> LLMExtractedFields:
     prompt = (
         "Extract the following fields from the housing listing text below.\n"
         "Only extract what is explicitly stated. "
-        "If a field cannot be determined from the text, use null or false.\n\n"
+        "If a field cannot be determined from the text, use null or false.\n"
+        "When extracting raw_address, include only the street number and "
+        "street name. Do not include city, state, or ZIP/postal code, even "
+        "if they appear next to the address in the text.\n\n"
         f"Fields to extract:\n{field_lines}\n\n"
         f"Listing text:\n{body}"
     )

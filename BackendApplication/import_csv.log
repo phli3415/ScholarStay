@@ -821,3 +821,277 @@
 2026-07-14 10:24:08,192 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-07-14 10:24:08,501 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Jasmine Ln., La Puente, 91744, CA', 'city': 'La Puente', 'province': 'CA'}
 2026-07-14 10:24:11,287 [INFO] tortoise: Tortoise-ORM shutdown
+2026-07-15 08:26:15,376 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:26:18,801 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:19,128 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'second St NE', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:26:24,458 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:26:26,948 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:26,954 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '814 Schutte Road', 'city': 'Evansville', 'province': 'IN'}
+2026-07-15 08:26:29,149 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:26:31,905 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:32,178 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'N Scott St, 14th St N', 'city': 'Arlington', 'province': 'VA'}
+2026-07-15 08:26:34,375 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:26:36,852 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:37,124 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '1717 12th Ave', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:26:39,323 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:26:41,386 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:41,657 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Washington Blvd, N Cleveland St', 'city': 'Arlington', 'province': 'VA'}
+2026-07-15 08:26:46,443 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:26:49,375 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:49,383 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '2432 Penmar Ave', 'city': 'Venice', 'province': 'CA'}
+2026-07-15 08:26:51,636 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:26:55,418 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:26:55,688 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Oak St NW, 16th St NW', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:27:00,100 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:27:02,758 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:03,031 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'A St SE, 19th St SE', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:27:05,239 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:27:07,562 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:07,857 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '15th St SE', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:27:10,059 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:27:12,526 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:12,828 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Arkansas Ave NW', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:27:15,028 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:27:17,599 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:17,606 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '2326 N sixth Avenue', 'city': 'Tucson', 'province': 'AZ'}
+2026-07-15 08:27:20,113 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:27:23,209 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:23,482 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Salem Ln NW, 45th St NW', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:27:30,162 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:27:33,084 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:33,356 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Spring Ridge Dr', 'city': 'Spring', 'province': 'TX'}
+2026-07-15 08:27:35,552 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:27:37,838 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:38,122 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '545 Georgia street', 'city': 'Vallejo', 'province': 'CA'}
+2026-07-15 08:27:40,319 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:27:43,056 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:43,329 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Falcon Wood Dr', 'city': 'Marietta', 'province': 'GA'}
+2026-07-15 08:27:45,573 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:27:48,747 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:49,018 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Branthurst Dr', 'city': 'Charlotte', 'province': 'NC'}
+2026-07-15 08:27:54,034 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address', 'city', 'province']
+2026-07-15 08:27:56,546 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:27:56,815 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Leeward Ct', 'city': 'Fleming Island', 'province': 'FL'}
+2026-07-15 08:27:59,286 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:01,853 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:02,125 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Union Hills', 'city': 'Phoenix', 'province': 'AZ'}
+2026-07-15 08:28:04,721 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:07,438 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:07,729 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Herons Path Pl', 'city': 'Riverview', 'province': 'FL'}
+2026-07-15 08:28:09,927 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:12,091 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:12,368 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'S. Pond Court', 'city': 'Lafayette', 'province': 'AL'}
+2026-07-15 08:28:14,565 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:16,721 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:16,992 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '12d Arballo Dr', 'city': 'San Francisco', 'province': 'CA'}
+2026-07-15 08:28:19,190 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:21,799 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:22,074 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Elias Way', 'city': 'Glen Burnie', 'province': 'MD'}
+2026-07-15 08:28:24,273 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:28,117 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:28,391 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'W. Ken Caryl Place #d', 'city': 'Littleton', 'province': 'CO'}
+2026-07-15 08:28:30,713 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:33,121 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:33,396 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Skipjack Ct', 'city': 'Waldorf', 'province': 'MD'}
+2026-07-15 08:28:35,601 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:38,296 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:38,303 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Windmill Cove Dr', 'city': 'Riverview', 'province': 'FL'}
+2026-07-15 08:28:40,548 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address', 'city', 'province']
+2026-07-15 08:28:42,979 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:43,561 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Mullica Way', 'city': 'Devonshire', 'province': 'AL'}
+2026-07-15 08:28:46,075 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:48,859 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:49,134 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'East Bates Circle', 'city': 'Aurora', 'province': 'CO'}
+2026-07-15 08:28:51,632 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:28:54,734 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:28:55,009 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Ginger Ct', 'city': 'Manassas', 'province': 'VA'}
+2026-07-15 08:28:57,206 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:29:01,116 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:01,125 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Line St', 'city': 'Decatur', 'province': 'GA'}
+2026-07-15 08:29:03,474 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:29:05,746 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:06,034 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'W Fern St', 'city': 'Tampa', 'province': 'FL'}
+2026-07-15 08:29:08,716 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:29:11,069 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:11,359 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Freeway Place Northeast', 'city': 'Albuquerque', 'province': 'NM'}
+2026-07-15 08:29:14,084 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address', 'city', 'province']
+2026-07-15 08:29:16,400 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:16,693 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'New Providence Dr', 'city': 'Falls Church', 'province': 'AL'}
+2026-07-15 08:29:19,160 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:29:22,061 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:22,332 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '6921 Roosevelt Way NE', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:29:24,529 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:29:27,535 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:27,809 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '714 N. 95th St.', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:29:32,514 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:29:35,478 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:35,487 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '2037 Yale Ave E', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:29:37,682 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:29:40,098 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:40,372 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'South Chester Street', 'city': 'Gastonia', 'province': 'NC'}
+2026-07-15 08:29:42,939 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:29:45,756 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:46,033 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Flowing Oar Road', 'city': 'Wimauma', 'province': 'FL'}
+2026-07-15 08:29:48,882 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:29:51,445 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:51,796 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '23 S Pauline Place', 'city': 'Memphis', 'province': 'TN'}
+2026-07-15 08:29:55,027 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:29:58,153 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:29:59,115 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '1008 North 109th Street', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:30:06,419 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:30:09,594 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:30:10,216 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '13th Street NW', 'city': 'Washington', 'province': 'DC'}
+2026-07-15 08:30:15,739 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:30:20,241 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:30:20,648 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '202 E. HOLLY STREET', 'city': 'Bellingham', 'province': 'WA'}
+2026-07-15 08:30:25,825 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:30:29,476 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:30:29,484 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '838 NE 66th St', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:30:38,475 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:30:43,858 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:30:45,157 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Loma Vista Terrace', 'city': 'Pacifica', 'province': 'CA'}
+2026-07-15 08:30:49,373 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:30:53,872 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:30:54,536 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Via Marina', 'city': None, 'province': None}
+2026-07-15 08:30:58,394 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:31:01,842 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:01,961 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '22nd Avenue', 'city': 'San Francisco', 'province': 'CA'}
+2026-07-15 08:31:04,945 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:08,768 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:09,044 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Acama Street', 'city': 'Studio City', 'province': 'CA'}
+2026-07-15 08:31:14,083 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:18,295 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:19,092 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Granadilla Drive', 'city': 'Moorpark', 'province': 'CA'}
+2026-07-15 08:31:24,673 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:27,426 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:27,702 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Spencer Street #404', 'city': 'Torrance', 'province': 'CA'}
+2026-07-15 08:31:33,502 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:35,747 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:36,018 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Willow Wind Ct', 'city': 'Sacramento', 'province': 'CA'}
+2026-07-15 08:31:38,216 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:40,950 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:41,246 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Balboa Blvd # 106', 'city': 'Lake Balboa', 'province': 'CA'}
+2026-07-15 08:31:43,441 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:45,976 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:46,263 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Greenwood Ave N', 'city': 'Seattle', 'province': 'WA'}
+2026-07-15 08:31:48,476 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:53,198 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:53,273 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Cahuenga Blvd', 'city': None, 'province': None}
+2026-07-15 08:31:55,514 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:31:58,750 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:31:58,757 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'N Lafayette St', 'city': 'Denver', 'province': 'CO'}
+2026-07-15 08:32:00,961 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:03,765 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:04,037 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'S Ensenada St.', 'city': 'Aurora', 'province': 'CO'}
+2026-07-15 08:32:06,260 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:08,863 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:09,137 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Moreau Way', 'city': 'Brentwood', 'province': 'CA'}
+2026-07-15 08:32:11,608 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:32:14,483 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:14,758 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'second Street', 'city': 'San Rafael', 'province': 'CA'}
+2026-07-15 08:32:17,039 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:19,582 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:19,854 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Morning Light Terrace', 'city': 'North Potomac', 'province': 'MD'}
+2026-07-15 08:32:22,375 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:24,733 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:25,007 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Algonquin Ave', 'city': 'Andover', 'province': 'MA'}
+2026-07-15 08:32:27,520 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:29,914 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:30,191 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Holway St', 'city': 'Oakland', 'province': 'CA'}
+2026-07-15 08:32:32,666 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:32:35,406 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:35,678 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '17th St.', 'city': 'San Pablo', 'province': 'CA'}
+2026-07-15 08:32:38,456 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:32:41,042 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:41,316 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '1409 W. Diversey Pkwy.', 'city': 'Chicago', 'province': 'IL'}
+2026-07-15 08:32:43,856 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:47,023 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:47,031 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Wythe Street, B', 'city': 'Alexandria', 'province': 'VA'}
+2026-07-15 08:32:49,718 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:52,179 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:52,458 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'N. Ashland Ave', 'city': 'Chicago', 'province': 'IL'}
+2026-07-15 08:32:54,936 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:32:58,729 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:32:59,001 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Arbor Lane Ct', 'city': 'Thousand Oaks', 'province': 'CA'}
+2026-07-15 08:33:01,248 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:03,674 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:03,947 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'S. Sherman Street', 'city': 'Denver', 'province': 'CO'}
+2026-07-15 08:33:06,506 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:08,639 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:08,913 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Lighthouse Lane', 'city': 'Burke', 'province': 'VA'}
+2026-07-15 08:33:11,343 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:33:13,576 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:13,845 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '100th Ave Ne', 'city': 'Bellevue', 'province': 'WA'}
+2026-07-15 08:33:16,053 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'city', 'province']
+2026-07-15 08:33:18,525 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:19,077 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'eighth Avenue North', 'city': 'Oak Central', 'province': 'FL'}
+2026-07-15 08:33:21,591 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:23,959 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:24,235 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Trailhead Ct', 'city': 'Wilton', 'province': 'CA'}
+2026-07-15 08:33:27,650 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:30,375 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:30,407 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Canoga Dr', 'city': 'Woodland Hills', 'province': 'CA'}
+2026-07-15 08:33:33,359 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:36,305 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:36,367 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Sw 55 Ter. W', 'city': 'Miami', 'province': 'FL'}
+2026-07-15 08:33:38,888 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:41,592 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:42,033 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Fieldstone Way', 'city': 'Hyattsville', 'province': 'MD'}
+2026-07-15 08:33:44,529 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:47,142 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:47,415 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Tennyson Court', 'city': 'Westminster', 'province': 'CO'}
+2026-07-15 08:33:50,713 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:53,454 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:33:53,729 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'E Alamo Dr.', 'city': 'Aurora', 'province': 'CO'}
+2026-07-15 08:33:56,672 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:33:59,755 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:00,029 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Poppy Ct.', 'city': 'Arvada', 'province': 'CO'}
+2026-07-15 08:34:02,249 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:05,104 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:05,113 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Almond Ave', 'city': 'Seal Beach', 'province': 'CA'}
+2026-07-15 08:34:08,288 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:11,017 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:11,299 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': '261 W San Marcos Blvd', 'city': 'San Marcos', 'province': 'CA'}
+2026-07-15 08:34:13,858 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:16,386 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:16,658 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Oak Dr', 'city': 'Medford Lakes', 'province': 'NJ'}
+2026-07-15 08:34:19,403 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:22,798 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:23,067 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Southampton Dr Apartment L', 'city': 'Glen Burnie', 'province': 'MD'}
+2026-07-15 08:34:25,284 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:28,777 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:29,049 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'W. Dorado Pl.', 'city': 'Littleton', 'province': 'CO'}
+2026-07-15 08:34:31,274 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:33,900 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:34,174 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Fulton St', 'city': 'Aurora', 'province': 'CO'}
+2026-07-15 08:34:36,390 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:38,805 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:39,085 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Torino Court', 'city': 'Concord', 'province': 'CA'}
+2026-07-15 08:34:41,642 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:44,545 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:44,553 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Gateway Circle', 'city': 'Lafayette', 'province': 'CO'}
+2026-07-15 08:34:47,235 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking']
+2026-07-15 08:34:49,580 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:49,855 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'first Ave', 'city': 'Chula Vista', 'province': 'CA'}
+2026-07-15 08:34:52,817 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:34:55,539 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:34:55,814 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Jamie Ct', 'city': 'Glen Burnie', 'province': 'MD'}
+2026-07-15 08:34:58,831 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:35:01,661 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:35:01,974 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Foxhill Cir', 'city': 'Highlands Ranch', 'province': 'CO'}
+2026-07-15 08:35:04,539 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:35:07,693 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:35:08,239 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Yellow Flower Rd', 'city': 'Laurel', 'province': 'MD'}
+2026-07-15 08:35:10,845 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:35:13,318 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:35:13,578 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Eventide Ct', 'city': 'Orlando', 'province': 'FL'}
+2026-07-15 08:35:16,048 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:35:19,466 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:35:19,741 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Racquet Lane', 'city': 'Boulder', 'province': 'CO'}
+2026-07-15 08:35:22,239 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:35:25,138 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:35:25,430 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'E Floyd Ave', 'city': 'Aurora', 'province': 'CO'}
+2026-07-15 08:35:28,812 [INFO] app.dataProcessing.llm_extractor: LLM request | need_fields=['has_kitchen', 'has_washer', 'has_parking', 'raw_address']
+2026-07-15 08:35:30,926 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-15 08:35:31,209 [INFO] app.dataProcessing.llm_extractor: LLM result  | {'has_kitchen': False, 'has_washer': False, 'has_parking': False, 'raw_address': 'Jasmine Ln.', 'city': 'La Puente', 'province': 'CA'}
+2026-07-15 08:35:33,781 [INFO] tortoise: Tortoise-ORM shutdown

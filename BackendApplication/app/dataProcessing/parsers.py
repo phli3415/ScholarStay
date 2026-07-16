@@ -56,8 +56,13 @@ _ZIP_RE = re.compile(r'\b\d{5}(?:-\d{4})?\b')
 
 def _dedupe_address_parts(s: str) -> str:
     """
-    Split on commas, remove pure-ZIP segments and duplicate segments,
-    then rejoin. Preserves first occurrence of each unique segment.
+    Split on commas, remove duplicate segments, then rejoin.
+    Preserves first occurrence of each unique segment.
+
+    ZIP-segment dropping is disabled: the CSV `address` column never
+    contains a ZIP, and the LLM extraction prompt now tells the model to
+    omit ZIP too (see llm_extractor.py). Re-enable the `_ZIP_RE.fullmatch`
+    check below if that assumption stops holding.
     """
     parts = [p.strip() for p in s.split(',')]
     seen: set[str] = set()
@@ -65,8 +70,8 @@ def _dedupe_address_parts(s: str) -> str:
     for part in parts:
         if not part:
             continue
-        if _ZIP_RE.fullmatch(part):   # drop pure ZIP segments
-            continue
+        # if _ZIP_RE.fullmatch(part):   # drop pure ZIP segments (disabled)
+        #     continue
         key = part.lower()
         if key in seen:               # drop duplicates
             continue
@@ -120,9 +125,12 @@ def _parse_address(
 
     s = raw.strip()
 
-    # Step 1: deduplicate comma segments, strip all ZIPs, then strip state
+    # Step 1: deduplicate comma segments, then strip state.
+    # ZIP stripping is disabled here: the CSV `address` column never has a
+    # ZIP, and the LLM extraction prompt now excludes ZIP too (see
+    # llm_extractor.py). Re-enable `_ZIP_RE.sub` below if that stops holding.
+    # s = _ZIP_RE.sub('', s)                # strip ZIPs before dedupe
     s = _dedupe_address_parts(s)          # dedupe + join with space (no commas)
-    s = _ZIP_RE.sub('', s)               # strip any remaining ZIPs
     s = re.sub(r'\s+', ' ', s).strip()  # collapse extra whitespace
     if not s:
         return None, None, None
