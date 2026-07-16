@@ -176,7 +176,7 @@ def build_user_prompt(row: dict) -> str:
 
 async def label_row(client, sem: asyncio.Semaphore, model: str, row: dict, row_index: int) -> dict:
     base = {
-        "csv_id": row_index,  # 1-based row number within the source CSV
+        "csv_id": row_index + 1145140000,  # matches SOURCE_ID_BASE + row_index in app/dataProcessing/constants.py, i.e. the DB house id the import pipeline would assign this row
         "price_type_raw": row.get("price_type"),
     }
     prompt = build_user_prompt(row)
