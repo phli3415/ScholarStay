@@ -7,18 +7,16 @@
     "labeled": 49,
     "label_errors": 0,
     "model": "gpt-4o-mini",
-    "generated_at": "20260716T073440Z",
+    "generated_at": "20260716T080932Z",
     "review_fraction": 0.18,
     "review_seed": 42,
     "review_sample_count": 9,
     "review_total_count": 48
   },
-  "review_records": [
+  "records": [
     {
-      "csv_id": 1,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140001,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -73,48 +71,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 2,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140002,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "IN",
@@ -169,47 +130,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 3,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140003,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "VA",
@@ -264,47 +189,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 4,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140004,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -359,47 +248,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 5,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140005,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "VA",
@@ -454,47 +307,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 6,
-      "review_reasons": [
-        "negation_case"
-      ],
+      "csv_id": 1145140006,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "NY",
@@ -511,7 +328,7 @@
         "street": {
           "value": "West 50th St",
           "source": "column",
-          "quote": "50th St",
+          "quote": "West 50th St",
           "confidence": "high"
         },
         "house_number": {
@@ -534,11 +351,11 @@
           "is_negation_case": false
         },
         "has_washer": {
-          "value": false,
+          "value": true,
           "source": "body",
-          "quote": "washer and dryers are permitted within the residences",
+          "quote": "8 laundry rooms (washer and dryers are permitted within the residences)",
           "confidence": "medium",
-          "is_negation_case": true
+          "is_negation_case": false
         },
         "has_parking": {
           "value": true,
@@ -549,48 +366,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 7,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140007,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CA",
@@ -645,48 +425,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 8,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140008,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -741,48 +484,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 9,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140009,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CA",
@@ -837,47 +543,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 10,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140010,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -932,47 +602,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 11,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140011,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -993,9 +627,9 @@
           "confidence": "high"
         },
         "house_number": {
-          "value": "15",
-          "source": "body",
-          "quote": "15th St SE, Independence Ave SE, Washington DC",
+          "value": "null",
+          "source": "none",
+          "quote": null,
           "confidence": "high"
         },
         "monthly_rent": {
@@ -1027,47 +661,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 12,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140012,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -1122,47 +720,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 13,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140013,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "AZ",
@@ -1217,47 +779,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 14,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140014,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -1312,48 +838,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 15,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140015,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CA",
@@ -1397,59 +886,22 @@
           "source": "none",
           "quote": null,
           "confidence": "low",
-          "is_negation_case": false
+          "is_negation_case": true
         },
         "has_parking": {
           "value": false,
           "source": "none",
           "quote": null,
           "confidence": "low",
-          "is_negation_case": false
+          "is_negation_case": true
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 17,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140017,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "NC",
@@ -1504,47 +956,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 18,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140018,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "TX",
@@ -1599,48 +1015,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 19,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140019,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CA",
@@ -1695,47 +1074,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 20,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140020,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "GA",
@@ -1790,47 +1133,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 21,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140021,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "NC",
@@ -1885,47 +1192,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 22,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140022,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "FL",
@@ -1980,47 +1251,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 23,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140023,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": null,
@@ -2075,47 +1310,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 24,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140024,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "AZ",
@@ -2132,7 +1331,7 @@
         "street": {
           "value": "Union Hills",
           "source": "body",
-          "quote": "Union Hills",
+          "quote": "Union Hills, Phoenix, 85027, AZ",
           "confidence": "high"
         },
         "house_number": {
@@ -2170,47 +1369,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 25,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140025,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "FL",
@@ -2265,47 +1428,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 26,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140026,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "AL",
@@ -2322,7 +1449,7 @@
         "street": {
           "value": "S. Pond Court",
           "source": "body",
-          "quote": "This unit is located at S. Pond Court",
+          "quote": "S. Pond Court",
           "confidence": "high"
         },
         "house_number": {
@@ -2360,47 +1487,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 27,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140027,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CA",
@@ -2455,47 +1546,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 28,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140028,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "MD",
@@ -2550,47 +1605,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 29,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140029,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CO",
@@ -2645,47 +1664,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 30,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140030,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "MD",
@@ -2740,47 +1723,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 31,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140031,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "FL",
@@ -2835,64 +1782,28 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 32,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140032,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
-          "value": null,
-          "source": "none",
-          "quote": null,
-          "confidence": "low"
+          "value": "AL",
+          "source": "body",
+          "quote": "Devonshire, 8215, AL",
+          "confidence": "high"
         },
         "city": {
-          "value": null,
-          "source": "none",
-          "quote": null,
-          "confidence": "low"
+          "value": "Devonshire",
+          "source": "body",
+          "quote": "Devonshire, 8215, AL",
+          "confidence": "high"
         },
         "street": {
           "value": "Mullica Way",
           "source": "body",
-          "quote": "This unit is located at Mullica Way, Devonshire, 8215, AL",
+          "quote": "One BR Mullica Way",
           "confidence": "high"
         },
         "house_number": {
@@ -2904,7 +1815,7 @@
         "monthly_rent": {
           "value": 750.0,
           "source": "column",
-          "quote": "PRICE: 750",
+          "quote": "750",
           "confidence": "high"
         },
         "has_kitchen": {
@@ -2930,47 +1841,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 33,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140033,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CO",
@@ -3025,47 +1900,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 34,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140034,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "VA",
@@ -3120,47 +1959,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 35,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140035,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "GA",
@@ -3215,48 +2018,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 36,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140036,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "FL",
@@ -3311,47 +2077,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 37,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140037,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "NM",
@@ -3406,47 +2136,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 38,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140038,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": null,
@@ -3501,47 +2195,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 39,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140039,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -3596,47 +2254,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 40,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140040,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -3651,7 +2273,7 @@
           "confidence": "high"
         },
         "street": {
-          "value": "714 N 95th St",
+          "value": "N 95th St",
           "source": "column",
           "quote": "714 N 95th St",
           "confidence": "high"
@@ -3691,48 +2313,70 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 42,
-      "review_reasons": [
-        "low_confidence",
-        "random_sample"
-      ],
+      "csv_id": 1145140041,
+      "price_type_raw": "Monthly",
+      "fields": {
+        "province": {
+          "value": "IL",
+          "source": "column",
+          "quote": "IL",
+          "confidence": "high"
+        },
+        "city": {
+          "value": "Chicago",
+          "source": "column",
+          "quote": "Chicago",
+          "confidence": "high"
+        },
+        "street": {
+          "value": "420 W Fullerton Parkway",
+          "source": "column",
+          "quote": "420 W Fullerton Parkway",
+          "confidence": "high"
+        },
+        "house_number": {
+          "value": "420",
+          "source": "column",
+          "quote": "420 W Fullerton Parkway",
+          "confidence": "high"
+        },
+        "monthly_rent": {
+          "value": 942.0,
+          "source": "column",
+          "quote": "942",
+          "confidence": "high"
+        },
+        "has_kitchen": {
+          "value": true,
+          "source": "body",
+          "quote": "Apartment features include:-- On-Site Laundry- A/c- On Bus Line- Public Transportation- Refrigerator- Walk in Closets- Furnished- Dishwasher",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "has_washer": {
+          "value": false,
+          "source": "body",
+          "quote": "On-Site Laundry",
+          "confidence": "medium",
+          "is_negation_case": true
+        },
+        "has_parking": {
+          "value": true,
+          "source": "body",
+          "quote": "Parking",
+          "confidence": "medium",
+          "is_negation_case": false
+        },
+        "auditor_notes": null
+      },
+      "error": null
+    },
+    {
+      "csv_id": 1145140042,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -3747,7 +2391,7 @@
           "confidence": "high"
         },
         "street": {
-          "value": "2037 Yale Avenue E",
+          "value": "Yale Avenue E",
           "source": "column",
           "quote": "2037 Yale Avenue E",
           "confidence": "high"
@@ -3787,47 +2431,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 43,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140043,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "NC",
@@ -3882,47 +2490,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 44,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140044,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "FL",
@@ -3977,47 +2549,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 45,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140045,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "TN",
@@ -4072,47 +2608,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 46,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140046,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -4167,47 +2667,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 47,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140047,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "CA",
@@ -4262,47 +2726,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 48,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140048,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "DC",
@@ -4357,47 +2785,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 49,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140049,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -4452,47 +2844,11 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     },
     {
-      "csv_id": 50,
-      "review_reasons": [
-        "low_confidence"
-      ],
+      "csv_id": 1145140050,
+      "price_type_raw": "Monthly",
       "fields": {
         "province": {
           "value": "WA",
@@ -4547,41 +2903,7 @@
         },
         "auditor_notes": null
       },
-      "error": null,
-      "human_verdict": {
-        "province": {
-          "correct": null,
-          "notes": ""
-        },
-        "city": {
-          "correct": null,
-          "notes": ""
-        },
-        "street": {
-          "correct": null,
-          "notes": ""
-        },
-        "house_number": {
-          "correct": null,
-          "notes": ""
-        },
-        "monthly_rent": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_kitchen": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_washer": {
-          "correct": null,
-          "notes": ""
-        },
-        "has_parking": {
-          "correct": null,
-          "notes": ""
-        }
-      }
+      "error": null
     }
   ]
 }

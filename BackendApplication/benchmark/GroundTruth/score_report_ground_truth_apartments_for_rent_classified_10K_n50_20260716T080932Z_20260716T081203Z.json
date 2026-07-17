@@ -1,0 +1,211 @@
+{
+  "metadata": {
+    "ground_truth_file": "ground_truth_apartments_for_rent_classified_10K_n50_20260716T080932Z.json",
+    "scored_at": "20260716T081203Z",
+    "total_gt_records": 49,
+    "label_errors_excluded": 0,
+    "scorable_records": 49,
+    "matched_in_db": 49,
+    "missing_from_db": 0,
+    "recall": 1.0,
+    "overall_accuracy": 0.9529085872576177
+  },
+  "field_accuracy": {
+    "province": {
+      "scored": 47,
+      "correct": 47,
+      "accuracy": 1.0
+    },
+    "city": {
+      "scored": 49,
+      "correct": 49,
+      "accuracy": 1.0
+    },
+    "street": {
+      "scored": 48,
+      "correct": 36,
+      "accuracy": 0.75
+    },
+    "house_number": {
+      "scored": 21,
+      "correct": 20,
+      "accuracy": 0.9523809523809523
+    },
+    "monthly_rent": {
+      "scored": 49,
+      "correct": 49,
+      "accuracy": 1.0
+    },
+    "has_kitchen": {
+      "scored": 49,
+      "correct": 47,
+      "accuracy": 0.9591836734693877
+    },
+    "has_washer": {
+      "scored": 49,
+      "correct": 48,
+      "accuracy": 0.9795918367346939
+    },
+    "has_parking": {
+      "scored": 49,
+      "correct": 48,
+      "accuracy": 0.9795918367346939
+    }
+  },
+  "mismatches": [
+    {
+      "csv_id": 1145140001,
+      "field": "street",
+      "gt_value": "2nd St NE",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "2nd St NE",
+      "db_value": "second St"
+    },
+    {
+      "csv_id": 1145140003,
+      "field": "street",
+      "gt_value": "N Scott St",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "N Scott St, 14th St N, Arlington, VA 22209",
+      "db_value": "N Scott St 14th St N"
+    },
+    {
+      "csv_id": 1145140005,
+      "field": "street",
+      "gt_value": "Washington Blvd",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "Studio apartment Washington Blvd, N Cleveland St, Arlington",
+      "db_value": "Washington Blvd N Cleveland St"
+    },
+    {
+      "csv_id": 1145140006,
+      "field": "has_parking",
+      "gt_value": true,
+      "gt_source": "body",
+      "gt_confidence": "medium",
+      "gt_quote": "on-site garage",
+      "db_value": 0.0
+    },
+    {
+      "csv_id": 1145140008,
+      "field": "street",
+      "gt_value": "Oak St NW",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "Studio apartment Oak St NW, 16th St NW, Washington, DC 20010",
+      "db_value": "Oak St NW 16th St NW"
+    },
+    {
+      "csv_id": 1145140009,
+      "field": "street",
+      "gt_value": "Hyde",
+      "gt_source": "column",
+      "gt_confidence": "high",
+      "gt_quote": "Hyde",
+      "db_value": "Hyde St"
+    },
+    {
+      "csv_id": 1145140009,
+      "field": "has_kitchen",
+      "gt_value": false,
+      "gt_source": "none",
+      "gt_confidence": "low",
+      "gt_quote": null,
+      "db_value": 1.0
+    },
+    {
+      "csv_id": 1145140010,
+      "field": "street",
+      "gt_value": "A St SE",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "Studio apartment A St SE, 19th St SE, Washington",
+      "db_value": "A St SE 19th St SE"
+    },
+    {
+      "csv_id": 1145140011,
+      "field": "street",
+      "gt_value": "15th St SE",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "15th St SE, Independence Ave SE, Washington DC",
+      "db_value": "15th St SE Independence Avenue SE"
+    },
+    {
+      "csv_id": 1145140014,
+      "field": "street",
+      "gt_value": "Salem Ln NW",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "Studio apartment Salem Ln NW, 45th St NW, Washington",
+      "db_value": "Salem Ln NW 45th St NW"
+    },
+    {
+      "csv_id": 1145140019,
+      "field": "street",
+      "gt_value": "545 Georgia St",
+      "gt_source": "column",
+      "gt_confidence": "high",
+      "gt_quote": "545 Georgia St",
+      "db_value": "Georgia St"
+    },
+    {
+      "csv_id": 1145140022,
+      "field": "has_kitchen",
+      "gt_value": false,
+      "gt_source": "none",
+      "gt_confidence": "low",
+      "gt_quote": null,
+      "db_value": 1.0
+    },
+    {
+      "csv_id": 1145140038,
+      "field": "house_number",
+      "gt_value": "90",
+      "gt_source": "body",
+      "gt_confidence": "high",
+      "gt_quote": "Apartment 90",
+      "db_value": null
+    },
+    {
+      "csv_id": 1145140039,
+      "field": "street",
+      "gt_value": "Roosevelt Way NE",
+      "gt_source": "column",
+      "gt_confidence": "high",
+      "gt_quote": "Roosevelt Way NE",
+      "db_value": "Roosevelt Way"
+    },
+    {
+      "csv_id": 1145140041,
+      "field": "street",
+      "gt_value": "420 W Fullerton Parkway",
+      "gt_source": "column",
+      "gt_confidence": "high",
+      "gt_quote": "420 W Fullerton Parkway",
+      "db_value": "W Fullerton Parkway"
+    },
+    {
+      "csv_id": 1145140041,
+      "field": "has_washer",
+      "gt_value": false,
+      "gt_source": "body",
+      "gt_confidence": "medium",
+      "gt_quote": "On-Site Laundry",
+      "db_value": 1.0
+    },
+    {
+      "csv_id": 1145140049,
+      "field": "street",
+      "gt_value": "202 E Holly St",
+      "gt_source": "column",
+      "gt_confidence": "high",
+      "gt_quote": "202 E Holly St",
+      "db_value": "E Holly St"
+    }
+  ],
+  "missing_records": []
+}

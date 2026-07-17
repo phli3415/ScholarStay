@@ -35,6 +35,6 @@ TORTOISE_ORM: Dict = {
     "db_pool": {
         "max_size": 40,
         "min_size": 4,
-        "idle_timeout": 30
+        "idle_timeout": 300
     }
 }

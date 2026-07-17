@@ -1,10 +1,9 @@
 """
 CSV → Houses DB import pipeline.
 Usage (from BackendApplication/):
-    python -m app.dataProcessing.import_csv_to_db <path_to_csv>
+    python -m app.dataProcessing.import_csv_to_db <path_to_csv> [--no-llm-fallback]
 """
 
-import sys
 import asyncio
 import logging
 from decimal import Decimal, InvalidOperation
@@ -26,10 +25,12 @@ from .llm_extractor import llm_extract, LLMExtractedFields
 
 # ── ROW PROCESSOR ────────────────────────────────────────────────────────────
 
-async def process_row(row: dict) -> Optional[tuple[dict, list[str]]]:
+async def process_row(row: dict, use_llm_fallback: bool = True) -> Optional[tuple[dict, list[str]]]:
     """
     Parse one CSV row into (Houses kwargs, llm_filled_fields).
     Returns None if the row should be skipped.
+    If use_llm_fallback is False, fields the LLM would have filled are left
+    at their defaults (None/False) instead.
     """
     # 1. Only keep monthly listings with a valid price
     if _clean(row.get("price_type")) != "Monthly":
@@ -78,7 +79,7 @@ async def process_row(row: dict) -> Optional[tuple[dict, list[str]]]:
 
     # 6. LLM fallback (only when body is available)
     llm_filled: list[str] = []
-    if need_fields and body:
+    if use_llm_fallback and need_fields and body:
         extracted: LLMExtractedFields = await llm_extract(body, need_fields)
 
         if "has_kitchen" in need_fields:
@@ -126,7 +127,7 @@ async def process_row(row: dict) -> Optional[tuple[dict, list[str]]]:
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
-async def main(csv_path: str) -> None:
+async def main(csv_path: str, use_llm_fallback: bool = True) -> None:
     import csv
     from tortoise import Tortoise
     from app.database import TORTOISE_ORM
@@ -147,7 +148,7 @@ async def main(csv_path: str) -> None:
         reader = csv.DictReader(f, delimiter=";")
         for row_index, row in enumerate(reader, start=1):
             total += 1
-            result = await process_row(row)
+            result = await process_row(row, use_llm_fallback=use_llm_fallback)
             if result is None:
                 if _clean(row.get("price_type")) != "Monthly":
                     skipped_price += 1
@@ -184,7 +185,16 @@ async def main(csv_path: str) -> None:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python -m app.dataProcessing.import_csv_to_db <path_to_csv>")
-        sys.exit(1)
-    asyncio.run(main(sys.argv[1]))
+    import argparse
+
+    arg_parser = argparse.ArgumentParser(
+        description="CSV → Houses DB import pipeline."
+    )
+    arg_parser.add_argument("csv_path", help="path to the CSV file to import")
+    arg_parser.add_argument(
+        "--no-llm-fallback",
+        action="store_true",
+        help="skip the LLM fallback call; fields it would have filled are left empty",
+    )
+    args = arg_parser.parse_args()
+    asyncio.run(main(args.csv_path, use_llm_fallback=not args.no_llm_fallback))
