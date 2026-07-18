@@ -1,0 +1,5352 @@
+{
+  "metadata": {
+    "source_houses_file": "sampled_houses_n350_20260718T021911Z.json",
+    "model": "gpt-4o-mini",
+    "temperature": 0.9,
+    "seed": 42,
+    "requested": 350,
+    "generated": 350,
+    "generation_errors": 0,
+    "constraint_count_distribution": {
+      "1": 136,
+      "2": 114,
+      "4": 43,
+      "3": 42,
+      "5": 15
+    },
+    "queries_with_semantic_slot": 239,
+    "generated_at": "20260718T025319Z"
+  },
+  "queries": [
+    {
+      "source_house_id": 1145140653,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent, ideally under $1500 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140108,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a furnished place to rent, ideally under $900. It would be great if it’s cozy too. Any options?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140032,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent, ideally under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140761,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy one-bedroom place to rent, ideally in a quiet area.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140283,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $800, preferably something cozy and affordable!",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140252,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "I need a place that has a kitchen so I can cook at home.",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140230,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a place to rent, something under $600 if possible. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140171,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, preferably furnished and maybe a bit on the quieter side. Any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140756,
+      "requested_slots": [
+        "semantic",
+        "has_parking"
+      ],
+      "query": "Hey! I'm looking for a rental that has parking available, and ideally in a convenient location. Any suggestions?",
+      "used_constraint_types": [
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140098,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a furnished one-bedroom apartment, ideally under $1000, in a place that feels cozy.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140695,
+      "requested_slots": [
+        "has_washer",
+        "semantic",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "I'm looking for a studio rental with in-unit laundry and parking, preferably under $500. A quiet place would be a bonus!",
+      "used_constraint_types": [
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140760,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place under $2100 with a kitchen, and I hope it feels cozy!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140913,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy rental, maybe a studio or 1-bedroom, somewhere that feels well-maintained and comfortable.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140561,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy one-bedroom place under $800. It should have a quiet vibe too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140083,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a furnished place to rent for under $1200. I prefer somewhere that's cozy and well-maintained.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140602,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place to rent, ideally with polished wood floors and big windows for lots of natural light. A peaceful environment would be a huge plus!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140435,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, and my budget is under $1000.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140039,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place with rent under $1200. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140037,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy one-bedroom place to rent. Would be great if it's nicely furnished too!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140089,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place to rent, preferably under $1000. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140225,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio to rent, any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140240,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy studio in a quiet area, under $1200 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140519,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy place to rent, maybe a studio or one-bedroom. I prefer something that's well-maintained and comfortable. Budget is under $900 a month.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140614,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a studio or 1-bedroom place for under $700, ideally in a well-maintained building.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140034,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Hey, looking for a rental under $700 if possible!",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140577,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "I'm looking for a cozy 2-bedroom place that's under $1200, has parking, and is conveniently located with easy access to public transport.",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140205,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Looking for a furnished place with a kitchen, and something cozy would be great!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140733,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy place, maybe a one or two-bedroom unit. Something in a quiet area would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140668,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a rental that’s under $1100, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140719,
+      "requested_slots": [
+        "has_parking"
+      ],
+      "query": "Looking for a place that has parking available!",
+      "used_constraint_types": [
+        "has_parking"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140987,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, maybe under $700. Got any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140432,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy studio to rent, preferably somewhere that's well-maintained. Any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140227,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy furnished one-bedroom apartment, ideally somewhere quiet. Any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140461,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy 1-bedroom place to rent, preferably under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140601,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, maybe a studio or one bedroom, and I want it to be under $1200. A nice quiet spot would be great!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140286,
+      "requested_slots": [
+        "semantic",
+        "has_washer",
+        "has_parking",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a rental that has a kitchen, a washer, and some parking. I'd like to keep it under $500 if possible. A place that's well-maintained would be great too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "well-maintained",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140827,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic",
+        "has_washer"
+      ],
+      "query": "Hey! I'm looking for a place that has a kitchen and a washer. Also, I really prefer somewhere that's cozy. Budget is under $1200.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140906,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "Looking for a place under $1400 with a washer and parking. Something well-maintained would be ideal!",
+      "used_constraint_types": [
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140012,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "looking for a cozy studio in a quiet area, any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140780,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Looking for a place under $1000 with a kitchen and parking. A washer would be great too! I prefer somewhere that feels cozy.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140824,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $1100, got anything?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140003,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a studio in a quiet area for under $1400. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140715,
+      "requested_slots": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place with parking and a rent under $900. Got any suggestions?",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140984,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer",
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a rental with a max rent of $700, ideally somewhere that has a kitchen and a washer in-unit. Something cozy would be great!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140350,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer",
+        "has_parking",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place under $1300 with a kitchen, in-unit laundry, and parking. A cozy vibe would be a plus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140964,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place with a kitchen and a washer, and I need it to be under $900.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140134,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy 1 bedroom place under $800 for rent, preferably somewhere quiet.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140222,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place to rent, preferably under $900.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140784,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "Looking for a place with a kitchen and parking, and I’d like to keep the rent under $1300.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140346,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place that's under $800 in rent, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140991,
+      "requested_slots": [
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a place to rent that has off-street parking and is under $700. It would be great if it's a cozy spot too!",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140088,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom apartment to rent, preferably around $1000. It would be great if the place is well-maintained too!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140391,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy one-bedroom apartment to rent, ideally somewhere with a pool. Let me know if you have anything!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140093,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a cozy 1-bedroom rental around Chula Vista, preferably somewhere under $1000.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140368,
+      "requested_slots": [
+        "has_parking",
+        "has_washer",
+        "has_kitchen"
+      ],
+      "query": "Hey, I'm looking for a rental that has parking, a washer, and a kitchen. Any options?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140867,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "Looking for a place under $1600 with parking and a washer. I need somewhere cozy near Seattle with a good community vibe.",
+      "used_constraint_types": [
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140354,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_washer"
+      ],
+      "query": "Looking for a place with a kitchen and a washer, preferably under $2800.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140616,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $2300. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140273,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "looking for a place with rent under $2300",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140825,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place to rent under $1000.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140051,
+      "requested_slots": [
+        "has_washer"
+      ],
+      "query": "I'm looking for a place with a washer, preferably something under $1200.",
+      "used_constraint_types": [
+        "has_washer"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140749,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy apartment near the University of Akron, preferably a furnished one with good amenities and a convenient location.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140509,
+      "requested_slots": [
+        "has_washer"
+      ],
+      "query": "Looking for a place that has a washer in-unit. Would love to find something cozy!",
+      "used_constraint_types": [
+        "has_washer"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140552,
+      "requested_slots": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a place that has a kitchen and some parking, and I’d like to keep the rent under $1600. A well-maintained space would be a plus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140121,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy one-bedroom apartment that’s furnished. Any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140389,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a furnished apartment with 2 bedrooms, somewhere with a pool, and a max rent of $3200. Would be great if it's cozy too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140074,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom apartment to rent, preferably furnished and in a convenient location.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140568,
+      "requested_slots": [
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Hey! I’m looking for a cozy studio or one-bedroom apartment with some character, and it’d be great if it has a washer. Also, I’d like it to be in good condition. Any recommendations?",
+      "used_constraint_types": [
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140301,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_parking",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a furnished place with a kitchen, parking included, and my budget is under $1200. Ideally, it would be in a cozy building too.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140849,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "has_parking",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a place to rent that has in-unit laundry and parking. Ideally, I'd like to keep it under $700. Also, if it’s a well-maintained building, that would be great!",
+      "used_constraint_types": [
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140642,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy rental in Austin that's well-maintained. Something around a studio or a 1-bedroom would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140656,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "Looking for a place with parking and a kitchen, ideally under $1400. I prefer somewhere cozy and well-maintained if possible!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140905,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "looking for a place with sheltered parking and a pool, ideally under $1700. something cozy would be great!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140882,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_washer",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen and in-unit washer, around $1600 max. I prefer a cozy vibe and would love a balcony if possible!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140371,
+      "requested_slots": [
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "I'm looking for a place that has a kitchen and some parking available. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140591,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place with a kitchen and in-unit laundry. Ideally, it should be under $3200 and have a cozy vibe. Do you have anything like that?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140198,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio in Seattle. It would be great to find something that feels well-maintained and inviting!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140722,
+      "requested_slots": [
+        "has_parking"
+      ],
+      "query": "Looking for a place with parking available, preferably under $1200. Anyone have suggestions?",
+      "used_constraint_types": [
+        "has_parking"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140161,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I’m looking for a cozy one-bedroom rental, ideally furnished, with monthly rent under $700. It would be great if it’s in a quiet area too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140053,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a furnished one-bedroom place with a pool, somewhere around $1800. It’d be great if it’s in a well-maintained building.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140680,
+      "requested_slots": [
+        "has_parking"
+      ],
+      "query": "I'm looking for a place that has parking available. Any suggestions?",
+      "used_constraint_types": [
+        "has_parking"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140234,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a furnished place with parking and some laundry facilities. Ideally under $600 and somewhere that's cozy and well-maintained.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140794,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_washer"
+      ],
+      "query": "Looking for a place with laundry in-unit, around $800 max rent, and it would be great if the building is family-friendly.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "family-friendly",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140297,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a studio near the city, ideally under $1300. It would be great if it's in a well-maintained building!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140075,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $1100, any leads?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140875,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental that’s under $700, ideally something cozy!",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140978,
+      "requested_slots": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with parking and rent under $800.",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140887,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen, somewhere I can find a unit under $3700. A convenient location would be great too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140097,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "looking for a cozy furnished place with a pool, ideally under $1000",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140947,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy place to rent that has a pool and laundry on site. If possible, I’d like it to be somewhere under $1300 a month. Thanks!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140954,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a place to rent that's under $1000, and it would be great if it feels cozy.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140466,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy 1-bedroom rental, somewhere under $700, ideally in a quiet area. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140649,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen, parking, and a washer, and ideally under $2000.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140854,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_parking",
+        "has_washer",
+        "has_kitchen"
+      ],
+      "query": "Looking for a cozy place with a kitchen, in-unit washer, and parking. I’d like to keep the rent under $1300.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140374,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio or one-bedroom rental in Austin. Something under $1100 would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140136,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with rent under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140381,
+      "requested_slots": [
+        "has_washer",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "I’m looking for a place with a kitchen, washer, and parking. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140364,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "Hey, I'm looking for a place to rent with a kitchen and a washer, and I need parking too. My budget is under $600.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140216,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio or 1-bedroom somewhere with a quiet feel. Hoping to find something under $1300!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140689,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental, preferably under $700.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140275,
+      "requested_slots": [
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place with a kitchen and some parking available.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140970,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I’m looking for a cozy one-bedroom place to rent for under $900. Any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140702,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a place that feels cozy with a friendly vibe. Ideally, somewhere with a pool and good amenities for families. Let me know what you find!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140666,
+      "requested_slots": [
+        "semantic",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Hey! I'm looking for a place with a kitchen and parking. Ideally, it should be cozy and well-maintained. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140163,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "looking for a place to rent, preferably under $700",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140624,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen, parking, and in-unit washer, ideally not more than $1300 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140904,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140145,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy one-bedroom apartment to rent, preferably furnished. If it's in a nice, quiet area, that's a plus!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140549,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen and parking, ideally under $700. Also, something that's cozy would be great!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140746,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Looking for a cozy place to rent with a kitchen and somewhere under $600. A convenient location would be great too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140995,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic",
+        "has_parking"
+      ],
+      "query": "Looking for a cozy place with a kitchen and some parking, ideally under $600 a month!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140137,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy one-bedroom apartment for rent, ideally something furnished. Any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140473,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental that’s under $500 a month. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140390,
+      "requested_slots": [
+        "has_washer"
+      ],
+      "query": "Looking for a place that has a washer in the unit. Thanks!",
+      "used_constraint_types": [
+        "has_washer"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140278,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "looking for a place with a kitchen, under $2400, and it would be great if it's in good condition!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140654,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent for under $1500 a month. Any recommendations?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140707,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_washer",
+        "has_parking"
+      ],
+      "query": "I'm looking for a place under $1300 that has a kitchen, parking, and a washer. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140573,
+      "requested_slots": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "Looking for a place to rent that has a kitchen, a washer, and parking, and I’d like to keep it under $800 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140226,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy 1-bedroom apartment that's furnished and under $800. It would be great if it's in a quiet area with some amenities like a pool.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140704,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "I'm looking for a rental with a kitchen, and something that's well-maintained. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140330,
+      "requested_slots": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place with parking, and I'd like to keep the rent under $1000.",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140863,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent for under $1100.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140789,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place to rent, ideally with one or two bedrooms. Something that feels well-maintained would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140797,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place to rent with a kitchen and a washer, ideally under $1300.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140064,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy one-bedroom place to rent, under $1200. A quiet area would be ideal!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140235,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I’m looking for a place to rent, ideally under $500.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140840,
+      "requested_slots": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a rental that has a kitchen and a washer, ideally under $1200 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140982,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place in downtown Bennington, ideally with utilities included, and I’d love it if it’s pet-friendly too!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140823,
+      "requested_slots": [
+        "has_washer",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place under $1200 that has a washer and a kitchen. Any leads?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140321,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a place to rent for under $900. Ideally, it should be a cozy spot.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140413,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a furnished 1-bedroom place that's cozy and has a quiet atmosphere. Any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140276,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen so I can cook my own meals.",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140157,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I’m looking for a furnished place that feels cozy, ideally under $800. Any tips?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140218,
+      "requested_slots": [
+        "has_parking",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place that has parking and is under $1000. Ideally, it would be in a convenient location and have some nice features!",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140583,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place with a kitchen, under $800, that has a spacious feel to it. Would love something in a quiet area!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "spacious",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140735,
+      "requested_slots": [
+        "has_parking",
+        "semantic"
+      ],
+      "query": "I'm looking for a place with parking, ideally in a good condition and convenient location. Any suggestions?",
+      "used_constraint_types": [
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140320,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent, ideally under $1300.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140219,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a cozy studio to rent, preferably somewhere under $1000. Thanks!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140674,
+      "requested_slots": [
+        "semantic",
+        "has_washer",
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "I'm looking for a cozy place with a kitchen and parking, preferably under $900, and it'd be great if it has a washer too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140513,
+      "requested_slots": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place with a kitchen, some parking options, and a washer in unit.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140408,
+      "requested_slots": [
+        "has_washer",
+        "has_parking",
+        "has_kitchen",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place under $1300 with a kitchen, parking, and a washer. It would be awesome if it's in good condition too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140661,
+      "requested_slots": [
+        "has_parking",
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a place under $1300 with a kitchen, a washer in-unit, and parking available. Ideally somewhere that feels cozy and well-maintained would be great.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140471,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a cozy studio with a kitchen, somewhere under $600. It would be great if it's in a walkable area, too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140175,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental under $600, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140336,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental around $1300, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140993,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen so I can cook at home!",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140255,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy apartment with a budget under $800. It would be great if heat and water are included, and some on-site parking would be a plus.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140764,
+      "requested_slots": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with parking for under $1600.",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140974,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "Looking for a cozy place to rent with a kitchen and a washer, ideally under $800. Also, it’d be great if it’s in a walkable area close to everything!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "walkable area",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140554,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental that’s under $1400 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140272,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio or 1-bedroom somewhere under $900.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140767,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy apartment with a kitchen, and my budget is under $1100. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140620,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place with a kitchen, parking, and a washer—somewhere under $800 would be great. A cozy vibe would be a plus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140441,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy place to rent, ideally under $1200 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140597,
+      "requested_slots": [
+        "has_parking",
+        "has_kitchen",
+        "has_washer",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place under $1100 with a kitchen, washer, and parking. A cozy vibe would be great!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140411,
+      "requested_slots": [
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "query": "I'm looking for a place with a kitchen and parking, preferably somewhere with a convenient location.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140923,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place, under $1600, preferably in a quiet area.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140879,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "Looking for a place with a washer and rent under $1100.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140170,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a furnished one-bedroom apartment that's cozy and has a good vibe. Something around $600 would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140523,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental that's under $1500 and hopefully in a well-maintained building.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140505,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent that's under $600 a month. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140087,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom apartment, ideally furnished, in a quiet area. Any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140776,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental that's under $1200, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140055,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy one-bedroom apartment to rent. It would be great if it's furnished too!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140106,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey! I'm looking for a furnished place to rent that's under $900 and has a pool. Ideally, it would be in a well-maintained building too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140131,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom apartment somewhere under $800. It would be great if it's in a quiet area.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140641,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey! I'm looking for a cozy 1-bedroom apartment to rent, preferably somewhere under $2600.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140958,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I’m looking for a cozy rental under $1000. Something in a quiet area would be ideal. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140811,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a quiet place to rent, ideally under $700 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140699,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with parking and a kitchen, ideally somewhere under $1500. A convenient location would be a bonus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140956,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy apartment with a kitchen, preferably under $1000.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140608,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Looking for a cozy place with a kitchen and some nice features. Ideally, it would be somewhere that's well-maintained and has amenities like a pool and laundry. I'd love a spot that's under $1200 too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140155,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy one-bedroom place to rent, ideally something affordable. If it's in a friendly building, that would be a plus!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140396,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I’m looking for a place to rent that’s under $1600 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140392,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Hey, I'm looking for a rental that has a kitchen and some parking options. Also, I’d prefer it to be under $1700. If it’s in a convenient location, that would be great!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140939,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "hey, I'm looking for a cozy one-bedroom apartment for under $1300. it would be great if it’s furnished too!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140479,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place under $1100 that has a washer in unit.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140544,
+      "requested_slots": [
+        "has_washer",
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "query": "Looking for a place with a kitchen, a washer, and parking. Ideally somewhere cozy and well-maintained!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140260,
+      "requested_slots": [
+        "has_parking",
+        "has_washer",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen, parking, and a washer. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140569,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_parking",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy place to rent with parking, ideally under $1800. It'd be awesome if it's in a convenient location too!",
+      "used_constraint_types": [
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140018,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom apartment for rent, ideally furnished and around $1000. Something in a quiet area would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140963,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a cozy place with in-unit laundry and maybe some fitness facilities, and definitely no more than $900 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140738,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place with a kitchen so I can cook my own meals. Anyone have good options?",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140111,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "looking for a place to rent, ideally under $900",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140701,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with rent under $1800.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140935,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy 1-bedroom rental, preferably somewhere bright and well-lit. I want to keep it under $1400. Any leads?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140771,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place with a kitchen so I can cook my own meals.",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140896,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $1800, ideally in a well-maintained building.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140790,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental under $1000, ideally something cozy and affordable!",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140659,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $1300 that has a washer in the unit.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140955,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer",
+        "has_parking",
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "I'm looking for a rental under $1000 with a kitchen and parking, and it would be great to have a washer too. Ideally, somewhere that's cozy.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140999,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "Looking for a place with in-unit laundry for under $600, any leads?",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140930,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "looking for a place with a washer and under $1400 a month",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140448,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with rent under $900, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140001,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a studio that’s under $800 and in a quiet area. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140925,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place to rent, preferably a one or two-bedroom, and I'm hoping to find something that's well-maintained.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140009,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place with a kitchen. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140739,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen",
+        "has_washer"
+      ],
+      "query": "Looking for a place under $900 with a kitchen, parking, and a washer. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140736,
+      "requested_slots": [
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with a kitchen and parking. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140847,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "Looking for a place with a kitchen and some parking available. It would be great if it feels cozy and well-maintained too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140514,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy place under $800 with a convenient location near schools and the military bases. Pets would be a plus!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140783,
+      "requested_slots": [
+        "has_washer"
+      ],
+      "query": "Hey! I'm looking for a place that has a washer. Any options?",
+      "used_constraint_types": [
+        "has_washer"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140152,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a furnished apartment under $700 that's cozy and well-maintained. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140521,
+      "requested_slots": [
+        "has_parking",
+        "max_monthly_rent",
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a rental that's under $800 with a kitchen and parking. A place that’s cozy would be super nice!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140102,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent. Do you have anything available that's around $900?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140639,
+      "requested_slots": [
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Looking for a cozy place with in-unit laundry. It would be great if it's in a well-maintained building too!",
+      "used_constraint_types": [
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140306,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Looking for a cozy rental with a kitchen, ideally around $900. Would love something in a well-maintained building!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145141000,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place to rent that has a kitchen since I love cooking!",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140874,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place with a kitchen so I can cook at home.",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140891,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, ideally under $1500. Any recommendations?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140973,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "Hi! I'm looking for a cozy apartment that has a kitchen and a washer, preferably under $800 a month. Thanks!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140831,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a cozy place to rent, maybe a studio or one-bedroom, for under $1600. A quiet area would be great too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140384,
+      "requested_slots": [
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a place to rent with in-unit laundry and maybe something that's in good condition. Any suggestions?",
+      "used_constraint_types": [
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140799,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy one-bedroom apartment with a kitchen and rent around $700 or less. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140005,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy studio to rent, ideally under $900.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140555,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "looking for a cozy studio under $1400, preferably in a well-maintained building",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140546,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a cozy rental under $1300, ideally something well-maintained and comfortable. Any leads?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140006,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with a washer and somewhere under $2500 rent.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140611,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $900, any chance you have something in that range?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140329,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy rental that feels well-maintained. Something in a quiet area would be ideal!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140500,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place to rent, ideally under $1000.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140026,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy furnished one-bedroom unit to rent, ideally somewhere quiet.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140806,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, maybe a studio or one-bedroom?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140372,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "Looking for a rental that has a kitchen so I can cook my meals!",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140334,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey! I’m looking for a place that’s well-maintained and has nice finishes. Something with a garage would be awesome too!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140247,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio, preferably somewhere quiet and well-maintained.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140066,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place to rent, ideally under $1200 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140248,
+      "requested_slots": [
+        "has_washer",
+        "has_kitchen",
+        "semantic",
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with a kitchen, in-unit laundry, and parking, and I'd like to keep it under $800. Ideally, it should feel cozy.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140876,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I’m looking for a cozy place to rent with on-site parking and maybe some outdoor space for grilling. It’d be great if it's also near some good amenities!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140932,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $1400 that’s in good condition and cozy. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140081,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy place to rent under $1100. A furnished unit would be great!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140751,
+      "requested_slots": [
+        "has_parking"
+      ],
+      "query": "I'm looking for a place with parking, do you have any options?",
+      "used_constraint_types": [
+        "has_parking"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140497,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a nice place to rent, something under $1500 with parking and a pool. A quiet area would be great!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140160,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a cozy apartment with a pool, and my budget is under $700. Any recommendations?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140548,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "semantic",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place with a kitchen, a washer, parking, and a budget of under $900. A cozy vibe would be great too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140122,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Hey! I'm looking for a rental somewhere under $900 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140125,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I’m looking for a furnished one-bedroom place in a quiet area, and I’d prefer it to be under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140678,
+      "requested_slots": [
+        "has_parking",
+        "has_washer",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "Hey, I'm looking for a place with a full kitchen, a washer, parking, and I’d love something that's well-maintained. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "well-maintained",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140486,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a place to rent with a washer included, ideally under $1200. It would be great if it's in a walkable area with easy access to restaurants and shops.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "walkable area",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140565,
+      "requested_slots": [
+        "has_kitchen",
+        "has_washer"
+      ],
+      "query": "Hey, I'm looking for a place that has a kitchen and a washer. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140139,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent for under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140853,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent for under $1600.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140543,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "semantic",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "Hey, I’m looking for a place where I can rent for under $700, need a kitchen and would love to have parking available. Extra points if there’s a washer too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140622,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place with a washer and a kitchen, ideally under $600. A convenient location would be a big plus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140436,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I’m looking for a cozy 1-bedroom place somewhere under $1000. It would be great if it’s well-maintained too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140864,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy place with a quiet vibe, maybe a studio or 1-bedroom? Something under $2100 would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140785,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I’m looking for a cozy place to rent, maybe a studio or one-bedroom, under $1500. Something in a well-maintained building would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140937,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a spacious studio to rent, preferably with a nice balcony and pets allowed. Would love to find something that’s well-maintained and close to amenities!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "spacious",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140709,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy studio with a kitchen. It'd be great if it's somewhere with utilities included too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140207,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a furnished studio that allows pets, has free utilities and breakfast, and is under $1800. It would be awesome if it's got a cozy feel to it too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140730,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy rental with air conditioning and a pool. I prefer somewhere bright and well-lit!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140317,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a cozy apartment with a kitchen, under $600. It would be great if it's in a convenient location too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140946,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy studio or 1-bedroom in a quiet area, under $1200. Any recommendations?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140690,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_washer",
+        "has_kitchen"
+      ],
+      "query": "Looking for a cozy place with a kitchen and a washer, somewhere under $700. I also need it to be well-maintained. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140971,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hi! I'm looking for a cozy one-bedroom rental somewhere under $900. Anything you've got?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140788,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent that’s under $1100.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140451,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy one-bedroom rental that’s available for under $900 a month. Hoping to find a quiet place to call home!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140532,
+      "requested_slots": [
+        "has_washer"
+      ],
+      "query": "I'm looking for a place that has a washer in-unit. Any suggestions?",
+      "used_constraint_types": [
+        "has_washer"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140464,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a furnished one-bedroom apartment somewhere with a pool, and I'd like it to be under $700. A cozy vibe would be a plus!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140117,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place to rent, preferably furnished and in good condition. Got any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140256,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Looking for a place around $2800 with a kitchen and in-unit laundry. I’d love something bright and spacious too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "bright",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140254,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy place to rent, preferably a studio or 1-bedroom, and I’d like it to be under $900.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140959,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I’m looking for a cozy place to rent, maybe a studio or one-bedroom, something that feels well-maintained and inviting. My budget is under $1300.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140348,
+      "requested_slots": [
+        "has_parking",
+        "has_washer",
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place with parking and a kitchen, also really want an in-unit washer. Ideally somewhere that's bright and well-lit!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "bright / well-lit",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140028,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy one-bedroom apartment to rent, preferably furnished, and I’d love it to be in good condition!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140600,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent in Portland. Any recommendations for apartments that are under $1300?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140570,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place to rent with a solid kitchen, and I'd like to keep it under $1400 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140237,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Looking for a place under $1200, ideally with a kitchen and some parking. I’d love something that’s cozy and well-maintained if possible!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140732,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I’m looking for a place to rent that’s under $800, any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140967,
+      "requested_slots": [
+        "has_washer",
+        "has_parking",
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place with a kitchen and some parking. It needs to have a washer too. Ideally, I want to keep it under $900. ",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140013,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent. Any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140162,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom apartment that comes furnished and is around $650 a month. Any chance of finding something like that?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140725,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey! I'm looking for a cozy rental in a nice neighborhood, ideally under $1200. A place that's well-maintained would be great too!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140645,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a rental under $1000.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140067,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a furnished place that's cozy and has a pool. Any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140872,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place under $1000 with a washer in-unit. Also, I love bright apartments with big windows!",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "bright / well-lit",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140159,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place to rent, ideally under $700 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140870,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place to rent, ideally under $1200. A good option would be nice!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140340,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place that's under $1600. Ideally, it would be in a quiet area to relax after a long day.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140727,
+      "requested_slots": [
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Hey, I’m looking for a place with a washer in-unit and something that feels cozy. Also, if it’s well-maintained, that’d be great!",
+      "used_constraint_types": [
+        "has_washer",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140528,
+      "requested_slots": [
+        "has_parking"
+      ],
+      "query": "I need a place that has parking available, preferably for under $1200 a month.",
+      "used_constraint_types": [
+        "has_parking"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140245,
+      "requested_slots": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Looking for a place under $2800 with a kitchen, parking, and in-unit laundry. A cozy vibe would be nice!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140287,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "Looking for a studio with a kitchen, somewhere with parking available. It would be great if the place feels cozy and well-maintained!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140688,
+      "requested_slots": [
+        "has_washer"
+      ],
+      "query": "Hey, I'm looking for a place to rent that has a washer. Any recommendations?",
+      "used_constraint_types": [
+        "has_washer"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140768,
+      "requested_slots": [
+        "has_washer",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy place to rent with a washer in-unit, under $1100.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140221,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place, ideally under $900.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140753,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy place to rent, preferably under $900. Any options around?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140129,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom rental for under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140584,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a place to rent, ideally with a kitchen and something under $800. I appreciate quiet neighborhoods, so that's a big plus for me. Let me know what you find!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140590,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy studio to rent, ideally somewhere quiet. Any suggestions?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140484,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "Hey! I'm looking for a place with a kitchen and a washer for under $1600. A quiet and well-maintained spot would be ideal. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140250,
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "query": "Looking for a place to rent, and I really need a kitchen!",
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140747,
+      "requested_slots": [
+        "semantic",
+        "has_washer",
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "Hey, I'm looking for an apartment with a kitchen and parking. It would be great if it had a washer too. Also, I need it to be under $3200. Thanks!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140419,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy studio or one-bedroom place under $1200.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140196,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy place to rent, preferably under $900. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140090,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy one-bedroom rental, ideally under $1000. Something in a quiet area would be great!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140945,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a cozy place with a kitchen and under $1200 a month. Ideally, it should be well-maintained and have some good amenities. ",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140677,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent with a kitchen and parking. Something in a good neighborhood would be great too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140444,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I’m looking for a place to rent that’s under $900.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140363,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a spacious rental in a good location, something that feels well-maintained and cozy. Any recommendations?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "spacious",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140755,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen"
+      ],
+      "query": "Looking for a place to rent with a kitchen, ideally under $800 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140423,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental somewhere under $1100, any ideas?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140478,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a place around $2500, ideally something that's bright and well-lit!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "bright / well-lit",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140062,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a rental under $1300, any ideas?",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140692,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_parking"
+      ],
+      "query": "Looking for somewhere under $600 with a kitchen and parking available.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140672,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place under $1000 that has a washer in the unit.",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140664,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy one-bedroom place to rent, ideally under $1200.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140094,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a place to rent that's under $1000 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140069,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "looking for a place around $1200, preferably something cozy",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140415,
+      "requested_slots": [
+        "has_kitchen",
+        "semantic",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "Looking for a place that has a kitchen and parking available, under $1200. It would be great if it's in a well-maintained building too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140349,
+      "requested_slots": [
+        "has_washer",
+        "has_kitchen",
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey! I’m looking for a place that has a kitchen and a washer, preferably somewhere chill and cozy. Also, I’d like the rent to be under $3200. Any leads?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140105,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for a cozy place to rent, ideally under $900. Let me know if you have any leads!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140257,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a bright place to rent in Redondo Beach, something well-lit would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "bright / well-lit",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140921,
+      "requested_slots": [
+        "semantic",
+        "has_kitchen"
+      ],
+      "query": "Looking for a cozy one-bedroom place with a kitchen, ideally somewhere that's well-maintained and utilities included would be a big plus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140706,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I'm looking for a cozy place to rent for under $1000 a month. Any ideas?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140812,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy place to rent, ideally under $500.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140966,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "query": "Looking for a place to rent under $900 that has a kitchen, a washer, and parking. Any suggestions?",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140172,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey, I'm looking for an affordable furnished place to rent, ideally under $600, that's cozy and has a pool. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140826,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a 1 or 2 bedroom place that's under $1000 and in a well-maintained building.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "well-maintained / good condition",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140189,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy studio or 1-bedroom place with heat included and parking. Ideally somewhere convenient for getting around and with laundry on-site. Furnished would be a bonus!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140716,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a cozy apartment under $600 with A/C. It would be great if it's in a well-maintained building!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140885,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental under $1000, preferably something cozy!",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140258,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a one-bedroom place in a quiet area, ideally under $1400 a month.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140071,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "Looking for a cozy furnished one-bedroom apartment for around $1100, preferably in a quiet area. Anyone know of any good listings?",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140455,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "looking for a cozy one-bedroom place, ideally under $900",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140566,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_washer"
+      ],
+      "query": "Looking for a place under $1100 with in-unit laundry. It would be great if it feels cozy too!",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140693,
+      "requested_slots": [
+        "has_parking",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place with a kitchen and parking, and I need it to be under $600 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140058,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "looking for a cozy one-bedroom place to rent, preferably under $1300",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140670,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "looking for a studio to rent under $1100, something cozy and well-maintained would be great!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140556,
+      "requested_slots": [
+        "has_washer",
+        "semantic",
+        "has_kitchen",
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a place under $1200 with a kitchen and a washer. It’d be great if it’s cozy too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140022,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "I'm looking for a place to rent with a kitchen and some parking, ideally under $600. It would be great if it's in good condition and feels cozy.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140980,
+      "requested_slots": [
+        "has_washer",
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_parking",
+        "semantic"
+      ],
+      "query": "I'm looking for a place with a kitchen, in-unit laundry, and parking. My budget is under $800. Ideally, it would be cozy too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140244,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_parking",
+        "has_kitchen",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "I'm looking for a place to rent under $700, preferably with parking, a kitchen, and a washer. It would be great if the space feels cozy too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 5,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140140,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "looking for a cozy one-bedroom rental under $800",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140881,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy rental under $900. A good spot with a quiet vibe would be ideal!",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140714,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_washer",
+        "semantic",
+        "has_parking"
+      ],
+      "query": "I'm looking for a place with a kitchen and some parking, under $900, and it would be great if there's a washer in the unit.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140492,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic",
+        "has_parking",
+        "has_kitchen"
+      ],
+      "query": "Hey, I'm looking for a place to rent. I'd need something under $1000 that has a kitchen and parking. A cozy vibe would be a plus!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140220,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "Hey! I'm looking for a furnished apartment with a pool, preferably in a quiet area, and my budget is under $900. Any suggestions?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "quiet",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140943,
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "query": "Looking for a rental somewhere under $1200.",
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    },
+    {
+      "source_house_id": 1145140724,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "semantic"
+      ],
+      "query": "Hey, I'm looking for a place to rent with a kitchen, something under $1500. Ideally it would be in a convenient location since I rely on public transport.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "convenient location",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140138,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent"
+      ],
+      "query": "I’m looking for a cozy one-bedroom apartment with a pool for under $800.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140884,
+      "requested_slots": [
+        "max_monthly_rent",
+        "has_kitchen",
+        "has_washer",
+        "semantic"
+      ],
+      "query": "Looking for a place to rent under $800 with a kitchen and a washer. It would be awesome if the apartment is cozy too!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140008,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a cozy studio unit to rent, ideally somewhere around $900.",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140401,
+      "requested_slots": [
+        "semantic"
+      ],
+      "query": "I'm looking for a one-bedroom apartment that's furnished and well-maintained. A cozy spot would be great!",
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140758,
+      "requested_slots": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a place under $1300 with a kitchen and a washer. Something nice and cozy would be great!",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 4,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140467,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Looking for a studio under $700. Ideally it should be cozy and not too far from everything.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140378,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "I'm looking for a studio to rent, ideally under $1400, somewhere that feels cozy and well-maintained.",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140700,
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "query": "Hey! I'm looking for a cozy place to rent, ideally under $900. Any recommendations?",
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140572,
+      "requested_slots": [
+        "semantic",
+        "max_monthly_rent",
+        "has_washer"
+      ],
+      "query": "I'm looking for a place that's under $1200, ideally with a washer in unit. A cozy vibe would be a plus!",
+      "used_constraint_types": [
+        "has_washer",
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": "cozy",
+      "has_semantic": true
+    },
+    {
+      "source_house_id": 1145140498,
+      "requested_slots": [
+        "has_kitchen",
+        "max_monthly_rent",
+        "has_parking"
+      ],
+      "query": "Looking for a place with a kitchen and parking, preferably under $1000 a month.",
+      "used_constraint_types": [
+        "has_kitchen",
+        "has_parking",
+        "max_monthly_rent"
+      ],
+      "constraint_count": 3,
+      "semantic_quality_used": null,
+      "has_semantic": false
+    }
+  ],
+  "errors": []
+}
