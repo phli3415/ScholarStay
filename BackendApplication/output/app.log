@@ -10217,3 +10217,111 @@
 2026-07-18 05:41:30,640 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['no', 'no', 'yes'])
 2026-07-18 05:41:30,642 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
 2026-07-18 05:41:31,508 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-18 21:34:01,943 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-07-18 21:34:01,959 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-07-18 21:34:01,959 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-07-18 21:34:01,961 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'loosen_requirement', 'filter_houses', 'find_most_similar_house'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-07-18 21:34:07,785 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-07-18 21:34:17,323 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:34:17,333 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for a place to rent, ideally under $1500 a month." additional_kwargs={} response_metadata={} id='9879cfb6-7c03-4860-ba5f-5569911e3419'
+2026-07-18 21:34:19,685 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:34:19,688 - app.llm.agenticWorkflow - INFO - agent question:content="Hey! I'm looking for a furnished place to rent, ideally under $900. It would be great if it’s cozy too. Any options?" additional_kwargs={} response_metadata={} id='cbaf4508-1940-47cb-b19e-f03c2f4b31d7'
+2026-07-18 21:34:21,269 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:34:21,274 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for a place to rent, ideally under $800." additional_kwargs={} response_metadata={} id='4160990e-52ff-4471-ac3f-49ee6b6652ab'
+2026-07-18 21:34:22,893 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:34:22,899 - app.llm.agenticWorkflow - INFO - agent question:content='Looking for a cozy one-bedroom place to rent, ideally in a quiet area.' additional_kwargs={} response_metadata={} id='58d1f52e-fc5b-44bc-9c93-b569873d4920'
+2026-07-18 21:34:24,004 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:34:24,479 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:34:24,484 - app.llm.agenticWorkflow - INFO - agent question:content='Looking for a rental under $800, preferably something cozy and affordable!' additional_kwargs={} response_metadata={} id='b08bfab5-bd80-4bd4-b63f-4803e374af4d'
+2026-07-18 21:34:28,576 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:34:28,576 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:34:28,576 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:34:30,630 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1500.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-07-18 21:34:30,636 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:34:30,638 - app.llm.agenticWorkflow - INFO - agent question:content="I'm looking for a place to rent, ideally under $1500 a month." additional_kwargs={} response_metadata={} id='9879cfb6-7c03-4860-ba5f-5569911e3419'
+2026-07-18 21:34:31,265 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=800.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-18 21:34:31,337 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=900.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-07-18 21:34:31,371 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:34:31,373 - app.llm.agenticWorkflow - INFO - agent question:content="Hey! I'm looking for a furnished place to rent, ideally under $900. It would be great if it’s cozy too. Any options?" additional_kwargs={} response_metadata={} id='cbaf4508-1940-47cb-b19e-f03c2f4b31d7'
+2026-07-18 21:34:31,413 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=2000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-07-18 21:34:31,421 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:34:31,424 - app.llm.agenticWorkflow - INFO - agent question:content='Looking for a cozy one-bedroom place to rent, ideally in a quiet area.' additional_kwargs={} response_metadata={} id='58d1f52e-fc5b-44bc-9c93-b569873d4920'
+2026-07-18 21:34:32,122 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:34:34,359 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=800.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-18 21:34:35,791 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-07-18 21:34:37,876 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_clarification.txt
+2026-07-18 21:34:39,546 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [26, 1145140338, 1145140200]
+2026-07-18 21:34:39,549 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-18 21:34:40,236 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-07-18 21:34:42,549 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [26, 35, 1145140220]
+2026-07-18 21:34:42,552 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-18 21:34:47,101 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_resultGrading.txt
+2026-07-18 21:34:49,029 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'yes', 'yes']
+2026-07-18 21:34:49,032 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['no', 'yes', 'yes'])
+2026-07-18 21:34:49,037 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-18 21:34:50,111 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-18 21:34:54,554 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-18 21:34:56,279 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-07-18 21:34:56,280 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=0, scores=['no', 'no', 'no'])
+2026-07-18 21:34:56,287 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=0): province=None city=None street=None max_monthly_rent=919 has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-07-18 21:34:57,451 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-07-18 21:35:00,741 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [26, 35, 62]
+2026-07-18 21:35:00,744 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-18 21:35:01,906 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-18 21:35:03,932 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-07-18 21:35:03,936 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=1, scores=['no', 'no', 'no'])
+2026-07-18 21:35:03,942 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=1): province=None city=None street=None max_monthly_rent=919 has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-07-18 21:35:05,395 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-07-18 21:35:08,526 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [26, 35, 62]
+2026-07-18 21:35:08,528 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-18 21:35:09,654 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-18 21:35:11,881 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-07-18 21:35:11,883 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=2, scores=['no', 'no', 'no'])
+2026-07-18 21:35:11,895 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=2): province=None city=None street=None max_monthly_rent=919 has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-07-18 21:35:13,072 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-07-18 21:35:16,592 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [26, 35, 62]
+2026-07-18 21:35:16,595 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-18 21:35:16,595 - app.llm.agenticWorkflow - INFO - rewrite_counter >= 3, forcing all scores to 'yes'
+2026-07-18 21:35:16,597 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=3, scores=['yes', 'yes', 'yes'])
+2026-07-18 21:35:16,600 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-18 21:35:17,672 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-18 21:35:56,974 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:35:56,977 - app.llm.agenticWorkflow - INFO - agent question:content='I need a place that has a kitchen so I can cook at home.' additional_kwargs={} response_metadata={} id='f8ad7ed8-a438-49fb-8a9c-7e730e61c8f8'
+2026-07-18 21:35:58,570 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:35:58,573 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, I'm looking for a place to rent, something under $600 if possible. Any suggestions?" additional_kwargs={} response_metadata={} id='7e6d1a6e-bdb8-4650-8163-697f490aa06a'
+2026-07-18 21:36:01,013 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:36:01,676 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:36:01,681 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, I'm looking for a cozy place to rent, preferably furnished and maybe a bit on the quieter side. Any suggestions?" additional_kwargs={} response_metadata={} id='70c10339-6a70-41e7-bb21-5a07b81ec689'
+2026-07-18 21:36:03,503 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=750.0, has_kitchen=True, has_washer=None, has_parking=True, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-07-18 21:36:03,919 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:36:05,030 - app.llm.agenticWorkflow - INFO - SQL query returned 89 IDs
+2026-07-18 21:36:05,805 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=600.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-07-18 21:36:06,675 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:36:06,678 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, I'm looking for a place to rent, something under $600 if possible. Any suggestions?" additional_kwargs={} response_metadata={} id='7e6d1a6e-bdb8-4650-8163-697f490aa06a'
+2026-07-18 21:36:08,127 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140722, 1145140365, 1145140458]
+2026-07-18 21:36:08,130 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-07-18 21:36:08,408 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:36:09,295 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-07-18 21:36:10,258 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_monthly_rent', 'max_distance_to_university', 'general_preference']
+2026-07-18 21:36:11,640 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'yes', 'yes']
+2026-07-18 21:36:11,643 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['yes', 'yes', 'yes'])
+2026-07-18 21:36:11,650 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:36:11,653 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-07-18 21:36:11,655 - app.llm.agenticWorkflow - INFO - agent question:content="Hey, I'm looking for a cozy place to rent, preferably furnished and maybe a bit on the quieter side. Any suggestions?" additional_kwargs={} response_metadata={} id='70c10339-6a70-41e7-bb21-5a07b81ec689'
+2026-07-18 21:36:12,746 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-07-18 21:36:27,876 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_clarification.txt
+2026-07-18 21:36:30,781 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_clarification.txt
+2026-07-18 21:36:43,282 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:36:43,286 - app.llm.agenticWorkflow - INFO - agent question:content="Hey! I'm looking for a rental that has parking available, and ideally in a convenient location. Any suggestions?" additional_kwargs={} response_metadata={} id='c46187a1-af18-4dd9-8883-acb08135cf49'
+2026-07-18 21:36:48,122 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:36:50,799 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=True, max_distance_to_university=None) missing_fields_to_clarify=['max_monthly_rent', 'max_distance_to_university', 'general_preference']
+2026-07-18 21:36:50,807 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:36:50,812 - app.llm.agenticWorkflow - INFO - agent question:content="Hey! I'm looking for a rental that has parking available, and ideally in a convenient location. Any suggestions?" additional_kwargs={} response_metadata={} id='c46187a1-af18-4dd9-8883-acb08135cf49'
+2026-07-18 21:36:54,874 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_clarification.txt
+2026-07-18 21:36:56,460 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-07-18 21:36:56,464 - app.llm.agenticWorkflow - INFO - agent question:content='Looking for a furnished one-bedroom apartment, ideally under $1000, in a place that feels cozy.' additional_kwargs={} response_metadata={} id='f77ce036-01a1-4e14-ba5f-b05a2578cc3c'
+2026-07-18 21:36:59,539 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-07-18 21:37:01,459 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-07-18 21:37:01,464 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-07-18 21:37:01,466 - app.llm.agenticWorkflow - INFO - agent question:content='Looking for a furnished one-bedroom apartment, ideally under $1000, in a place that feels cozy.' additional_kwargs={} response_metadata={} id='f77ce036-01a1-4e14-ba5f-b05a2578cc3c'
+2026-07-18 21:37:04,364 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_clarification.txt

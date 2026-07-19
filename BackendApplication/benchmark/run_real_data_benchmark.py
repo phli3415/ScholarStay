@@ -164,6 +164,8 @@ async def main(args) -> None:
     with open(args.queries, encoding="utf-8") as f:
         query_data = json.load(f)
     queries = query_data["queries"]
+    if args.limit:
+        queries = queries[:args.limit]
 
     llm_chat = initialize_llm(Config.LLM_TYPE)
     llm_embedding = initialize_embedding(Config.LLM_TYPE)
@@ -222,6 +224,7 @@ async def main(args) -> None:
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--queries", required=True, help="path to a generated_queries_*.json file from generate_queries_from_houses.py")
+    p.add_argument("--limit", type=int, default=None, help="only run the first N queries (for fast iteration while debugging)")
     return p.parse_args()
 
 

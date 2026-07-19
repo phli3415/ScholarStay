@@ -1,0 +1,647 @@
+{
+  "review_records": [
+    {
+      "source_house_id": 1145140653,
+      "generated_query": "I'm looking for a place to rent, ideally under $1500 a month.",
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "extracted_requirement": {
+        "max_monthly_rent": 1500.0
+      },
+      "source_house": {
+        "id": 1145140653,
+        "province": "CA",
+        "city": "Los Angeles",
+        "street": "S Hobart Boulevard",
+        "house_number": "908",
+        "monthly_rent": 1495.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 4053.9,
+        "description": "This unit is located at 908 S. Hobart Blvd, Los Angeles (koreatown), 90006, CAMonthly rental rates range from $1495We have studio units available for rent"
+      },
+      "top_matched": [
+        {
+          "id": 46,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Amity St",
+          "house_number": "798",
+          "monthly_rent": 1200.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 1.0,
+          "description": "Quiet street, friendly landlord, flexible lease."
+        },
+        {
+          "id": 69,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Belchertown Rd",
+          "house_number": "851",
+          "monthly_rent": 1500.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 3.5,
+          "description": "Great natural light, walkable neighborhood."
+        },
+        {
+          "id": 34,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Amity St",
+          "house_number": "899",
+          "monthly_rent": 1200.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 9.5,
+          "description": "Newly renovated with modern finishes."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140108,
+      "generated_query": "Hey! I'm looking for a furnished place to rent, ideally under $900. It would be great if it’s cozy too. Any options?",
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "extracted_requirement": {
+        "max_monthly_rent": 900.0
+      },
+      "source_house": {
+        "id": 1145140108,
+        "province": "CO",
+        "city": "Aurora",
+        "street": "E. Bates Avenue",
+        "house_number": null,
+        "monthly_rent": 855.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 2707.43,
+        "description": "This unit is located at E. Bates Avenue, #304, Aurora, 80014, COMonthly rental rates range from $855We have 1 beds units available for rent Apartment features include:-- Furnished"
+      },
+      "top_matched": [
+        {
+          "id": 26,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Fearing St",
+          "house_number": "905",
+          "monthly_rent": 800.0,
+          "has_kitchen": false,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 3.5,
+          "description": "Simple and functional, good for a single student."
+        },
+        {
+          "id": 62,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Meadow St",
+          "house_number": "717",
+          "monthly_rent": 900.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": false,
+          "distance_to_university": 0.5,
+          "description": "Newly renovated with modern finishes."
+        },
+        {
+          "id": 47,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Dickinson St",
+          "house_number": "256",
+          "monthly_rent": 900.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 0.6,
+          "description": "Great natural light, walkable neighborhood."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140032,
+      "generated_query": "I'm looking for a place to rent, ideally under $800.",
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "extracted_requirement": {
+        "max_monthly_rent": 800.0
+      },
+      "source_house": {
+        "id": 1145140032,
+        "province": "AL",
+        "city": "Devonshire",
+        "street": "Mullica Way",
+        "house_number": null,
+        "monthly_rent": 750.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": null,
+        "description": "This unit is located at Mullica Way, Devonshire, 8215, ALMonthly rental rates range from $750We have 1 beds units available for rent Apartment features include:-- Pool"
+      },
+      "top_matched": [
+        {
+          "id": 26,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Fearing St",
+          "house_number": "905",
+          "monthly_rent": 800.0,
+          "has_kitchen": false,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 3.5,
+          "description": "Simple and functional, good for a single student."
+        },
+        {
+          "id": 1145140338,
+          "province": "TX",
+          "city": "Alvin",
+          "street": "E South St",
+          "house_number": "800",
+          "monthly_rent": 765.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 2492.47,
+          "description": "This unit is located at 800 E South St, Alvin, 77511, TXMonthly rental rates range from $765 - $899We have one - two beds units available for rent Apartment available amenities:-- Washer dryer Connections- Refrigerator- Surface Parking- Walk in Closets- Balcony, Deck, Patio- Dishwasher- On-Site Laundry- Air conditioned"
+        },
+        {
+          "id": 1145140200,
+          "province": "FL",
+          "city": "Tampa",
+          "street": "North",
+          "house_number": "8525",
+          "monthly_rent": 690.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": false,
+          "distance_to_university": 1836.27,
+          "description": "This unit is located at 8525 North Armenia, Tampa, 33604, FLMonthly rental rates range from $690 - $800We have studio - 1 beds units available for rent Apartment available amenities:-- Living Room- Dishwasher- Washer dryer Connections- Carpet- Pool- Refrigerator- Air conditioned- Range / Oven"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140761,
+      "generated_query": "Looking for a cozy one-bedroom place to rent, ideally in a quiet area.",
+      "requested_slots": [
+        "semantic"
+      ],
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "extracted_requirement": {
+        "max_monthly_rent": 2000.0
+      },
+      "source_house": {
+        "id": 1145140761,
+        "province": "CA",
+        "city": "Berkeley",
+        "street": "College Avenue",
+        "house_number": "2801",
+        "monthly_rent": 1995.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 4197.64,
+        "description": "This unit is located at 2801 College Ave, Berkeley, 94705, CAMonthly rental rates range from $1995We have 1 beds units available for rent"
+      },
+      "top_matched": [],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140283,
+      "generated_query": "Looking for a rental under $800, preferably something cozy and affordable!",
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "extracted_requirement": {
+        "max_monthly_rent": 800.0
+      },
+      "source_house": {
+        "id": 1145140283,
+        "province": "IN",
+        "city": "West Lafayette",
+        "street": "S Grant St",
+        "house_number": "400",
+        "monthly_rent": 720.0,
+        "has_kitchen": true,
+        "has_washer": true,
+        "has_parking": true,
+        "distance_to_university": 1220.34,
+        "description": "This unit is located at 400 S. Grant Street, West Lafayette, 47906, INMonthly rental rates range from $720 - $890We have studio - 2 beds units available for rent Apartment features include:-- Refrigerator- Garbage Disposal- Dishwasher- Trash Removal Included- Microwave- Water Included- On-Site Laundry- Balcony, Deck, Patio"
+      },
+      "top_matched": [
+        {
+          "id": 26,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Fearing St",
+          "house_number": "905",
+          "monthly_rent": 800.0,
+          "has_kitchen": false,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 3.5,
+          "description": "Simple and functional, good for a single student."
+        },
+        {
+          "id": 35,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Northampton Rd",
+          "house_number": "354",
+          "monthly_rent": 800.0,
+          "has_kitchen": false,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 7.0,
+          "description": "Classic New England charm, well maintained."
+        },
+        {
+          "id": 62,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Meadow St",
+          "house_number": "717",
+          "monthly_rent": 900.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": false,
+          "distance_to_university": 0.5,
+          "description": "Newly renovated with modern finishes."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140252,
+      "generated_query": "I need a place that has a kitchen so I can cook at home.",
+      "requested_slots": [
+        "has_kitchen"
+      ],
+      "used_constraint_types": [
+        "has_kitchen"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "extracted_requirement": {
+        "max_monthly_rent": 750.0,
+        "has_kitchen": true,
+        "has_parking": true
+      },
+      "source_house": {
+        "id": 1145140252,
+        "province": "OH",
+        "city": "Cleveland",
+        "street": "Euclid Ave",
+        "house_number": "2901",
+        "monthly_rent": 675.0,
+        "has_kitchen": true,
+        "has_washer": false,
+        "has_parking": true,
+        "distance_to_university": 763.82,
+        "description": "This unit is located at 2901 Euclid Avenue, Cleveland, 44115, OHMonthly rental rates range from $675We have studio units available for rent Apartment available amenities:-- Surface Parking- Internet Included- Heat Included- Balcony, Deck, Patio- Cable Included- On-Site Laundry- A-c- Fitness facilities"
+      },
+      "top_matched": [
+        {
+          "id": 1145140722,
+          "province": "IA",
+          "city": "Ames",
+          "street": "McDonald Drive",
+          "house_number": "110",
+          "monthly_rent": 700.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 1735.48,
+          "description": "This unit is located at 110 Mcdonald Dr, Ames, 50014, IAMonthly rental rates range from $700 - $1300We have studio - 3 beds units available for rent Apartment features include:-- Ac- Dishwasher- Cable Included- Balcony, Deck, Patio- On Bus Line- Fitness facilities- In-Unit Laundry- Internet Included"
+        },
+        {
+          "id": 1145140365,
+          "province": "KY",
+          "city": "Central City",
+          "street": null,
+          "house_number": null,
+          "monthly_rent": 350.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 1367.63,
+          "description": "Located in downtown Central City. This 1 bedrooms apartment is all electric, laminate wood flooring. Water, sewer and trash included. $350 per month with $350 deposit after an Application and background check. Rent includes access to laundy room. ($20 application fee). No pets."
+        },
+        {
+          "id": 1145140458,
+          "province": "NV",
+          "city": "Las Vegas",
+          "street": "Starfish Court",
+          "house_number": "2648",
+          "monthly_rent": 750.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 3704.02,
+          "description": "Las Vegas Studio apartment (partial part of a house) for lease at Desert Shores Racquet Club I am looking for a roommate who can appreciate a newly up-to-date, beautiful home at Racquet Club, a access controlled community with a nighttime guard in Desert Shores, near Buffalo and Lake Mead. You have full privacy in the house. I am leasing a partial part of my house/studio apartment: a room with attached bathroom and a separate living space. All the rooms are complete furnished.The common area is the kitchen and the backyard, both of which you can use at your leisure. You can park your car in the garage. The cost of renting a flat fee of $750/month, utilities, wifi included in the price. Residents of Racquet Club have access to 2 clubhouses, one inside the community and 1 at the Desert Shores Lagoon."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140230,
+      "generated_query": "Hey, I'm looking for a place to rent, something under $600 if possible. Any suggestions?",
+      "requested_slots": [
+        "max_monthly_rent"
+      ],
+      "used_constraint_types": [
+        "max_monthly_rent"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": null,
+      "extracted_requirement": {
+        "max_monthly_rent": 600.0
+      },
+      "source_house": {
+        "id": 1145140230,
+        "province": "CO",
+        "city": "Grand Junction",
+        "street": "N 1st St",
+        "house_number": "125",
+        "monthly_rent": 595.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 3032.07,
+        "description": "This unit is located at 125 N first Street, Grand Junction, 81501, COMonthly rental rates range from $595We have 1 beds units available for rent"
+      },
+      "top_matched": [
+        {
+          "id": 54,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "East Pleasant St",
+          "house_number": "874",
+          "monthly_rent": 500.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 7.0,
+          "description": "Quiet street, friendly landlord, flexible lease."
+        },
+        {
+          "id": 56,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "South East St",
+          "house_number": "861",
+          "monthly_rent": 500.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 2.5,
+          "description": "Close to bus line, easy commute either way."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140171,
+      "generated_query": "Hey, I'm looking for a cozy place to rent, preferably furnished and maybe a bit on the quieter side. Any suggestions?",
+      "requested_slots": [
+        "semantic"
+      ],
+      "used_constraint_types": [
+        "semantic"
+      ],
+      "constraint_count": 1,
+      "semantic_quality_used": "cozy",
+      "extracted_requirement": {},
+      "source_house": {
+        "id": 1145140171,
+        "province": "VA",
+        "city": "New Canton",
+        "street": "Henderson Road",
+        "house_number": null,
+        "monthly_rent": 595.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 721.89,
+        "description": "This unit is located at Henderson Road, New Canton, 23123, VAMonthly rental rates range from $595We have 1 beds units available for rent Apartment features include:-- Furnished"
+      },
+      "top_matched": [],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140756,
+      "generated_query": "Hey! I'm looking for a rental that has parking available, and ideally in a convenient location. Any suggestions?",
+      "requested_slots": [
+        "semantic",
+        "has_parking"
+      ],
+      "used_constraint_types": [
+        "has_parking",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "convenient location",
+      "extracted_requirement": {
+        "has_parking": true
+      },
+      "source_house": {
+        "id": 1145140756,
+        "province": "IL",
+        "city": "Urbana",
+        "street": "W Western",
+        "house_number": "702",
+        "monthly_rent": 625.0,
+        "has_kitchen": true,
+        "has_washer": false,
+        "has_parking": true,
+        "distance_to_university": 1331.55,
+        "description": "This unit is located at 702 W. Western, Urbana, 61801, ILMonthly rental rates range from $625We have 1 beds units available for rent Apartment features include:-- On Bus Line- Refrigerator- Air conditioner- Controlled Access- Water Included- Surface Parking- Furnished- On-Site Laundry"
+      },
+      "top_matched": [
+        {
+          "id": 38,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Bay Rd",
+          "house_number": "680",
+          "monthly_rent": 1100.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 3.0,
+          "description": "Great natural light, walkable neighborhood."
+        },
+        {
+          "id": 50,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Gray St",
+          "house_number": "497",
+          "monthly_rent": 1400.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 1.2,
+          "description": "Spacious layout with plenty of storage."
+        },
+        {
+          "id": 61,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "North Pleasant St",
+          "house_number": "637",
+          "monthly_rent": 2400.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 0.2,
+          "description": "Simple and functional, good for a single student."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140098,
+      "generated_query": "Looking for a furnished one-bedroom apartment, ideally under $1000, in a place that feels cozy.",
+      "requested_slots": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "used_constraint_types": [
+        "max_monthly_rent",
+        "semantic"
+      ],
+      "constraint_count": 2,
+      "semantic_quality_used": "cozy",
+      "extracted_requirement": {
+        "max_monthly_rent": 1000.0
+      },
+      "source_house": {
+        "id": 1145140098,
+        "province": "CO",
+        "city": "Boulder",
+        "street": "Racquet Lane",
+        "house_number": null,
+        "monthly_rent": 900.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 2733.21,
+        "description": "This unit is located at Racquet Lane, Boulder, 80303, COMonthly rental rates range from $900We have 1 beds units available for rent Apartment features include:-- Furnished"
+      },
+      "top_matched": [
+        {
+          "id": 41,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Northampton Rd",
+          "house_number": "805",
+          "monthly_rent": 1000.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 2.5,
+          "description": "Private entrance, good for those who value quiet."
+        },
+        {
+          "id": 26,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "Fearing St",
+          "house_number": "905",
+          "monthly_rent": 800.0,
+          "has_kitchen": false,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 3.5,
+          "description": "Simple and functional, good for a single student."
+        },
+        {
+          "id": 39,
+          "province": "MA",
+          "city": "Amherst",
+          "street": "North Prospect St",
+          "house_number": "568",
+          "monthly_rent": 1000.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 5.0,
+          "description": "Simple and functional, good for a single student."
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    }
+  ]
+}
