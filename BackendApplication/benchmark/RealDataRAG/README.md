@@ -38,6 +38,18 @@ queries continue to be covered only by the synthetic benchmark.
   `python -m app.dataProcessing.import_csv_to_db <csv_path>` — this
   benchmark only samples rows with `id >= SOURCE_ID_BASE` (i.e. CSV-imported
   rows), so run the importer first if the table is empty.
+- Every CSV-imported house has an `embedding_vector` (the importer doesn't
+  generate one — run `python benchmark/backfill_real_house_embeddings.py`
+  after importing, or `find_similar_listings` silently returns nothing for
+  every candidate house and every query flatlines at 0% hit rate).
+- **The 45 synthetic Amherst houses from `test_data.json`/`run_benchmark.py`
+  are NOT in the `Houses` table while this benchmark runs.** They compete in
+  the same semantic search as the real houses and were observed to dominate
+  `top_matched_ids` for many real-data queries (their embeddings are clean
+  and their rent range overlaps real listings), silently displacing the real
+  candidate this benchmark is trying to evaluate. Remove them before a run;
+  re-seed via `generate_test_data.py` + the existing `bench_id_to_db_id.json`
+  mapping before going back to running `run_benchmark.py`.
 
 All commands below are run from `BackendApplication/`.
 
@@ -59,24 +71,29 @@ Randomly samples `--n` CSV-imported houses that have a non-empty
 python benchmark/generate_queries_from_houses.py --houses sampled_houses_n350_<ts>.json
 ```
 
-For each house, the **script** (not the model) randomly picks 1–5
-requirement "slots" from what's actually true/available for that house:
-`max_monthly_rent` (always available), `has_kitchen` / `has_washer` /
-`has_parking` (only offered when true), and `semantic` (a soft quality like
-"quiet" or "convenient," only offered when the description is long enough
-to plausibly support one). `gpt-4o-mini`'s only job is to phrase those
-specific slots as one short, casual, human-sounding search message — it is
-explicitly forbidden from mentioning any requirement outside the requested
-slots, even if it's true of the listing.
+For each house, `gpt-4o-mini` is shown every structured fact that is
+actually true for it (`max_monthly_rent` always; `has_kitchen` /
+`has_washer` / `has_parking` only when true) plus the full `description`,
+and is told to weave ALL of it into one casual message — including every
+distinct, genuinely-supported semantic quality it can identify from the
+description (zero, one, or several; restating the same idea twice doesn't
+count twice). Nothing is randomly subsampled or hidden anymore: how many
+requirements a query ends up with is a property of how much is genuinely
+true/known about that house, not a number picked in advance. This is
+deliberate — an earlier version that capped queries at 1–2 loosely-picked
+constraints made "hit@3 on the source house specifically" an unfairly
+strict test in a 350+ house pool (see git history / conversation log for
+the two earlier, abandoned designs and why each was replaced).
 
 Writes `generated_queries_n<N>_<timestamp>.json`, with a
 `constraint_count_distribution` summary printed to the console. Before
 moving on, spot-check ~10–20 generated queries by hand:
 - Do they read like a casual human message, not a field-by-field listing?
-- For queries with 1 requested slot, does the text really only ask for that
-  one thing (no leaked extra requirements)?
-- Where `semantic_quality_used` is set, is it actually supported by that
-  house's `description`?
+- Does the message actually include every true structured fact it was
+  given (not silently dropping one)?
+- Is every entry in `semantic_qualities_used` actually, specifically
+  supported by that house's `description` — not invented, and not two
+  different phrasings of the same idea double-counted?
 
 ### 3. Run the benchmark
 
@@ -90,15 +107,14 @@ source house's id appears anywhere in `top_matched_ids` (capped at
 `Config.EMBEDDING_HOUSES_RETURN`, i.e. top-3).
 
 This step calls the LLM once per graph node per query (the graph has
-several LLM nodes), so it is the expensive/slow step. **Try a small
-subset first** (e.g. hand-trim `generated_queries_*.json` down to ~20–30
-entries) to confirm the pipeline runs end-to-end before spending the full
-batch's tokens.
+several LLM nodes), so it is the expensive/slow step. **Try a small subset
+first** with `--limit 10` (or 20–30) to confirm the pipeline runs
+end-to-end before spending the full batch's tokens.
 
 Writes three files:
 - `results_n<N>_<timestamp>.json` — full per-query results.
-- `summary_n<N>_<timestamp>.json` — hit rate overall, by constraint count
-  (1–5), and split by semantic vs. structured-only queries.
+- `summary_n<N>_<timestamp>.json` — hit rate overall, by constraint count,
+  and split by semantic vs. structured-only queries.
 - `review_misses_n<M>_<timestamp>.json` — every miss, with the source
   house's full fields+description, the top-3 returned houses' full
   fields+description, and an empty `human_verdict` block. Not written if

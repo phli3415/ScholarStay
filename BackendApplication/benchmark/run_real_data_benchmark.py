@@ -144,10 +144,9 @@ async def build_review_file(misses: list[dict], out_path: Path) -> None:
         review_records.append({
             "source_house_id": m["source_house_id"],
             "generated_query": m["query"],
-            "requested_slots": m["requested_slots"],
-            "used_constraint_types": m["used_constraint_types"],
+            "used_structured_slots": m["used_structured_slots"],
+            "semantic_qualities_used": m["semantic_qualities_used"],
             "constraint_count": m["constraint_count"],
-            "semantic_quality_used": m.get("semantic_quality_used"),
             "extracted_requirement": m.get("extracted_requirement"),
             "source_house": houses_by_id.get(m["source_house_id"]),
             "top_matched": [houses_by_id.get(hid) for hid in m["top_matched_ids"]],

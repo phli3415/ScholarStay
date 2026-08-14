@@ -1,0 +1,636 @@
+{
+  "review_records": [
+    {
+      "source_house_id": 1145140703,
+      "generated_query": "Hey! I'm looking for a cozy studio or one-bedroom place that's under $1800. Ideally, it should be bright and well-lit, in a quiet but convenient location where I can walk to nearby spots. It'd be great if the building has a friendly vibe too, like a close-knit community. Also, I appreciate well-maintained places with a spacious feel. Any recommendations?",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 8,
+      "extracted_requirement": {
+        "max_monthly_rent": 1800.0
+      },
+      "source_house": {
+        "id": 1145140703,
+        "province": "TX",
+        "city": "Austin",
+        "street": "E Riverside Drive",
+        "house_number": "300",
+        "monthly_rent": 1722.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 2614.22,
+        "description": "This unit is located at 300 E Riverside Dr, Austin, 78704, TXMonthly rental rates range from $1722 - $1736We have studio - 1 beds units available for rent"
+      },
+      "top_matched": [
+        {
+          "id": 1145140066,
+          "province": "MD",
+          "city": "North Potomac",
+          "street": "Morning Light Terrace",
+          "house_number": null,
+          "monthly_rent": 1150.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 540.59,
+          "description": "This unit is located at Morning Light Terrace, North Potomac, 20878, MDMonthly rental rates range from $1150We have 1 beds units available for rent Apartment available amenities:-- Pool"
+        },
+        {
+          "id": 1145140289,
+          "province": "MN",
+          "city": "Minneapolis",
+          "street": "Oak Grove St",
+          "house_number": "116",
+          "monthly_rent": 899.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 1689.47,
+          "description": "This unit is located at 116 Oak Grove St, Minneapolis, 55403, MNMonthly rental rates range from $899 - $975We have studio - 1 beds units available for rent Apartment available amenities:-- Walk in Closets- Living Room- Storage- Controlled Access- Balcony, Deck, Patio- On-Site Laundry- Refrigerator- Wood floors"
+        },
+        {
+          "id": 1145140295,
+          "province": "DC",
+          "city": "Washington",
+          "street": "Mass Avenue NW",
+          "house_number": "4201",
+          "monthly_rent": 1550.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 542.73,
+          "description": "This unit is located at 4201 Mass Ave. Nw, Washington, 20016, DCMonthly rental rates range from $1550 - $2875We have studio - 2 beds units available for rent Apartment features include:-- Sheltered parking- Fitness facilities- On Bus Line- On-Site Laundry"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140116,
+      "generated_query": "Hi! I’m looking for a cozy one-bedroom apartment to rent for under $900. It would be great if it’s well-maintained and bright, and I’d love a place that's in a quiet and friendly building. A pool would be a nice bonus too! Ideally, it should be in a convenient location where I can easily walk around. Thanks!",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 7,
+      "extracted_requirement": {
+        "max_monthly_rent": 900.0
+      },
+      "source_house": {
+        "id": 1145140116,
+        "province": "GA",
+        "city": "Atlanta",
+        "street": "Capella Cir Sw",
+        "house_number": null,
+        "monthly_rent": 805.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 1411.05,
+        "description": "This unit is located at Capella Cir Sw, Atlanta, 30331, GAMonthly rental rates range from $805We have 1 beds units available for rent Apartment features include:-- Pool- Furnished"
+      },
+      "top_matched": [
+        {
+          "id": 1145140096,
+          "province": "MD",
+          "city": "Laurel",
+          "street": "Yellow Flower Rd",
+          "house_number": null,
+          "monthly_rent": 900.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 518.68,
+          "description": "This unit is located at Yellow Flower Rd, Laurel, 20724, MDMonthly rental rates range from $900We have 1 beds units available for rent Apartment features include:-- Pool- Furnished"
+        },
+        {
+          "id": 1145140154,
+          "province": "MD",
+          "city": "Baltimore",
+          "street": "White Ave",
+          "house_number": null,
+          "monthly_rent": 650.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 486.05,
+          "description": "This unit is located at White Ave, Baltimore, 21206, MDMonthly rental rates range from $650We have 1 beds units available for rent Apartment features include:-- Pool- Furnished"
+        },
+        {
+          "id": 1145140098,
+          "province": "CO",
+          "city": "Boulder",
+          "street": "Racquet Lane",
+          "house_number": null,
+          "monthly_rent": 900.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 2733.21,
+          "description": "This unit is located at Racquet Lane, Boulder, 80303, COMonthly rental rates range from $900We have 1 beds units available for rent Apartment features include:-- Furnished"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140032,
+      "generated_query": "Hey, I'm looking for a cozy one-bedroom place under $800 that feels bright and spacious. It would be awesome to find somewhere that's in a friendly neighborhood, maybe with a pool for some relaxation. I'm hoping for a well-maintained unit that's perfect for a single person, and ideally something close to amenities and in a walkable area. Any suggestions?",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "family-friendly",
+        "good for a single person",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 10,
+      "extracted_requirement": {
+        "max_monthly_rent": 800.0
+      },
+      "source_house": {
+        "id": 1145140032,
+        "province": "AL",
+        "city": "Devonshire",
+        "street": "Mullica Way",
+        "house_number": null,
+        "monthly_rent": 750.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": null,
+        "description": "This unit is located at Mullica Way, Devonshire, 8215, ALMonthly rental rates range from $750We have 1 beds units available for rent Apartment features include:-- Pool"
+      },
+      "top_matched": [
+        {
+          "id": 1145140338,
+          "province": "TX",
+          "city": "Alvin",
+          "street": "E South St",
+          "house_number": "800",
+          "monthly_rent": 765.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 2492.47,
+          "description": "This unit is located at 800 E South St, Alvin, 77511, TXMonthly rental rates range from $765 - $899We have one - two beds units available for rent Apartment available amenities:-- Washer dryer Connections- Refrigerator- Surface Parking- Walk in Closets- Balcony, Deck, Patio- Dishwasher- On-Site Laundry- Air conditioned"
+        },
+        {
+          "id": 1145140243,
+          "province": "IN",
+          "city": "Indianapolis",
+          "street": "Central Ave",
+          "house_number": "1308",
+          "monthly_rent": 760.0,
+          "has_kitchen": true,
+          "has_washer": true,
+          "has_parking": true,
+          "distance_to_university": 1175.49,
+          "description": "This unit is located at 1308 Central Avenue, Indianapolis, 46202, INMonthly rental rates range from $760 - $975We have studio - 1 beds units available for rent Apartment available amenities:-- Refrigerator- Sheltered parking- Storage- Controlled Access- Cloths washer and drier Connections- Garbage Disposal- Surface Parking- Dishwasher"
+        },
+        {
+          "id": 1145140229,
+          "province": "OH",
+          "city": "Columbus",
+          "street": "Chambers Road",
+          "house_number": "855",
+          "monthly_rent": 650.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 914.22,
+          "description": "This unit is located at 855 Chambers Rd, Columbus, 43212, OHMonthly rental rates range from $650 - $725We have studio - 1 beds units available for rent Apartment features include:-- Dining area- On-Site Laundry- Refrigerator- Water Included- Off-Parking on street- A-c- Living Room- Range / Oven"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140808,
+      "generated_query": "Hey, I'm looking for a cozy studio unit in a quiet area, preferably under $1300. It would be great if it's bright and well-maintained, maybe with a good community vibe. A walkable neighborhood would be a huge plus too. Ideally, I'm hoping to find a space that feels comfortable for just me, in a friendly building. Thanks!",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "good for a single person",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 9,
+      "extracted_requirement": {
+        "max_monthly_rent": 1300.0
+      },
+      "source_house": {
+        "id": 1145140808,
+        "province": "OR",
+        "city": "Portland",
+        "street": "SE 6th Ave",
+        "house_number": "8130",
+        "monthly_rent": 1295.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 3960.54,
+        "description": "This unit is located at 8130 SE sixth Avenue, Portland, 97202, ORMonthly rental rates range from $1295We have studio units available for rent"
+      },
+      "top_matched": [
+        {
+          "id": 1145140055,
+          "province": "CA",
+          "city": "Studio City",
+          "street": "Acama Street",
+          "house_number": null,
+          "monthly_rent": 1330.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 4056.05,
+          "description": "This unit is located at Acama Street, Studio City, 91604, CAMonthly rental rates range from $1330We have 1 beds units available for rent Apartment available amenities:-- Furnished"
+        },
+        {
+          "id": 1145140289,
+          "province": "MN",
+          "city": "Minneapolis",
+          "street": "Oak Grove St",
+          "house_number": "116",
+          "monthly_rent": 899.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 1689.47,
+          "description": "This unit is located at 116 Oak Grove St, Minneapolis, 55403, MNMonthly rental rates range from $899 - $975We have studio - 1 beds units available for rent Apartment available amenities:-- Walk in Closets- Living Room- Storage- Controlled Access- Balcony, Deck, Patio- On-Site Laundry- Refrigerator- Wood floors"
+        },
+        {
+          "id": 1145140066,
+          "province": "MD",
+          "city": "North Potomac",
+          "street": "Morning Light Terrace",
+          "house_number": null,
+          "monthly_rent": 1150.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 540.59,
+          "description": "This unit is located at Morning Light Terrace, North Potomac, 20878, MDMonthly rental rates range from $1150We have 1 beds units available for rent Apartment available amenities:-- Pool"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140302,
+      "generated_query": "Hey there! I'm looking for a cozy studio to rent in the Chicago area, ideally under $1000. It would be great if it's in a well-maintained building, bright and spacious, and in a walkable neighborhood. I’d love a place that feels friendly and welcoming, perfect for a single person. A quiet location would be a big plus too!",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "friendly building",
+        "good for a single person"
+      ],
+      "constraint_count": 9,
+      "extracted_requirement": {
+        "province": "Illinois",
+        "city": "Chicago",
+        "max_monthly_rent": 1000.0
+      },
+      "source_house": {
+        "id": 1145140302,
+        "province": "IL",
+        "city": "Chicago",
+        "street": "N Clarendon Avenue",
+        "house_number": "4750",
+        "monthly_rent": 940.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 1249.35,
+        "description": "This unit is located at 4750 N Clarendon Ave, Chicago, 60640, ILMonthly rental rates range from $940We have studio units available for rent"
+      },
+      "top_matched": [],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140269,
+      "generated_query": "Hey! I’m looking for a cozy studio or 1-bedroom rental in a well-maintained building that’s under $2400. It’d be great if it's in a convenient location, maybe somewhere walkable and close to a bus line. I really want a bright space with a kitchen, and having in-unit laundry would be a huge plus!",
+      "used_structured_slots": [
+        "has_kitchen",
+        "has_washer"
+      ],
+      "semantic_qualities_used": [
+        "cozy",
+        "convenient location",
+        "well-maintained / good condition",
+        "walkable area",
+        "good for a single person"
+      ],
+      "constraint_count": 7,
+      "extracted_requirement": {
+        "max_monthly_rent": 2400.0,
+        "has_kitchen": true
+      },
+      "source_house": {
+        "id": 1145140269,
+        "province": "CA",
+        "city": "San Francisco",
+        "street": "O'Farrell St",
+        "house_number": "691",
+        "monthly_rent": 2295.0,
+        "has_kitchen": true,
+        "has_washer": true,
+        "has_parking": false,
+        "distance_to_university": 4216.07,
+        "description": "This unit is located at 691 O'farrell Street, San Francisco, 94109, CAMonthly rental rates range from $2295 - $2795We have studio - 1 beds units available for rent Apartment features include:-- On Bus Line- Dishwasher- Refrigerator- In-Unit Laundry"
+      },
+      "top_matched": [
+        {
+          "id": 1145140217,
+          "province": "CA",
+          "city": "Long Beach",
+          "street": null,
+          "house_number": null,
+          "monthly_rent": 975.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 4058.4,
+          "description": "Studio/ 1 bathrooms, LISTING DETAILS: Lower unit, terrific location downtown, close to City, Pine/Pike area, Blue Line Metro, touch up custom paint, newer plank vinyl, upgraded kitchen cabinet & granite counter top, newer vertical blinds, newer ceiling fan, newer fixtures, onstreet parking only Parking maybe church across the streetMonth to Month. RENT: $975 DEPOSIT: $1000, Cats not allowed, Dogs not allowed."
+        },
+        {
+          "id": 1145140362,
+          "province": "CA",
+          "city": "San Francisco",
+          "street": "Bush St",
+          "house_number": "1126",
+          "monthly_rent": 2395.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 4216.07,
+          "description": "This unit is located at 1126 Bush Street, San Francisco, 94109, CAMonthly rental rates range from $2395We have studio units available for rent Apartment features include:-- In-Unit Laundry- Refrigerator- On Bus Line- On-Site Laundry"
+        },
+        {
+          "id": 1145140285,
+          "province": "CA",
+          "city": "San Francisco",
+          "street": "California St",
+          "house_number": "814",
+          "monthly_rent": 2395.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 4216.07,
+          "description": "This unit is located at 814 California Street, San Francisco, 94108, CAMonthly rental rates range from $2395We have studio units available for rent Apartment features include:-- In-Unit Laundry- On-Site Laundry- Refrigerator- On Bus Line"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140245,
+      "generated_query": "Hey there! I'm looking for a cozy studio in a quiet part of the city, ideally somewhere with a kitchen and in-unit laundry. It would be great to find a place with good parking options too, since I have a car. A well-maintained spot that feels bright and spacious would be ideal, and it should be in a walkable area with decent public transport. And if it's family-friendly or has a friendly vibe, that's a bonus! My budget is around $2700, so I'm hoping to find something that fits these needs.",
+      "used_structured_slots": [
+        "has_kitchen",
+        "has_parking",
+        "has_washer"
+      ],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "family-friendly",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 12,
+      "extracted_requirement": {
+        "max_monthly_rent": 2700.0,
+        "has_kitchen": true,
+        "has_washer": true,
+        "has_parking": true
+      },
+      "source_house": {
+        "id": 1145140245,
+        "province": "CA",
+        "city": "San Francisco",
+        "street": "Clay St",
+        "house_number": "1547",
+        "monthly_rent": 2695.0,
+        "has_kitchen": true,
+        "has_washer": true,
+        "has_parking": true,
+        "distance_to_university": 4216.07,
+        "description": "This unit is located at 1547 Clay Street, San Francisco, 94109, CAMonthly rental rates range from $2695We have studio units available for rent Apartment features include:-- On-Site Laundry- Refrigerator- Range / Oven- Public Transportation- Hard wood floors- Living Room- Dishwasher- In-Unit Laundry"
+      },
+      "top_matched": [
+        {
+          "id": 1145140295,
+          "province": "DC",
+          "city": "Washington",
+          "street": "Mass Avenue NW",
+          "house_number": "4201",
+          "monthly_rent": 1550.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": true,
+          "distance_to_university": 542.73,
+          "description": "This unit is located at 4201 Mass Ave. Nw, Washington, 20016, DCMonthly rental rates range from $1550 - $2875We have studio - 2 beds units available for rent Apartment features include:-- Sheltered parking- Fitness facilities- On Bus Line- On-Site Laundry"
+        },
+        {
+          "id": 1145140015,
+          "province": "CA",
+          "city": "San Francisco",
+          "street": "Taylor St",
+          "house_number": "57",
+          "monthly_rent": 1695.0,
+          "has_kitchen": true,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 4216.07,
+          "description": "This unit is located at 57 Taylor Street, San Francisco, 94102, CAMonthly rental rates range from $1695We have studio units available for rent Apartment available amenities:-- Hard wood floors- Public Transportation- Freezer- Living Room- Range / Oven- Bath Bath-tub- On-Site Laundry- Refrigerator"
+        },
+        {
+          "id": 1145140090,
+          "province": "CO",
+          "city": "Aurora",
+          "street": "Fulton St",
+          "house_number": null,
+          "monthly_rent": 950.0,
+          "has_kitchen": false,
+          "has_washer": false,
+          "has_parking": false,
+          "distance_to_university": 2707.43,
+          "description": "This unit is located at Fulton St, Aurora, 80010, COMonthly rental rates range from $950We have 1 beds units available for rent"
+        }
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140182,
+      "generated_query": "Hey! I'm looking for a cozy, furnished apartment that's well-lit and in a quiet area. It would be great to find something spacious yet still warm and inviting. Ideally, I want it to be family-friendly, in a close-knit building, and in a convenient location where I can easily walk to nearby amenities. My budget is around $250 a month. Thanks!",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "bright / well-lit",
+        "well-maintained / good condition",
+        "cozy",
+        "walkable area",
+        "family-friendly",
+        "good for a single person",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 10,
+      "extracted_requirement": {
+        "max_monthly_rent": 250.0
+      },
+      "source_house": {
+        "id": 1145140182,
+        "province": "MD",
+        "city": "Mount Airy",
+        "street": "Ridge Road",
+        "house_number": null,
+        "monthly_rent": 200.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 513.48,
+        "description": "This unit is located at Ridge Road, Mount Airy, 21771, MDMonthly rental rates range from $200We have 1 beds units available for rent Apartment available amenities:-- Furnished"
+      },
+      "top_matched": [
+        null,
+        null,
+        null
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140803,
+      "generated_query": "I'm looking for a cozy one-bedroom apartment around $800, preferably in a quiet area that feels secluded but is still convenient to the city. I would love it to be spacious and well-lit, and it would be great if it's in a family-friendly community with a close-knit vibe. Also, since I have a small pet, it’s important that the place is pet-friendly!",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "quiet",
+        "convenient location",
+        "spacious",
+        "cozy",
+        "family-friendly",
+        "good for a single person",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 7,
+      "extracted_requirement": {
+        "max_monthly_rent": 800.0
+      },
+      "source_house": {
+        "id": 1145140803,
+        "province": "TX",
+        "city": "Dallas",
+        "street": null,
+        "house_number": null,
+        "monthly_rent": 785.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 2371.9,
+        "description": "Welcome home to Canyon Creek Apartments in Dallas, Texas! Enjoy our peaceful and secluded, wooded setting far away from the urban hustle, yet close to the heart of city convenience. Residents love our mature, beautiful trees, dazzling swimming pool and ct. yard. Our beautifully appointed and spacious apartment homes are accented with luxurious amenities! Community Amenities Apartment Amenities. Ok for pets, Max weight 40 pound each, 1 time $300 Comments: Pet Friendly. Pet is due per pet and is no-refund. Restrictions: Breed and Weight restrictions apply. More units available: one Bd / 1 Bedrooms 575 sq. feet for $860/mo | one Bd / 1 Bedrooms 515 square feet for $820/mo | one Bd / 1 Bedrooms 550 sq. feet for $825/mo | one Bd / 1 Bedrooms 575 sq-ft for $875/mo | one Bd / 1 Bedrooms 515 square ft for $810/mo | one Bd / 1 Bedrooms 550 sq. feet for $835/mo | one Bd / 1 Bedrooms 717 square feet for $995/mo | one Bd / 1 Bedrooms 717 square feet for $920/mo | one Bd / 1 Bedrooms 550 sq."
+      },
+      "top_matched": [],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    },
+    {
+      "source_house_id": 1145140105,
+      "generated_query": "Hey! I’m looking for a cozy one-bedroom apartment to rent, ideally under $900. It would be great if it has a bright and spacious feel, in a family-friendly, walkable area. I’d love to find a place in a well-maintained building with a close-knit vibe. Any suggestions?",
+      "used_structured_slots": [],
+      "semantic_qualities_used": [
+        "cozy",
+        "bright / well-lit",
+        "spacious",
+        "well-maintained / good condition",
+        "family-friendly",
+        "walkable area",
+        "close-knit / friendly building"
+      ],
+      "constraint_count": 7,
+      "extracted_requirement": {
+        "max_monthly_rent": 900.0
+      },
+      "source_house": {
+        "id": 1145140105,
+        "province": "FL",
+        "city": "Naples",
+        "street": "Paradise Circle",
+        "house_number": null,
+        "monthly_rent": 865.0,
+        "has_kitchen": false,
+        "has_washer": false,
+        "has_parking": false,
+        "distance_to_university": 1989.99,
+        "description": "This unit is located at Paradise Circle, Naples, 35110, FLMonthly rental rates range from $865We have 1 beds units available for rent"
+      },
+      "top_matched": [
+        null,
+        null,
+        null
+      ],
+      "human_verdict": {
+        "is_false_negative": null,
+        "notes": ""
+      }
+    }
+  ]
+}

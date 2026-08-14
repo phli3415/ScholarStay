@@ -1,0 +1,14 @@
+{
+  "total": 10,
+  "errors": 0,
+  "overall_hit_rate": 0.0,
+  "by_constraint_count": {},
+  "semantic_queries": {
+    "n": 10,
+    "hit_rate": 0.0
+  },
+  "structured_only_queries": {
+    "n": 0,
+    "hit_rate": null
+  }
+}

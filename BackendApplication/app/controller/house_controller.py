@@ -56,12 +56,12 @@ class HouseUpdateRequest(BaseModel):
 class HouseResponse(BaseModel):
     id: int
     owner_id: int
-    province: str
-    city: str
-    street: str
-    house_number: str
+    province: Optional[str]
+    city: Optional[str]
+    street: Optional[str]
+    house_number: Optional[str]
     monthly_rent: float
-    distance_to_university: float
+    distance_to_university: Optional[float]
     has_kitchen: bool
     has_washer: bool
     has_parking: bool
@@ -90,7 +90,7 @@ def house_to_response(house: Houses) -> HouseResponse:
         street=house.street,
         house_number=house.house_number,
         monthly_rent=float(house.monthly_rent),
-        distance_to_university=float(house.distance_to_university),
+        distance_to_university=float(house.distance_to_university) if house.distance_to_university is not None else None,
         has_kitchen=house.has_kitchen,
         has_washer=house.has_washer,
         has_parking=house.has_parking,

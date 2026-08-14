@@ -3,20 +3,25 @@ Generates one natural-language search query per sampled real house (see
 sample_real_houses.py), for round-trip retrieval testing of the agentic
 workflow against real (not synthetic) listings.
 
-Methodology (discussed and agreed on before writing this):
-  - The script -- not the LLM -- decides WHICH requirement slots go into a
-    given query (1-5, randomly sampled from what's actually true/available
-    for that house), so difficulty tiers are controlled and reproducible,
-    not left to the model's whim.
-  - Slots come from two pools: structured (max_monthly_rent, has_kitchen,
-    has_washer, has_parking -- only offered when the house actually has the
-    amenity) and semantic (a soft quality like "quiet" or "convenient" that
-    must be genuinely supported by the house's free-text description, not
-    invented). A query may mix both kinds.
-  - The LLM's only job is to phrase the selected slots as ONE short, casual,
+Methodology (v2 -- revised after v1 produced only 0-1 constraint queries that
+were too loose to distinguish "system found a different, equally valid house"
+from "system actually failed"):
+  - No more random subsampling of requirement slots. The model is shown
+    EVERY structured fact that is actually true for the house (monthly_rent
+    always; has_kitchen/has_washer/has_parking only when true) plus the full
+    description, and is told to weave ALL of it into one query. How many
+    "requirements" a query ends up with is therefore a property of how much
+    is genuinely true/known about that house, not a number the script picked
+    in advance.
+  - Semantic (soft) qualities from the description are no longer capped at
+    one. If the description separately supports more than one distinct,
+    nameable quality (e.g. "quiet, close to shops" supports both "quiet" AND
+    "convenient location"), each counts as its own requirement. Restating
+    the same idea in different words does not.
+  - The LLM's only job is to phrase everything true as ONE short, casual,
     human-sounding search message -- explicitly NOT clinical field-listing
-    language -- to avoid generating queries that are unnaturally easy for a
-    same-family model to parse back into structured constraints later.
+    language -- while staying specific enough that not hundreds of other
+    listings would equally satisfy it.
   - "Ground truth" for a generated query is its own source house. This is
     known to be an imperfect signal for loosely-constrained queries (another
     real house could equally satisfy a 1-constraint query), which is why
@@ -29,12 +34,10 @@ Usage (from BackendApplication/):
 import argparse
 import asyncio
 import json
-import random
 import sys
 from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
-from typing import Optional
 
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
@@ -59,85 +62,59 @@ class ConstraintSlot(str, Enum):
     KITCHEN = "has_kitchen"
     WASHER = "has_washer"
     PARKING = "has_parking"
-    SEMANTIC = "semantic"
 
 
 class GeneratedQuery(BaseModel):
     query: str = Field(..., description="one short, casual, natural-sounding housing search message, as a real person would type it")
-    used_constraint_types: list[str] = Field(
-        ..., description="which requested slots actually made it into the query verbatim in spirit; drop 'semantic' from this list (and from the query) if the description doesn't genuinely support any nameable quality"
+    used_structured_slots: list[str] = Field(
+        ..., description="which of the true structured facts you were given actually made it into the message"
     )
-    semantic_quality_used: Optional[str] = Field(
-        None, description="if a semantic slot was used, name the specific quality (e.g. 'quiet') the query expresses; null otherwise"
+    semantic_qualities_used: list[str] = Field(
+        ..., description="every distinct, genuinely-supported quality from the hint list that you wove into the message; empty list if the description doesn't specifically support any"
     )
 
 
-SYSTEM_PROMPT = """You are helping build a search-retrieval test set. You are NOT a query-understanding assistant -- your job is the reverse: given the full facts about one specific rental listing, imagine a real prospective renter who is casually describing what they want, without knowing this listing exists yet, in a way that this listing happens to satisfy.
+SYSTEM_PROMPT = """You are helping build a search-retrieval test set. You are NOT a query-understanding assistant -- your job is the reverse: given every true fact about one specific rental listing, imagine a real prospective renter who is casually describing what they want, without knowing this listing exists yet, in a way that this listing happens to satisfy.
 
 Rules:
-1. You will be told exactly which requirement slots to weave into the message. Use all of them, and ONLY them. You are ONLY given facts for the requested slots below -- there is nothing else to draw on, so there is no other requirement you could truthfully add even if you wanted to.
-2. NO FILLER: do not pad the message with generic descriptive phrases that aren't one of the requested slots -- no "nice area," "good amenities," "friendly community," "great location" etc. unless "semantic" is a requested slot AND the phrase is the specific quality you named in semantic_quality_used. A message with only 1 requested slot should read like it's asking for exactly 1 thing, not several wrapped in pleasantries.
-3. Write ONE short, casual message (like a text or chat message to a rental search bot) -- not a polished sentence, not a structured field-by-field listing of requirements. Vary phrasing, tone, and sentence structure between calls; do not default to a formulaic template.
-4. Never use precise field-name language ("monthly_rent", "has_parking") -- describe things the way a real person would ("under $1200", "somewhere with parking").
-5. For a "max_monthly_rent" slot, pick a round number that is AT OR ABOVE the listing's actual rent (so the listing genuinely satisfies the constraint you write) -- do not just restate the exact rent.
-6. For a "semantic" slot: only use it if the DESCRIPTION text genuinely, specifically supports a nameable quality (see the hint list). If the description is too generic/short to genuinely support any of them, do NOT invent one -- drop the semantic slot entirely, set semantic_quality_used to null, and leave "semantic" out of used_constraint_types.
-7. used_constraint_types and semantic_quality_used MUST agree: if you set semantic_quality_used to a non-null value, "semantic" MUST appear in used_constraint_types; if semantic_quality_used is null, "semantic" MUST NOT appear in used_constraint_types.
+1. You are given ALL structured facts that are true for this listing (monthly_rent, plus whichever of has_kitchen/has_washer/has_parking are true -- amenities that are false are simply not shown to you, since there's nothing to ask for). Weave ALL of the true structured facts into the message. Do not omit one to keep the message short -- a real message can casually list several wants in a row.
+2. Read the DESCRIPTION and identify EVERY distinct, nameable quality from the hint list that it genuinely, specifically supports -- not just one. Two qualities count separately only if the description gives separable evidence for each (e.g. "quiet street, close to shops" supports both "quiet" AND "convenient location"). Do NOT count the same idea restated in different words as two qualities, and do NOT invent a quality the description doesn't clearly support. If nothing is clearly supported, semantic_qualities_used is an empty list -- do not pad it.
+3. Weave in every quality you identified in step 2, alongside the structured facts from step 1, into ONE message.
+4. SPECIFICITY TARGET: the whole point of this message is that it should describe a fairly narrow slice of the rental market -- specific enough that only a small number of real listings nationwide would plausibly satisfy everything in it, not so vague that hundreds of unrelated listings would equally match. Using everything you were given (per rules 1-3) is how you achieve this -- don't strip things out for the sake of brevity.
+5. Write ONE short, casual message (like a text or chat message to a rental search bot) -- not a polished sentence, not a structured field-by-field listing of requirements. Vary phrasing, tone, and sentence structure between calls; do not default to a formulaic template, even when listing several wants.
+6. Never use precise field-name language ("monthly_rent", "has_parking") -- describe things the way a real person would ("under $1200", "somewhere with parking").
+7. For monthly_rent, pick a round number that is AT OR ABOVE the listing's actual rent (so the listing genuinely satisfies the constraint you write) -- do not just restate the exact rent.
 8. Do not mention the address, exact rent figure, or anything that would make it obvious you're describing this specific listing verbatim -- write it the way someone would search BEFORE finding a place, not describing one they already found."""
 
 
-def build_user_prompt(house: dict, requested_slots: list[str]) -> str:
-    """
-    Only include facts for the requested slots. This is deliberate: an
-    earlier version showed the model the full listing "for reference only"
-    and told it not to leak unrequested facts, but gpt-4o-mini did so anyway
-    (e.g. mentioning "has a kitchen" in a rent-only query). Not showing the
-    field at all is a more reliable way to keep it out of the generated
-    query than asking the model to withhold information it can see.
-    """
-    lines = ["LISTING FACTS (for your reference only, do not quote directly):"]
-    if ConstraintSlot.RENT.value in requested_slots:
-        lines.append(f"  monthly_rent: {house['monthly_rent']}")
-    if ConstraintSlot.KITCHEN.value in requested_slots:
-        lines.append(f"  has_kitchen: {house['has_kitchen']}")
-    if ConstraintSlot.WASHER.value in requested_slots:
-        lines.append(f"  has_washer: {house['has_washer']}")
-    if ConstraintSlot.PARKING.value in requested_slots:
-        lines.append(f"  has_parking: {house['has_parking']}")
-    if ConstraintSlot.SEMANTIC.value in requested_slots:
-        lines.append(f"  description: {house.get('description') or '(none)'}")
-
-    lines += [
-        "",
-        f"REQUESTED SLOTS to weave into the message (this is the complete list -- you have no facts about anything else): {requested_slots}",
-    ]
-    if ConstraintSlot.SEMANTIC.value in requested_slots:
-        lines.append(
-            f"\nCandidate semantic qualities (only use one if genuinely supported by the description above): {', '.join(SEMANTIC_HINTS)}"
-        )
+def build_user_prompt(house: dict) -> str:
+    lines = ["LISTING FACTS (for your reference only, do not quote directly):",
+             f"  monthly_rent: {house['monthly_rent']}"]
+    if house["has_kitchen"]:
+        lines.append(f"  has_kitchen: true")
+    if house["has_washer"]:
+        lines.append(f"  has_washer: true")
+    if house["has_parking"]:
+        lines.append(f"  has_parking: true")
+    lines.append(f"  description: {house.get('description') or '(none)'}")
+    lines.append(f"\nCandidate semantic qualities (use every one genuinely, specifically supported by the description above -- see rule 2): {', '.join(SEMANTIC_HINTS)}")
     return "\n".join(lines)
 
 
-def pick_slots(house: dict, rng: random.Random) -> list[str]:
-    pool = [ConstraintSlot.RENT.value]
+def true_structured_slots(house: dict) -> set[str]:
+    slots = {ConstraintSlot.RENT.value}
     if house["has_kitchen"]:
-        pool.append(ConstraintSlot.KITCHEN.value)
+        slots.add(ConstraintSlot.KITCHEN.value)
     if house["has_washer"]:
-        pool.append(ConstraintSlot.WASHER.value)
+        slots.add(ConstraintSlot.WASHER.value)
     if house["has_parking"]:
-        pool.append(ConstraintSlot.PARKING.value)
-    if len((house.get("description") or "").strip()) >= 20:
-        pool.append(ConstraintSlot.SEMANTIC.value)
-
-    target = rng.randint(1, min(5, len(pool)))
-    return rng.sample(pool, k=target)
+        slots.add(ConstraintSlot.PARKING.value)
+    return slots
 
 
-async def generate_one(client, sem: asyncio.Semaphore, house: dict, requested_slots: list[str]) -> dict:
-    base = {
-        "source_house_id": house["id"],
-        "requested_slots": requested_slots,
-    }
-    prompt = build_user_prompt(house, requested_slots)
+async def generate_one(client, sem: asyncio.Semaphore, house: dict) -> dict:
+    base = {"source_house_id": house["id"]}
+    prompt = build_user_prompt(house)
     async with sem:
         last_err = None
         for attempt in range(MAX_ATTEMPTS):
@@ -176,47 +153,36 @@ async def run(args) -> None:
         data = json.load(f)
     houses = data["houses"]
 
-    rng = random.Random(args.seed)
-    requested = [(h, pick_slots(h, rng)) for h in houses]
-
-    print(f"Generating {len(requested)} queries with {MODEL} (concurrency={args.concurrency})...")
+    print(f"Generating {len(houses)} queries with {MODEL} (concurrency={args.concurrency})...")
 
     client = AsyncOpenAI()
     sem = asyncio.Semaphore(args.concurrency)
-    tasks = [generate_one(client, sem, h, slots) for h, slots in requested]
+    tasks = [generate_one(client, sem, h) for h in houses]
     results = await asyncio.gather(*tasks)
 
+    houses_by_id = {h["id"]: h for h in houses}
     errors = [r for r in results if r["error"] is not None]
     ok = [r for r in results if r["error"] is None]
 
     queries_out = []
     for r in ok:
         res = r["result"]
-        requested_set = set(r["requested_slots"])
-        used_set = set(res["used_constraint_types"])
-        semantic_quality = res["semantic_quality_used"]
+        house = houses_by_id[r["source_house_id"]]
+        available = true_structured_slots(house)
 
-        # Don't trust the model's self-reported bookkeeping as-is (it was observed
-        # to sometimes set semantic_quality_used without listing "semantic" in
-        # used_constraint_types). Reconcile from semantic_quality_used, which is
-        # the more reliable signal, then drop anything not actually requested
-        # (defensive -- should be moot now that the prompt forbids it, but don't
-        # silently let constraint_count be inflated if it slips through anyway).
-        if semantic_quality:
-            used_set.add(ConstraintSlot.SEMANTIC.value)
-        else:
-            used_set.discard(ConstraintSlot.SEMANTIC.value)
-        used_set &= requested_set
+        # Defensive: only count structured slots that were actually true for
+        # this house, regardless of what the model claims -- guards against
+        # the model reporting a slot it wasn't given.
+        used_structured = sorted(set(res["used_structured_slots"]) & available)
+        semantic_qualities = list(dict.fromkeys(res["semantic_qualities_used"]))  # dedupe, keep order
 
-        used_list = sorted(used_set)
         queries_out.append({
             "source_house_id": r["source_house_id"],
-            "requested_slots": r["requested_slots"],
             "query": res["query"],
-            "used_constraint_types": used_list,
-            "constraint_count": len(used_list),
-            "semantic_quality_used": semantic_quality if ConstraintSlot.SEMANTIC.value in used_list else None,
-            "has_semantic": ConstraintSlot.SEMANTIC.value in used_list,
+            "used_structured_slots": used_structured,
+            "semantic_qualities_used": semantic_qualities,
+            "constraint_count": len(used_structured) + len(semantic_qualities),
+            "has_semantic": len(semantic_qualities) > 0,
         })
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -232,8 +198,7 @@ async def run(args) -> None:
         "source_houses_file": str(houses_path.name),
         "model": MODEL,
         "temperature": GENERATION_TEMPERATURE,
-        "seed": args.seed,
-        "requested": len(requested),
+        "requested": len(houses),
         "generated": len(queries_out),
         "generation_errors": len(errors),
         "constraint_count_distribution": tier_counts,
@@ -246,7 +211,7 @@ async def run(args) -> None:
 
     print(f"\nGenerated: {len(queries_out)}, errors: {len(errors)}")
     print(f"Constraint-count distribution: {tier_counts}")
-    print(f"Queries using a semantic slot: {semantic_count}")
+    print(f"Queries using at least one semantic quality: {semantic_count}")
     print(f"Wrote {out_path}")
 
 
@@ -254,7 +219,6 @@ def parse_args():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--houses", required=True, help="path to a sampled_houses_*.json file from sample_real_houses.py")
     p.add_argument("--concurrency", type=int, default=DEFAULT_CONCURRENCY)
-    p.add_argument("--seed", type=int, default=42, help="random seed for slot selection (default: 42)")
     return p.parse_args()
 
 
