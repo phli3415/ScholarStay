@@ -97,14 +97,22 @@ class MessageState (TypedDict):
     missing_fields_to_clarify: Annotated[list[Literal["max_monthly_rent", "max_distance_to_university", "general_preference"]], "Missing important attributes that requires clarification 'max_monthly_rent', 'max_distance_to_university', 'general_preference'"]
     # Define sql_house_ids: List[int]. The id of houses that meet the current_requirement.
     sql_house_ids: Annotated[list[int], "SQL House IDs"]
-    # Define top_matched_ids : List[int]. The id of top three houses that best fit user's input.
-    top_matched_ids: Annotated[list[int], "House IDs that best fit user's input"]
+    # Define top_matched_ids : List[int]. The RAG candidate pool (up to
+    # Config.EMBEDDING_HOUSES_RETURN houses) that best fit user's input, before
+    # grading. Kept as the raw RAG output so retrieval-quality benchmarks stay
+    # meaningful; not what's shown to the user.
+    top_matched_ids: Annotated[list[int], "RAG candidate house IDs before grading"]
     # Define rewrite_counter: int, The number of times loosen_requirement has been triggered
     rewrite_counter: Annotated[int, "The number of times loosen_requirement has been triggered"]
     # Define relevance_score: List[str]], whether each houses meet user's requirement.
     relevance_score: Annotated[list[Literal["yes", "No"]], "Whether each houses meet user's requirement"]
     # Define recommendation: List[str]], the reason why each house are recommended.
     recommendation: Annotated[list[str], "why each house are recommended"]
+    # Define final_recommendation_ids: List[int]. The graded-relevant houses
+    # actually recommended to the user (capped at Config.MAX_RECOMMENDATIONS),
+    # in the same order as `recommendation` — this is what the API returns as
+    # `house_ids`, so the two always describe the same set of houses.
+    final_recommendation_ids: Annotated[list[int], "House IDs actually recommended to the user"]
 
 
 # Define the tool configuration management class to manage tools and their routing configurations
@@ -654,12 +662,17 @@ async def recommendation_generation_agent(state: MessageState, config: RunnableC
         else:
             relevant_ids = top_ids
 
+        # Cap to the top N relevant matches. `top_ids` is already ordered by RAG
+        # similarity (closest first), so this keeps the closest relevant houses
+        # when grading passes more than we want to show.
+        relevant_ids = relevant_ids[:Config.MAX_RECOMMENDATIONS]
+
         houses = await asyncio.gather(*(HouseRepository.get_by_id(hid) for hid in relevant_ids))
         houses = [h for h in houses if h is not None]
 
         if not houses:
             reply_text = "Sorry, I couldn't find a house that fits your needs."
-            return {"recommendation": [], "messages": [AIMessage(content=reply_text)]}
+            return {"recommendation": [], "final_recommendation_ids": [], "messages": [AIMessage(content=reply_text)]}
 
         # `loosen` tells the prompt whether we relaxed the user's original requirements
         # to find these matches, so it can acknowledge that in the rationale.
@@ -669,6 +682,7 @@ async def recommendation_generation_agent(state: MessageState, config: RunnableC
         agent_chain = create_chain(llm_chat, Config.PROMPT_TEMPLATE_TXT_RECOMMENDATION, RecomendationText)
 
         reasons: list[str] = []
+        final_ids: list[int] = []
         for house in houses:
             response: RecomendationText = agent_chain.invoke({
                 "loosen": loosen,
@@ -676,12 +690,17 @@ async def recommendation_generation_agent(state: MessageState, config: RunnableC
                 "house": generate_listing_document(house),
             })
             reasons.extend(response.recommendations)
+            final_ids.append(house.id)
 
         # Structured reasons are kept in `recommendation`, and a chat-visible AIMessage
-        # is also appended so the user actually sees a reply.
+        # is also appended so the user actually sees a reply. `final_recommendation_ids`
+        # (not `top_matched_ids`, which stays the raw pre-grading RAG output) is what
+        # the API exposes as `house_ids`, so it always matches what was fetched here —
+        # including when a house lookup above failed and got filtered out.
         reply_text = "\n\n".join(reasons)
         return {
             "recommendation": reasons,
+            "final_recommendation_ids": final_ids,
             "messages": [AIMessage(content=reply_text)],
         }
 
@@ -756,20 +775,19 @@ async def sql_query_tool_node(state: MessageState, *, filter_houses_tool) -> dic
 
 
 async def rag_tool_node(state: MessageState, *, find_similar_tool) -> dict:
-    """Semantic search within sql_house_ids, writes top_matched_ids (top 3)."""
+    """Semantic search within sql_house_ids, writes top_matched_ids (top Config.EMBEDDING_HOUSES_RETURN)."""
     sql_ids = state.get("sql_house_ids", [])
     if not sql_ids:
         logger.warning("No sql_house_ids for RAG search")
         return {"top_matched_ids": []}
     user_input = state.get("user_input", "")
     try:
-        # TODO: pgvector RAG search not yet wired up — using sql_ids[:3] as placeholder
         top_ids = await find_similar_tool.ainvoke({"user_input": user_input, "house_ids": sql_ids})
         logger.info(f"RAG search returned top IDs: {top_ids}")
         return {"top_matched_ids": top_ids}
     except Exception as e:
         logger.error(f"Error in rag_tool_node: {e}")
-        return {"top_matched_ids": sql_ids[:3]}
+        return {"top_matched_ids": sql_ids[:Config.EMBEDDING_HOUSES_RETURN]}
 
 
 async def relax_requirements_tool_node(state: MessageState, *, loosen_tool) -> dict:

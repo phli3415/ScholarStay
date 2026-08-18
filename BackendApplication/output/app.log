@@ -10614,3 +10614,183 @@
 2026-07-19 04:37:01,760 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['yes', 'yes', 'yes'])
 2026-07-19 04:37:01,765 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
 2026-07-19 04:37:04,308 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-14 06:49:16,137 - __main__ - INFO - Starting up application
+2026-08-14 06:49:16,511 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-08-14 06:49:16,513 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-08-14 06:49:16,513 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-08-14 06:49:16,514 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'loosen_requirement', 'find_most_similar_house', 'filter_houses'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-08-14 06:49:26,517 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-08-14 06:49:33,255 - __main__ - INFO - Agentic workflow graph initialized
+2026-08-16 06:01:47,887 - __main__ - INFO - Starting up application
+2026-08-16 06:01:48,408 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-08-16 06:01:48,409 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-08-16 06:01:48,410 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-08-16 06:01:48,412 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'find_most_similar_house', 'loosen_requirement', 'filter_houses'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-08-16 06:01:59,078 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-08-16 06:02:06,983 - __main__ - INFO - Agentic workflow graph initialized
+2026-08-16 07:35:41,818 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 07:35:41,824 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='143fd2bb-8e76-454d-bce6-ad98d5f9bbbe'
+2026-08-16 07:35:49,141 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 07:35:52,340 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-08-16 07:35:52,346 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-08-16 07:35:52,349 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='143fd2bb-8e76-454d-bce6-ad98d5f9bbbe'
+2026-08-16 07:35:58,519 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_clarification.txt
+2026-08-16 07:36:11,002 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 07:36:11,004 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='44bbfcb2-0237-4466-a15c-82fad0e80c37'
+2026-08-16 07:36:15,067 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 07:36:17,529 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-08-16 07:36:17,537 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-08-16 07:36:17,540 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='44bbfcb2-0237-4466-a15c-82fad0e80c37'
+2026-08-16 07:36:22,447 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_clarification.txt
+2026-08-16 07:37:37,487 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 07:37:37,492 - app.llm.agenticWorkflow - INFO - agent question:content='sure, I want a house that is at most 1400km away from the campus. I also want a parking slot and a kitchen' additional_kwargs={} response_metadata={} id='73e3ff3f-4d33-4fa9-9360-4237e1b3bb4a'
+2026-08-16 07:37:41,925 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 07:37:44,523 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1400.0, has_kitchen=True, has_washer=None, has_parking=True, max_distance_to_university=1400.0) missing_fields_to_clarify=[]
+2026-08-16 07:37:45,829 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 07:37:49,370 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140241, 1145140684, 1145140766]
+2026-08-16 07:37:49,375 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:37:57,105 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:37:59,625 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-08-16 07:37:59,628 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=0, scores=['no', 'no', 'no'])
+2026-08-16 07:37:59,634 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=0): province=None city=None street=None max_monthly_rent=1609 has_kitchen=True has_washer=None has_parking=True max_distance_to_university=1400.0
+2026-08-16 07:38:00,901 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 07:38:04,368 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140241, 1145140684, 1145140766]
+2026-08-16 07:38:04,371 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:38:05,528 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:38:07,588 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-08-16 07:38:07,594 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=1, scores=['no', 'no', 'no'])
+2026-08-16 07:38:07,599 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=1): province=None city=None street=None max_monthly_rent=1609 has_kitchen=True has_washer=None has_parking=True max_distance_to_university=1402
+2026-08-16 07:38:08,493 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 07:38:11,752 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140241, 1145140684, 1145140766]
+2026-08-16 07:38:11,755 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:38:12,988 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:38:15,375 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-08-16 07:38:15,378 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=2, scores=['no', 'no', 'no'])
+2026-08-16 07:38:15,385 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=2): province=None city=None street=None max_monthly_rent=1609 has_kitchen=None has_washer=None has_parking=None max_distance_to_university=1402
+2026-08-16 07:38:16,644 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 07:38:20,067 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140241, 1145140287, 1145140229]
+2026-08-16 07:38:20,072 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:38:20,074 - app.llm.agenticWorkflow - INFO - rewrite_counter >= 3, forcing all scores to 'yes'
+2026-08-16 07:38:20,075 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=3, scores=['yes', 'yes', 'yes'])
+2026-08-16 07:38:20,081 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-16 07:38:21,334 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-16 07:38:29,650 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 07:38:29,652 - app.llm.agenticWorkflow - INFO - agent question:content='sure, I want a house that is at most 1400km away from the campus. I also want a parking slot and a kitchen' additional_kwargs={} response_metadata={} id='76fd0bb1-6f2a-4180-9179-305eef7bc9cd'
+2026-08-16 07:38:33,718 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 07:38:36,068 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=True, has_washer=None, has_parking=True, max_distance_to_university=1400.0) missing_fields_to_clarify=[]
+2026-08-16 07:38:36,911 - app.llm.agenticWorkflow - INFO - SQL query returned 78 IDs
+2026-08-16 07:38:39,730 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140684, 1145140343, 1145140287]
+2026-08-16 07:38:39,735 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:38:40,945 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:38:42,383 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-08-16 07:38:42,386 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=1, scores=['no', 'no', 'no'])
+2026-08-16 07:38:42,392 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=1): province=None city=None street=None max_monthly_rent=1000.0 has_kitchen=True has_washer=None has_parking=True max_distance_to_university=1402
+2026-08-16 07:38:43,262 - app.llm.agenticWorkflow - INFO - SQL query returned 78 IDs
+2026-08-16 07:38:45,192 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140684, 1145140343, 1145140287]
+2026-08-16 07:38:45,196 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:38:46,355 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:38:47,876 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-08-16 07:38:47,879 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=2, scores=['no', 'no', 'no'])
+2026-08-16 07:38:47,891 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=2): province=None city=None street=None max_monthly_rent=1000.0 has_kitchen=None has_washer=None has_parking=None max_distance_to_university=1402
+2026-08-16 07:38:48,732 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 07:38:50,667 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140343, 1145140287, 1145140573]
+2026-08-16 07:38:50,670 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:38:50,672 - app.llm.agenticWorkflow - INFO - rewrite_counter >= 3, forcing all scores to 'yes'
+2026-08-16 07:38:50,674 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=3, scores=['yes', 'yes', 'yes'])
+2026-08-16 07:38:50,678 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-16 07:38:51,875 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-16 07:39:09,442 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 07:39:09,445 - app.llm.agenticWorkflow - INFO - agent question:content='sure, I want a house that is at most 1400km away from the campus. I also want a parking slot and a kitchen' additional_kwargs={} response_metadata={} id='769865c9-e5e9-4267-a83c-e0a65f5f6462'
+2026-08-16 07:39:13,821 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 07:39:16,202 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=True, has_washer=None, has_parking=True, max_distance_to_university=1400.0) missing_fields_to_clarify=[]
+2026-08-16 07:39:17,404 - app.llm.agenticWorkflow - INFO - SQL query returned 78 IDs
+2026-08-16 07:39:20,172 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140684, 1145140343, 1145140287]
+2026-08-16 07:39:20,174 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:39:21,346 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:39:23,473 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'no', 'no']
+2026-08-16 07:39:23,474 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=1, scores=['yes', 'no', 'no'])
+2026-08-16 07:39:23,477 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-16 07:39:24,630 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-16 07:53:35,298 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 07:53:35,301 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='d27494d0-4303-48f9-b071-028c869a4593'
+2026-08-16 07:53:40,953 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 07:53:43,657 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-08-16 07:53:45,104 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 07:53:49,972 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140169, 1145140180, 1145140289]
+2026-08-16 07:53:49,975 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 07:53:57,850 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 07:54:00,355 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'yes', 'no']
+2026-08-16 07:54:00,358 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=1, scores=['yes', 'yes', 'no'])
+2026-08-16 07:54:00,363 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-16 07:54:01,636 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-16 21:24:05,091 - __main__ - INFO - Starting up application
+2026-08-16 21:24:05,583 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-08-16 21:24:05,585 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-08-16 21:24:05,587 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-08-16 21:24:05,588 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'find_most_similar_house', 'loosen_requirement', 'filter_houses'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-08-16 21:24:10,231 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-08-16 21:24:16,183 - __main__ - INFO - Agentic workflow graph initialized
+2026-08-16 21:55:58,522 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-16 21:55:58,528 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='c0476eee-6a7b-4864-a32e-13e7cfa6f983'
+2026-08-16 21:56:04,706 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-16 21:56:08,122 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-08-16 21:56:09,343 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 21:56:12,291 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140169, 1145140180, 1145140289]
+2026-08-16 21:56:12,294 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 21:56:18,221 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_resultGrading.txt
+2026-08-16 21:56:20,374 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'no']
+2026-08-16 21:56:20,375 - app.llm.agenticWorkflow - INFO - Grader routing to relax (counter=0, scores=['no', 'no', 'no'])
+2026-08-16 21:56:20,375 - app.llm.agenticWorkflow - INFO - Relaxed requirements (counter=0): province=None city=None street=None max_monthly_rent=1150 has_kitchen=None has_washer=None has_parking=None max_distance_to_university=None
+2026-08-16 21:56:21,334 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-16 21:56:24,132 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140046, 1145140275, 1145140289]
+2026-08-16 21:56:24,132 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-16 21:56:25,097 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-16 21:56:26,615 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['no', 'no', 'yes']
+2026-08-16 21:56:26,621 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=1, scores=['no', 'no', 'yes'])
+2026-08-16 21:56:26,623 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-16 21:56:27,612 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-18 03:15:47,640 - __main__ - INFO - Starting up application
+2026-08-18 03:15:48,643 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-08-18 03:15:48,651 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-08-18 03:15:48,653 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-08-18 03:15:48,653 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'filter_houses', 'find_most_similar_house', 'loosen_requirement'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-08-18 03:15:58,358 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-08-18 03:16:04,235 - __main__ - INFO - Agentic workflow graph initialized
+2026-08-18 03:23:30,940 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-18 03:23:30,947 - app.llm.agenticWorkflow - INFO - agent question:content='What listings have parking and a kitchen?' additional_kwargs={} response_metadata={} id='791690d0-8289-442f-a7b1-2ccfc945f074'
+2026-08-18 03:23:38,047 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-18 03:23:42,557 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=None, has_kitchen=True, has_washer=None, has_parking=True, max_distance_to_university=None) missing_fields_to_clarify=[]
+2026-08-18 03:23:43,656 - app.llm.agenticWorkflow - INFO - SQL query returned 100 IDs
+2026-08-18 03:23:47,574 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140209, 1145140354, 1145140381]
+2026-08-18 03:23:47,581 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-18 03:23:54,030 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_resultGrading.txt
+2026-08-18 03:23:56,336 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'yes', 'yes']
+2026-08-18 03:23:56,340 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['yes', 'yes', 'yes'])
+2026-08-18 03:23:56,340 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-18 03:23:57,331 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_recommendationGeneration.txt
+2026-08-18 03:24:31,207 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-18 03:24:31,210 - app.llm.agenticWorkflow - INFO - agent question:content='Show me the cheapest available places' additional_kwargs={} response_metadata={} id='b7e23758-8f95-4464-826f-94e6bf25e7d8'
+2026-08-18 03:24:35,269 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-18 03:24:38,397 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=None, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_monthly_rent']
+2026-08-18 03:24:38,412 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-08-18 03:24:38,419 - app.llm.agenticWorkflow - INFO - agent question:content='Show me the cheapest available places' additional_kwargs={} response_metadata={} id='b7e23758-8f95-4464-826f-94e6bf25e7d8'
+2026-08-18 03:24:42,235 - app.llm.agenticWorkflow - INFO - Loading and caching prompt template from app/prompts/prompt_template_clarification.txt
+2026-08-18 03:25:38,796 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-18 03:25:38,800 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='4524da10-f4f8-4908-97ea-ad7b18304e44'
+2026-08-18 03:25:42,826 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-18 03:25:45,527 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1000.0, has_kitchen=None, has_washer=None, has_parking=None, max_distance_to_university=None) missing_fields_to_clarify=['max_distance_to_university', 'general_preference']
+2026-08-18 03:25:45,527 - app.llm.agenticWorkflow - INFO - clarification generation agent processing user query
+2026-08-18 03:25:45,534 - app.llm.agenticWorkflow - INFO - agent question:content='Find me a house under $1000 near campus' additional_kwargs={} response_metadata={} id='4524da10-f4f8-4908-97ea-ad7b18304e44'
+2026-08-18 03:25:48,410 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_clarification.txt
+2026-08-18 03:27:08,414 - app.llm.agenticWorkflow - INFO - key word extraction agent processing user query
+2026-08-18 03:27:08,426 - app.llm.agenticWorkflow - INFO - agent question:content='can you find me a house that is at most 1200km away from camous, cost at most $1300 per month and contains a parking slot? If it allows pet, it will be better' additional_kwargs={} response_metadata={} id='711c4457-c0fa-4453-a920-9b3d21b82d16'
+2026-08-18 03:27:12,463 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_keyWordExtraction.txt
+2026-08-18 03:27:15,359 - app.llm.agenticWorkflow - INFO - key_word_extraction_agent response: intent_type='house_recommendation' filters=HouseFilters(province=None, city=None, street=None, max_monthly_rent=1300.0, has_kitchen=None, has_washer=None, has_parking=True, max_distance_to_university=1200.0) missing_fields_to_clarify=[]
+2026-08-18 03:27:16,412 - app.llm.agenticWorkflow - INFO - SQL query returned 41 IDs
+2026-08-18 03:27:19,010 - app.llm.agenticWorkflow - INFO - RAG search returned top IDs: [1145140434, 1145140414, 1145140241]
+2026-08-18 03:27:19,011 - app.llm.agenticWorkflow - INFO - result_grading_agent processing
+2026-08-18 03:27:19,978 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_resultGrading.txt
+2026-08-18 03:27:22,210 - app.llm.agenticWorkflow - INFO - result_grading_agent scores: ['yes', 'no', 'no']
+2026-08-18 03:27:22,210 - app.llm.agenticWorkflow - INFO - Grader routing to generator (counter=0, scores=['yes', 'no', 'no'])
+2026-08-18 03:27:22,229 - app.llm.agenticWorkflow - INFO - recommendation_generation_agent processing user query
+2026-08-18 03:27:23,232 - app.llm.agenticWorkflow - INFO - Using cached prompt template for app/prompts/prompt_template_recommendationGeneration.txt

@@ -178,7 +178,7 @@ class AgentController:
                 "reply": reply,
                 "intent_type": result.get("intent_type"),
                 "recommendation": result.get("recommendation", []),
-                "house_ids": result.get("top_matched_ids", []),
+                "house_ids": result.get("final_recommendation_ids", []),
             }
         except Exception as e:
             raise HTTPException(

@@ -19,7 +19,12 @@ class Config:
 
     LLM_TYPE = "openai"
 
-    EMBEDDING_HOUSES_RETURN = 3
+    # RAG candidate pool size — how many houses the similarity search retrieves
+    # for grading, before relevance filtering narrows it down.
+    EMBEDDING_HOUSES_RETURN = 10
+    # Max houses actually shown to the user after grading (house_ids/recommendation
+    # are both capped to this, so they always stay in sync with each other).
+    MAX_RECOMMENDATIONS = 3
 
 
     HOST = "0.0.0.0"
