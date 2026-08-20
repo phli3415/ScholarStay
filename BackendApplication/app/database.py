@@ -34,7 +34,11 @@ TORTOISE_ORM: Dict = {
     "timezone": "UTC",
     "db_pool": {
         "max_size": 40,
-        "min_size": 4,
+        # Fewer idle connections kept open at once = fewer chances one of them
+        # goes stale on the DB side between requests during low-traffic demo
+        # usage (each stale connection costs a multi-second reconnect on its
+        # next use). The pool still grows up to max_size under real load.
+        "min_size": 1,
         "idle_timeout": 300
     }
 }

@@ -8,6 +8,7 @@ from pydantic import BaseModel, ValidationError
 from typing import Optional, List
 import base64
 import json
+import time
 
 from ..service.house_service import HouseService
 from ..model.houses import Houses
@@ -299,6 +300,7 @@ async def filter_houses(
     offset: int = Query(default=0, ge=0)
 ):
     """Filter houses with various filters"""
+    query_start = time.perf_counter()
     houses = await service.filter_houses(
         province=province,
         city=city,
@@ -318,7 +320,12 @@ async def filter_houses(
         limit=limit,
         offset=offset,
     )
-    return [house_to_response(house) for house in houses]
+    query_elapsed = (time.perf_counter() - query_start) * 1000
+    serialize_start = time.perf_counter()
+    response = [house_to_response(house) for house in houses]
+    serialize_elapsed = (time.perf_counter() - serialize_start) * 1000
+    print(f"[timing] GET /houses/filter/list: query={query_elapsed:.0f}ms, serialize={serialize_elapsed:.0f}ms, rows={len(houses)}")
+    return response
 
 @router.get("/filter/count", response_model=int)
 async def count_filtered_houses(
@@ -346,7 +353,8 @@ async def count_filtered_houses(
     Count houses with range filters for int/float fields, exact filters for boolean fields,
     and exact filters for string fields (province, city, street).
     """
-    return await service.count_filtered_houses(
+    query_start = time.perf_counter()
+    count = await service.count_filtered_houses(
         province=province,
         city=city,
         street=street,
@@ -363,3 +371,6 @@ async def count_filtered_houses(
         has_parking=has_parking,
         is_rented=is_rented,
     )
+    query_elapsed = (time.perf_counter() - query_start) * 1000
+    print(f"[timing] GET /houses/filter/count: query={query_elapsed:.0f}ms")
+    return count
