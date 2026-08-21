@@ -297,12 +297,12 @@ class HouseRepository:
     ) -> List[Houses]:
         """
         Filter houses with range filters for int/float fields, exact filters for boolean fields,
-        and exact filters for string fields (province, city, street)
+        and case-insensitive substring matching for string fields (province, city, street)
 
         Args:
-            province: filter by exact province name
-            city: filter by exact city name
-            street: filter by exact street name
+            province: filter by province name (case-insensitive substring match)
+            city: filter by city name (case-insensitive substring match)
+            street: filter by street name (case-insensitive substring match)
             min_id: minimum house ID
             max_id: maximum house ID
             min_owner_id: minimum owner ID
@@ -323,13 +323,15 @@ class HouseRepository:
         """
         query = Houses.all()
 
-        # String filters
+        # String filters — case-insensitive substring match (not exact), since
+        # these are free-text inputs on the frontend and users type partial
+        # values (e.g. "oakland" should match "N Oakland Avenue").
         if province is not None:
-            query = query.filter(province=province)
+            query = query.filter(province__icontains=province)
         if city is not None:
-            query = query.filter(city=city)
+            query = query.filter(city__icontains=city)
         if street is not None:
-            query = query.filter(street=street)
+            query = query.filter(street__icontains=street)
 
         # Integer range filters
         if min_id is not None:
@@ -387,12 +389,12 @@ class HouseRepository:
     ) -> int:
         """
         Count houses with range filters for int/float fields, exact filters for boolean fields,
-        and exact filters for string fields (province, city, street)
+        and case-insensitive substring matching for string fields (province, city, street)
 
         Args:
-            province: filter by exact province name
-            city: filter by exact city name
-            street: filter by exact street name
+            province: filter by province name (case-insensitive substring match)
+            city: filter by city name (case-insensitive substring match)
+            street: filter by street name (case-insensitive substring match)
             min_id: minimum house ID
             max_id: maximum house ID
             min_owner_id: minimum owner ID
@@ -411,13 +413,15 @@ class HouseRepository:
         """
         query = Houses.all()
 
-        # String filters
+        # String filters — case-insensitive substring match (not exact), since
+        # these are free-text inputs on the frontend and users type partial
+        # values (e.g. "oakland" should match "N Oakland Avenue").
         if province is not None:
-            query = query.filter(province=province)
+            query = query.filter(province__icontains=province)
         if city is not None:
-            query = query.filter(city=city)
+            query = query.filter(city__icontains=city)
         if street is not None:
-            query = query.filter(street=street)
+            query = query.filter(street__icontains=street)
 
         # Integer range filters
         if min_id is not None:
@@ -478,12 +482,12 @@ class HouseRepository:
     ) -> List[int]:
         """
         Filter houses with range filters for int/float fields, exact filters for boolean fields,
-        and exact filters for string fields (province, city, street)
+        and case-insensitive substring matching for string fields (province, city, street)
 
         Args:
-            province: filter by exact province name
-            city: filter by exact city name
-            street: filter by exact street name
+            province: filter by province name (case-insensitive substring match)
+            city: filter by city name (case-insensitive substring match)
+            street: filter by street name (case-insensitive substring match)
             min_id: minimum house ID
             max_id: maximum house ID
             min_owner_id: minimum owner ID
@@ -504,13 +508,15 @@ class HouseRepository:
         """
         query = Houses.all()
 
-        # String filters
+        # String filters — case-insensitive substring match (not exact), since
+        # these are free-text inputs on the frontend and users type partial
+        # values (e.g. "oakland" should match "N Oakland Avenue").
         if province is not None:
-            query = query.filter(province=province)
+            query = query.filter(province__icontains=province)
         if city is not None:
-            query = query.filter(city=city)
+            query = query.filter(city__icontains=city)
         if street is not None:
-            query = query.filter(street=street)
+            query = query.filter(street__icontains=street)
 
         # Integer range filters
         if min_id is not None:

@@ -10874,3 +10874,18 @@
 2026-08-20 10:40:32,489 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'find_most_similar_house', 'filter_houses', 'loosen_requirement'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
 2026-08-20 10:40:38,104 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
 2026-08-20 10:40:45,144 - __main__ - INFO - Agentic workflow graph initialized
+2026-08-21 09:03:02,610 - __main__ - INFO - Starting up application
+2026-08-21 09:03:02,917 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-08-21 09:03:02,918 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-08-21 09:03:02,918 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-08-21 09:03:02,919 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'loosen_requirement', 'filter_houses', 'find_most_similar_house'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-08-21 09:03:08,140 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-08-21 09:03:13,613 - __main__ - INFO - Agentic workflow graph initialized
+2026-08-21 09:19:36,078 - __main__ - INFO - Shutting down application
+2026-08-21 09:20:03,723 - __main__ - INFO - Starting up application
+2026-08-21 09:20:03,940 - app.llm.agenticWorkflow - DEBUG - Tool 'find_most_similar_house' routed to 'result_grading_agent' (retrieval tool)
+2026-08-21 09:20:03,941 - app.llm.agenticWorkflow - DEBUG - Tool 'filter_houses' routed to 'find_most_similar_house'
+2026-08-21 09:20:03,942 - app.llm.agenticWorkflow - DEBUG - Tool 'loosen_requirement' routed to 'find_most_similar_house'
+2026-08-21 09:20:03,943 - app.llm.agenticWorkflow - INFO - Initialized ToolConfig with tools: {'filter_houses', 'find_most_similar_house', 'loosen_requirement'}, routing: {'find_most_similar_house': 'result_grading_agent', 'filter_houses': 'find_most_similar_house', 'loosen_requirement': 'filter_houses'}
+2026-08-21 09:20:08,836 - app.llm.agenticWorkflow - INFO - Connection db_connection_pool status: OK, test connection successful
+2026-08-21 09:20:14,317 - __main__ - INFO - Agentic workflow graph initialized

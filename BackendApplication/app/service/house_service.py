@@ -455,12 +455,12 @@ class HouseService:
     ) -> int:
         """
         Count houses with range filters for int/float fields, exact filters for boolean fields,
-        and exact filters for string fields (province, city, street)
+        and case-insensitive substring matching for string fields (province, city, street)
 
         Args:
-            province: filter by exact province name
-            city: filter by exact city name
-            street: filter by exact street name
+            province: filter by province name (case-insensitive substring match)
+            city: filter by city name (case-insensitive substring match)
+            street: filter by street name (case-insensitive substring match)
             min_id: minimum house ID
             max_id: maximum house ID
             min_owner_id: minimum owner ID

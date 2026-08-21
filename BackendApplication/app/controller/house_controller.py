@@ -351,7 +351,7 @@ async def count_filtered_houses(
 ):
     """
     Count houses with range filters for int/float fields, exact filters for boolean fields,
-    and exact filters for string fields (province, city, street).
+    and case-insensitive substring matching for string fields (province, city, street).
     """
     query_start = time.perf_counter()
     count = await service.count_filtered_houses(
