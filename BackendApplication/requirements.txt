@@ -1,0 +1,39 @@
+# Generated from the ScholarStay conda environment, trimmed to only what
+# app/ and main.py actually import at runtime (verified via AST-scanning the
+# codebase) — the conda env itself carries ~290 packages, most of it
+# notebook/data-science tooling (jupyterlab, matplotlib, streamlit, etc.)
+# never imported by this service.
+
+# Web framework
+fastapi==0.115.12
+uvicorn==0.34.2
+pydantic==2.11.4
+python-multipart==0.0.9
+python-dotenv==1.2.1
+email-validator==2.2.0
+
+
+# Database (Tortoise ORM for the app, psycopg/psycopg-pool for the
+# LangGraph checkpointer's own connection pool)
+tortoise-orm==0.25.1
+aerich==0.7.1
+asyncpg==0.29.0
+psycopg[binary]==3.3.4
+psycopg-pool==3.3.1
+
+# Firebase auth
+firebase-admin==6.5.0
+
+# LLM / agentic workflow
+langchain==0.3.25
+langchain-core==0.3.86
+langchain-openai==0.3.18
+langgraph==0.3.34
+langgraph-checkpoint==2.1.2
+langgraph-checkpoint-postgres==2.0.25
+tenacity==8.5.0
+
+# Misc
+numpy==1.26.4
+typing_extensions==4.15.0
+concurrent-log-handler==0.9.29

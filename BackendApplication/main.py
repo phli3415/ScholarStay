@@ -158,6 +158,9 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",  # React/Vite dev server
     "http://127.0.0.1:5173",
+    "https://green-bush-0b95e2d1e.7.azurestaticapps.net",  # Deployed frontend (Azure Static Web Apps)
+    "https://www.scholar-stay.com",  # Deployed frontend (custom domain)
+    "https://scholar-stay.com",  # Bare domain, in case it's ever hit directly instead of via forwarding
 ]
 
 # Add CORS middleware to the application
